@@ -1,0 +1,183 @@
+.ku-trust, .ku-trust * { box-sizing:border-box; }
+.ku-trust{
+  position:relative;
+  overflow:hidden;
+  padding:86px 24px;
+  background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);
+  border-radius:36px;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:#0f172a;
+}
+.ku-trust__gridbg{
+  position:absolute;
+  inset:0;
+  opacity:.34;
+  background-image:
+    linear-gradient(rgba(37,99,235,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,.08) 1px, transparent 1px);
+  background-size:30px 30px;
+  pointer-events:none;
+}
+.ku-trust__container{
+  position:relative;
+  z-index:1;
+  max-width:1320px;
+  margin:0 auto;
+}
+.ku-trust__head{
+  max-width:790px;
+  margin:0 auto 46px;
+  text-align:center;
+}
+.ku-trust__badge{
+  display:inline-flex;
+  align-items:center;
+  min-height:34px;
+  padding:8px 15px;
+  border-radius:999px;
+  background:rgba(37,99,235,.10);
+  color:#2563eb;
+  border:1px solid rgba(37,99,235,.20);
+  font-size:13px;
+  font-weight:900;
+  margin-bottom:18px;
+}
+.ku-trust__title{
+  margin:0;
+  font-family:Montserrat,Inter,sans-serif;
+  font-size:clamp(34px,4.8vw,56px);
+  line-height:1.06;
+  font-weight:900;
+  color:hsl(218 55% 11%);
+}
+.ku-trust__title span{
+  background:linear-gradient(90deg,#2563eb,#8b5cf6,#ef4444);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.ku-trust__text{
+  margin:18px auto 0;
+  max-width:690px;
+  font-size:18px;
+  line-height:1.65;
+  color:hsl(218 20% 48%);
+  font-weight:600;
+}
+.ku-trust__grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
+.ku-trust-card{
+  --trust-color:#2563eb;
+  position:relative;
+  min-height:172px;
+  padding:24px;
+  border-radius:18px;
+  background:rgba(255,255,255,.92);
+  border:1px solid rgba(148,163,184,.26);
+  box-shadow:0 18px 44px -34px rgba(15,23,42,.45);
+  overflow:hidden;
+  transition:transform .24s ease, box-shadow .24s ease, border-color .24s ease;
+}
+.ku-trust-card::after{
+  content:"";
+  position:absolute;
+  right:16px;
+  bottom:16px;
+  width:58px;
+  height:44px;
+  border-radius:14px;
+  background:color-mix(in srgb, var(--trust-color) 10%, transparent);
+  transform:rotate(12deg);
+  pointer-events:none;
+}
+.ku-trust-card:hover{
+  transform:translateY(-5px);
+  border-color:color-mix(in srgb, var(--trust-color) 34%, rgba(148,163,184,.26));
+  box-shadow:0 28px 66px -42px rgba(15,23,42,.56);
+}
+.ku-trust-card > *{
+  position:relative;
+  z-index:1;
+}
+.ku-trust-card__icon{
+  width:48px;
+  height:48px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--trust-color);
+  background:color-mix(in srgb, var(--trust-color) 10%, #fff);
+  border:1px solid color-mix(in srgb, var(--trust-color) 20%, transparent);
+  margin-bottom:18px;
+}
+.ku-trust-card__icon svg{
+  width:23px;
+  height:23px;
+  display:block;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.ku-trust-card h3{
+  margin:0 0 10px;
+  font-family:Montserrat,Inter,sans-serif;
+  font-size:20px;
+  line-height:1.22;
+  font-weight:900;
+  color:hsl(218 55% 11%);
+}
+.ku-trust-card p{
+  margin:0;
+  font-size:14px;
+  line-height:1.65;
+  color:hsl(218 20% 47%);
+  font-weight:600;
+}
+.ku-trust-card--blue{ --trust-color:#2563eb; }
+.ku-trust-card--red{ --trust-color:#ef4444; }
+.ku-trust-card--yellow{ --trust-color:#f59e0b; }
+.ku-trust-card--violet{ --trust-color:#8b5cf6; }
+.ku-trust-card--green{ --trust-color:#22c55e; }
+.ku-trust-card--orange{ --trust-color:#f97316; }
+
+.ku-trust__reveal,
+.ku-trust__reveal.is-visible{
+  opacity:1!important;
+  transform:none!important;
+}
+
+@media (max-width:1100px){
+  .ku-trust__grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:760px){
+  .ku-trust{
+    padding:70px 14px;
+    border-radius:24px;
+  }
+  .ku-trust__head{
+    text-align:left;
+    margin-bottom:30px;
+  }
+  .ku-trust__title{
+    font-size:34px;
+    line-height:1.08;
+  }
+  .ku-trust__text{ font-size:16px; }
+  .ku-trust__grid{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+  .ku-trust-card{
+    min-height:auto;
+    padding:20px;
+  }
+}
+@media (prefers-reduced-motion: reduce){
+  .ku-trust *, .ku-trust::before, .ku-trust::after{ animation:none!important; transition:none!important; }
+}

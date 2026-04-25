@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/build.mjs --preview"
+  },
+  "private": true,
+  "devDependencies": {}
+}

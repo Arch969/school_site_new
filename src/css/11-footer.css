@@ -1,0 +1,195 @@
+.ku-footer,
+.ku-footer *{
+  box-sizing:border-box;
+}
+
+.ku-footer{
+  position:relative;
+  overflow:hidden;
+  padding:42px 24px 34px;
+  background:#071120;
+  color:rgba(226,232,240,.78);
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+
+.ku-footer__topline{
+  position:absolute;
+  inset:0 0 auto;
+  height:4px;
+  background:linear-gradient(90deg,#2563eb,#7c3aed,#ef4444);
+}
+
+.ku-footer__container{
+  max-width:1320px;
+  margin:0 auto;
+}
+
+.ku-footer__grid{
+  display:grid;
+  grid-template-columns:minmax(240px,1fr) minmax(180px,.75fr) minmax(360px,1.45fr) minmax(180px,.7fr);
+  gap:58px;
+  align-items:start;
+}
+
+.ku-footer__brand{
+  align-self:start;
+}
+
+.ku-footer__logo{
+  display:inline-flex;
+  align-items:center;
+  width:auto;
+  height:auto;
+  padding:0;
+  margin-bottom:22px;
+  border-radius:0;
+  background:transparent;
+  border:0;
+  box-shadow:none;
+  backdrop-filter:none;
+}
+
+.ku-footer__logo img{
+  width:186px;
+  height:auto;
+  display:block;
+  object-fit:contain;
+  object-position:left center;
+}
+
+.ku-footer__socials{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:26px;
+}
+
+.ku-footer__social{
+  width:42px;
+  height:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:14px;
+  background:rgba(148,163,184,.12);
+  color:#38bdf8;
+  text-decoration:none;
+  transition:transform .2s ease, background .2s ease, color .2s ease;
+}
+
+.ku-footer__social:hover{
+  transform:translateY(-2px);
+  background:rgba(37,99,235,.24);
+  color:#fff;
+}
+
+.ku-footer__social svg{
+  width:21px;
+  height:21px;
+  fill:currentColor;
+}
+
+.ku-footer__social--wa{
+  color:#22c55e;
+}
+
+.ku-footer__social--vk{
+  color:#4c75a3;
+}
+
+.ku-footer__social--max img{
+  width:31px;
+  height:31px;
+  display:block;
+  object-fit:contain;
+}
+
+.ku-footer__legal,
+.ku-footer__license{
+  display:grid;
+  gap:6px;
+  margin-top:26px;
+}
+
+.ku-footer__legal p,
+.ku-footer__license p{
+  margin:0;
+  color:rgba(226,232,240,.72);
+  font-size:14px;
+  line-height:1.45;
+  font-weight:700;
+}
+
+.ku-footer__license{
+  margin-top:18px;
+}
+
+.ku-footer__col{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:14px;
+}
+
+.ku-footer__col h3{
+  margin:0 0 10px;
+  color:#fff;
+  font-size:18px;
+  line-height:1.2;
+  font-weight:900;
+  letter-spacing:0;
+  text-transform:none;
+}
+
+.ku-footer__col a{
+  color:rgba(226,232,240,.72);
+  font-size:15px;
+  line-height:1.45;
+  font-weight:750;
+  text-decoration:none;
+  transition:color .2s ease, transform .2s ease;
+}
+
+.ku-footer__col a:hover{
+  color:#fff;
+  transform:translateX(3px);
+}
+
+.ku-footer__col--courses a{
+  max-width:560px;
+}
+
+.ku-footer__col--contacts a:first-of-type{
+  font-size:16px;
+  line-height:1.45;
+  font-weight:800;
+}
+
+@media (max-width: 1060px){
+  .ku-footer__grid{
+    grid-template-columns:1fr 1fr;
+    gap:42px;
+  }
+}
+
+@media (max-width: 680px){
+  .ku-footer{
+    padding:36px 18px 30px;
+  }
+
+  .ku-footer__grid{
+    grid-template-columns:1fr;
+    gap:34px;
+  }
+
+  .ku-footer__logo{
+    width:auto;
+    height:auto;
+    padding:0;
+  }
+
+  .ku-footer__logo img{
+    width:172px;
+    height:auto;
+  }
+}

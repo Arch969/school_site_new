@@ -1,0 +1,273 @@
+.ku-courses,.ku-courses *{ box-sizing:border-box; }
+.ku-courses{
+  position:relative;
+  overflow:hidden;
+  padding:90px 24px;
+  background:#fff;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:#0f172a;
+  border-radius:36px;
+}
+.ku-courses__topline{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:4px;
+  background:linear-gradient(90deg,#2563eb,#8b5cf6,#ef4444);
+}
+.ku-courses__gridbg{
+  position:absolute;
+  inset:0;
+  opacity:.18;
+  background-image:radial-gradient(rgba(37,99,235,.16) 1px, transparent 1px);
+  background-size:20px 20px;
+}
+.ku-courses__orb{
+  position:absolute;
+  top:-190px;
+  left:-160px;
+  width:640px;
+  height:640px;
+  border-radius:999px;
+  background:rgba(37,99,235,.05);
+  filter:blur(110px);
+  pointer-events:none;
+}
+.ku-courses__container{
+  position:relative;
+  z-index:2;
+  max-width:1320px;
+  margin:0 auto;
+}
+
+.ku-courses__head{
+  display:block;
+  text-align:center;
+  margin-bottom:42px;
+}
+.ku-courses__badge{
+  display:inline-flex;
+  align-items:center;
+  min-height:42px;
+  padding:10px 16px;
+  border-radius:999px;
+  background:rgba(239,68,68,.10);
+  color:#ef4444;
+  border:1px solid rgba(239,68,68,.20);
+  font-size:14px;
+  font-weight:800;
+  margin-bottom:16px;
+}
+.ku-courses__title{
+  margin:0;
+  font-family:Montserrat,Inter,sans-serif;
+  font-size:clamp(34px,4.8vw,56px);
+  line-height:1.06;
+  font-weight:900;
+  color:hsl(218 55% 11%);
+  white-space:nowrap;
+}
+.ku-courses__title span{
+  background:linear-gradient(90deg,#2563eb,#ef4444);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.ku-courses__grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:22px;
+}
+
+.ku-catalog-card{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  border-radius:24px;
+  background:#fff;
+  border:1px solid rgba(148,163,184,.26);
+  box-shadow:0 16px 42px -30px rgba(15,23,42,.50);
+  overflow:hidden;
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.ku-catalog-card:hover,
+.ku-catalog-card:focus-within{
+  transform:translateY(-5px);
+  border-color:color-mix(in srgb, var(--accent) 38%, rgba(148,163,184,.26));
+  box-shadow:0 28px 68px -38px rgba(15,23,42,.62);
+}
+
+.ku-catalog-card__media{
+  position:relative;
+  aspect-ratio:1 / 1;
+  min-height:0;
+  overflow:hidden;
+  background:#0f172a;
+}
+.ku-catalog-card__image{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  transition:transform .5s ease, filter .5s ease;
+}
+.ku-catalog-card:hover .ku-catalog-card__image,
+.ku-catalog-card:focus-within .ku-catalog-card__image{
+  transform:scale(1.045);
+  filter:saturate(1.06) contrast(1.03);
+}
+.ku-catalog-card__shade{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(15,23,42,.42) 0%, rgba(15,23,42,.08) 34%, rgba(15,23,42,.22) 58%, rgba(15,23,42,.92) 100%),
+    radial-gradient(circle at 18% 18%, color-mix(in srgb, var(--accent) 32%, transparent) 0 92px, transparent 120px);
+  pointer-events:none;
+}
+.ku-catalog-card__logo{
+  position:absolute;
+  left:16px;
+  top:16px;
+  z-index:2;
+  width:72px;
+  aspect-ratio:1 / 1;
+  object-fit:contain;
+  padding:0;
+  border-radius:0;
+  background:transparent;
+  border:0;
+  box-shadow:none;
+  backdrop-filter:none;
+}
+.ku-catalog-card__badges{
+  position:absolute;
+  top:16px;
+  right:16px;
+  z-index:2;
+  display:flex;
+  flex-direction:row;
+  align-items:flex-end;
+  justify-content:flex-end;
+  gap:7px;
+  max-width:calc(100% - 112px);
+}
+.ku-catalog-card__badges span{
+  display:inline-flex;
+  align-items:center;
+  min-height:28px;
+  padding:0 11px;
+  border-radius:999px;
+  background:rgba(255,255,255,.88);
+  color:hsl(218 55% 11%);
+  border:1px solid rgba(255,255,255,.72);
+  box-shadow:0 10px 24px -18px rgba(15,23,42,.70);
+  backdrop-filter:blur(10px);
+  font-size:11px;
+  line-height:1;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+.ku-catalog-card__info{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:2;
+  padding:24px 20px 20px;
+  color:#fff;
+}
+.ku-catalog-card__info h3{
+  margin:0;
+  max-width:96%;
+  font-family:Montserrat,Inter,sans-serif;
+  font-size:clamp(20px,2.1vw,28px);
+  line-height:1.08;
+  font-weight:900;
+  color:#fff;
+  text-shadow:0 2px 16px rgba(15,23,42,.55);
+}
+.ku-catalog-card__details{
+  max-height:none;
+  opacity:1;
+  overflow:visible;
+  transform:none;
+  margin-top:12px;
+  transition:none;
+}
+.ku-catalog-card__details p{
+  margin:0;
+  font-size:14px;
+  line-height:1.48;
+  color:rgba(255,255,255,.90);
+  text-shadow:0 1px 10px rgba(15,23,42,.50);
+}
+.ku-catalog-card__actions{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  padding:14px;
+  background:#fff;
+}
+.ku-catalog-card__primary,
+.ku-catalog-card__secondary{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  min-height:46px;
+  border-radius:14px;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:900;
+  transition:transform .22s ease, background .22s ease, color .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+.ku-catalog-card__primary{
+  color:#fff;
+  background:var(--accent);
+  border:2px solid var(--accent);
+  box-shadow:0 12px 24px -18px var(--accent);
+}
+.ku-catalog-card__secondary{
+  color:var(--accent);
+  background:#fff;
+  border:2px solid color-mix(in srgb, var(--accent) 54%, rgba(148,163,184,.35));
+}
+.ku-catalog-card__primary:hover,
+.ku-catalog-card__secondary:hover{
+  transform:translateY(-1px);
+}
+.ku-catalog-card__secondary:hover{
+  color:#fff;
+  background:var(--accent);
+  border-color:var(--accent);
+}
+
+.ku-courses__reveal,
+.ku-courses__reveal.is-visible{
+  opacity:1!important;
+  transform:none!important;
+}
+
+@media (max-width:1100px){
+  .ku-courses__grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+
+@media (max-width:760px){
+  .ku-courses{
+    padding:70px 14px;
+    border-radius:24px;
+  }
+  .ku-courses__grid{ grid-template-columns:1fr; gap:16px; }
+  .ku-courses__title{ font-size:34px; line-height:1.08; white-space:normal; }
+  .ku-catalog-card__logo{ width:62px; border-radius:0; }
+  .ku-catalog-card__badges span{ min-height:26px; font-size:10px; }
+  .ku-catalog-card__info{ padding:22px 16px 16px; }
+  .ku-catalog-card__info h3{ font-size:24px; }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .ku-courses *,.ku-courses::before,.ku-courses::after{ animation:none!important; transition:none!important; }
+}
