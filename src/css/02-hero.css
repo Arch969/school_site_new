@@ -471,18 +471,24 @@
   .ku-hero__text{ font-size:16px; }
   .ku-hero__actions{ flex-direction:column; align-items:stretch; }
   .ku-btn{ width:100%; }
-  .ku-hero__meta{ gap:10px 14px; }
   .ku-hero__meta{
-    width:auto;
-    max-width:100%;
-    overflow-x:auto;
-    padding-bottom:4px;
-    scrollbar-width:none;
+    width:100%;
+    max-width:520px;
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px 10px;
+    margin:0 auto;
+    padding-bottom:0;
+    justify-items:center;
   }
-  .ku-hero__meta::-webkit-scrollbar{
-    display:none;
+  .ku-hero__meta-item{
+    min-width:0;
+    justify-content:center;
+    text-align:center;
+    font-size:12px;
+    line-height:1.3;
+    white-space:normal;
   }
-  .ku-hero__meta-item{ font-size:13px; }
 
   .ku-visual{
     min-height:470px;

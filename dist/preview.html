@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>КиберУм</title>
   <link rel="preload" as="image" href="media/hero3.png" fetchpriority="high">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
   <style>
     body { margin: 0; }
 /* css: 10-contact.css */
@@ -875,7 +878,7 @@ body.ku-trial-modal-open{
   color:rgba(226,232,240,.72);
   font-size:14px;
   line-height:1.45;
-  font-weight:700;
+  font-weight:600;
 }
 
 .ku-footer__license{
@@ -891,6 +894,7 @@ body.ku-trial-modal-open{
 
 .ku-footer__col h3{
   margin:0 0 10px;
+  font-family:Montserrat,Inter,sans-serif;
   color:#fff;
   font-size:18px;
   line-height:1.2;
@@ -903,7 +907,7 @@ body.ku-trial-modal-open{
   color:rgba(226,232,240,.72);
   font-size:15px;
   line-height:1.45;
-  font-weight:750;
+  font-weight:600;
   text-decoration:none;
   transition:color .2s ease, transform .2s ease;
 }
@@ -920,7 +924,7 @@ body.ku-trial-modal-open{
 .ku-footer__col--contacts a:first-of-type{
   font-size:16px;
   line-height:1.45;
-  font-weight:800;
+  font-weight:700;
 }
 
 @media (max-width: 1060px){
@@ -1646,148 +1650,414 @@ body.ku-trial-modal-open{
 }
 
 /* css: 06-projects.css */
-.ku-projects, .ku-projects * { box-sizing:border-box; }
-  .ku-projects{
-    position:relative; overflow:hidden; padding:88px 24px;
-    background:linear-gradient(180deg,#fff 0%,#f8fbff 100%);
-    border-radius:36px;
-    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    color:#0f172a;
-  }
-  .ku-projects__bg{
-    position:absolute; border-radius:999px; filter:blur(70px); pointer-events:none;
-    animation:kuProjectsBlob 14s ease-in-out infinite;
-  }
-  .ku-projects__bg--1{
-    width:320px; height:320px; left:-70px; top:30px; background:rgba(37,99,235,.09);
-  }
-  .ku-projects__bg--2{
-    width:280px; height:280px; right:-60px; bottom:20px; background:rgba(239,68,68,.08); animation-delay:-5s;
-  }
-  @keyframes kuProjectsBlob{
-    0%,100%{ transform:translate3d(0,0,0) scale(1); }
-    50%{ transform:translate3d(2vw,2vh,0) scale(1.06); }
-  }
-  .ku-projects__container{ position:relative; z-index:2; max-width:1320px; margin:0 auto; }
-  .ku-projects__head{ max-width:760px; margin:0 auto 34px; text-align:center; }
-  .ku-projects__badge{
-    display:inline-flex; align-items:center; min-height:42px; padding:10px 16px; border-radius:999px;
-    background:rgba(37,99,235,.10); color:#2563eb; border:1px solid rgba(37,99,235,.20);
-    font-size:14px; font-weight:700; margin-bottom:18px;
-  }
-  .ku-projects__title{
-    margin:0; font-family:Montserrat,Inter,sans-serif; font-size:clamp(34px,4.8vw,56px);
-    line-height:1.06; font-weight:900; letter-spacing:-.03em; color:hsl(218 55% 11%);
-  }
-  .ku-projects__title span{
-    background:linear-gradient(90deg,#2563eb,#ef4444);
-    -webkit-background-clip:text; background-clip:text; color:transparent;
-  }
-  .ku-projects__text{
-    margin:18px auto 0; max-width:700px; font-size:18px; line-height:1.7; color:hsl(218 20% 48%);
-  }
+.ku-projects,
+.ku-projects *{
+  box-sizing:border-box;
+}
 
-  .ku-projects__grid{
-    display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px;
+.ku-projects{
+  position:relative;
+  overflow:hidden;
+  padding:92px 24px 88px;
+  background:linear-gradient(180deg,#ffffff 0%,#fbfdff 100%);
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:#0f172a;
+}
+
+.ku-projects::before{
+  content:"";
+  position:absolute;
+  inset:12px 0 auto;
+  height:3px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#2563eb 0%,#7c3aed 54%,#ef4444 100%);
+  opacity:.9;
+  pointer-events:none;
+}
+
+.ku-projects__gridbg{
+  position:absolute;
+  inset:0;
+  opacity:.32;
+  background-image:
+    radial-gradient(rgba(37,99,235,.12) 1px, transparent 1px);
+  background-size:22px 22px;
+  pointer-events:none;
+}
+
+.ku-projects__glow{
+  position:absolute;
+  border-radius:999px;
+  filter:blur(70px);
+  pointer-events:none;
+  opacity:.32;
+}
+
+.ku-projects__glow--blue{
+  left:-90px;
+  top:48px;
+  width:260px;
+  height:260px;
+  background:rgba(37,99,235,.16);
+}
+
+.ku-projects__glow--red{
+  right:-100px;
+  bottom:42px;
+  width:300px;
+  height:300px;
+  background:rgba(239,68,68,.15);
+}
+
+.ku-projects__container{
+  position:relative;
+  z-index:2;
+  max-width:1320px;
+  margin:0 auto;
+}
+
+.ku-projects__head{
+  max-width:860px;
+  margin:0 auto 30px;
+  text-align:center;
+}
+
+.ku-projects__badge{
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  padding:10px 22px;
+  border-radius:999px;
+  background:rgba(239,68,68,.08);
+  border:1px solid rgba(239,68,68,.14);
+  color:#ef4444;
+  font-size:14px;
+  line-height:1;
+  font-weight:700;
+  margin-bottom:20px;
+}
+
+.ku-projects__title{
+  margin:0;
+  font-family:Montserrat,Inter,sans-serif;
+  font-size:clamp(36px,5vw,64px);
+  line-height:1.04;
+  font-weight:900;
+  color:hsl(218 55% 11%);
+}
+
+.ku-projects__title span{
+  background:linear-gradient(90deg,#2563eb 0%,#7c3aed 52%,#ef4444 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.ku-projects__text{
+  max-width:760px;
+  margin:18px auto 0;
+  font-size:18px;
+  line-height:1.62;
+  font-weight:600;
+  color:hsl(218 20% 49%);
+}
+
+.ku-projects__slider{
+  position:relative;
+  padding:0 72px;
+}
+
+.ku-projects__viewport{
+  overflow:hidden;
+}
+
+.ku-projects__track{
+  display:flex;
+  gap:24px;
+  will-change:transform;
+  transition:transform .45s cubic-bezier(.22,1,.36,1);
+}
+
+.ku-project-card{
+  --project-accent:#2563eb;
+  flex:0 0 calc((100% - 48px) / 3);
+  min-width:0;
+  background:rgba(255,255,255,.96);
+  border:1px solid rgba(214,223,234,.94);
+  border-radius:30px;
+  overflow:hidden;
+  box-shadow:0 24px 56px -40px rgba(15,23,42,.34);
+  transition:transform .24s ease, box-shadow .24s ease, border-color .24s ease, opacity .24s ease;
+}
+
+.ku-project-card:hover{
+  transform:translateY(-6px);
+  border-color:color-mix(in srgb, var(--project-accent) 34%, rgba(214,223,234,.94));
+  box-shadow:0 34px 70px -42px rgba(15,23,42,.4);
+}
+
+.ku-project-card--blue{ --project-accent:#2563eb; }
+.ku-project-card--violet{ --project-accent:#8b5cf6; }
+.ku-project-card--orange{ --project-accent:#f97316; }
+
+.ku-project-card__preview{
+  position:relative;
+  aspect-ratio:1.58 / 1;
+  padding:10px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.42)),
+    color-mix(in srgb, var(--project-accent) 12%, #fff);
+}
+
+.ku-project-card__preview::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-top:2px solid var(--project-accent);
+  border-radius:30px 30px 0 0;
+  pointer-events:none;
+}
+
+.ku-project-card__preview img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  border-radius:20px;
+  box-shadow:0 18px 40px -30px rgba(15,23,42,.42);
+}
+
+.ku-project-card__body{
+  padding:16px 18px 18px;
+}
+
+.ku-project-card__chip{
+  width:max-content;
+  max-width:100%;
+  min-height:34px;
+  padding:0 14px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  background:color-mix(in srgb, var(--project-accent) 11%, #fff);
+  color:var(--project-accent);
+  font-size:13px;
+  line-height:1;
+  font-weight:700;
+  margin-bottom:12px;
+}
+
+.ku-project-card h3{
+  margin:0 0 10px;
+  font-family:Montserrat,Inter,sans-serif;
+  font-size:clamp(18px,1.45vw,24px);
+  line-height:1.16;
+  font-weight:800;
+  color:hsl(218 55% 11%);
+}
+
+.ku-project-card__meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 16px;
+  margin-bottom:0;
+  color:hsl(218 20% 54%);
+  font-size:13px;
+  line-height:1.45;
+  font-weight:500;
+}
+
+.ku-project-card__meta span{
+  position:relative;
+}
+
+.ku-project-card__meta span:not(:last-child)::after{
+  content:"•";
+  position:absolute;
+  right:-12px;
+  top:50%;
+  transform:translateY(-50%);
+  color:rgba(148,163,184,.9);
+}
+
+.ku-projects__nav{
+  position:absolute;
+  top:50%;
+  z-index:3;
+  width:60px;
+  height:60px;
+  margin-top:-30px;
+  border-radius:999px;
+  border:1px solid rgba(214,223,234,.92);
+  background:rgba(255,255,255,.96);
+  color:#2563eb;
+  box-shadow:0 18px 40px -28px rgba(15,23,42,.28);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:transform .2s ease, opacity .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
+}
+
+.ku-projects__nav:hover:not(:disabled){
+  transform:translateY(-2px);
+  background:#2563eb;
+  color:#fff;
+}
+
+.ku-projects__nav:disabled{
+  opacity:.42;
+  cursor:default;
+  box-shadow:none;
+}
+
+.ku-projects__nav svg{
+  width:26px;
+  height:26px;
+  display:block;
+  fill:currentColor;
+}
+
+.ku-projects__nav--prev{
+  left:0;
+}
+
+.ku-projects__nav--next{
+  right:0;
+}
+
+.ku-projects__dots{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  margin-top:28px;
+}
+
+.ku-projects__dot{
+  width:10px;
+  height:10px;
+  border:0;
+  border-radius:999px;
+  padding:0;
+  background:rgba(148,163,184,.52);
+  cursor:pointer;
+  transition:transform .2s ease, background .2s ease;
+}
+
+.ku-projects__dot.is-active{
+  transform:scale(1.15);
+  background:#2563eb;
+}
+
+.ku-projects__reveal,
+.ku-projects__reveal.is-visible{
+  opacity:1 !important;
+  transform:none !important;
+}
+
+@media (max-width:1100px){
+  .ku-projects__slider{
+    padding:0 58px;
   }
 
   .ku-project-card{
-    background:#fff; border:1px solid hsl(214 30% 88%); border-radius:24px; overflow:hidden;
-    box-shadow:0 12px 30px rgba(15,23,42,.06);
-    transition:transform .28s ease, box-shadow .28s ease;
+    flex-basis:calc((100% - 24px) / 2);
   }
-  .ku-project-card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 22px 50px rgba(15,23,42,.10);
+}
+
+@media (max-width:760px){
+  .ku-projects{
+    padding:70px 14px 72px;
+  }
+
+  .ku-projects::before{
+    inset:10px 0 auto;
+  }
+
+  .ku-projects__head{
+    margin-bottom:24px;
+  }
+
+  .ku-projects__badge{
+    min-height:38px;
+    padding:8px 16px;
+    font-size:13px;
+    margin-bottom:16px;
+  }
+
+  .ku-projects__title{
+    font-size:clamp(30px,10vw,40px);
+    line-height:1.06;
+  }
+
+  .ku-projects__text{
+    font-size:16px;
+    line-height:1.58;
+  }
+
+  .ku-projects__slider{
+    padding:0;
+  }
+
+  .ku-projects__track{
+    gap:14px;
+  }
+
+  .ku-project-card{
+    flex-basis:100%;
+    border-radius:24px;
   }
 
   .ku-project-card__preview{
-    position:relative; height:190px; overflow:hidden;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .ku-project-card__preview--blue{ background:linear-gradient(135deg,#eaf3ff,#dbeafe); }
-  .ku-project-card__preview--orange{ background:linear-gradient(135deg,#fff7e8,#ffedd5); }
-  .ku-project-card__preview--violet{ background:linear-gradient(135deg,#f5f3ff,#ede9fe); }
-  .ku-project-card__preview--cyan{ background:linear-gradient(135deg,#ecfeff,#cffafe); }
-  .ku-project-card__preview--green{ background:linear-gradient(135deg,#f0fdf4,#dcfce7); }
-  .ku-project-card__preview--pink{ background:linear-gradient(135deg,#fdf2f8,#fce7f3); }
-
-  .ku-project-card__mock{
-    width:170px; height:126px; border-radius:18px; background:#fff; box-shadow:0 12px 30px rgba(15,23,42,.10);
-    position:relative;
-  }
-  .ku-project-card__mock--game::before,
-  .ku-project-card__mock--roblox::before,
-  .ku-project-card__mock--unity::before,
-  .ku-project-card__mock--site::before,
-  .ku-project-card__mock--pc::before,
-  .ku-project-card__mock--design::before{
-    content:""; position:absolute; inset:14px; border-radius:14px;
-  }
-  .ku-project-card__mock--game::before{
-    background:
-      radial-gradient(circle at 20% 30%, #60a5fa 0 8px, transparent 9px),
-      radial-gradient(circle at 70% 55%, #f59e0b 0 10px, transparent 11px),
-      linear-gradient(180deg,#dbeafe 0%,#bfdbfe 100%);
-  }
-  .ku-project-card__mock--roblox::before{
-    background:
-      linear-gradient(90deg,#fdba74 0 30%,#f97316 30% 60%,#fcd34d 60% 100%);
-  }
-  .ku-project-card__mock--unity::before{
-    background:
-      linear-gradient(135deg,#c4b5fd,#8b5cf6);
-  }
-  .ku-project-card__mock--site::before{
-    background:
-      linear-gradient(180deg,#fff 0 22%,#dbeafe 22% 100%);
-    box-shadow: inset 0 0 0 1px rgba(37,99,235,.08);
-  }
-  .ku-project-card__mock--pc::before{
-    background:
-      linear-gradient(180deg,#ffffff 0%,#dcfce7 100%);
-  }
-  .ku-project-card__mock--design::before{
-    background:
-      linear-gradient(135deg,#fbcfe8,#f9a8d4,#c4b5fd);
+    padding:9px;
   }
 
-  .ku-project-card__pill{
-    position:absolute; top:14px; right:14px;
-    min-height:28px; padding:0 10px; border-radius:999px;
-    display:inline-flex; align-items:center;
-    background:rgba(15,23,42,.82); color:#fff; font-size:11px; font-weight:800;
+  .ku-project-card__preview::before{
+    border-radius:24px 24px 0 0;
   }
 
-  .ku-project-card__body{ padding:20px; }
-  .ku-project-card__body h3{
-    margin:0 0 10px; font-family:Montserrat,Inter,sans-serif; font-size:22px; font-weight:800; color:hsl(218 55% 11%);
+  .ku-project-card__preview img{
+    border-radius:16px;
   }
-  .ku-project-card__body p{
-    margin:0; font-size:14px; line-height:1.7; color:hsl(218 20% 48%);
+
+  .ku-project-card__body{
+    padding:14px 15px 16px;
   }
+
+  .ku-project-card__chip{
+    min-height:32px;
+    font-size:12px;
+    margin-bottom:10px;
+  }
+
+  .ku-project-card h3{
+    font-size:19px;
+  }
+
   .ku-project-card__meta{
-    margin-top:14px; font-size:13px; font-weight:700; color:#2563eb;
+    gap:6px 16px;
+    font-size:12px;
+    margin-bottom:0;
   }
 
-  .ku-projects__reveal{
-    opacity:0; transform:translateY(24px);
-    transition:opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1);
+  .ku-projects__nav{
+    display:none;
   }
-  .ku-projects__reveal.is-visible{ opacity:1; transform:none; }
 
-  @media (max-width:1100px){
-    .ku-projects__grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .ku-projects__dots{
+    margin-top:20px;
   }
-  @media (max-width:760px){
-    .ku-projects{ padding:70px 14px; border-radius:24px; }
-    .ku-projects__title{ font-size:34px; line-height:1.08; }
-    .ku-projects__text{ font-size:16px; }
-    .ku-projects__grid{ grid-template-columns:1fr; gap:14px; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .ku-projects *,
+  .ku-projects::before,
+  .ku-projects::after{
+    animation:none !important;
+    transition:none !important;
   }
-  @media (prefers-reduced-motion: reduce){
-    .ku-projects *, .ku-projects::before, .ku-projects::after{ animation:none!important; transition:none!important; }
-  }
+}
 
 /* css: 09-start.css */
 .ku-start,.ku-start *{ box-sizing:border-box; }
@@ -2034,6 +2304,1028 @@ body.ku-trial-modal-open{
   .ku-start-card,.ku-start__btn,.ku-start__btn span{ transition:none!important; }
 }
 
+/* css: 04-teachers.css */
+.ku-teachers,
+.ku-teachers *{
+  box-sizing:border-box;
+}
+
+.ku-teachers{
+  position:relative;
+  overflow:hidden;
+  padding:84px 12px 58px;
+  border-radius:40px;
+  background:
+    radial-gradient(340px 320px at 5% 7%, rgba(74,120,255,.17), transparent 72%),
+    radial-gradient(340px 320px at 95% 10%, rgba(255,95,95,.16), transparent 72%),
+    linear-gradient(180deg,#ffffff 0%,#fbfdff 100%);
+  box-shadow:0 26px 70px -54px rgba(15,23,42,.28);
+}
+
+.ku-teachers::before{
+  content:"";
+  position:absolute;
+  inset:12px 0 auto;
+  height:3px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#2462ff 0%,#8b39ff 54%,#ff4e5d 100%);
+  pointer-events:none;
+}
+
+.ku-teachers__gridbg{
+  position:absolute;
+  inset:0;
+  opacity:.2;
+  background-image:radial-gradient(rgba(37,99,235,.15) 1px, transparent 1px);
+  background-size:22px 22px;
+  -webkit-mask-image:radial-gradient(circle at center, rgba(0,0,0,.32), rgba(0,0,0,.05) 66%, transparent 100%);
+  mask-image:radial-gradient(circle at center, rgba(0,0,0,.32), rgba(0,0,0,.05) 66%, transparent 100%);
+  pointer-events:none;
+}
+
+.ku-teachers__glow{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(80px);
+  pointer-events:none;
+}
+
+.ku-teachers__glow--blue{
+  left:-80px;
+  top:56px;
+  width:220px;
+  height:220px;
+  background:rgba(74,120,255,.26);
+}
+
+.ku-teachers__glow--red{
+  right:-90px;
+  top:58px;
+  width:240px;
+  height:240px;
+  background:rgba(255,95,95,.20);
+}
+
+.ku-teachers__arc{
+  position:absolute;
+  border-radius:50%;
+  border:1.5px dashed rgba(184,196,226,.76);
+  pointer-events:none;
+}
+
+.ku-teachers__arc--left{
+  left:-118px;
+  bottom:62px;
+  width:230px;
+  height:230px;
+  border-top-color:transparent;
+  border-right-color:transparent;
+}
+
+.ku-teachers__arc--right{
+  right:80px;
+  top:210px;
+  width:170px;
+  height:170px;
+  border-bottom-color:transparent;
+  border-left-color:transparent;
+}
+
+.ku-teachers__bubble{
+  position:absolute;
+  z-index:1;
+  width:78px;
+  height:78px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,.98);
+  border:1px solid rgba(221,229,244,.96);
+  border-radius:22px;
+  box-shadow:0 18px 40px -30px rgba(15,23,42,.28);
+  pointer-events:none;
+}
+
+.ku-teachers__bubble svg{
+  width:34px;
+  height:34px;
+}
+
+.ku-teachers__bubble--code{
+  left:10px;
+  top:56%;
+  color:#2d69ff;
+}
+
+.ku-teachers__bubble--heart{
+  left:28px;
+  bottom:18px;
+  color:#ff6172;
+}
+
+.ku-teachers__bubble--cap{
+  right:32px;
+  top:180px;
+  color:#ff5e6c;
+  transform:rotate(12deg);
+}
+
+.ku-teachers__container{
+  position:relative;
+  z-index:2;
+  width:min(100%, 1480px);
+  margin:0 auto;
+}
+
+.ku-teachers__head{
+  max-width:980px;
+  margin:0 auto 34px;
+  text-align:center;
+}
+
+.ku-teachers__badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:40px;
+  padding:10px 22px;
+  border-radius:999px;
+  background:rgba(255,97,114,.10);
+  color:#ff4e5d;
+  font-size:14px;
+  line-height:1;
+  font-weight:600;
+  margin-bottom:22px;
+}
+
+.ku-teachers__title{
+  margin:0;
+  font-family:Montserrat,Inter,sans-serif;
+  font-size:clamp(44px,5.4vw,78px);
+  line-height:1.02;
+  font-weight:900;
+  color:#111b35;
+}
+
+.ku-teachers__title span{
+  background:linear-gradient(90deg,#2362ff 0%,#8a35ff 52%,#ff4e5d 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.ku-teachers__text{
+  margin:16px auto 0;
+  max-width:980px;
+  font-size:16px;
+  line-height:1.6;
+  color:#4b6698;
+  font-weight:500;
+}
+
+.ku-teachers__layout{
+  display:grid;
+  grid-template-columns:minmax(0, 1.08fr) minmax(0, 1.02fr) 272px;
+  grid-template-rows:234px 234px;
+  gap:18px;
+  align-items:start;
+}
+
+.ku-teachers__dots-nav{
+  display:none;
+}
+
+.ku-icon{
+  width:16px;
+  height:16px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 16px;
+}
+
+.ku-icon svg{
+  width:100%;
+  height:100%;
+}
+
+.ku-teacher-card{
+  position:relative;
+}
+
+.ku-teacher-card__dots{
+  position:absolute;
+  width:62px;
+  height:62px;
+  background-image:radial-gradient(currentColor 1.5px, transparent 1.5px);
+  background-size:12px 12px;
+  opacity:.28;
+  pointer-events:none;
+}
+
+.ku-teacher-card--lead{
+  display:grid;
+  grid-template-columns:304px minmax(0,1fr);
+  gap:14px;
+  min-height:458px;
+  grid-column:1;
+  grid-row:1 / span 2;
+}
+
+.ku-teacher-card__lead-photo{
+  position:relative;
+  overflow:hidden;
+  min-height:458px;
+  border-radius:30px;
+  background:linear-gradient(#fff,#fff) padding-box, linear-gradient(180deg,#8cb7ff 0%,#2f67ff 100%) border-box;
+  border:3.8px solid transparent;
+  clip-path:polygon(0 30px, 30px 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%);
+  box-shadow:0 22px 48px -34px rgba(31,75,193,.34);
+}
+
+.ku-teacher-card__lead-photo img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+
+.ku-teacher-card__lead-photo::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:106px;
+  height:106px;
+  background:linear-gradient(135deg,#2d69ff 0%,#124ddb 100%);
+  clip-path:polygon(0 0,100% 100%,0 100%);
+}
+
+.ku-teacher-card__dots--lead{
+  left:18px;
+  bottom:18px;
+  color:#fff;
+  opacity:.84;
+}
+
+.ku-teacher-card__panel{
+  position:relative;
+  overflow:hidden;
+  background:rgba(255,255,255,.98);
+  box-shadow:0 22px 44px -34px rgba(15,23,42,.22);
+}
+
+.ku-teacher-card__panel--lead{
+  min-height:458px;
+  padding:22px 24px 18px;
+  background:linear-gradient(#fff,#fff) padding-box, linear-gradient(180deg,#d8e8ff 0%,#86acff 100%) border-box;
+  border:3.8px solid transparent;
+  border-radius:30px;
+  clip-path:polygon(0 30px, 30px 0, calc(100% - 34px) 0, 100% 34px, 100% calc(100% - 26px), calc(100% - 26px) 100%, 0 100%);
+}
+
+.ku-teacher-card__panel--lead::before{
+  content:"";
+  position:absolute;
+  left:-10px;
+  top:38px;
+  width:48px;
+  height:2px;
+  background:#4d7aff;
+}
+
+.ku-teacher-card__panel--lead::after{
+  content:"";
+  position:absolute;
+  right:0;
+  bottom:0;
+  width:30px;
+  height:30px;
+  background:linear-gradient(135deg,transparent 48%, rgba(167,196,255,.85) 49%);
+  pointer-events:none;
+}
+
+.ku-teacher-card__dots--lead-panel{
+  right:30px;
+  top:52px;
+  color:#c4d3ef;
+}
+
+.ku-teacher-card__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:13px;
+  line-height:1;
+  font-weight:600;
+}
+
+.ku-teacher-card__eyebrow--pill{
+  min-height:36px;
+  padding:0 14px;
+  border-radius:999px;
+  background:#f2f6ff;
+  color:#2e67ff;
+  margin-bottom:20px;
+}
+
+.ku-teacher-card__eyebrow--plain{
+  margin-bottom:14px;
+}
+
+.ku-teacher-card__eyebrow--violet{
+  color:#8d31ff;
+}
+
+.ku-teacher-card__eyebrow--orange{
+  color:#ff623b;
+}
+
+.ku-teacher-card__eyebrow--blue{
+  color:#2e67ff;
+}
+
+.ku-teacher-card__name{
+  margin:0 0 10px;
+  font-family:Montserrat,Inter,sans-serif;
+  font-size:clamp(25px,1.75vw,34px);
+  line-height:1.05;
+  font-weight:900;
+  color:#111b35;
+}
+
+.ku-teacher-card__name--lead{
+  margin-bottom:10px;
+  font-size:clamp(36px,2.55vw,50px);
+  line-height:1.02;
+}
+
+.ku-teacher-card__name--slim{
+  font-size:clamp(24px,2vw,34px);
+}
+
+.ku-teacher-card__tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px;
+  margin-bottom:12px;
+  color:#4f6792;
+  font-size:14px;
+  line-height:1.4;
+  font-weight:500;
+}
+
+.ku-teacher-card__tags--blue{
+  margin-bottom:16px;
+  color:#2e67ff;
+  font-size:15px;
+}
+
+.ku-teacher-card__tags span{
+  position:relative;
+}
+
+.ku-teacher-card__tags span:not(:last-child)::after{
+  content:"•";
+  position:absolute;
+  right:-10px;
+  top:50%;
+  transform:translateY(-50%);
+  color:#9fb2d8;
+}
+
+.ku-teacher-card__stats{
+  margin-bottom:12px;
+}
+
+.ku-teacher-card__stats--stack{
+  display:grid;
+  gap:8px;
+  max-width:188px;
+}
+
+.ku-teacher-card__stats--inline{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.ku-teacher-card__stat{
+  min-height:40px;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:0 12px;
+  border-radius:12px;
+  background:#fff;
+  border:1px solid #d9e4f7;
+  color:#50678f;
+  font-size:13px;
+  line-height:1;
+  font-weight:500;
+  box-shadow:0 12px 20px -24px rgba(15,23,42,.26);
+}
+
+.ku-teacher-card__quote-mark{
+  margin:12px 0 0;
+  font-family:Georgia,serif;
+  font-size:54px;
+  line-height:.7;
+  color:#4a72ff;
+}
+
+.ku-teacher-card__quote{
+  margin:0;
+  max-width:260px;
+  font-size:14px;
+  line-height:1.48;
+  color:#546983;
+  font-weight:500;
+}
+
+.ku-teacher-card__skills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:16px;
+}
+
+.ku-skill-chip{
+  min-height:40px;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:0 12px;
+  border-radius:14px;
+  background:#fff;
+  border:1px solid #d9e4f7;
+  box-shadow:0 12px 20px -24px rgba(15,23,42,.26);
+  color:#2c4166;
+  font-size:13px;
+  line-height:1;
+  font-weight:500;
+}
+
+.ku-skill-chip img{
+  width:20px;
+  height:20px;
+  object-fit:contain;
+  display:block;
+}
+
+.ku-skill-chip__badge{
+  width:18px;
+  height:18px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 18px;
+  border-radius:5px;
+  font-size:9px;
+  line-height:1;
+  font-weight:700;
+}
+
+.ku-skill-chip--figma .ku-skill-chip__badge{
+  border-radius:6px;
+  background:
+    radial-gradient(circle at 50% 18%, #f24e1e 0 31%, transparent 33%),
+    radial-gradient(circle at 50% 50%, #a259ff 0 31%, transparent 33%),
+    radial-gradient(circle at 50% 82%, #1abcfe 0 31%, transparent 33%),
+    radial-gradient(circle at 18% 34%, #ff7262 0 30%, transparent 32%),
+    radial-gradient(circle at 82% 34%, #0acf83 0 30%, transparent 32%);
+}
+
+.ku-skill-chip--ps .ku-skill-chip__badge{
+  background:#03213f;
+  color:#65c3ff;
+}
+
+.ku-skill-chip--blender .ku-skill-chip__badge,
+.ku-skill-chip--blockbench .ku-skill-chip__badge{
+  position:relative;
+  border-radius:50%;
+}
+
+.ku-skill-chip--blender .ku-skill-chip__badge{
+  background:linear-gradient(135deg,#ff9d2f,#ff6a00);
+}
+
+.ku-skill-chip--blender .ku-skill-chip__badge::before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#fff;
+}
+
+.ku-skill-chip--blockbench .ku-skill-chip__badge{
+  background:linear-gradient(135deg,#66c0ff,#2f7bff);
+}
+
+.ku-skill-chip--blockbench .ku-skill-chip__badge::before{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:2px;
+  background:#fff;
+  transform:rotate(45deg);
+}
+
+.ku-teacher-card--wide{
+  display:grid;
+  min-height:0;
+  height:100%;
+  overflow:hidden;
+  border-radius:26px;
+  background:linear-gradient(#fff,#fff) padding-box, linear-gradient(90deg,var(--teacher-border-start),var(--teacher-border-end)) border-box;
+  border:3.8px solid transparent;
+  box-shadow:0 22px 42px -30px rgba(15,23,42,.22);
+}
+
+.ku-teacher-card--violet{
+  --teacher-border-start:#d9bcff;
+  --teacher-border-end:#8e36ff;
+  grid-template-columns:minmax(0,1fr) 270px;
+  clip-path:polygon(0 24px, 24px 0, calc(100% - 24px) 0, 100% 24px, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%);
+  grid-column:2;
+  grid-row:1;
+}
+
+.ku-teacher-card--orange{
+  --teacher-border-start:#ff8b68;
+  --teacher-border-end:#ff6a43;
+  grid-template-columns:230px minmax(0,1fr);
+  clip-path:polygon(0 24px, 24px 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%);
+  grid-column:2;
+  grid-row:2;
+}
+
+.ku-teacher-card__panel--wide{
+  padding:14px 20px 14px;
+  box-shadow:none;
+}
+
+.ku-teacher-card--violet .ku-teacher-card__panel--wide::after,
+.ku-teacher-card--orange .ku-teacher-card__panel--wide::after{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:20px;
+  background:#fff;
+  pointer-events:none;
+}
+
+.ku-teacher-card--violet .ku-teacher-card__panel--wide::after{
+  right:-1px;
+  clip-path:polygon(100% 0,0 48%,100% 100%);
+}
+
+.ku-teacher-card--orange .ku-teacher-card__panel--wide::after{
+  left:-1px;
+  clip-path:polygon(0 0,100% 52%,0 100%);
+}
+
+.ku-teacher-card__media{
+  position:relative;
+  overflow:hidden;
+}
+
+.ku-teacher-card__media img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center top;
+}
+
+.ku-teacher-card__media--violet{
+  background:linear-gradient(135deg,#cfb2ff,#9552ff);
+}
+
+.ku-teacher-card__media--violet::before{
+  display:none;
+}
+
+.ku-teacher-card__media--violet::after{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:108px;
+  height:14px;
+  background:linear-gradient(90deg,#a458ff,#cfb3ff);
+  clip-path:polygon(14px 0,100% 0,86% 100%,0 100%);
+  z-index:2;
+}
+
+.ku-teacher-card__media--orange{
+  background:linear-gradient(135deg,#ff7246,#ff5b36);
+}
+
+.ku-teacher-card__media--orange::before{
+  display:none;
+}
+
+.ku-teacher-card__media--orange::after{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:78px;
+  height:18px;
+  background:linear-gradient(90deg,#ff7b55,#ff5d39);
+  clip-path:polygon(0 0,100% 0,78% 100%,0 100%);
+  z-index:2;
+}
+
+.ku-teacher-card__dots--violet{
+  display:none;
+}
+
+.ku-teacher-card__dots--orange-left{
+  display:none;
+}
+
+.ku-teacher-card__dots--orange-right{
+  right:18px;
+  top:22px;
+  color:#c8d5ef;
+}
+
+.ku-teacher-card--slim{
+  position:relative;
+  min-height:458px;
+  overflow:hidden;
+  border-radius:26px;
+  background:linear-gradient(#fff,#fff) padding-box, linear-gradient(180deg,#dce9ff 0%,#8ab7ff 100%) border-box;
+  border:3.8px solid transparent;
+  box-shadow:0 20px 38px -30px rgba(15,23,42,.2);
+  clip-path:polygon(0 24px, 24px 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+  grid-column:3;
+  grid-row:1 / span 2;
+}
+
+.ku-teacher-card--slim::before{
+  content:"";
+  position:absolute;
+  top:0;
+  right:0;
+  width:36px;
+  height:36px;
+  background:linear-gradient(135deg,#d6e6ff,#93bdff);
+  clip-path:polygon(100% 0,0 0,100% 100%);
+  z-index:3;
+}
+
+.ku-teacher-card__media--slim{
+  margin:12px 12px 0;
+  height:154px;
+  background:#eef4ff;
+  clip-path:polygon(10% 0,100% 0,100% 82%,90% 100%,0 100%,0 12%);
+  border-radius:22px;
+}
+
+.ku-teacher-card__panel--slim{
+  padding:14px 14px 16px;
+  box-shadow:none;
+  background:transparent;
+}
+
+.ku-teacher-card__dots--slim{
+  right:16px;
+  bottom:14px;
+  color:#d2ddf4;
+}
+
+.ku-teachers__stats{
+  width:max-content;
+  max-width:100%;
+  display:flex;
+  align-items:center;
+  margin:24px auto 0;
+  border-radius:28px;
+  background:rgba(255,255,255,.97);
+  border:1px solid rgba(222,230,244,.96);
+  box-shadow:0 22px 44px -34px rgba(15,23,42,.22);
+  overflow:hidden;
+}
+
+.ku-teachers__stat{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  min-width:220px;
+  padding:18px 24px;
+}
+
+.ku-teachers__stat + .ku-teachers__stat{
+  border-left:1px solid rgba(222,230,244,.96);
+}
+
+.ku-teachers__stat-icon{
+  width:44px;
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:14px;
+}
+
+.ku-teachers__stat-icon svg{
+  width:24px;
+  height:24px;
+}
+
+.ku-teachers__stat-icon--blue{
+  background:#eef4ff;
+  color:#2f67ff;
+}
+
+.ku-teachers__stat-icon--violet{
+  background:#f4ebff;
+  color:#914dff;
+}
+
+.ku-teachers__stat-icon--rose{
+  background:#fff0f3;
+  color:#ff6674;
+}
+
+.ku-teachers__stat strong{
+  display:block;
+  font-family:Montserrat,Inter,sans-serif;
+  font-size:20px;
+  line-height:1;
+  font-weight:900;
+  color:#111b35;
+}
+
+.ku-teachers__stat span{
+  display:block;
+  margin-top:6px;
+  font-size:13px;
+  line-height:1.35;
+  color:#5a6f93;
+  font-weight:500;
+}
+
+.ku-teachers__reveal{
+  opacity:0;
+  transform:translate3d(0,24px,0);
+  transition:opacity .6s ease, transform .6s ease;
+}
+
+.ku-teachers__reveal.is-visible{
+  opacity:1;
+  transform:none;
+}
+
+@media (max-width:1320px){
+  .ku-teachers__layout{
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    grid-template-rows:auto auto auto;
+  }
+
+  .ku-teacher-card--lead{
+    grid-column:1 / -1;
+    grid-row:auto;
+  }
+
+  .ku-teacher-card--violet{
+    grid-column:1;
+    grid-row:auto;
+  }
+
+  .ku-teacher-card--orange{
+    grid-column:2;
+    grid-row:auto;
+  }
+
+  .ku-teacher-card--slim{
+    display:grid;
+    grid-template-columns:240px minmax(0,1fr);
+    grid-column:1 / -1;
+    grid-row:auto;
+  }
+
+  .ku-teacher-card__media--slim{
+    margin:12px 0 12px 12px;
+    height:100%;
+    min-height:196px;
+  }
+}
+
+@media (max-width:860px){
+  .ku-teachers{
+    padding:72px 14px 52px;
+    border-radius:26px;
+  }
+
+  .ku-teachers::before{
+    inset:8px 0 auto;
+  }
+
+  .ku-teachers__bubble,
+  .ku-teachers__arc{
+    display:none;
+  }
+
+  .ku-teachers__head{
+    margin-bottom:28px;
+  }
+
+  .ku-teachers__title{
+    font-size:clamp(34px,11vw,50px);
+  }
+
+  .ku-teachers__text{
+    font-size:15px;
+  }
+
+  .ku-teachers__layout{
+    display:flex;
+    grid-template-columns:none;
+    grid-template-rows:none;
+    gap:16px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;
+    padding:0 2px 6px;
+    scrollbar-width:none;
+  }
+
+  .ku-teachers__layout::-webkit-scrollbar{
+    display:none;
+  }
+
+  .ku-teachers__layout > .ku-teacher-card{
+    flex:0 0 100%;
+    min-width:0;
+    scroll-snap-align:start;
+    grid-column:auto;
+    grid-row:auto;
+  }
+
+  .ku-teachers__dots-nav{
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    margin-top:14px;
+  }
+
+  .ku-teachers__dots-nav[hidden]{
+    display:none;
+  }
+
+  .ku-teachers__dot{
+    width:10px;
+    height:10px;
+    border:0;
+    border-radius:50%;
+    padding:0;
+    background:rgba(191,203,226,.92);
+    box-shadow:none;
+  }
+
+  .ku-teachers__dot.is-active{
+    background:#2f67ff;
+  }
+
+  .ku-teacher-card--lead,
+  .ku-teacher-card--violet,
+  .ku-teacher-card--orange,
+  .ku-teacher-card--slim{
+    display:flex;
+    flex-direction:column;
+    min-height:auto;
+    clip-path:none;
+    border-radius:24px;
+    background:linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg,#2f67ff 0%,#8d38ff 56%,#ff7648 100%) border-box;
+    border:2.4px solid transparent;
+    box-shadow:0 20px 38px -28px rgba(15,23,42,.18);
+  }
+
+  .ku-teachers__layout > .ku-teacher-card > .ku-teacher-card__lead-photo,
+  .ku-teachers__layout > .ku-teacher-card > .ku-teacher-card__media{
+    order:1;
+    min-height:224px;
+    height:224px;
+    margin:10px 10px 0;
+    clip-path:none;
+    border-radius:18px;
+    background:#eff5ff;
+    overflow:hidden;
+  }
+
+  .ku-teachers__layout > .ku-teacher-card > .ku-teacher-card__panel{
+    order:2;
+    min-height:auto;
+    padding:16px 16px 18px;
+    clip-path:none;
+    border-radius:0;
+    border:0;
+    background:transparent;
+    box-shadow:none;
+  }
+
+  .ku-teacher-card__name--lead,
+  .ku-teacher-card__name,
+  .ku-teacher-card__name--slim{
+    font-size:30px;
+    line-height:1.06;
+    margin-bottom:10px;
+  }
+
+  .ku-teacher-card__tags,
+  .ku-teacher-card__tags--blue{
+    gap:14px;
+    margin-bottom:12px;
+    font-size:14px;
+    color:#4f6792;
+  }
+
+  .ku-teacher-card__stats--stack,
+  .ku-teacher-card__stats--inline{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px;
+    max-width:none;
+    margin-bottom:12px;
+  }
+
+  .ku-teacher-card__quote-mark{
+    display:none;
+  }
+
+  .ku-teacher-card__quote{
+    max-width:none;
+    font-size:14px;
+    line-height:1.5;
+    margin-bottom:0;
+  }
+
+  .ku-teacher-card__stat{
+    min-height:42px;
+    font-size:13px;
+    padding:0 12px;
+  }
+
+  .ku-skill-chip{
+    min-height:40px;
+    font-size:13px;
+    padding:0 12px;
+  }
+
+  .ku-teacher-card__lead-photo::after,
+  .ku-teacher-card__panel--lead::before,
+  .ku-teacher-card__panel--lead::after,
+  .ku-teacher-card__media::before,
+  .ku-teacher-card__media::after,
+  .ku-teacher-card--slim::before,
+  .ku-teachers__layout .ku-teacher-card__dots{
+    display:none;
+  }
+
+  .ku-teachers__layout > .ku-teacher-card > .ku-teacher-card__media img,
+  .ku-teachers__layout > .ku-teacher-card > .ku-teacher-card__lead-photo img{
+    border-radius:18px;
+  }
+
+  .ku-teachers__stats{
+    width:100%;
+    flex-direction:column;
+    align-items:stretch;
+    margin-top:18px;
+  }
+
+  .ku-teachers__stat{
+    min-width:0;
+    width:100%;
+    padding:16px 18px;
+  }
+
+  .ku-teachers__stat + .ku-teachers__stat{
+    border-left:0;
+    border-top:1px solid rgba(222,230,244,.96);
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .ku-teachers *,
+  .ku-teachers::before,
+  .ku-teachers::after{
+    animation:none!important;
+    transition:none!important;
+  }
+
+  .ku-teachers__reveal{
+    opacity:1;
+    transform:none;
+  }
+}
+
 /* css: 04-reviews.css */
 .ku-reviews, .ku-reviews * { box-sizing:border-box; }
 
@@ -2139,38 +3431,38 @@ body.ku-trial-modal-open{
 }
 .ku-video-reviews__track{
   display:flex;
-  gap:18px;
+  gap:14px;
   align-items:stretch;
   overflow-x:auto;
   scroll-snap-type:x mandatory;
   scroll-behavior:smooth;
   scrollbar-width:none;
-  padding:2px 2px 16px;
+  padding:2px 2px 12px;
 }
 .ku-video-reviews__track::-webkit-scrollbar{ display:none; }
 
 .ku-video-review{
-  flex:0 0 calc((100% - 54px) / 4);
-  scroll-snap-align:center;
+  flex:0 0 calc((100% - 56px) / 5);
+  scroll-snap-align:start;
 }
 .ku-video-review__phone{
   position:relative;
-  padding:8px;
-  border-radius:28px;
+  padding:6px;
+  border-radius:22px;
   background:linear-gradient(180deg,#111827,#020617);
-  box-shadow:0 28px 70px -36px rgba(15,23,42,.75);
+  box-shadow:0 20px 52px -34px rgba(15,23,42,.72);
   border:1px solid rgba(255,255,255,.12);
   transition:transform .25s ease, box-shadow .25s ease;
 }
 .ku-video-review__phone:hover{
   transform:translateY(-4px);
-  box-shadow:0 34px 84px -42px rgba(15,23,42,.82);
+  box-shadow:0 26px 66px -38px rgba(15,23,42,.8);
 }
 .ku-video-review__slot{
   position:relative;
   aspect-ratio:9 / 16;
   overflow:hidden;
-  border-radius:22px;
+  border-radius:17px;
   background:
     linear-gradient(180deg, rgba(37,99,235,.22), rgba(239,68,68,.18)),
     radial-gradient(circle at 30% 20%, rgba(255,255,255,.22), transparent 28%),
@@ -2179,10 +3471,10 @@ body.ku-trial-modal-open{
 .ku-video-review__slot::before{
   content:"";
   position:absolute;
-  top:10px;
+  top:8px;
   left:50%;
-  width:72px;
-  height:20px;
+  width:56px;
+  height:16px;
   border-radius:999px;
   transform:translateX(-50%);
   background:rgba(2,6,23,.58);
@@ -2195,8 +3487,8 @@ body.ku-trial-modal-open{
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:8px;
-  padding:24px;
+  gap:6px;
+  padding:18px 14px;
   text-align:center;
   color:#fff;
   background:
@@ -2205,18 +3497,18 @@ body.ku-trial-modal-open{
 }
 .ku-video-review__placeholder div{
   font-family:Montserrat,Inter,sans-serif;
-  font-size:19px;
+  font-size:16px;
   line-height:1.15;
   font-weight:900;
 }
 .ku-video-review__placeholder small{
   color:rgba(255,255,255,.72);
-  font-size:12px;
-  line-height:1.4;
+  font-size:11px;
+  line-height:1.35;
   font-weight:700;
 }
 .ku-video-review__play{
-  width:56px;
+  width:46px;
   aspect-ratio:1 / 1;
   border-radius:999px;
   display:flex;
@@ -2229,32 +3521,32 @@ body.ku-trial-modal-open{
   content:"";
   width:0;
   height:0;
-  margin-left:5px;
-  border-top:10px solid transparent;
-  border-bottom:10px solid transparent;
-  border-left:16px solid #2563eb;
+  margin-left:4px;
+  border-top:8px solid transparent;
+  border-bottom:8px solid transparent;
+  border-left:13px solid #2563eb;
 }
 .ku-video-review__caption{
   position:absolute;
-  left:18px;
-  right:18px;
-  bottom:18px;
+  left:12px;
+  right:12px;
+  bottom:12px;
   z-index:3;
-  padding:11px 12px;
-  border-radius:15px;
+  padding:9px 10px;
+  border-radius:12px;
   background:rgba(255,255,255,.90);
   border:1px solid rgba(255,255,255,.68);
   box-shadow:0 18px 42px -28px rgba(15,23,42,.75);
   backdrop-filter:blur(10px);
 }
 .ku-video-review__name{
-  font-size:13px;
+  font-size:12px;
   font-weight:900;
   color:hsl(218 55% 11%);
 }
 .ku-video-review__meta{
-  margin-top:3px;
-  font-size:12px;
+  margin-top:2px;
+  font-size:11px;
   line-height:1.35;
   color:hsl(218 20% 44%);
   font-weight:700;
@@ -2318,7 +3610,7 @@ body.ku-trial-modal-open{
 
 @media (max-width:1100px){
   .ku-video-reviews{ padding-inline:52px; }
-  .ku-video-review{ flex-basis:calc((100% - 18px) / 2); }
+  .ku-video-review{ flex-basis:calc((100% - 28px) / 3); }
 }
 
 @media (max-width:760px){
@@ -2333,8 +3625,16 @@ body.ku-trial-modal-open{
     white-space:normal;
   }
   .ku-reviews__text{ font-size:16px; }
-  .ku-video-reviews{ padding:0 0 34px; }
-  .ku-video-review{ flex-basis:min(76vw, 292px); }
+  .ku-video-reviews{ padding:0 0 24px; }
+  .ku-video-reviews__track{
+    gap:0;
+    padding:0 0 10px;
+  }
+  .ku-video-review{ flex-basis:100%; }
+  .ku-video-review__phone{
+    max-width:242px;
+    margin:0 auto;
+  }
   .ku-video-reviews__nav{ display:none; }
 }
 
@@ -2715,10 +4015,145 @@ body.ku-trial-modal-open{
   background-clip:text;
   color:transparent;
 }
+.ku-courses__filters{
+  display:flex;
+  justify-content:center;
+  margin:0 auto 34px;
+}
+.ku-courses__filters-shell{
+  --shell-border:linear-gradient(90deg, rgba(37,99,235,.26), rgba(139,92,246,.22), rgba(239,68,68,.22));
+  position:relative;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  width:min(100%, 980px);
+  padding:14px;
+  border-radius:30px;
+  border:1px solid transparent;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.97), rgba(248,250,252,.94)) padding-box,
+    var(--shell-border) border-box;
+  box-shadow:
+    0 28px 56px -42px rgba(15,23,42,.58),
+    inset 0 1px 0 rgba(255,255,255,.85);
+  overflow:hidden;
+}
+.ku-courses__filters-shell::before,
+.ku-courses__filters-shell::after{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  border-radius:999px;
+  pointer-events:none;
+  opacity:.55;
+  filter:blur(38px);
+}
+.ku-courses__filters-shell::before{
+  top:-96px;
+  left:-56px;
+  background:rgba(37,99,235,.12);
+}
+.ku-courses__filters-shell::after{
+  right:-42px;
+  bottom:-112px;
+  background:rgba(239,68,68,.10);
+}
+.ku-courses__filter{
+  --filter-accent:#2563eb;
+  position:relative;
+  z-index:1;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-height:54px;
+  padding:0 18px 0 14px;
+  border:1px solid rgba(148,163,184,.24);
+  border-radius:999px;
+  background:rgba(255,255,255,.84);
+  color:#334155;
+  box-shadow:0 14px 26px -22px rgba(15,23,42,.46);
+  font-size:14px;
+  line-height:1;
+  font-weight:800;
+  letter-spacing:0;
+  cursor:pointer;
+  transition:
+    transform .22s ease,
+    background .22s ease,
+    color .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease;
+}
+.ku-courses__filter:hover,
+.ku-courses__filter:focus-visible{
+  transform:translateY(-1px);
+  border-color:color-mix(in srgb, var(--filter-accent) 40%, rgba(148,163,184,.24));
+  box-shadow:0 18px 34px -24px rgba(15,23,42,.50);
+  outline:none;
+}
+.ku-courses__filter[data-filter="all"]{ --filter-accent:#2563eb; }
+.ku-courses__filter[data-filter="games"]{ --filter-accent:#ef4444; }
+.ku-courses__filter[data-filter="programming"]{ --filter-accent:#2563eb; }
+.ku-courses__filter[data-filter="modeling"]{ --filter-accent:#8b5cf6; }
+.ku-courses__filter[data-filter="design"]{ --filter-accent:#ec4899; }
+.ku-courses__filter[data-filter="development"]{ --filter-accent:#16a34a; }
+.ku-courses__filter-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:32px;
+  height:32px;
+  flex:0 0 32px;
+  border-radius:999px;
+  color:var(--filter-accent);
+  background:color-mix(in srgb, var(--filter-accent) 13%, #fff);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.85),
+    0 10px 22px -18px rgba(15,23,42,.46);
+  transition:background .22s ease, color .22s ease, box-shadow .22s ease;
+}
+.ku-courses__filter-icon svg{
+  width:17px;
+  height:17px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.9;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.ku-courses__filter[data-filter="all"] .ku-courses__filter-icon svg{
+  stroke-width:1.7;
+}
+.ku-courses__filter span:last-child{
+  position:relative;
+  z-index:1;
+  white-space:nowrap;
+}
+.ku-courses__filter.is-active{
+  color:#fff;
+  border-color:transparent;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--filter-accent) 92%, #fff) 0%, var(--filter-accent) 100%);
+  box-shadow:
+    0 24px 36px -24px color-mix(in srgb, var(--filter-accent) 52%, transparent),
+    inset 0 1px 0 rgba(255,255,255,.18);
+}
+.ku-courses__filter.is-active .ku-courses__filter-icon{
+  color:#fff;
+  background:rgba(255,255,255,.16);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22);
+}
 .ku-courses__grid{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:22px;
+}
+.ku-catalog-card[hidden]{
+  display:none;
 }
 
 .ku-catalog-card{
@@ -2901,6 +4336,45 @@ body.ku-trial-modal-open{
     padding:70px 14px;
     border-radius:24px;
   }
+  .ku-courses__filters{
+    margin:0 auto 24px;
+  }
+  .ku-courses__filters-shell{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    width:100%;
+    gap:8px;
+    padding:10px;
+    border-radius:24px;
+  }
+  .ku-courses__filters-shell::before,
+  .ku-courses__filters-shell::after{
+    filter:blur(34px);
+    opacity:.42;
+  }
+  .ku-courses__filter{
+    min-width:0;
+    min-height:78px;
+    padding:10px 8px 11px;
+    border-radius:18px;
+    flex-direction:column;
+    gap:7px;
+  }
+  .ku-courses__filter-icon{
+    width:28px;
+    height:28px;
+    flex-basis:28px;
+  }
+  .ku-courses__filter-icon svg{
+    width:15px;
+    height:15px;
+  }
+  .ku-courses__filter span:last-child{
+    white-space:normal;
+    text-align:center;
+    font-size:11px;
+    line-height:1.12;
+  }
   .ku-courses__grid{ grid-template-columns:1fr; gap:16px; }
   .ku-courses__title{ font-size:34px; line-height:1.08; white-space:normal; }
   .ku-catalog-card__logo{ width:62px; border-radius:0; }
@@ -2991,6 +4465,9 @@ body.ku-trial-modal-open{
   z-index:1;
   display:block;
   line-height:1;
+}
+.ku-benefits__mobile-break{
+  display:none;
 }
 .ku-benefits__circle{
   position:absolute;
@@ -3165,18 +4642,26 @@ body.ku-trial-modal-open{
     text-align:left;
   }
   .ku-benefits__title{
-    font-size:34px;
+    font-size:clamp(23px,7.2vw,29px);
     line-height:1.08;
   }
   .ku-benefits__circle-wrap{
-    padding:.1em .22em .14em;
-    font-size:clamp(25px,8vw,34px);
+    padding:.14em .3em .2em;
+    font-size:clamp(16px,5.5vw,22px);
     max-width:100%;
     transform:none;
+    white-space:normal;
+  }
+  .ku-benefits__circle-text{
+    line-height:1.04;
+  }
+  .ku-benefits__mobile-break{
+    display:inline;
   }
   .ku-benefits__circle{
-    width:calc(100% + .48em);
-    height:1.55em;
+    width:calc(100% + .52em);
+    height:2.18em;
+    top:50%;
   }
   .ku-benefits__lead{
     font-size:16px;
@@ -3253,10 +4738,10 @@ body.ku-trial-modal-open{
   border:1px solid hsl(214 30% 88%);
   box-shadow:0 12px 32px -26px rgba(15,23,42,.4);
   color:hsl(218 55% 11%);
-  font-family:Montserrat,Inter,sans-serif;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   font-size:12px;
   line-height:1.25;
-  font-weight:500;
+  font-weight:600;
   letter-spacing:0;
   white-space:normal;
   transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;
@@ -3318,22 +4803,31 @@ body.ku-trial-modal-open{
   }
 
   .ku-quick-badges__inner{
-    display:flex;
-    gap:10px;
-    overflow-x:auto;
-    padding-bottom:4px;
-    scroll-snap-type:x mandatory;
-    scrollbar-width:none;
-  }
-
-  .ku-quick-badges__inner::-webkit-scrollbar{
-    display:none;
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px;
+    padding-bottom:0;
   }
 
   .ku-quick-badge{
-    min-width:230px;
-    min-height:58px;
-    scroll-snap-align:start;
+    min-width:0;
+    min-height:52px;
+    padding:0 10px;
+    gap:8px;
+    font-size:11px;
+    line-height:1.2;
+    border-radius:10px;
+  }
+
+  .ku-quick-badge__icon{
+    width:24px;
+    height:24px;
+    border-radius:7px;
+  }
+
+  .ku-quick-badge__icon svg{
+    width:14px;
+    height:14px;
   }
 }
 
@@ -3817,18 +5311,24 @@ body.ku-trial-modal-open{
   .ku-hero__text{ font-size:16px; }
   .ku-hero__actions{ flex-direction:column; align-items:stretch; }
   .ku-btn{ width:100%; }
-  .ku-hero__meta{ gap:10px 14px; }
   .ku-hero__meta{
-    width:auto;
-    max-width:100%;
-    overflow-x:auto;
-    padding-bottom:4px;
-    scrollbar-width:none;
+    width:100%;
+    max-width:520px;
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px 10px;
+    margin:0 auto;
+    padding-bottom:0;
+    justify-items:center;
   }
-  .ku-hero__meta::-webkit-scrollbar{
-    display:none;
+  .ku-hero__meta-item{
+    min-width:0;
+    justify-content:center;
+    text-align:center;
+    font-size:12px;
+    line-height:1.3;
+    white-space:normal;
   }
-  .ku-hero__meta-item{ font-size:13px; }
 
   .ku-visual{
     min-height:470px;
@@ -4706,8 +6206,49 @@ body.ku-trial-modal-open{
       </div>
     </div>
 
+    <div class="ku-courses__filters ku-courses__reveal" aria-label="Фильтр курсов">
+      <div class="ku-courses__filters-shell">
+        <button class="ku-courses__filter is-active" type="button" data-filter="all">
+          <span class="ku-courses__filter-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M5 5h5v5H5V5Zm9 0h5v5h-5V5ZM5 14h5v5H5v-5Zm9 0h5v5h-5v-5Z"/></svg>
+          </span>
+          <span>Все курсы</span>
+        </button>
+        <button class="ku-courses__filter" type="button" data-filter="games">
+          <span class="ku-courses__filter-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M8 11h3m-1.5-1.5v3M15.5 10h.01M18 12h.01M7.2 18h9.6c1.76 0 3.2-1.44 3.2-3.2 0-1.05-.52-2.03-1.38-2.62l-.94-5.18A2.2 2.2 0 0 0 15.53 5h-7.06a2.2 2.2 0 0 0-2.17 1.99l-.94 5.18A3.18 3.18 0 0 0 4 14.8C4 16.56 5.44 18 7.2 18Z"/></svg>
+          </span>
+          <span>Создание игр</span>
+        </button>
+        <button class="ku-courses__filter" type="button" data-filter="programming">
+          <span class="ku-courses__filter-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M8 9 5 12l3 3m8-6 3 3-3 3M13 7l-2 10"/></svg>
+          </span>
+          <span>Программирование</span>
+        </button>
+        <button class="ku-courses__filter" type="button" data-filter="modeling">
+          <span class="ku-courses__filter-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="m12 3 7 4-7 4-7-4 7-4Zm7 4v10l-7 4-7-4V7m7 4v10"/></svg>
+          </span>
+          <span>3D моделирование</span>
+        </button>
+        <button class="ku-courses__filter" type="button" data-filter="design">
+          <span class="ku-courses__filter-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="m14.7 4.3 5 5M5 19l3.8-.9L19 7.9a2.1 2.1 0 0 0-3-3L5.9 15.1 5 19Z"/></svg>
+          </span>
+          <span>Дизайн</span>
+        </button>
+        <button class="ku-courses__filter" type="button" data-filter="development">
+          <span class="ku-courses__filter-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 4c2.6 0 4.9 1 6.5 2.7M12 4C9.4 4 7.1 5 5.5 6.7M12 4v16M6 11c0 3.3 2.7 6 6 6s6-2.7 6-6"/></svg>
+          </span>
+          <span>Развитие</span>
+        </button>
+      </div>
+    </div>
+
     <div class="ku-courses__grid">
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#15803d;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="development" style="--accent:#15803d;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/comp_gram.png" alt="Компьютерная грамотность" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -4723,7 +6264,7 @@ body.ku-trial-modal-open{
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#22c55e;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="development games" style="--accent:#22c55e;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/ScratchJR.png" alt="Scratch Jr" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -4739,7 +6280,7 @@ body.ku-trial-modal-open{
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#16a34a;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="games programming development" style="--accent:#16a34a;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/Scratch.png" alt="Scratch" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -4755,7 +6296,7 @@ body.ku-trial-modal-open{
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#4d7c0f;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="modeling games" style="--accent:#4d7c0f;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/Blockbench.png" alt="Blockbench" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -4771,7 +6312,7 @@ body.ku-trial-modal-open{
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#f97316;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="modeling design" style="--accent:#f97316;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/blender.png" alt="Blender" width="512" height="512" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -4787,7 +6328,7 @@ body.ku-trial-modal-open{
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#d97706;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="games design" style="--accent:#d97706;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/Roblox_design.png" alt="Гейм-дизайн в Roblox" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -4803,7 +6344,7 @@ body.ku-trial-modal-open{
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#ea580c;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="games programming" style="--accent:#ea580c;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/Roblox.png" alt="Программирование в Roblox Lua" width="512" height="512" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -4819,7 +6360,7 @@ body.ku-trial-modal-open{
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#65a30d;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="games programming modeling" style="--accent:#65a30d;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/mod_minecraft.png" alt="Создание модов в Minecraft" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -4835,7 +6376,7 @@ body.ku-trial-modal-open{
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#2563eb;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="programming" style="--accent:#2563eb;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/python_start.png" alt="Python Start" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -4851,7 +6392,7 @@ body.ku-trial-modal-open{
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#1d4ed8;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="programming games" style="--accent:#1d4ed8;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/pygame.png" alt="Python Pygame" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -4867,7 +6408,7 @@ body.ku-trial-modal-open{
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#0f766e;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="programming" style="--accent:#0f766e;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/tkinter.png" alt="Tkinter" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -4883,7 +6424,7 @@ body.ku-trial-modal-open{
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#0891b2;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="programming development" style="--accent:#0891b2;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/chat_bot.png" alt="Chatbot" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -4899,7 +6440,7 @@ body.ku-trial-modal-open{
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#0369a1;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="programming" style="--accent:#0369a1;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/django_flusk.png" alt="Flask Django" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -4915,7 +6456,7 @@ body.ku-trial-modal-open{
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#0e7490;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="programming design" style="--accent:#0e7490;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/web_program.png" alt="Веб-разработка" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -4931,7 +6472,7 @@ body.ku-trial-modal-open{
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#7c3aed;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="games programming modeling" style="--accent:#7c3aed;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/unity.png" alt="Unity" width="512" height="512" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -4946,7 +6487,7 @@ body.ku-trial-modal-open{
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#be185d;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="design" style="--accent:#be185d;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/web_design.png" alt="Веб-дизайн" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -4961,7 +6502,7 @@ body.ku-trial-modal-open{
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#a21caf;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="design" style="--accent:#a21caf;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/Grah_design.png" alt="Графический дизайн" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -5048,6 +6589,281 @@ body.ku-trial-modal-open{
   </div>
 </section>
 
+<!-- block: 04-teachers.html -->
+<section class="ku-teachers" id="teachers">
+  <div class="ku-teachers__gridbg"></div>
+  <div class="ku-teachers__glow ku-teachers__glow--blue"></div>
+  <div class="ku-teachers__glow ku-teachers__glow--red"></div>
+  <div class="ku-teachers__arc ku-teachers__arc--left" aria-hidden="true"></div>
+  <div class="ku-teachers__arc ku-teachers__arc--right" aria-hidden="true"></div>
+  <div class="ku-teachers__bubble ku-teachers__bubble--code" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M8.5 7 4 12l4.5 5M15.5 7 20 12l-4.5 5M13 5l-2 14" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="ku-teachers__bubble ku-teachers__bubble--heart" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 21s-6.7-4.35-9.2-8.09C.47 9.46 1.38 5.35 5.32 4.33 7.64 3.73 9.66 4.75 11 6.35c1.34-1.6 3.36-2.62 5.68-2.02 3.94 1.02 4.85 5.13 2.52 8.58C18.7 16.65 12 21 12 21Z"/>
+    </svg>
+  </div>
+  <div class="ku-teachers__bubble ku-teachers__bubble--cap" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="m3 9 9-4 9 4-9 4-9-4ZM7 11.5V15c0 .8 2.2 2.5 5 2.5s5-1.7 5-2.5v-3.5M21 10v4" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <div class="ku-teachers__container">
+    <div class="ku-teachers__head ku-teachers__reveal">
+      <div class="ku-teachers__badge">Команда КиберУм</div>
+      <h2 class="ku-teachers__title">Наши <span>преподаватели</span></h2>
+      <p class="ku-teachers__text">
+        Наставники, которые вдохновляют детей учиться, создавать проекты и расти в IT-направлениях
+      </p>
+    </div>
+
+    <div class="ku-teachers__layout">
+      <article class="ku-teacher-card ku-teacher-card--lead ku-teachers__reveal">
+        <div class="ku-teacher-card__lead-photo">
+          <img src="media/teacher-alexey-photo.png" alt="Алексей Смирнов" loading="lazy" decoding="async">
+          <div class="ku-teacher-card__dots ku-teacher-card__dots--lead" aria-hidden="true"></div>
+        </div>
+
+        <div class="ku-teacher-card__panel ku-teacher-card__panel--lead">
+          <div class="ku-teacher-card__dots ku-teacher-card__dots--lead-panel" aria-hidden="true"></div>
+
+          <h3 class="ku-teacher-card__name ku-teacher-card__name--lead">Алексей<br>Смирнов</h3>
+
+          <div class="ku-teacher-card__tags ku-teacher-card__tags--blue">
+            <span>Python</span>
+            <span>Scratch</span>
+            <span>Roblox</span>
+          </div>
+
+          <div class="ku-teacher-card__stats ku-teacher-card__stats--stack">
+            <div class="ku-teacher-card__stat">
+              <span class="ku-icon" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="none">
+                  <rect x="3" y="4" width="14" height="13" rx="2.4" stroke="currentColor" stroke-width="1.7"/>
+                  <path d="M6.5 2.8v2.9M13.5 2.8v2.9M3.8 8.2h12.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span>7 лет опыта</span>
+            </div>
+            <div class="ku-teacher-card__stat">
+              <span class="ku-icon" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="none">
+                  <path d="M4.2 4.4h4.1a2.3 2.3 0 0 1 1.7.7l.4.4.4-.4a2.3 2.3 0 0 1 1.7-.7h3.3v11.2h-3.3a2.3 2.3 0 0 0-1.7.7l-.4.4-.4-.4a2.3 2.3 0 0 0-1.7-.7H4.2V4.4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>1200+ уроков</span>
+            </div>
+          </div>
+
+          <div class="ku-teacher-card__quote-mark">“</div>
+          <p class="ku-teacher-card__quote">
+            Помогаю ученикам полюбить код и объясняю сложное простыми словами.
+          </p>
+
+          <div class="ku-teacher-card__skills">
+            <span class="ku-skill-chip">
+              <img src="media/courses_logo_hero/Python.png" alt="" loading="lazy" decoding="async">
+              <span>Python</span>
+            </span>
+            <span class="ku-skill-chip">
+              <img src="media/courses_logo_hero/Scratch.png" alt="" loading="lazy" decoding="async">
+              <span>Scratch</span>
+            </span>
+            <span class="ku-skill-chip">
+              <img src="media/courses_logo_hero/Roblox.png" alt="" loading="lazy" decoding="async">
+              <span>Roblox</span>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="ku-teacher-card ku-teacher-card--wide ku-teacher-card--violet ku-teachers__reveal">
+        <div class="ku-teacher-card__panel ku-teacher-card__panel--wide">
+          <h3 class="ku-teacher-card__name">Мария Волкова</h3>
+
+          <div class="ku-teacher-card__tags">
+            <span>Графический дизайн</span>
+            <span>UI/UX</span>
+          </div>
+
+          <div class="ku-teacher-card__stats ku-teacher-card__stats--inline">
+            <div class="ku-teacher-card__stat">
+              <span class="ku-icon" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="none">
+                  <rect x="3" y="4" width="14" height="13" rx="2.4" stroke="currentColor" stroke-width="1.7"/>
+                  <path d="M6.5 2.8v2.9M13.5 2.8v2.9M3.8 8.2h12.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span>6 лет опыта</span>
+            </div>
+            <div class="ku-teacher-card__stat">
+              <span class="ku-icon" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="none">
+                  <path d="M4.2 4.4h4.1a2.3 2.3 0 0 1 1.7.7l.4.4.4-.4a2.3 2.3 0 0 1 1.7-.7h3.3v11.2h-3.3a2.3 2.3 0 0 0-1.7.7l-.4.4-.4-.4a2.3 2.3 0 0 0-1.7-.7H4.2V4.4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>900+ уроков</span>
+            </div>
+          </div>
+
+          <p class="ku-teacher-card__quote">Развивает вкус, стиль и уверенность в идеях.</p>
+
+          <div class="ku-teacher-card__skills">
+            <span class="ku-skill-chip ku-skill-chip--figma">
+              <span class="ku-skill-chip__badge"></span>
+              <span>Figma</span>
+            </span>
+            <span class="ku-skill-chip ku-skill-chip--ps">
+              <span class="ku-skill-chip__badge">Ps</span>
+              <span>Photoshop</span>
+            </span>
+            <span class="ku-skill-chip"><span>UI/UX</span></span>
+          </div>
+        </div>
+
+        <div class="ku-teacher-card__media ku-teacher-card__media--violet">
+          <img src="media/teacher-maria-photo.png" alt="Мария Волкова" loading="lazy" decoding="async">
+          <div class="ku-teacher-card__dots ku-teacher-card__dots--violet" aria-hidden="true"></div>
+        </div>
+      </article>
+
+      <article class="ku-teacher-card ku-teacher-card--wide ku-teacher-card--orange ku-teachers__reveal">
+        <div class="ku-teacher-card__media ku-teacher-card__media--orange">
+          <img src="media/teacher-dmitry-photo.png" alt="Дмитрий Орлов" loading="lazy" decoding="async">
+          <div class="ku-teacher-card__dots ku-teacher-card__dots--orange-left" aria-hidden="true"></div>
+        </div>
+
+        <div class="ku-teacher-card__panel ku-teacher-card__panel--wide">
+          <div class="ku-teacher-card__dots ku-teacher-card__dots--orange-right" aria-hidden="true"></div>
+
+          <h3 class="ku-teacher-card__name">Дмитрий Орлов</h3>
+
+          <div class="ku-teacher-card__tags">
+            <span>Blender</span>
+            <span>Blockbench</span>
+          </div>
+
+          <div class="ku-teacher-card__stats ku-teacher-card__stats--inline">
+            <div class="ku-teacher-card__stat">
+              <span class="ku-icon" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="none">
+                  <rect x="3" y="4" width="14" height="13" rx="2.4" stroke="currentColor" stroke-width="1.7"/>
+                  <path d="M6.5 2.8v2.9M13.5 2.8v2.9M3.8 8.2h12.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span>8 лет опыта</span>
+            </div>
+            <div class="ku-teacher-card__stat">
+              <span class="ku-icon" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="none">
+                  <path d="M4.2 4.4h4.1a2.3 2.3 0 0 1 1.7.7l.4.4.4-.4a2.3 2.3 0 0 1 1.7-.7h3.3v11.2h-3.3a2.3 2.3 0 0 0-1.7.7l-.4.4-.4-.4a2.3 2.3 0 0 0-1.7-.7H4.2V4.4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>1000+ уроков</span>
+            </div>
+          </div>
+
+          <p class="ku-teacher-card__quote">Погружает в 3D-мир и объединяет креатив и логику.</p>
+
+          <div class="ku-teacher-card__skills">
+            <span class="ku-skill-chip ku-skill-chip--blender">
+              <span class="ku-skill-chip__badge"></span>
+              <span>Blender</span>
+            </span>
+            <span class="ku-skill-chip ku-skill-chip--blockbench">
+              <span class="ku-skill-chip__badge"></span>
+              <span>Blockbench</span>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="ku-teacher-card ku-teacher-card--slim ku-teachers__reveal">
+        <div class="ku-teacher-card__media ku-teacher-card__media--slim">
+          <img src="media/teacher-ekaterina-photo.png" alt="Екатерина Лебедева" loading="lazy" decoding="async">
+        </div>
+
+        <div class="ku-teacher-card__panel ku-teacher-card__panel--slim">
+          <h3 class="ku-teacher-card__name ku-teacher-card__name--slim">Екатерина Лебедева</h3>
+
+          <div class="ku-teacher-card__tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+          </div>
+
+          <div class="ku-teacher-card__stats ku-teacher-card__stats--inline">
+            <div class="ku-teacher-card__stat">
+              <span class="ku-icon" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="none">
+                  <rect x="3" y="4" width="14" height="13" rx="2.4" stroke="currentColor" stroke-width="1.7"/>
+                  <path d="M6.5 2.8v2.9M13.5 2.8v2.9M3.8 8.2h12.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span>5 лет опыта</span>
+            </div>
+            <div class="ku-teacher-card__stat">
+              <span class="ku-icon" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="none">
+                  <path d="M4.2 4.4h4.1a2.3 2.3 0 0 1 1.7.7l.4.4.4-.4a2.3 2.3 0 0 1 1.7-.7h3.3v11.2h-3.3a2.3 2.3 0 0 0-1.7.7l-.4.4-.4-.4a2.3 2.3 0 0 0-1.7-.7H4.2V4.4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>850+ уроков</span>
+            </div>
+          </div>
+
+          <p class="ku-teacher-card__quote">Показывает, как сайты становятся живыми и удобными.</p>
+
+          <div class="ku-teacher-card__skills">
+            <span class="ku-skill-chip"><span>HTML</span></span>
+            <span class="ku-skill-chip"><span>CSS</span></span>
+            <span class="ku-skill-chip"><span>JavaScript</span></span>
+          </div>
+
+          <div class="ku-teacher-card__dots ku-teacher-card__dots--slim" aria-hidden="true"></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="ku-teachers__dots-nav" aria-label="Навигация по преподавателям"></div>
+
+    <div class="ku-teachers__stats ku-teachers__reveal">
+      <div class="ku-teachers__stat">
+        <div class="ku-teachers__stat-icon ku-teachers__stat-icon--blue">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M16.5 19a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM7.5 18a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M2.5 20.5c.6-2.1 2.5-3.5 4.9-3.5 1.1 0 2.1.3 2.9.8M12.3 20.5c.7-2.6 3-4.3 5.7-4.3 2.3 0 4.3 1.2 5 3.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div><strong>35+</strong><span>преподавателей</span></div>
+      </div>
+
+      <div class="ku-teachers__stat">
+        <div class="ku-teachers__stat-icon ku-teachers__stat-icon--violet">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M6.5 4.5h11v15h-11zM9.5 2.5h5v4h-5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M8.5 10.5h7M8.5 14h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div><strong>5000+</strong><span>уроков в месяц</span></div>
+      </div>
+
+      <div class="ku-teachers__stat">
+        <div class="ku-teachers__stat-icon ku-teachers__stat-icon--rose">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="m12 3.2 2.7 5.45 6.03.88-4.36 4.25 1.03 6.02L12 17.02l-5.4 2.78 1.03-6.02L3.27 9.53l6.03-.88L12 3.2Z"/>
+          </svg>
+        </div>
+        <div><strong>4.9</strong><span>рейтинг родителей</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- block: 04-reviews.html -->
 <section class="ku-reviews" id="reviews">
   <div class="ku-reviews__bg ku-reviews__bg--1"></div>
@@ -5058,6 +6874,102 @@ body.ku-trial-modal-open{
       <h2 class="ku-reviews__title">
         Что говорят <span>о занятиях</span>
       </h2>
+    </div>
+
+    <div class="ku-video-reviews ku-reviews__reveal" data-carousel data-per-page-desktop="5" data-per-page-tablet="3" data-per-page-mobile="1">
+      <button class="ku-video-reviews__nav ku-video-reviews__nav--prev" type="button" aria-label="Предыдущий видеоотзыв" data-carousel-prev>
+        <span aria-hidden="true">‹</span>
+      </button>
+
+      <div class="ku-video-reviews__viewport">
+        <div class="ku-video-reviews__track" data-carousel-track>
+          <article class="ku-video-review">
+            <div class="ku-video-review__phone">
+              <div class="ku-video-review__slot">
+                <div class="ku-video-review__placeholder">
+                  <div>Видеоотзыв</div>
+                  <small>Мама ученика курса Scratch</small>
+                  <span class="ku-video-review__play"></span>
+                </div>
+                <div class="ku-video-review__caption">
+                  <div class="ku-video-review__name">Екатерина</div>
+                  <div class="ku-video-review__meta">сын, 9 лет • Scratch</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="ku-video-review">
+            <div class="ku-video-review__phone">
+              <div class="ku-video-review__slot">
+                <div class="ku-video-review__placeholder">
+                  <div>Видеоотзыв</div>
+                  <small>Папа ученика курса Python</small>
+                  <span class="ku-video-review__play"></span>
+                </div>
+                <div class="ku-video-review__caption">
+                  <div class="ku-video-review__name">Алексей</div>
+                  <div class="ku-video-review__meta">дочь, 12 лет • Python</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="ku-video-review">
+            <div class="ku-video-review__phone">
+              <div class="ku-video-review__slot">
+                <div class="ku-video-review__placeholder">
+                  <div>Видеоотзыв</div>
+                  <small>Мама ученика курса Roblox</small>
+                  <span class="ku-video-review__play"></span>
+                </div>
+                <div class="ku-video-review__caption">
+                  <div class="ku-video-review__name">Марина</div>
+                  <div class="ku-video-review__meta">сын, 11 лет • Roblox</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="ku-video-review">
+            <div class="ku-video-review__phone">
+              <div class="ku-video-review__slot">
+                <div class="ku-video-review__placeholder">
+                  <div>Видеоотзыв</div>
+                  <small>Родители ученицы курса Дизайн</small>
+                  <span class="ku-video-review__play"></span>
+                </div>
+                <div class="ku-video-review__caption">
+                  <div class="ku-video-review__name">Ольга</div>
+                  <div class="ku-video-review__meta">дочь, 13 лет • Дизайн</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="ku-video-review">
+            <div class="ku-video-review__phone">
+              <div class="ku-video-review__slot">
+                <div class="ku-video-review__placeholder">
+                  <div>Видеоотзыв</div>
+                  <small>Мама ученика курса Blender</small>
+                  <span class="ku-video-review__play"></span>
+                </div>
+                <div class="ku-video-review__caption">
+                  <div class="ku-video-review__name">Наталья</div>
+                  <div class="ku-video-review__meta">сын, 12 лет • Blender</div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <button class="ku-video-reviews__nav ku-video-reviews__nav--next" type="button" aria-label="Следующий видеоотзыв" data-carousel-next>
+        <span aria-hidden="true">›</span>
+      </button>
+
+      <div class="ku-video-reviews__dots" data-carousel-dots aria-label="Навигация по видеоотзывам"></div>
     </div>
   </div>
 </section>
@@ -5128,95 +7040,127 @@ body.ku-trial-modal-open{
 
 <!-- block: 06-projects.html -->
 <section class="ku-projects" id="projects">
-  <div class="ku-projects__bg ku-projects__bg--1"></div>
-  <div class="ku-projects__bg ku-projects__bg--2"></div>
+  <div class="ku-projects__gridbg"></div>
+  <div class="ku-projects__glow ku-projects__glow--blue"></div>
+  <div class="ku-projects__glow ku-projects__glow--red"></div>
 
   <div class="ku-projects__container">
     <div class="ku-projects__head ku-projects__reveal">
-      <div class="ku-projects__badge">Портфолио учеников</div>
+      <div class="ku-projects__badge">Работы наших учеников</div>
       <h2 class="ku-projects__title">
-        Реальные проекты<br>
+        Реальные проекты
         <span>настоящих авторов</span>
       </h2>
       <p class="ku-projects__text">
-        Дети не просто изучают теорию — они создают игры, сайты, 3D-объекты
-        и собственные цифровые продукты уже в процессе обучения.
+        Проекты детей по разным направлениям — от программирования до дизайна и 3D-моделирования.
       </p>
     </div>
 
-    <div class="ku-projects__grid">
-      <article class="ku-project-card ku-projects__reveal">
-        <div class="ku-project-card__preview ku-project-card__preview--blue">
-          <div class="ku-project-card__mock ku-project-card__mock--game"></div>
-          <div class="ku-project-card__pill">Scratch</div>
-        </div>
-        <div class="ku-project-card__body">
-          <h3>Космическая аркада</h3>
-          <p>Первый игровой проект ученика с логикой очков, уровнями и анимацией.</p>
-          <div class="ku-project-card__meta">Автор: Артём, 9 лет</div>
-        </div>
-      </article>
+    <div class="ku-projects__slider ku-projects__reveal">
+      <button class="ku-projects__nav ku-projects__nav--prev" type="button" aria-label="Предыдущий проект">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 5.3a1 1 0 0 1 0 1.4L9.41 12l5.3 5.3a1 1 0 0 1-1.42 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.41 0Z"/></svg>
+      </button>
 
-      <article class="ku-project-card ku-projects__reveal">
-        <div class="ku-project-card__preview ku-project-card__preview--orange">
-          <div class="ku-project-card__mock ku-project-card__mock--roblox"></div>
-          <div class="ku-project-card__pill">Roblox</div>
-        </div>
-        <div class="ku-project-card__body">
-          <h3>Obby-мир с ловушками</h3>
-          <p>Собственный уровень в Roblox Studio с чекпоинтами и игровыми механиками.</p>
-          <div class="ku-project-card__meta">Автор: Максим, 12 лет</div>
-        </div>
-      </article>
+      <div class="ku-projects__viewport">
+        <div class="ku-projects__track">
+          <article class="ku-project-card ku-project-card--blue ku-projects__reveal" data-category="programming">
+            <div class="ku-project-card__preview">
+              <img src="media/courses/pygame.png" alt="Мини-игра Космический квест" loading="lazy" decoding="async">
+            </div>
+            <div class="ku-project-card__body">
+              <div class="ku-project-card__chip">Программирование</div>
+              <h3>Мини-игра: Космический квест</h3>
+              <div class="ku-project-card__meta">
+                <span>Иван, 11 лет</span>
+                <span>Scratch</span>
+                <span>2 недели работы</span>
+              </div>
+            </div>
+          </article>
 
-      <article class="ku-project-card ku-projects__reveal">
-        <div class="ku-project-card__preview ku-project-card__preview--violet">
-          <div class="ku-project-card__mock ku-project-card__mock--unity"></div>
-          <div class="ku-project-card__pill">Unity</div>
-        </div>
-        <div class="ku-project-card__body">
-          <h3>3D-платформер</h3>
-          <p>Игровая сцена с персонажем, физикой и базовой системой прохождения уровней.</p>
-          <div class="ku-project-card__meta">Автор: Данил, 15 лет</div>
-        </div>
-      </article>
+          <article class="ku-project-card ku-project-card--violet ku-projects__reveal" data-category="design">
+            <div class="ku-project-card__preview">
+              <img src="media/courses/Grah_design.png" alt="Постер для школьного клуба" loading="lazy" decoding="async">
+            </div>
+            <div class="ku-project-card__body">
+              <div class="ku-project-card__chip">Дизайн</div>
+              <h3>Постер для школьного клуба</h3>
+              <div class="ku-project-card__meta">
+                <span>Алина, 12 лет</span>
+                <span>Графический дизайн</span>
+                <span>3 дня работы</span>
+              </div>
+            </div>
+          </article>
 
-      <article class="ku-project-card ku-projects__reveal">
-        <div class="ku-project-card__preview ku-project-card__preview--cyan">
-          <div class="ku-project-card__mock ku-project-card__mock--site"></div>
-          <div class="ku-project-card__pill">Web</div>
-        </div>
-        <div class="ku-project-card__body">
-          <h3>Личный сайт-портфолио</h3>
-          <p>Страница с адаптивной вёрсткой, блоками, кнопками и визуальной структурой.</p>
-          <div class="ku-project-card__meta">Автор: София, 14 лет</div>
-        </div>
-      </article>
+          <article class="ku-project-card ku-project-card--orange ku-projects__reveal" data-category="modeling">
+            <div class="ku-project-card__preview">
+              <img src="media/courses/blender.png" alt="3D-модель робота" loading="lazy" decoding="async">
+            </div>
+            <div class="ku-project-card__body">
+              <div class="ku-project-card__chip">Моделирование</div>
+              <h3>3D-модель робота</h3>
+              <div class="ku-project-card__meta">
+                <span>Максим, 13 лет</span>
+                <span>Blender</span>
+                <span>5 дней работы</span>
+              </div>
+            </div>
+          </article>
 
-      <article class="ku-project-card ku-projects__reveal">
-        <div class="ku-project-card__preview ku-project-card__preview--green">
-          <div class="ku-project-card__mock ku-project-card__mock--pc"></div>
-          <div class="ku-project-card__pill">Комп. грамотность</div>
-        </div>
-        <div class="ku-project-card__body">
-          <h3>Цифровой мини-проект</h3>
-          <p>Работа с презентацией, файлами, структурой материалов и онлайн-инструментами.</p>
-          <div class="ku-project-card__meta">Автор: Ева, 8 лет</div>
-        </div>
-      </article>
+          <article class="ku-project-card ku-project-card--blue ku-projects__reveal" data-category="programming">
+            <div class="ku-project-card__preview">
+              <img src="media/courses/chat_bot.png" alt="Чат-бот помощник" loading="lazy" decoding="async">
+            </div>
+            <div class="ku-project-card__body">
+              <div class="ku-project-card__chip">Программирование</div>
+              <h3>Чат-бот помощник</h3>
+              <div class="ku-project-card__meta">
+                <span>Данил, 14 лет</span>
+                <span>Python</span>
+                <span>1 неделя работы</span>
+              </div>
+            </div>
+          </article>
 
-      <article class="ku-project-card ku-projects__reveal">
-        <div class="ku-project-card__preview ku-project-card__preview--pink">
-          <div class="ku-project-card__mock ku-project-card__mock--design"></div>
-          <div class="ku-project-card__pill">Design</div>
+          <article class="ku-project-card ku-project-card--violet ku-projects__reveal" data-category="design">
+            <div class="ku-project-card__preview">
+              <img src="media/courses/web_design.png" alt="Дизайн приложения для ребёнка" loading="lazy" decoding="async">
+            </div>
+            <div class="ku-project-card__body">
+              <div class="ku-project-card__chip">Дизайн</div>
+              <h3>Дизайн приложения для ребёнка</h3>
+              <div class="ku-project-card__meta">
+                <span>София, 11 лет</span>
+                <span>UI-дизайн</span>
+                <span>4 дня работы</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="ku-project-card ku-project-card--orange ku-projects__reveal" data-category="modeling">
+            <div class="ku-project-card__preview">
+              <img src="media/courses/Blockbench.png" alt="Персонаж для игры" loading="lazy" decoding="async">
+            </div>
+            <div class="ku-project-card__body">
+              <div class="ku-project-card__chip">Моделирование</div>
+              <h3>Персонаж для игры</h3>
+              <div class="ku-project-card__meta">
+                <span>Полина, 12 лет</span>
+                <span>Blockbench</span>
+                <span>6 дней работы</span>
+              </div>
+            </div>
+          </article>
         </div>
-        <div class="ku-project-card__body">
-          <h3>UI-концепт приложения</h3>
-          <p>Макет интерфейса в Figma с цветом, типографикой и логикой экранов.</p>
-          <div class="ku-project-card__meta">Автор: Полина, 16 лет</div>
-        </div>
-      </article>
+      </div>
+
+      <button class="ku-projects__nav ku-projects__nav--next" type="button" aria-label="Следующий проект">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.3 18.7a1 1 0 0 1 0-1.4l5.29-5.3L9.3 6.7a1 1 0 1 1 1.42-1.4l6 6a1 1 0 0 1 0 1.4l-6 6a1 1 0 0 1-1.41 0Z"/></svg>
+      </button>
     </div>
+
+    <div class="ku-projects__dots" aria-label="Навигация по проектам"></div>
   </div>
 </section>
 
@@ -5310,7 +7254,7 @@ body.ku-trial-modal-open{
       <h2 class="ku-benefits__title">
         Не просто курсы —<br>
         <span class="ku-benefits__circle-wrap">
-          <span class="ku-benefits__circle-text">образовательная экосистема</span>
+          <span class="ku-benefits__circle-text">образовательная<span class="ku-benefits__mobile-break"><br></span> экосистема</span>
           <svg class="ku-benefits__circle" viewBox="0 0 100 36" preserveAspectRatio="none" aria-hidden="true">
             <defs>
               <linearGradient id="kuBenefitsCircleGradient" x1="0" y1="0" x2="100" y2="0" gradientUnits="userSpaceOnUse">
@@ -6049,26 +7993,152 @@ body.ku-trial-modal-open{
 
 /* js: 06-projects.js */
 (function(){
+  const section = document.querySelector('.ku-projects');
+  if (!section) return;
+
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const items = document.querySelectorAll('.ku-projects .ku-projects__reveal');
+  const revealItems = section.querySelectorAll('.ku-projects__reveal');
+  const viewport = section.querySelector('.ku-projects__viewport');
+  const track = section.querySelector('.ku-projects__track');
+  const cards = Array.from(section.querySelectorAll('.ku-project-card'));
+  const prevButton = section.querySelector('.ku-projects__nav--prev');
+  const nextButton = section.querySelector('.ku-projects__nav--next');
+  const dots = section.querySelector('.ku-projects__dots');
 
-  if ('IntersectionObserver' in window && !reduce) {
-    const io = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
+  let currentIndex = 0;
+  let visibleCards = 3;
+  let pointerStartX = 0;
+  let pointerDeltaX = 0;
+  let isPointerActive = false;
+
+  function revealOnView() {
+    if ('IntersectionObserver' in window && !reduce) {
+      const io = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold:0.14, rootMargin:'0px 0px -8% 0px' });
+
+      revealItems.forEach((item, index) => {
+        item.style.transitionDelay = (index * 60) + 'ms';
+        io.observe(item);
       });
-    }, { threshold:.14, rootMargin:'0px 0px -8% 0px' });
-
-    items.forEach((el, index) => {
-      el.style.transitionDelay = (index * 70) + 'ms';
-      io.observe(el);
-    });
-  } else {
-    items.forEach(el => el.classList.add('is-visible'));
+    } else {
+      revealItems.forEach((item) => item.classList.add('is-visible'));
+    }
   }
+
+  function getVisibleCardsCount() {
+    if (window.innerWidth <= 760) return 1;
+    if (window.innerWidth <= 1100) return 2;
+    return 3;
+  }
+
+  function getActiveCards() {
+    return cards;
+  }
+
+  function getGap() {
+    const styles = window.getComputedStyle(track);
+    const rawGap = styles.columnGap || styles.gap || '0';
+    return Number.parseFloat(rawGap) || 0;
+  }
+
+  function getMaxIndex() {
+    return Math.max(0, getActiveCards().length - visibleCards);
+  }
+
+  function moveTo(index) {
+    const activeCards = getActiveCards();
+    const maxIndex = getMaxIndex();
+    currentIndex = Math.max(0, Math.min(index, maxIndex));
+
+    if (!activeCards.length) {
+      track.style.transform = 'translate3d(0,0,0)';
+      updateNav();
+      renderDots();
+      return;
+    }
+
+    const step = activeCards[0].offsetWidth + getGap();
+    track.style.transform = 'translate3d(-' + (currentIndex * step) + 'px,0,0)';
+    updateNav();
+    renderDots();
+  }
+
+  function updateNav() {
+    const maxIndex = getMaxIndex();
+    if (prevButton) prevButton.disabled = currentIndex <= 0;
+    if (nextButton) nextButton.disabled = currentIndex >= maxIndex;
+  }
+
+  function renderDots() {
+    if (!dots) return;
+    const count = getMaxIndex() + 1;
+    dots.innerHTML = '';
+
+    if (count <= 1) {
+      dots.hidden = true;
+      return;
+    }
+
+    dots.hidden = false;
+
+    for (let i = 0; i < count; i += 1) {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'ku-projects__dot' + (i === currentIndex ? ' is-active' : '');
+      dot.setAttribute('aria-label', 'Перейти к слайду ' + (i + 1));
+      dot.addEventListener('click', () => moveTo(i));
+      dots.appendChild(dot);
+    }
+  }
+
+  function updateLayout() {
+    visibleCards = getVisibleCardsCount();
+    moveTo(currentIndex);
+  }
+
+  function bindSwipe() {
+    if (!viewport) return;
+
+    viewport.addEventListener('touchstart', (event) => {
+      if (!event.touches.length) return;
+      isPointerActive = true;
+      pointerStartX = event.touches[0].clientX;
+      pointerDeltaX = 0;
+    }, { passive:true });
+
+    viewport.addEventListener('touchmove', (event) => {
+      if (!isPointerActive || !event.touches.length) return;
+      pointerDeltaX = event.touches[0].clientX - pointerStartX;
+    }, { passive:true });
+
+    viewport.addEventListener('touchend', () => {
+      if (!isPointerActive) return;
+      if (pointerDeltaX <= -48) moveTo(currentIndex + 1);
+      if (pointerDeltaX >= 48) moveTo(currentIndex - 1);
+      isPointerActive = false;
+      pointerDeltaX = 0;
+    });
+  }
+
+  if (prevButton) {
+    prevButton.addEventListener('click', () => moveTo(currentIndex - 1));
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener('click', () => moveTo(currentIndex + 1));
+  }
+
+  window.addEventListener('resize', updateLayout);
+
+  revealOnView();
+  bindSwipe();
+  updateLayout();
 })();
 
 /* js: 09-start.js */
@@ -6090,127 +8160,256 @@ body.ku-trial-modal-open{
   });
 })();
 
+/* js: 04-teachers.js */
+(function(){
+  const section = document.querySelector('.ku-teachers');
+  if (!section) return;
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const items = section.querySelectorAll('.ku-teachers__reveal');
+  const layout = section.querySelector('.ku-teachers__layout');
+  const cards = Array.from(section.querySelectorAll('.ku-teacher-card'));
+  const dotsRoot = section.querySelector('.ku-teachers__dots-nav');
+  let activeIndex = 0;
+  let scrollTicking = false;
+
+  function isMobileSlider() {
+    return window.innerWidth <= 860;
+  }
+
+  function getStep() {
+    if (!layout || !cards.length) return 0;
+    const style = window.getComputedStyle(layout);
+    const gap = Number.parseFloat(style.columnGap || style.gap || '0') || 0;
+    return cards[0].offsetWidth + gap;
+  }
+
+  function updateActiveDot() {
+    if (!dotsRoot) return;
+    const dots = dotsRoot.querySelectorAll('.ku-teachers__dot');
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('is-active', index === activeIndex);
+    });
+  }
+
+  function moveTo(index) {
+    if (!layout || !cards.length) return;
+    const maxIndex = Math.max(0, cards.length - 1);
+    activeIndex = Math.max(0, Math.min(index, maxIndex));
+    const step = getStep();
+    layout.scrollTo({
+      left: activeIndex * step,
+      behavior: reduce ? 'auto' : 'smooth'
+    });
+    updateActiveDot();
+  }
+
+  function syncFromScroll() {
+    if (!layout || !cards.length) return;
+    const step = getStep();
+    if (!step) return;
+    activeIndex = Math.max(0, Math.min(cards.length - 1, Math.round(layout.scrollLeft / step)));
+    updateActiveDot();
+  }
+
+  function renderDots() {
+    if (!dotsRoot) return;
+
+    if (!isMobileSlider()) {
+      dotsRoot.hidden = true;
+      dotsRoot.innerHTML = '';
+      return;
+    }
+
+    dotsRoot.hidden = cards.length <= 1;
+    dotsRoot.innerHTML = '';
+
+    cards.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'ku-teachers__dot' + (index === activeIndex ? ' is-active' : '');
+      dot.setAttribute('aria-label', 'Перейти к преподавателю ' + (index + 1));
+      dot.addEventListener('click', () => moveTo(index));
+      dotsRoot.appendChild(dot);
+    });
+  }
+
+  function handleScroll() {
+    if (!isMobileSlider() || scrollTicking) return;
+    scrollTicking = true;
+    window.requestAnimationFrame(() => {
+      syncFromScroll();
+      scrollTicking = false;
+    });
+  }
+
+  function handleResize() {
+    renderDots();
+    if (!isMobileSlider() || !layout) return;
+    moveTo(activeIndex);
+  }
+
+  if ('IntersectionObserver' in window && !reduce) {
+    const io = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold:.14, rootMargin:'0px 0px -8% 0px' });
+
+    items.forEach((el, index) => {
+      el.style.transitionDelay = (index * 70) + 'ms';
+      io.observe(el);
+    });
+  } else {
+    items.forEach((el) => el.classList.add('is-visible'));
+  }
+
+  if (layout && dotsRoot && cards.length) {
+    layout.addEventListener('scroll', handleScroll, { passive:true });
+    window.addEventListener('resize', handleResize);
+    renderDots();
+    updateActiveDot();
+  }
+})();
+
 /* js: 04-reviews.js */
 (function(){
   const section = document.querySelector('.ku-reviews');
   if (!section) return;
 
-  const carousel = section.querySelector('[data-video-carousel]');
-  const track = section.querySelector('[data-carousel-track]');
-  const prev = section.querySelector('[data-carousel-prev]');
-  const next = section.querySelector('[data-carousel-next]');
-  const dotsRoot = section.querySelector('[data-carousel-dots]');
-  const slides = track ? Array.from(track.querySelectorAll('.ku-video-review')) : [];
-  let currentIndex = 0;
+  function setupCarousel(root) {
+    const track = root.querySelector('[data-carousel-track]');
+    const prev = root.querySelector('[data-carousel-prev]');
+    const next = root.querySelector('[data-carousel-next]');
+    const dotsRoot = root.querySelector('[data-carousel-dots]');
+    const slides = track ? Array.from(track.children) : [];
+    if (!track || !slides.length) return;
 
-  function slidesPerPage(){
-    if (window.innerWidth <= 760) return 1;
-    if (window.innerWidth <= 1100) return 2;
-    return 4;
-  }
+    let currentIndex = 0;
 
-  function pageStarts(){
-    const perPage = slidesPerPage();
-    const starts = [];
-    for (let index = 0; index < slides.length; index += perPage) {
-      starts.push(index);
+    function perPage() {
+      if (window.innerWidth <= 760) return Number(root.getAttribute('data-per-page-mobile')) || 1;
+      if (window.innerWidth <= 1100) return Number(root.getAttribute('data-per-page-tablet')) || 2;
+      return Number(root.getAttribute('data-per-page-desktop')) || 3;
     }
-    return starts.length ? starts : [0];
-  }
 
-  function pageIndexFromSlide(index){
-    const starts = pageStarts();
-    let bestPage = 0;
-    starts.forEach((start, pageIndex) => {
-      if (index >= start) bestPage = pageIndex;
-    });
-    return bestPage;
-  }
-
-  function scrollToSlide(index){
-    if (!track || !slides[index]) return;
-    currentIndex = Math.max(0, Math.min(slides.length - 1, index));
-    const slide = slides[currentIndex];
-    track.scrollTo({ left:slide.offsetLeft, behavior:'smooth' });
-    setActiveDot(currentIndex);
-  }
-
-  function activeIndex(){
-    if (!track || !slides.length) return 0;
-    const trackCenter = track.scrollLeft + track.clientWidth / 2;
-    let bestIndex = 0;
-    let bestDistance = Infinity;
-
-    slides.forEach((slide, index) => {
-      const slideCenter = slide.offsetLeft + slide.clientWidth / 2;
-      const distance = Math.abs(trackCenter - slideCenter);
-      if (distance < bestDistance) {
-        bestDistance = distance;
-        bestIndex = index;
+    function pageStarts() {
+      const count = perPage();
+      const starts = [];
+      for (let index = 0; index < slides.length; index += count) {
+        starts.push(index);
       }
+      return starts.length ? starts : [0];
+    }
+
+    function pageIndexFromSlide(index) {
+      const starts = pageStarts();
+      let page = 0;
+      starts.forEach((start, currentPage) => {
+        if (index >= start) page = currentPage;
+      });
+      return page;
+    }
+
+    function activeIndex() {
+      const trackCenter = track.scrollLeft + track.clientWidth / 2;
+      let bestIndex = 0;
+      let bestDistance = Infinity;
+
+      slides.forEach((slide, index) => {
+        const slideCenter = slide.offsetLeft + slide.clientWidth / 2;
+        const distance = Math.abs(trackCenter - slideCenter);
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          bestIndex = index;
+        }
+      });
+
+      return bestIndex;
+    }
+
+    function setActiveDot(forceIndex) {
+      if (!dotsRoot) return;
+      const index = typeof forceIndex === 'number' ? forceIndex : activeIndex();
+      currentIndex = index;
+      const activePage = pageIndexFromSlide(index);
+      dotsRoot.querySelectorAll('.ku-video-reviews__dot').forEach((dot, dotIndex) => {
+        dot.classList.toggle('is-active', dotIndex === activePage);
+      });
+    }
+
+    function renderDots() {
+      if (!dotsRoot) return;
+      dotsRoot.innerHTML = '';
+
+      pageStarts().forEach((start, pageIndex) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'ku-video-reviews__dot';
+        dot.setAttribute('aria-label', 'Перейти к слайду ' + (pageIndex + 1));
+        dot.addEventListener('click', () => scrollToSlide(start));
+        dotsRoot.appendChild(dot);
+      });
+
+      setActiveDot(currentIndex);
+    }
+
+    function scrollToSlide(index) {
+      currentIndex = Math.max(0, Math.min(slides.length - 1, index));
+      const slide = slides[currentIndex];
+      if (!slide) return;
+      track.scrollTo({ left:slide.offsetLeft, behavior:'smooth' });
+      setActiveDot(currentIndex);
+    }
+
+    let touchStartX = 0;
+    let touchDeltaX = 0;
+
+    track.addEventListener('touchstart', (event) => {
+      if (!event.touches.length) return;
+      touchStartX = event.touches[0].clientX;
+      touchDeltaX = 0;
+    }, { passive:true });
+
+    track.addEventListener('touchmove', (event) => {
+      if (!event.touches.length) return;
+      touchDeltaX = event.touches[0].clientX - touchStartX;
+    }, { passive:true });
+
+    track.addEventListener('touchend', () => {
+      if (touchDeltaX <= -48) {
+        scrollToSlide(pageStarts()[Math.min(pageStarts().length - 1, pageIndexFromSlide(currentIndex) + 1)]);
+      } else if (touchDeltaX >= 48) {
+        scrollToSlide(pageStarts()[Math.max(0, pageIndexFromSlide(currentIndex) - 1)]);
+      }
+      touchDeltaX = 0;
     });
-
-    return bestIndex;
-  }
-
-  function setActiveDot(forceIndex){
-    if (!dotsRoot) return;
-    const index = typeof forceIndex === 'number' ? forceIndex : activeIndex();
-    currentIndex = index;
-    const activePage = pageIndexFromSlide(index);
-    dotsRoot.querySelectorAll('.ku-video-reviews__dot').forEach((dot, dotIndex) => {
-      dot.classList.toggle('is-active', dotIndex === activePage);
-      dot.setAttribute('aria-current', dotIndex === activePage ? 'true' : 'false');
-    });
-  }
-
-  function renderDots(){
-    if (!dotsRoot) return;
-    dotsRoot.innerHTML = '';
-    pageStarts().forEach((start, pageIndex) => {
-      const dot = document.createElement('button');
-      dot.type = 'button';
-      dot.className = 'ku-video-reviews__dot';
-      dot.setAttribute('aria-label', 'Показать группу видеоотзывов ' + (pageIndex + 1));
-      dot.addEventListener('click', () => scrollToSlide(start));
-      dotsRoot.appendChild(dot);
-    });
-    setActiveDot(currentIndex);
-  }
-
-  if (carousel && track && slides.length) {
-    renderDots();
 
     prev && prev.addEventListener('click', () => {
       const starts = pageStarts();
-      const page = pageIndexFromSlide(currentIndex);
-      scrollToSlide(starts[Math.max(0, page - 1)]);
+      scrollToSlide(starts[Math.max(0, pageIndexFromSlide(currentIndex) - 1)]);
     });
+
     next && next.addEventListener('click', () => {
       const starts = pageStarts();
-      const page = pageIndexFromSlide(currentIndex);
-      scrollToSlide(starts[Math.min(starts.length - 1, page + 1)]);
+      scrollToSlide(starts[Math.min(starts.length - 1, pageIndexFromSlide(currentIndex) + 1)]);
     });
+
     track.addEventListener('scroll', () => window.requestAnimationFrame(setActiveDot), { passive:true });
+
     window.addEventListener('resize', () => {
       renderDots();
-      scrollToSlide(pageStarts()[pageIndexFromSlide(currentIndex)] || 0);
+      const starts = pageStarts();
+      scrollToSlide(starts[Math.min(pageIndexFromSlide(currentIndex), starts.length - 1)] || 0);
     });
-    setActiveDot();
+
+    renderDots();
   }
 
-  section.querySelectorAll('[data-scroll]').forEach((link) => {
-    link.addEventListener('click', function(e){
-      const href = link.getAttribute('href');
-      if (!href || !href.startsWith('#')) return;
-      const target = document.querySelector(href);
-      if (!target) return;
-
-      e.preventDefault();
-      const top = window.pageYOffset + target.getBoundingClientRect().top - 20;
-      window.scrollTo({ top, behavior:'smooth' });
-    });
-  });
+  section.querySelectorAll('[data-carousel]').forEach(setupCarousel);
 })();
 
 /* js: 05-membership.js */
@@ -6221,6 +8420,43 @@ body.ku-trial-modal-open{
 (function(){
   const section = document.querySelector('.ku-courses');
   if (!section) return;
+
+  const filters = Array.from(section.querySelectorAll('.ku-courses__filter'));
+  const cards = Array.from(section.querySelectorAll('.ku-catalog-card'));
+
+  function applyFilter(value){
+    filters.forEach(function(button){
+      const isActive = button.getAttribute('data-filter') === value;
+      button.classList.toggle('is-active', isActive);
+      button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+
+    cards.forEach(function(card){
+      if (value === 'all'){
+        card.hidden = false;
+        return;
+      }
+
+      const categories = (card.dataset.categories || '')
+        .split(/\s+/)
+        .filter(Boolean);
+
+      card.hidden = !categories.includes(value);
+    });
+  }
+
+  filters.forEach(function(button){
+    button.setAttribute(
+      'aria-pressed',
+      button.classList.contains('is-active') ? 'true' : 'false'
+    );
+
+    button.addEventListener('click', function(){
+      applyFilter(button.getAttribute('data-filter') || 'all');
+    });
+  });
+
+  applyFilter('all');
 
   section.querySelectorAll('[data-scroll]').forEach(function(link){
     link.addEventListener('click', function(e){

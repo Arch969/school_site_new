@@ -1,0 +1,2435 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Секции курсов</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      background:linear-gradient(180deg,#eef5ff 0%,#f8fbff 100%);
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:#0f172a;
+    }
+
+    .page{
+      max-width:1420px;
+      margin:0 auto;
+      padding:18px 14px 48px;
+    }
+
+    .stack{
+      display:grid;
+      gap:18px;
+    }
+
+    .ku-courses,.ku-courses *{box-sizing:border-box}
+    .ku-courses{
+      position:relative;
+      overflow:hidden;
+      padding:90px 24px;
+      background:#fff;
+      color:#0f172a;
+      border-radius:36px;
+      box-shadow:0 22px 54px -42px rgba(15,23,42,.30);
+    }
+    .ku-courses__topline{
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:4px;
+      background:linear-gradient(90deg,#2563eb,#8b5cf6,#ef4444);
+    }
+    .ku-courses__gridbg{
+      position:absolute;
+      inset:0;
+      opacity:.18;
+      background-image:radial-gradient(rgba(37,99,235,.16) 1px, transparent 1px);
+      background-size:20px 20px;
+    }
+    .ku-courses__orb{
+      position:absolute;
+      top:-190px;
+      left:-160px;
+      width:640px;
+      height:640px;
+      border-radius:999px;
+      background:rgba(37,99,235,.05);
+      filter:blur(110px);
+      pointer-events:none;
+    }
+    .ku-courses__container{
+      position:relative;
+      z-index:2;
+      max-width:1320px;
+      margin:0 auto;
+    }
+    .ku-courses__head{
+      display:block;
+      text-align:center;
+      margin-bottom:42px;
+    }
+    .ku-courses__badge{
+      display:inline-flex;
+      align-items:center;
+      min-height:42px;
+      padding:10px 16px;
+      border-radius:999px;
+      background:rgba(239,68,68,.10);
+      color:#ef4444;
+      border:1px solid rgba(239,68,68,.20);
+      font-size:14px;
+      font-weight:800;
+      margin-bottom:16px;
+    }
+    .ku-courses__title{
+      margin:0;
+      font-family:Montserrat,Inter,sans-serif;
+      font-size:clamp(34px,4.8vw,56px);
+      line-height:1.06;
+      font-weight:900;
+      color:hsl(218 55% 11%);
+    }
+    .ku-courses__title span{
+      background:linear-gradient(90deg,#2563eb,#ef4444);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .ku-courses__lead{
+      max-width:760px;
+      margin:14px auto 0;
+      color:#64748b;
+      font-size:16px;
+      line-height:1.6;
+      font-weight:500;
+    }
+    .ku-courses__filters{
+      display:flex;
+      justify-content:center;
+      margin:0 auto 34px;
+    }
+    .ku-courses__filters-shell{
+      --shell-border:linear-gradient(90deg, rgba(37,99,235,.26), rgba(139,92,246,.22), rgba(239,68,68,.22));
+      position:relative;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      width:min(100%, 980px);
+      padding:14px;
+      border-radius:30px;
+      border:1px solid transparent;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.97), rgba(248,250,252,.94)) padding-box,
+        var(--shell-border) border-box;
+      box-shadow:
+        0 28px 56px -42px rgba(15,23,42,.58),
+        inset 0 1px 0 rgba(255,255,255,.85);
+      overflow:hidden;
+    }
+    .ku-courses__filters-shell::before,
+    .ku-courses__filters-shell::after{
+      content:"";
+      position:absolute;
+      width:180px;
+      height:180px;
+      border-radius:999px;
+      pointer-events:none;
+      opacity:.55;
+      filter:blur(38px);
+    }
+    .ku-courses__filters-shell::before{
+      top:-96px;
+      left:-56px;
+      background:rgba(37,99,235,.12);
+    }
+    .ku-courses__filters-shell::after{
+      right:-42px;
+      bottom:-112px;
+      background:rgba(239,68,68,.10);
+    }
+    .ku-courses__filter{
+      --filter-accent:#2563eb;
+      position:relative;
+      z-index:1;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height:54px;
+      padding:0 18px 0 14px;
+      border:1px solid rgba(148,163,184,.24);
+      border-radius:999px;
+      background:rgba(255,255,255,.84);
+      color:#334155;
+      box-shadow:0 14px 26px -22px rgba(15,23,42,.46);
+      font-size:14px;
+      line-height:1;
+      font-weight:800;
+      cursor:pointer;
+      transition:transform .22s ease, background .22s ease, color .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+    .ku-courses__filter:hover,
+    .ku-courses__filter:focus-visible{
+      transform:translateY(-1px);
+      outline:none;
+    }
+    .ku-courses__filter[data-filter="all"]{--filter-accent:#2563eb}
+    .ku-courses__filter[data-filter="games"]{--filter-accent:#ef4444}
+    .ku-courses__filter[data-filter="programming"]{--filter-accent:#2563eb}
+    .ku-courses__filter[data-filter="modeling"]{--filter-accent:#8b5cf6}
+    .ku-courses__filter[data-filter="design"]{--filter-accent:#ec4899}
+    .ku-courses__filter[data-filter="age"]{--filter-accent:#16a34a}
+    .ku-courses__filter-icon{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:32px;
+      height:32px;
+      flex:0 0 32px;
+      border-radius:999px;
+      color:var(--filter-accent);
+      background:color-mix(in srgb, var(--filter-accent) 13%, #fff);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.85),
+        0 10px 22px -18px rgba(15,23,42,.46);
+    }
+    .ku-courses__filter-icon svg{
+      width:17px;
+      height:17px;
+      fill:none;
+      stroke:currentColor;
+      stroke-width:1.9;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+    .ku-courses__filter.is-active{
+      color:#fff;
+      border-color:transparent;
+      background:linear-gradient(135deg, color-mix(in srgb, var(--filter-accent) 92%, #fff) 0%, var(--filter-accent) 100%);
+      box-shadow:0 24px 36px -24px color-mix(in srgb, var(--filter-accent) 52%, transparent);
+    }
+    .ku-courses__filter.is-active .ku-courses__filter-icon{
+      color:#fff;
+      background:rgba(255,255,255,.16);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.22);
+    }
+    .ku-courses__grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;
+    }
+    .ku-courses__grid--2{
+      grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+    .ku-courses__grid--split{
+      grid-template-columns:1.15fr .85fr;
+      gap:18px;
+    }
+
+    .ku-catalog-card[hidden],
+    .ku-course-row[hidden]{display:none}
+
+    .ku-catalog-card{
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      min-width:0;
+      border-radius:24px;
+      background:#fff;
+      border:1px solid rgba(148,163,184,.26);
+      box-shadow:0 16px 42px -30px rgba(15,23,42,.50);
+      overflow:hidden;
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .ku-catalog-card:hover,
+    .ku-catalog-card:focus-within{
+      transform:translateY(-5px);
+      border-color:color-mix(in srgb, var(--accent) 38%, rgba(148,163,184,.26));
+      box-shadow:0 28px 68px -38px rgba(15,23,42,.62);
+    }
+    .ku-catalog-card__media{
+      position:relative;
+      aspect-ratio:1 / 1;
+      overflow:hidden;
+      background:#0f172a;
+    }
+    .ku-catalog-card__image{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+    }
+    .ku-catalog-card__shade{
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(15,23,42,.42) 0%, rgba(15,23,42,.08) 34%, rgba(15,23,42,.22) 58%, rgba(15,23,42,.92) 100%),
+        radial-gradient(circle at 18% 18%, color-mix(in srgb, var(--accent) 32%, transparent) 0 92px, transparent 120px);
+      pointer-events:none;
+    }
+    .ku-catalog-card__logo{
+      position:absolute;
+      left:16px;
+      top:16px;
+      z-index:2;
+      width:72px;
+      aspect-ratio:1 / 1;
+      object-fit:contain;
+    }
+    .ku-catalog-card__badges{
+      position:absolute;
+      top:16px;
+      right:16px;
+      z-index:2;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:flex-end;
+      justify-content:flex-end;
+      gap:7px;
+      max-width:calc(100% - 112px);
+    }
+    .ku-catalog-card__badges span{
+      display:inline-flex;
+      align-items:center;
+      min-height:28px;
+      padding:0 11px;
+      border-radius:999px;
+      background:rgba(255,255,255,.88);
+      color:hsl(218 55% 11%);
+      border:1px solid rgba(255,255,255,.72);
+      box-shadow:0 10px 24px -18px rgba(15,23,42,.70);
+      backdrop-filter:blur(10px);
+      font-size:11px;
+      line-height:1;
+      font-weight:900;
+      white-space:nowrap;
+    }
+    .ku-catalog-card__info{
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      z-index:2;
+      padding:24px 20px 20px;
+      color:#fff;
+    }
+    .ku-catalog-card__info h3{
+      margin:0;
+      font-family:Montserrat,Inter,sans-serif;
+      font-size:clamp(20px,2.1vw,28px);
+      line-height:1.08;
+      font-weight:900;
+      color:#fff;
+      text-shadow:0 2px 16px rgba(15,23,42,.55);
+    }
+    .ku-catalog-card__details{
+      margin-top:12px;
+    }
+    .ku-catalog-card__details p{
+      margin:0;
+      font-size:14px;
+      line-height:1.48;
+      color:rgba(255,255,255,.90);
+      text-shadow:0 1px 10px rgba(15,23,42,.50);
+    }
+    .ku-catalog-card__actions{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      padding:14px;
+      background:#fff;
+    }
+    .ku-catalog-card__primary,
+    .ku-catalog-card__secondary{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:100%;
+      min-height:46px;
+      border-radius:14px;
+      text-decoration:none;
+      font-size:14px;
+      font-weight:900;
+      transition:transform .22s ease, background .22s ease, color .22s ease, border-color .22s ease;
+    }
+    .ku-catalog-card__primary{
+      color:#fff;
+      background:var(--accent);
+      border:2px solid var(--accent);
+      box-shadow:0 12px 24px -18px var(--accent);
+    }
+    .ku-catalog-card__secondary{
+      color:var(--accent);
+      background:#fff;
+      border:2px solid color-mix(in srgb, var(--accent) 54%, rgba(148,163,184,.35));
+    }
+    .ku-catalog-card__primary:hover,
+    .ku-catalog-card__secondary:hover{
+      transform:translateY(-1px);
+    }
+    .ku-catalog-card__secondary:hover{
+      color:#fff;
+      background:var(--accent);
+      border-color:var(--accent);
+    }
+
+    .ku-age-layout{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;
+    }
+    .ku-age-column{
+      padding:20px;
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(248,250,252,.96));
+      border:1px solid rgba(148,163,184,.18);
+      box-shadow:0 18px 40px -34px rgba(15,23,42,.34);
+    }
+    .ku-age-column__head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:14px;
+    }
+    .ku-age-column__head h3{
+      margin:0;
+      font-family:Montserrat,Inter,sans-serif;
+      font-size:24px;
+      line-height:1.05;
+      font-weight:900;
+      color:#0f172a;
+    }
+    .ku-age-column__head span{
+      color:#64748b;
+      font-size:13px;
+      font-weight:800;
+    }
+    .ku-age-list{
+      display:grid;
+      gap:12px;
+    }
+    .ku-age-item{
+      padding:14px;
+      border-radius:18px;
+      background:#fff;
+      border:1px solid rgba(148,163,184,.16);
+    }
+    .ku-age-item strong{
+      display:block;
+      margin-bottom:6px;
+      font-size:15px;
+      font-weight:900;
+      color:#0f172a;
+    }
+    .ku-age-item p{
+      margin:0;
+      color:#64748b;
+      font-size:13px;
+      line-height:1.5;
+    }
+    .ku-age-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:10px;
+    }
+    .ku-age-tags span{
+      display:inline-flex;
+      align-items:center;
+      min-height:28px;
+      padding:0 10px;
+      border-radius:999px;
+      background:rgba(37,99,235,.08);
+      color:#2563eb;
+      font-size:12px;
+      font-weight:800;
+    }
+
+    .ku-course-list{
+      display:grid;
+      gap:12px;
+      padding:16px;
+      border-radius:28px;
+      background:
+        radial-gradient(circle at top left, rgba(37,99,235,.08), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,.98), rgba(248,250,252,.95));
+      border:1px solid rgba(148,163,184,.18);
+      box-shadow:0 20px 44px -34px rgba(15,23,42,.34);
+    }
+    .ku-course-row{
+      appearance:none;
+      width:100%;
+      border:1px solid rgba(148,163,184,.16);
+      background:#fff;
+      display:grid;
+      grid-template-columns:72px minmax(0,1fr) auto;
+      gap:14px;
+      align-items:center;
+      padding:13px 12px;
+      border-radius:22px;
+      text-align:left;
+      cursor:pointer;
+      box-shadow:0 14px 30px -30px rgba(15,23,42,.34);
+      transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease, background .22s ease;
+    }
+    .ku-course-row:hover,
+    .ku-course-row:focus-visible{
+      transform:translateY(-1px);
+      border-color:color-mix(in srgb, var(--course-accent) 36%, rgba(148,163,184,.16));
+      box-shadow:0 24px 40px -32px rgba(15,23,42,.38);
+      outline:none;
+    }
+    .ku-course-row.is-active{
+      border-color:color-mix(in srgb, var(--course-accent) 48%, rgba(148,163,184,.16));
+      background:
+        radial-gradient(circle at top right, color-mix(in srgb, var(--course-accent) 10%, transparent), transparent 42%),
+        linear-gradient(180deg, rgba(255,255,255,.98), rgba(248,250,252,.96));
+      box-shadow:0 26px 44px -34px color-mix(in srgb, var(--course-accent) 34%, rgba(15,23,42,.30));
+    }
+    .ku-course-row__thumb-wrap{
+      width:72px;
+      height:72px;
+      border-radius:20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--course-accent) 16%, #fff), transparent 62%),
+        linear-gradient(180deg, #fff, #f8fafc);
+      border:1px solid color-mix(in srgb, var(--course-accent) 16%, rgba(148,163,184,.18));
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.9);
+    }
+    .ku-course-row__thumb{
+      width:46px;
+      height:46px;
+      object-fit:contain;
+      display:block;
+    }
+    .ku-course-row__body strong{
+      display:block;
+      margin-bottom:6px;
+      color:#0f172a;
+      font-size:16px;
+      font-weight:900;
+    }
+    .ku-course-row__body p{
+      margin:0;
+      color:#64748b;
+      font-size:13px;
+      line-height:1.5;
+    }
+    .ku-course-row__meta{
+      display:grid;
+      gap:8px;
+      justify-items:end;
+    }
+    .ku-course-row__meta span{
+      display:inline-flex;
+      align-items:center;
+      min-height:28px;
+      padding:0 10px;
+      border-radius:999px;
+      background:#f8fafc;
+      color:#334155;
+      font-size:12px;
+      font-weight:800;
+      white-space:nowrap;
+    }
+    .ku-course-row.is-active .ku-course-row__meta span{
+      background:color-mix(in srgb, var(--course-accent) 10%, #fff);
+      color:color-mix(in srgb, var(--course-accent) 80%, #334155);
+    }
+    .ku-focus-card{
+      position:sticky;
+      top:18px;
+      padding:18px;
+      border-radius:28px;
+      background:
+        radial-gradient(circle at top right, rgba(37,99,235,.12), transparent 34%),
+        #fff;
+      border:1px solid rgba(148,163,184,.18);
+      box-shadow:0 22px 48px -34px rgba(15,23,42,.34);
+      overflow:hidden;
+    }
+    .ku-focus-card::before{
+      content:"";
+      position:absolute;
+      inset:0 0 auto;
+      height:4px;
+      background:linear-gradient(90deg,#2563eb,#8b5cf6,#ef4444);
+    }
+    .ku-focus-card__eyebrow{
+      display:inline-flex;
+      align-items:center;
+      min-height:34px;
+      padding:7px 12px;
+      margin-bottom:12px;
+      border-radius:999px;
+      background:rgba(37,99,235,.08);
+      color:#2563eb;
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+    }
+    .ku-focus-card img{
+      width:100%;
+      display:block;
+      aspect-ratio:1.08 / 1;
+      object-fit:cover;
+      border-radius:22px;
+      margin-bottom:16px;
+    }
+    .ku-focus-card__badge{
+      display:inline-flex;
+      align-items:center;
+      min-height:32px;
+      padding:0 12px;
+      margin-bottom:12px;
+      border-radius:999px;
+      background:#f8fafc;
+      color:#334155;
+      font-size:12px;
+      font-weight:800;
+    }
+    .ku-focus-card h3{
+      margin:0 0 10px;
+      font-family:Montserrat,Inter,sans-serif;
+      font-size:28px;
+      line-height:1.08;
+      font-weight:900;
+      color:#0f172a;
+    }
+    .ku-focus-card p{
+      margin:0;
+      color:#64748b;
+      font-size:14px;
+      line-height:1.6;
+    }
+    .ku-focus-list{
+      display:grid;
+      gap:10px;
+      margin-top:14px;
+    }
+    .ku-focus-list div{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 14px;
+      border-radius:16px;
+      background:#f8fafc;
+      color:#334155;
+      font-size:13px;
+      line-height:1.4;
+    }
+    .ku-focus-list strong{
+      font-weight:900;
+    }
+
+    .ku-goal-grid{
+      display:grid;
+      grid-template-columns:.92fr 1.08fr;
+      gap:22px;
+      align-items:start;
+    }
+    .ku-goal-tiles{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+    }
+    .ku-goal-tile{
+      position:relative;
+      overflow:hidden;
+      min-height:184px;
+      padding:20px;
+      border:1px solid rgba(148,163,184,.20);
+      border-radius:24px;
+      background:
+        radial-gradient(circle at top right, color-mix(in srgb, var(--goal-accent) 20%, transparent), transparent 42%),
+        linear-gradient(180deg, rgba(255,255,255,.98), rgba(248,250,252,.96));
+      box-shadow:0 18px 40px -34px rgba(15,23,42,.34);
+      cursor:pointer;
+      transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease, background .22s ease;
+    }
+    .ku-goal-tile:hover,
+    .ku-goal-tile:focus-visible{
+      transform:translateY(-2px);
+      border-color:color-mix(in srgb, var(--goal-accent) 42%, rgba(148,163,184,.20));
+      box-shadow:0 24px 54px -36px rgba(15,23,42,.40);
+      outline:none;
+    }
+    .ku-goal-tile.is-active{
+      border-color:transparent;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,.18), transparent 42%),
+        linear-gradient(135deg, color-mix(in srgb, var(--goal-accent) 90%, #fff), var(--goal-accent));
+      box-shadow:0 28px 60px -36px color-mix(in srgb, var(--goal-accent) 45%, transparent);
+    }
+    .ku-goal-tile.is-active .ku-goal-tile__icon,
+    .ku-goal-tile.is-active .ku-goal-tile__kicker,
+    .ku-goal-tile.is-active h3,
+    .ku-goal-tile.is-active p{
+      color:#fff;
+    }
+    .ku-goal-tile.is-active .ku-goal-tile__icon{
+      background:rgba(255,255,255,.16);
+      border-color:rgba(255,255,255,.22);
+    }
+    .ku-goal-tile__icon{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:52px;
+      height:52px;
+      margin-bottom:36px;
+      border-radius:18px;
+      background:color-mix(in srgb, var(--goal-accent) 10%, #fff);
+      border:1px solid color-mix(in srgb, var(--goal-accent) 18%, rgba(148,163,184,.16));
+      color:var(--goal-accent);
+    }
+    .ku-goal-tile__icon svg{
+      width:24px;
+      height:24px;
+      fill:none;
+      stroke:currentColor;
+      stroke-width:1.9;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+    .ku-goal-tile__kicker{
+      display:block;
+      margin-bottom:8px;
+      color:var(--goal-accent);
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+    }
+    .ku-goal-tile h3{
+      margin:0 0 8px;
+      font-family:Montserrat,Inter,sans-serif;
+      font-size:22px;
+      line-height:1.08;
+      font-weight:900;
+      color:#0f172a;
+    }
+    .ku-goal-tile p{
+      margin:0;
+      color:#64748b;
+      font-size:14px;
+      line-height:1.55;
+    }
+    .ku-goal-results{
+      display:grid;
+      gap:14px;
+      padding:16px;
+      border-radius:28px;
+      background:
+        radial-gradient(circle at top left, rgba(239,68,68,.06), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,.98), rgba(248,250,252,.95));
+      border:1px solid rgba(148,163,184,.18);
+      box-shadow:0 20px 44px -34px rgba(15,23,42,.34);
+    }
+    .ku-goal-card{
+      position:relative;
+      display:grid;
+      grid-template-columns:140px minmax(0,1fr);
+      gap:16px;
+      align-items:center;
+      padding:18px 14px 14px;
+      border-radius:24px;
+      background:#fff;
+      border:1px solid rgba(148,163,184,.18);
+      box-shadow:0 18px 40px -34px rgba(15,23,42,.34);
+      overflow:hidden;
+    }
+    .ku-goal-card::before{
+      content:"";
+      position:absolute;
+      inset:0 0 auto;
+      height:4px;
+      background:var(--goal-card-accent, #2563eb);
+    }
+    .ku-goal-card[hidden]{display:none}
+    .ku-goal-card img{
+      width:100%;
+      height:124px;
+      object-fit:cover;
+      border-radius:18px;
+      display:block;
+    }
+    .ku-goal-card h3{
+      margin:0 0 8px;
+      font-family:Montserrat,Inter,sans-serif;
+      font-size:24px;
+      line-height:1.08;
+      font-weight:900;
+      color:#0f172a;
+    }
+    .ku-goal-card p{
+      margin:0;
+      color:#64748b;
+      font-size:14px;
+      line-height:1.55;
+    }
+    .ku-goal-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:12px;
+    }
+    .ku-goal-meta span{
+      display:inline-flex;
+      align-items:center;
+      min-height:28px;
+      padding:0 10px;
+      border-radius:999px;
+      background:#f8fafc;
+      color:#334155;
+      font-size:12px;
+      font-weight:800;
+    }
+
+    .ku-roadmap{
+      position:relative;
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:18px;
+      align-items:start;
+    }
+    .ku-roadmap::before{
+      content:"";
+      position:absolute;
+      left:10%;
+      right:10%;
+      top:40px;
+      height:2px;
+      background:linear-gradient(90deg, rgba(37,99,235,.20), rgba(139,92,246,.24), rgba(239,68,68,.20));
+      pointer-events:none;
+    }
+    .ku-roadmap-step{
+      position:relative;
+      z-index:1;
+      display:grid;
+      gap:14px;
+      padding:18px;
+      border-radius:28px;
+      background:
+        radial-gradient(circle at top right, color-mix(in srgb, var(--road-accent) 12%, transparent), transparent 36%),
+        linear-gradient(180deg, rgba(255,255,255,.98), rgba(248,250,252,.95));
+      border:1px solid rgba(148,163,184,.18);
+      box-shadow:0 20px 44px -36px rgba(15,23,42,.32);
+      overflow:hidden;
+    }
+    .ku-roadmap-step::before{
+      content:"";
+      position:absolute;
+      inset:0 0 auto;
+      height:4px;
+      background:linear-gradient(90deg, color-mix(in srgb, var(--road-accent) 82%, #fff), var(--road-accent));
+    }
+    .ku-roadmap-step__head{
+      display:grid;
+      justify-items:start;
+      gap:12px;
+    }
+    .ku-roadmap-step__dot{
+      width:22px;
+      height:22px;
+      border-radius:999px;
+      background:#fff;
+      border:6px solid var(--road-accent);
+      box-shadow:0 0 0 8px rgba(255,255,255,.9);
+    }
+    .ku-roadmap-step__head strong{
+      display:block;
+      font-family:Montserrat,Inter,sans-serif;
+      font-size:24px;
+      line-height:1.06;
+      font-weight:900;
+      color:#0f172a;
+    }
+    .ku-roadmap-step__index{
+      display:inline-flex;
+      align-items:center;
+      min-height:30px;
+      padding:0 10px;
+      border-radius:999px;
+      background:color-mix(in srgb, var(--road-accent) 10%, #fff);
+      color:var(--road-accent);
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+    }
+    .ku-roadmap-step__head span{
+      display:block;
+      color:#64748b;
+      font-size:14px;
+      line-height:1.55;
+      font-weight:600;
+    }
+    .ku-roadmap-card{
+      padding:16px;
+      border-radius:22px;
+      background:linear-gradient(180deg, rgba(255,255,255,.99), rgba(248,250,252,.96));
+      border:1px solid color-mix(in srgb, var(--road-accent) 14%, rgba(148,163,184,.18));
+      box-shadow:0 16px 32px -30px rgba(15,23,42,.28);
+    }
+    .ku-roadmap-card strong{
+      display:block;
+      margin-bottom:8px;
+      font-size:15px;
+      font-weight:900;
+      color:#0f172a;
+    }
+    .ku-roadmap-card p{
+      margin:0;
+      color:#64748b;
+      font-size:13px;
+      line-height:1.55;
+    }
+    .ku-roadmap-card .ku-age-tags{
+      margin-top:12px;
+    }
+
+    .ku-profile-layout{
+      display:grid;
+      grid-template-columns:.88fr 1.12fr;
+      gap:22px;
+      align-items:start;
+    }
+    .ku-profile-tabs{
+      display:grid;
+      gap:12px;
+    }
+    .ku-profile-tab{
+      appearance:none;
+      width:100%;
+      padding:18px 18px 18px 20px;
+      border-radius:24px;
+      border:1px solid rgba(148,163,184,.18);
+      background:
+        radial-gradient(circle at top right, color-mix(in srgb, var(--profile-accent) 10%, transparent), transparent 44%),
+        linear-gradient(180deg, rgba(255,255,255,.99), rgba(248,250,252,.96));
+      box-shadow:0 18px 40px -34px rgba(15,23,42,.30);
+      display:grid;
+      gap:8px;
+      text-align:left;
+      cursor:pointer;
+      transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease, background .22s ease;
+    }
+    .ku-profile-tab:hover,
+    .ku-profile-tab:focus-visible{
+      transform:translateY(-1px);
+      border-color:color-mix(in srgb, var(--profile-accent) 36%, rgba(148,163,184,.18));
+      box-shadow:0 24px 48px -36px rgba(15,23,42,.34);
+      outline:none;
+    }
+    .ku-profile-tab.is-active{
+      border-color:transparent;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,.18), transparent 40%),
+        linear-gradient(135deg, color-mix(in srgb, var(--profile-accent) 92%, #fff), var(--profile-accent));
+      box-shadow:0 28px 58px -36px color-mix(in srgb, var(--profile-accent) 42%, transparent);
+    }
+    .ku-profile-tab__kicker{
+      display:inline-flex;
+      align-items:center;
+      min-height:30px;
+      width:max-content;
+      padding:0 10px;
+      border-radius:999px;
+      background:color-mix(in srgb, var(--profile-accent) 10%, #fff);
+      color:var(--profile-accent);
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+    }
+    .ku-profile-tab.is-active .ku-profile-tab__kicker{
+      background:rgba(255,255,255,.16);
+      color:#fff;
+    }
+    .ku-profile-tab strong{
+      display:block;
+      font-family:Montserrat,Inter,sans-serif;
+      font-size:23px;
+      line-height:1.06;
+      font-weight:900;
+      color:#0f172a;
+    }
+    .ku-profile-tab p{
+      margin:0;
+      color:#64748b;
+      font-size:14px;
+      line-height:1.55;
+      font-weight:600;
+    }
+    .ku-profile-tab.is-active strong,
+    .ku-profile-tab.is-active p{
+      color:#fff;
+    }
+    .ku-profile-panel[hidden]{display:none}
+    .ku-profile-stage{
+      padding:18px;
+      border-radius:30px;
+      background:
+        radial-gradient(circle at top right, rgba(37,99,235,.10), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,.99), rgba(248,250,252,.96));
+      border:1px solid rgba(148,163,184,.18);
+      box-shadow:0 24px 48px -38px rgba(15,23,42,.34);
+    }
+    .ku-profile-hero{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:18px;
+      align-items:stretch;
+      margin-bottom:14px;
+    }
+    .ku-profile-hero__visual{
+      position:relative;
+      overflow:hidden;
+      min-height:300px;
+      border-radius:26px;
+      background:#0f172a;
+    }
+    .ku-profile-hero__visual img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .ku-profile-hero__overlay{
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(15,23,42,.12), rgba(15,23,42,.82)),
+        radial-gradient(circle at top left, color-mix(in srgb, var(--profile-panel-accent) 28%, transparent), transparent 40%);
+    }
+    .ku-profile-hero__badge{
+      position:absolute;
+      top:18px;
+      left:18px;
+      z-index:2;
+      display:inline-flex;
+      align-items:center;
+      min-height:34px;
+      padding:0 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.88);
+      color:#0f172a;
+      font-size:12px;
+      font-weight:900;
+    }
+    .ku-profile-hero__caption{
+      position:absolute;
+      left:18px;
+      right:18px;
+      bottom:18px;
+      z-index:2;
+      color:#fff;
+    }
+    .ku-profile-hero__caption h3{
+      margin:0 0 8px;
+      font-family:Montserrat,Inter,sans-serif;
+      font-size:30px;
+      line-height:1.05;
+      font-weight:900;
+    }
+    .ku-profile-hero__caption p{
+      margin:0;
+      color:rgba(255,255,255,.90);
+      font-size:14px;
+      line-height:1.6;
+    }
+    .ku-profile-hero__info{
+      display:grid;
+      gap:12px;
+    }
+    .ku-profile-note{
+      padding:16px;
+      border-radius:22px;
+      background:#fff;
+      border:1px solid rgba(148,163,184,.16);
+      box-shadow:0 16px 32px -30px rgba(15,23,42,.28);
+    }
+    .ku-profile-note strong{
+      display:block;
+      margin-bottom:8px;
+      color:#0f172a;
+      font-size:14px;
+      font-weight:900;
+    }
+    .ku-profile-note p{
+      margin:0;
+      color:#64748b;
+      font-size:14px;
+      line-height:1.55;
+    }
+    .ku-profile-mini-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+    }
+    .ku-profile-mini{
+      padding:16px;
+      border-radius:22px;
+      background:#fff;
+      border:1px solid rgba(148,163,184,.16);
+      box-shadow:0 16px 32px -30px rgba(15,23,42,.28);
+    }
+    .ku-profile-mini strong{
+      display:block;
+      margin-bottom:8px;
+      font-size:16px;
+      font-weight:900;
+      color:#0f172a;
+    }
+    .ku-profile-mini p{
+      margin:0;
+      color:#64748b;
+      font-size:13px;
+      line-height:1.55;
+    }
+    .ku-profile-mini .ku-age-tags{
+      margin-top:12px;
+    }
+
+    .ku-track-shell{
+      display:grid;
+      gap:18px;
+    }
+    .ku-track-nav{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:12px;
+    }
+    .ku-track-chip{
+      appearance:none;
+      width:100%;
+      padding:16px 16px 14px;
+      border-radius:22px;
+      border:1px solid rgba(148,163,184,.18);
+      background:
+        radial-gradient(circle at top right, color-mix(in srgb, var(--track-accent) 10%, transparent), transparent 44%),
+        linear-gradient(180deg, rgba(255,255,255,.99), rgba(248,250,252,.96));
+      color:#0f172a;
+      text-align:left;
+      cursor:pointer;
+      box-shadow:0 16px 34px -30px rgba(15,23,42,.28);
+      transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease, background .22s ease;
+    }
+    .ku-track-chip:hover,
+    .ku-track-chip:focus-visible{
+      transform:translateY(-1px);
+      border-color:color-mix(in srgb, var(--track-accent) 38%, rgba(148,163,184,.18));
+      box-shadow:0 24px 44px -34px rgba(15,23,42,.34);
+      outline:none;
+    }
+    .ku-track-chip.is-active{
+      border-color:transparent;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,.16), transparent 42%),
+        linear-gradient(135deg, color-mix(in srgb, var(--track-accent) 92%, #fff), var(--track-accent));
+      color:#fff;
+      box-shadow:0 28px 54px -36px color-mix(in srgb, var(--track-accent) 40%, transparent);
+    }
+    .ku-track-chip__name{
+      display:block;
+      margin-bottom:6px;
+      font-family:Montserrat,Inter,sans-serif;
+      font-size:22px;
+      line-height:1.06;
+      font-weight:900;
+    }
+    .ku-track-chip__desc{
+      display:block;
+      font-size:13px;
+      line-height:1.5;
+      color:#64748b;
+      font-weight:600;
+    }
+    .ku-track-chip.is-active .ku-track-chip__desc{
+      color:rgba(255,255,255,.88);
+    }
+    .ku-track-panel[hidden]{display:none}
+    .ku-track-stage{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:18px;
+      align-items:start;
+      padding:18px;
+      border-radius:30px;
+      background:
+        radial-gradient(circle at top left, rgba(37,99,235,.08), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,.99), rgba(248,250,252,.96));
+      border:1px solid rgba(148,163,184,.18);
+      box-shadow:0 24px 48px -38px rgba(15,23,42,.34);
+    }
+    .ku-track-hero{
+      position:relative;
+      overflow:hidden;
+      min-height:380px;
+      border-radius:28px;
+      background:#0f172a;
+    }
+    .ku-track-hero img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .ku-track-hero__overlay{
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(15,23,42,.16), rgba(15,23,42,.9)),
+        radial-gradient(circle at top left, color-mix(in srgb, var(--track-panel-accent) 28%, transparent), transparent 38%);
+    }
+    .ku-track-hero__content{
+      position:absolute;
+      left:22px;
+      right:22px;
+      bottom:22px;
+      z-index:2;
+      color:#fff;
+    }
+    .ku-track-hero__eyebrow{
+      display:inline-flex;
+      align-items:center;
+      min-height:34px;
+      padding:0 12px;
+      margin-bottom:12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.16);
+      color:#fff;
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+    }
+    .ku-track-hero__content h3{
+      margin:0 0 10px;
+      font-family:Montserrat,Inter,sans-serif;
+      font-size:34px;
+      line-height:1.03;
+      font-weight:900;
+    }
+    .ku-track-hero__content p{
+      margin:0;
+      color:rgba(255,255,255,.90);
+      font-size:15px;
+      line-height:1.6;
+    }
+    .ku-track-side{
+      display:grid;
+      gap:14px;
+    }
+    .ku-track-card{
+      padding:16px;
+      border-radius:22px;
+      background:#fff;
+      border:1px solid rgba(148,163,184,.16);
+      box-shadow:0 16px 32px -30px rgba(15,23,42,.28);
+    }
+    .ku-track-card strong{
+      display:block;
+      margin-bottom:8px;
+      color:#0f172a;
+      font-size:16px;
+      font-weight:900;
+    }
+    .ku-track-card p{
+      margin:0;
+      color:#64748b;
+      font-size:13px;
+      line-height:1.55;
+    }
+    .ku-track-stat-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:10px;
+    }
+    .ku-track-stat{
+      padding:14px 12px;
+      border-radius:18px;
+      background:color-mix(in srgb, var(--track-panel-accent) 7%, #fff);
+      border:1px solid color-mix(in srgb, var(--track-panel-accent) 16%, rgba(148,163,184,.16));
+    }
+    .ku-track-stat strong{
+      display:block;
+      margin-bottom:6px;
+      color:#0f172a;
+      font-size:15px;
+      font-weight:900;
+    }
+    .ku-track-stat span{
+      display:block;
+      color:#64748b;
+      font-size:12px;
+      line-height:1.45;
+      font-weight:700;
+    }
+
+    @media (max-width:1180px){
+      .ku-age-layout,
+      .ku-courses__grid--split,
+      .ku-goal-grid,
+      .ku-roadmap,
+      .ku-profile-layout,
+      .ku-track-stage{
+        grid-template-columns:1fr;
+      }
+      .ku-roadmap::before{
+        left:11px;
+        top:0;
+        bottom:0;
+        right:auto;
+        width:2px;
+        height:auto;
+        background:linear-gradient(180deg, rgba(37,99,235,.20), rgba(139,92,246,.24), rgba(239,68,68,.20));
+      }
+      .ku-roadmap-step{
+        padding-left:30px;
+      }
+      .ku-roadmap-step__dot{
+        position:absolute;
+        left:0;
+        top:4px;
+      }
+    }
+
+    @media (max-width:1100px){
+      .ku-courses__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .ku-track-nav{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media (max-width:760px){
+      .page{
+        padding:10px 8px 28px;
+      }
+      .ku-courses{
+        padding:70px 14px;
+        border-radius:24px;
+      }
+      .ku-courses__filters{
+        margin:0 auto 24px;
+      }
+      .ku-courses__filters-shell{
+        display:grid;
+        grid-template-columns:repeat(3,minmax(0,1fr));
+        width:100%;
+        gap:8px;
+        padding:10px;
+        border-radius:24px;
+      }
+      .ku-courses__filter{
+        min-width:0;
+        min-height:78px;
+        padding:10px 8px 11px;
+        border-radius:18px;
+        flex-direction:column;
+        gap:7px;
+      }
+      .ku-courses__filter-icon{
+        width:28px;
+        height:28px;
+        flex-basis:28px;
+      }
+      .ku-courses__filter-icon svg{
+        width:15px;
+        height:15px;
+      }
+      .ku-courses__filter span:last-child{
+        white-space:normal;
+        text-align:center;
+        font-size:11px;
+        line-height:1.12;
+      }
+      .ku-courses__grid,
+      .ku-courses__grid--2{
+        grid-template-columns:1fr;
+        gap:16px;
+      }
+      .ku-courses__title{
+        font-size:34px;
+        line-height:1.08;
+      }
+      .ku-catalog-card__logo{width:62px}
+      .ku-catalog-card__badges span{min-height:26px;font-size:10px}
+      .ku-catalog-card__info{padding:22px 16px 16px}
+      .ku-catalog-card__info h3{font-size:24px}
+      .ku-course-row{
+        grid-template-columns:60px minmax(0,1fr);
+        align-items:start;
+      }
+      .ku-course-row__thumb-wrap{
+        width:60px;
+        height:60px;
+        border-radius:16px;
+      }
+      .ku-goal-tiles{
+        grid-template-columns:1fr;
+      }
+      .ku-profile-hero,
+      .ku-profile-mini-grid,
+      .ku-track-nav,
+      .ku-track-stat-grid{
+        grid-template-columns:1fr;
+      }
+      .ku-goal-card{
+        grid-template-columns:1fr;
+      }
+      .ku-goal-card img{
+        height:180px;
+      }
+      .ku-course-row__thumb{
+        width:38px;
+        height:38px;
+      }
+      .ku-course-row__meta{
+        grid-column:1 / -1;
+        justify-items:start;
+      }
+      .ku-track-hero{
+        min-height:320px;
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      .ku-courses *,.ku-courses::before,.ku-courses::after{animation:none!important;transition:none!important}
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="stack">
+      <section class="ku-courses" data-filter-set data-focus-set>
+        <div class="ku-courses__topline"></div>
+        <div class="ku-courses__gridbg"></div>
+        <div class="ku-courses__orb"></div>
+        <div class="ku-courses__container">
+          <div class="ku-courses__head">
+            <div class="ku-courses__badge">17 направлений</div>
+            <h2 class="ku-courses__title">Выберите курс <span>для вашего ребёнка</span></h2>
+            <p class="ku-courses__lead">Крупные карточки и быстрые фильтры по интересам.</p>
+          </div>
+
+          <div class="ku-courses__filters" aria-label="Фильтр курсов">
+            <div class="ku-courses__filters-shell">
+              <button class="ku-courses__filter is-active" type="button" data-filter="all">
+                <span class="ku-courses__filter-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 5h5v5H5V5Zm9 0h5v5h-5V5ZM5 14h5v5H5v-5Zm9 0h5v5h-5v-5Z"/></svg></span>
+                <span>Все курсы</span>
+              </button>
+              <button class="ku-courses__filter" type="button" data-filter="games">
+                <span class="ku-courses__filter-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 11h3m-1.5-1.5v3M15.5 10h.01M18 12h.01M7.2 18h9.6c1.76 0 3.2-1.44 3.2-3.2 0-1.05-.52-2.03-1.38-2.62l-.94-5.18A2.2 2.2 0 0 0 15.53 5h-7.06a2.2 2.2 0 0 0-2.17 1.99l-.94 5.18A3.18 3.18 0 0 0 4 14.8C4 16.56 5.44 18 7.2 18Z"/></svg></span>
+                <span>Создание игр</span>
+              </button>
+              <button class="ku-courses__filter" type="button" data-filter="programming">
+                <span class="ku-courses__filter-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 9 5 12l3 3m8-6 3 3-3 3M13 7l-2 10"/></svg></span>
+                <span>Программирование</span>
+              </button>
+              <button class="ku-courses__filter" type="button" data-filter="design">
+                <span class="ku-courses__filter-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m14.7 4.3 5 5M5 19l3.8-.9L19 7.9a2.1 2.1 0 0 0-3-3L5.9 15.1 5 19Z"/></svg></span>
+                <span>Дизайн</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="ku-courses__grid">
+            <article class="ku-catalog-card" data-tags="games programming" style="--accent:#ea580c;">
+              <div class="ku-catalog-card__media">
+                <img class="ku-catalog-card__image" src="media/courses/Roblox.png" alt="Программирование в Roblox">
+                <div class="ku-catalog-card__shade"></div>
+                <img class="ku-catalog-card__logo" src="media/courses_logo/Roblox_program.png" alt="">
+                <div class="ku-catalog-card__badges"><span>7-16 лет</span><span>Код</span></div>
+                <div class="ku-catalog-card__info">
+                  <h3>Программирование в Roblox</h3>
+                  <div class="ku-catalog-card__details">
+                    <p>Игровая среда, скрипты и быстрый результат уже на первых занятиях.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="ku-catalog-card__actions"><a href="#" class="ku-catalog-card__primary">Записаться</a><a href="#" class="ku-catalog-card__secondary">Подробнее</a></div>
+            </article>
+
+            <article class="ku-catalog-card" data-tags="programming" style="--accent:#2563eb;">
+              <div class="ku-catalog-card__media">
+                <img class="ku-catalog-card__image" src="media/courses/python_start.png" alt="Python Start">
+                <div class="ku-catalog-card__shade"></div>
+                <img class="ku-catalog-card__logo" src="media/courses_logo/python.png" alt="">
+                <div class="ku-catalog-card__badges"><span>7-16 лет</span><span>Start</span></div>
+                <div class="ku-catalog-card__info">
+                  <h3>Python Start</h3>
+                  <div class="ku-catalog-card__details">
+                    <p>Первый настоящий язык программирования без перегруза и с понятной логикой.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="ku-catalog-card__actions"><a href="#" class="ku-catalog-card__primary">Записаться</a><a href="#" class="ku-catalog-card__secondary">Подробнее</a></div>
+            </article>
+
+            <article class="ku-catalog-card" data-tags="design" style="--accent:#a21caf;">
+              <div class="ku-catalog-card__media">
+                <img class="ku-catalog-card__image" src="media/courses/Grah_design.png" alt="Графический дизайн">
+                <div class="ku-catalog-card__shade"></div>
+                <img class="ku-catalog-card__logo" src="media/courses_logo/graf_design.png" alt="">
+                <div class="ku-catalog-card__badges"><span>7-16 лет</span><span>Design</span></div>
+                <div class="ku-catalog-card__info">
+                  <h3>Графический дизайн</h3>
+                  <div class="ku-catalog-card__details">
+                    <p>Композиция, цвет, типографика и первые сильные визуальные работы.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="ku-catalog-card__actions"><a href="#" class="ku-catalog-card__primary">Записаться</a><a href="#" class="ku-catalog-card__secondary">Подробнее</a></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="ku-courses">
+        <div class="ku-courses__topline"></div>
+        <div class="ku-courses__gridbg"></div>
+        <div class="ku-courses__orb"></div>
+        <div class="ku-courses__container">
+          <div class="ku-courses__head">
+            <div class="ku-courses__badge">Подбор по возрасту</div>
+            <h2 class="ku-courses__title">Найдите направление <span>по возрасту ребёнка</span></h2>
+            <p class="ku-courses__lead">Сначала возраст, потом подходящий формат старта и роста.</p>
+          </div>
+
+          <div class="ku-courses__filters">
+            <div class="ku-courses__filters-shell">
+              <button class="ku-courses__filter is-active" type="button">
+                <span class="ku-courses__filter-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4c2.6 0 4.9 1 6.5 2.7M12 4C9.4 4 7.1 5 5.5 6.7M12 4v16M6 11c0 3.3 2.7 6 6 6s6-2.7 6-6"/></svg></span>
+                <span>5-7 лет</span>
+              </button>
+              <button class="ku-courses__filter" type="button">
+                <span class="ku-courses__filter-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4c2.6 0 4.9 1 6.5 2.7M12 4C9.4 4 7.1 5 5.5 6.7M12 4v16M6 11c0 3.3 2.7 6 6 6s6-2.7 6-6"/></svg></span>
+                <span>8-11 лет</span>
+              </button>
+              <button class="ku-courses__filter" type="button">
+                <span class="ku-courses__filter-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4c2.6 0 4.9 1 6.5 2.7M12 4C9.4 4 7.1 5 5.5 6.7M12 4v16M6 11c0 3.3 2.7 6 6 6s6-2.7 6-6"/></svg></span>
+                <span>12-16 лет</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="ku-age-layout">
+            <div class="ku-age-column">
+              <div class="ku-age-column__head">
+                <h3>Первые шаги</h3>
+                <span>5-7 лет</span>
+              </div>
+              <div class="ku-age-list">
+                <article class="ku-age-item">
+                  <strong>Scratch Jr</strong>
+                  <p>Мягкий вход в алгоритмы через истории и игровые действия.</p>
+                  <div class="ku-age-tags"><span>Старт</span><span>Логика</span></div>
+                </article>
+                <article class="ku-age-item">
+                  <strong>Компьютерная грамотность</strong>
+                  <p>Файлы, интернет, безопасность и уверенная работа за компьютером.</p>
+                  <div class="ku-age-tags"><span>База</span><span>Навыки</span></div>
+                </article>
+              </div>
+            </div>
+
+            <div class="ku-age-column">
+              <div class="ku-age-column__head">
+                <h3>Интерес и практика</h3>
+                <span>8-11 лет</span>
+              </div>
+              <div class="ku-age-list">
+                <article class="ku-age-item">
+                  <strong>Scratch</strong>
+                  <p>Игры и анимации, где ребёнок сразу видит результат своего кода.</p>
+                  <div class="ku-age-tags"><span>Игры</span><span>Алгоритмы</span></div>
+                </article>
+                <article class="ku-age-item">
+                  <strong>Roblox Studio</strong>
+                  <p>Собственные миры, правила и скрипты в привычной игровой среде.</p>
+                  <div class="ku-age-tags"><span>Roblox</span><span>Практика</span></div>
+                </article>
+              </div>
+            </div>
+
+            <div class="ku-age-column">
+              <div class="ku-age-column__head">
+                <h3>Углубление</h3>
+                <span>12-16 лет</span>
+              </div>
+              <div class="ku-age-list">
+                <article class="ku-age-item">
+                  <strong>Python Start</strong>
+                  <p>Системный вход в программирование для более осознанного старта.</p>
+                  <div class="ku-age-tags"><span>Python</span><span>Фундамент</span></div>
+                </article>
+                <article class="ku-age-item">
+                  <strong>Blender</strong>
+                  <p>3D-моделирование, сцены и проектная работа для портфолио.</p>
+                  <div class="ku-age-tags"><span>3D</span><span>Портфолио</span></div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="ku-courses" data-filter-set>
+        <div class="ku-courses__topline"></div>
+        <div class="ku-courses__gridbg"></div>
+        <div class="ku-courses__orb"></div>
+        <div class="ku-courses__container">
+          <div class="ku-courses__head">
+            <div class="ku-courses__badge">Быстрое сравнение</div>
+            <h2 class="ku-courses__title">Сравните курсы <span>в одном экране</span></h2>
+            <p class="ku-courses__lead">Список направлений слева и акцент на выбранном курсе справа.</p>
+          </div>
+
+          <div class="ku-courses__filters" aria-label="Фильтр курсов">
+            <div class="ku-courses__filters-shell">
+              <button class="ku-courses__filter is-active" type="button" data-filter="all">
+                <span class="ku-courses__filter-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 5h5v5H5V5Zm9 0h5v5h-5V5ZM5 14h5v5H5v-5Zm9 0h5v5h-5v-5Z"/></svg></span>
+                <span>Все курсы</span>
+              </button>
+              <button class="ku-courses__filter" type="button" data-filter="games">
+                <span class="ku-courses__filter-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 11h3m-1.5-1.5v3M15.5 10h.01M18 12h.01M7.2 18h9.6c1.76 0 3.2-1.44 3.2-3.2 0-1.05-.52-2.03-1.38-2.62l-.94-5.18A2.2 2.2 0 0 0 15.53 5h-7.06a2.2 2.2 0 0 0-2.17 1.99l-.94 5.18A3.18 3.18 0 0 0 4 14.8C4 16.56 5.44 18 7.2 18Z"/></svg></span>
+                <span>Создание игр</span>
+              </button>
+              <button class="ku-courses__filter" type="button" data-filter="programming">
+                <span class="ku-courses__filter-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 9 5 12l3 3m8-6 3 3-3 3M13 7l-2 10"/></svg></span>
+                <span>Программирование</span>
+              </button>
+              <button class="ku-courses__filter" type="button" data-filter="design">
+                <span class="ku-courses__filter-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m14.7 4.3 5 5M5 19l3.8-.9L19 7.9a2.1 2.1 0 0 0-3-3L5.9 15.1 5 19Z"/></svg></span>
+                <span>Дизайн</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="ku-courses__grid ku-courses__grid--split">
+            <div class="ku-course-list">
+              <button class="ku-course-row is-active" type="button" style="--course-accent:#2563eb;" data-tags="programming" data-focus-image="media/courses/python_start.png" data-focus-alt="Python Start" data-focus-badge="7-16 лет • Start" data-focus-title="Python Start" data-focus-desc="Курс для тех, кому нужен понятный фундамент: переменные, условия, циклы, функции и первые мини-проекты без перегруза." data-focus-fit="для уверенного старта в коде" data-focus-format="практика и небольшие проекты" data-focus-next="Pygame, веб, Flask / Django" aria-pressed="true">
+                <span class="ku-course-row__thumb-wrap"><img class="ku-course-row__thumb" src="media/courses_logo/python.png" alt=""></span>
+                <div class="ku-course-row__body">
+                  <strong>Python Start</strong>
+                  <p>Понятный базовый курс для системного старта в программировании.</p>
+                </div>
+                <div class="ku-course-row__meta"><span>7-16 лет</span><span>Start</span></div>
+              </button>
+              <button class="ku-course-row" type="button" style="--course-accent:#ea580c;" data-tags="games programming" data-focus-image="media/courses/Roblox.png" data-focus-alt="Программирование в Roblox" data-focus-badge="7-16 лет • Игры" data-focus-title="Программирование в Roblox" data-focus-desc="Игровая среда, скрипты и быстрый результат уже на первых занятиях. Хороший вариант для детей, которым важно видеть механику своими руками." data-focus-fit="если ребёнку нужна игра как мотивация" data-focus-format="скрипты, события, игровые механики" data-focus-next="Minecraft-моды, Unity, Lua-проекты" aria-pressed="false">
+                <span class="ku-course-row__thumb-wrap"><img class="ku-course-row__thumb" src="media/courses_logo/Roblox_program.png" alt=""></span>
+                <div class="ku-course-row__body">
+                  <strong>Программирование в Roblox</strong>
+                  <p>Скрипты и механики в знакомой игровой среде с быстрым результатом.</p>
+                </div>
+                <div class="ku-course-row__meta"><span>7-16 лет</span><span>Игры</span></div>
+              </button>
+              <button class="ku-course-row" type="button" style="--course-accent:#1d4ed8;" data-tags="games programming" data-focus-image="media/courses/pygame.png" data-focus-alt="Python Pygame" data-focus-badge="7-16 лет • GameDev" data-focus-title="Python Pygame" data-focus-desc="2D-игры на Python для детей, которым нужен уже не просто интерес, а настоящий проектный формат с кодом, сценами и правилами." data-focus-fit="если Python уже нравится, но хочется игр" data-focus-format="2D-игры, механики, архитектура" data-focus-next="Unity, Flask / Django, большие Python-проекты" aria-pressed="false">
+                <span class="ku-course-row__thumb-wrap"><img class="ku-course-row__thumb" src="media/courses_logo/pygame.png" alt=""></span>
+                <div class="ku-course-row__body">
+                  <strong>Python Pygame</strong>
+                  <p>2D-игры на Python для детей, которым нужен проектный и игровой формат.</p>
+                </div>
+                <div class="ku-course-row__meta"><span>7-16 лет</span><span>GameDev</span></div>
+              </button>
+              <button class="ku-course-row" type="button" style="--course-accent:#a21caf;" data-tags="design" data-focus-image="media/courses/Grah_design.png" data-focus-alt="Графический дизайн" data-focus-badge="7-16 лет • Design" data-focus-title="Графический дизайн" data-focus-desc="Композиция, цвет, типографика и первые сильные визуальные работы для детей, которым важно не просто учиться, а создавать красивый результат." data-focus-fit="если ребёнку ближе визуал и креатив" data-focus-format="постеры, композиция, визуальные проекты" data-focus-next="Веб-дизайн, Blender, портфолио-работы" aria-pressed="false">
+                <span class="ku-course-row__thumb-wrap"><img class="ku-course-row__thumb" src="media/courses_logo/graf_design.png" alt=""></span>
+                <div class="ku-course-row__body">
+                  <strong>Графический дизайн</strong>
+                  <p>Визуальное мышление, композиция и первые сильные работы в портфолио.</p>
+                </div>
+                <div class="ku-course-row__meta"><span>7-16 лет</span><span>Design</span></div>
+              </button>
+            </div>
+
+            <aside class="ku-focus-card">
+              <div class="ku-focus-card__eyebrow">Фокус курса</div>
+              <img class="ku-focus-card__image" src="media/courses/python_start.png" alt="Python Start">
+              <div class="ku-focus-card__badge">7-16 лет • Start</div>
+              <h3 class="ku-focus-card__title">Python Start</h3>
+              <p class="ku-focus-card__desc">Курс для тех, кому нужен понятный фундамент: переменные, условия, циклы, функции и первые мини-проекты без перегруза.</p>
+              <div class="ku-focus-list">
+                <div><strong>Подходит:</strong><span class="ku-focus-fit">для уверенного старта в коде</span></div>
+                <div><strong>Формат:</strong><span class="ku-focus-format">практика и небольшие проекты</span></div>
+                <div><strong>Следующий шаг:</strong><span class="ku-focus-next">Pygame, веб, Flask / Django</span></div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="ku-courses" data-goal-set>
+        <div class="ku-courses__topline"></div>
+        <div class="ku-courses__gridbg"></div>
+        <div class="ku-courses__orb"></div>
+        <div class="ku-courses__container">
+          <div class="ku-courses__head">
+            <div class="ku-courses__badge">По цели ребёнка</div>
+            <h2 class="ku-courses__title">Что он хочет <span>сделать сам</span></h2>
+            <p class="ku-courses__lead">Не по предмету, а по мечте: игра, сайт, 3D-модель или визуальный проект.</p>
+          </div>
+
+          <div class="ku-goal-grid">
+            <div class="ku-goal-tiles">
+              <button class="ku-goal-tile is-active" type="button" data-filter="games" style="--goal-accent:#ef4444;">
+                <span class="ku-goal-tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 11h3m-1.5-1.5v3M15.5 10h.01M18 12h.01M7.2 18h9.6c1.76 0 3.2-1.44 3.2-3.2 0-1.05-.52-2.03-1.38-2.62l-.94-5.18A2.2 2.2 0 0 0 15.53 5h-7.06a2.2 2.2 0 0 0-2.17 1.99l-.94 5.18A3.18 3.18 0 0 0 4 14.8C4 16.56 5.44 18 7.2 18Z"/></svg></span>
+                <span class="ku-goal-tile__kicker">Цель</span>
+                <h3>Сделать свою игру</h3>
+                <p>Для детей, которым важно действие, интерактив и быстрый видимый результат.</p>
+              </button>
+              <button class="ku-goal-tile" type="button" data-filter="web" style="--goal-accent:#2563eb;">
+                <span class="ku-goal-tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16M8 4v4m8-4v4M5 10h14v9H5z"/></svg></span>
+                <span class="ku-goal-tile__kicker">Цель</span>
+                <h3>Собрать свой сайт</h3>
+                <p>Подходит детям, которым нравится создавать что-то настоящее и показывать результат другим.</p>
+              </button>
+              <button class="ku-goal-tile" type="button" data-filter="modeling" style="--goal-accent:#8b5cf6;">
+                <span class="ku-goal-tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 3 7 4-7 4-7-4 7-4Zm7 4v10l-7 4-7-4V7m7 4v10"/></svg></span>
+                <span class="ku-goal-tile__kicker">Цель</span>
+                <h3>Сделать 3D-проект</h3>
+                <p>Для тех, кому хочется собирать модели, объекты, персонажей и сцены.</p>
+              </button>
+              <button class="ku-goal-tile" type="button" data-filter="design" style="--goal-accent:#ec4899;">
+                <span class="ku-goal-tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m14.7 4.3 5 5M5 19l3.8-.9L19 7.9a2.1 2.1 0 0 0-3-3L5.9 15.1 5 19Z"/></svg></span>
+                <span class="ku-goal-tile__kicker">Цель</span>
+                <h3>Сделать красивый дизайн</h3>
+                <p>Для визуально ориентированных детей, которым ближе стиль, композиция и креатив.</p>
+              </button>
+            </div>
+
+            <div class="ku-goal-results">
+              <article class="ku-goal-card" data-tags="games" style="--goal-card-accent:#ef4444;">
+                <img src="media/courses/Roblox.png" alt="Программирование в Roblox">
+                <div>
+                  <h3>Программирование в Roblox</h3>
+                  <p>Лучший вход, если ребёнку нужно не “учить код”, а строить игровой мир, сценарии и механику в знакомой среде.</p>
+                  <div class="ku-goal-meta"><span>7-16 лет</span><span>Lua</span><span>Игровая логика</span></div>
+                </div>
+              </article>
+              <article class="ku-goal-card" data-tags="games" style="--goal-card-accent:#1d4ed8;">
+                <img src="media/courses/pygame.png" alt="Python Pygame">
+                <div>
+                  <h3>Python Pygame</h3>
+                  <p>Если хочется перейти от интереса к играм к более серьёзной разработке на Python и собственным 2D-проектам.</p>
+                  <div class="ku-goal-meta"><span>7-16 лет</span><span>Python</span><span>2D-игры</span></div>
+                </div>
+              </article>
+              <article class="ku-goal-card" data-tags="web" style="--goal-card-accent:#2563eb;" hidden>
+                <img src="media/courses/web_program.png" alt="Веб-разработка">
+                <div>
+                  <h3>Веб-разработка</h3>
+                  <p>Сайты, интерфейсы, адаптивная вёрстка и ощущение, что ребёнок делает уже взрослый цифровой продукт.</p>
+                  <div class="ku-goal-meta"><span>7-16 лет</span><span>HTML / CSS / JS</span><span>Frontend</span></div>
+                </div>
+              </article>
+              <article class="ku-goal-card" data-tags="web" style="--goal-card-accent:#0f766e;" hidden>
+                <img src="media/courses/python_start.png" alt="Python Start">
+                <div>
+                  <h3>Python Start</h3>
+                  <p>Хорошая база, если сайт интересен не только как визуал, но и как путь к логике и программированию.</p>
+                  <div class="ku-goal-meta"><span>7-16 лет</span><span>Фундамент</span><span>Код</span></div>
+                </div>
+              </article>
+              <article class="ku-goal-card" data-tags="modeling" style="--goal-card-accent:#8b5cf6;" hidden>
+                <img src="media/courses/Blockbench.png" alt="3D-моделирование Blockbench">
+                <div>
+                  <h3>3D-моделирование Blockbench</h3>
+                  <p>Самый дружелюбный вход в 3D для детей, особенно если им нравится игровая и пиксельная эстетика.</p>
+                  <div class="ku-goal-meta"><span>7-16 лет</span><span>3D</span><span>Low poly</span></div>
+                </div>
+              </article>
+              <article class="ku-goal-card" data-tags="modeling" style="--goal-card-accent:#f97316;" hidden>
+                <img src="media/courses/blender.png" alt="Blender">
+                <div>
+                  <h3>Blender</h3>
+                  <p>Более взрослый уровень: сцены, формы, материалы и проекты, которые уже можно класть в портфолио.</p>
+                  <div class="ku-goal-meta"><span>7-16 лет</span><span>3D</span><span>Портфолио</span></div>
+                </div>
+              </article>
+              <article class="ku-goal-card" data-tags="design" style="--goal-card-accent:#ec4899;" hidden>
+                <img src="media/courses/Grah_design.png" alt="Графический дизайн">
+                <div>
+                  <h3>Графический дизайн</h3>
+                  <p>Постеры, композиция, цвет и визуальные материалы для детей, которым важен творческий самовыраженный результат.</p>
+                  <div class="ku-goal-meta"><span>7-16 лет</span><span>Design</span><span>Портфолио</span></div>
+                </div>
+              </article>
+              <article class="ku-goal-card" data-tags="design" style="--goal-card-accent:#be185d;" hidden>
+                <img src="media/courses/web_design.png" alt="Веб-дизайн">
+                <div>
+                  <h3>Веб-дизайн</h3>
+                  <p>Если ребёнку интересны интерфейсы, экраны, логика страниц и современная цифровая визуальная среда.</p>
+                  <div class="ku-goal-meta"><span>7-16 лет</span><span>UI</span><span>Цифровой продукт</span></div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="ku-courses">
+        <div class="ku-courses__topline"></div>
+        <div class="ku-courses__gridbg"></div>
+        <div class="ku-courses__orb"></div>
+        <div class="ku-courses__container">
+          <div class="ku-courses__head">
+            <div class="ku-courses__badge">Траектория роста</div>
+            <h2 class="ku-courses__title">От первого интереса <span>до сильного проекта</span></h2>
+            <p class="ku-courses__lead">Секция как дорожная карта: что попробовать сначала, чем усилить навык и куда расти дальше.</p>
+          </div>
+
+          <div class="ku-roadmap">
+            <div class="ku-roadmap-step" style="--road-accent:#22c55e;">
+              <div class="ku-roadmap-step__head">
+                <div class="ku-roadmap-step__dot"></div>
+                <div>
+                  <div class="ku-roadmap-step__index">Этап 01</div>
+                  <strong>Попробовать</strong>
+                  <span>Мягкий вход без перегруза и с быстрой обратной связью.</span>
+                </div>
+              </div>
+              <article class="ku-roadmap-card">
+                <strong>Scratch Jr</strong>
+                <p>Первая логика для самых младших через истории, персонажей и движение.</p>
+                <div class="ku-age-tags"><span>5-7 лет</span><span>Старт</span></div>
+              </article>
+              <article class="ku-roadmap-card">
+                <strong>Компьютерная грамотность</strong>
+                <p>Основа цифровой уверенности перед любым более сложным направлением.</p>
+                <div class="ku-age-tags"><span>6-16 лет</span><span>База</span></div>
+              </article>
+            </div>
+
+            <div class="ku-roadmap-step" style="--road-accent:#2563eb;">
+              <div class="ku-roadmap-step__head">
+                <div class="ku-roadmap-step__dot"></div>
+                <div>
+                  <div class="ku-roadmap-step__index">Этап 02</div>
+                  <strong>Сделать проект</strong>
+                  <span>Когда уже важно не просто понять, а собрать что-то своё.</span>
+                </div>
+              </div>
+              <article class="ku-roadmap-card">
+                <strong>Scratch</strong>
+                <p>Игры и анимации, где ребёнок сразу видит, что его алгоритм работает.</p>
+                <div class="ku-age-tags"><span>7-13 лет</span><span>Проекты</span></div>
+              </article>
+              <article class="ku-roadmap-card">
+                <strong>Python Start</strong>
+                <p>Осознанный вход в программирование с понятной системой и логикой.</p>
+                <div class="ku-age-tags"><span>7-16 лет</span><span>Фундамент</span></div>
+              </article>
+            </div>
+
+            <div class="ku-roadmap-step" style="--road-accent:#f97316;">
+              <div class="ku-roadmap-step__head">
+                <div class="ku-roadmap-step__dot"></div>
+                <div>
+                  <div class="ku-roadmap-step__index">Этап 03</div>
+                  <strong>Углубиться</strong>
+                  <span>Больше механик, больше самостоятельности и заметнее результат.</span>
+                </div>
+              </div>
+              <article class="ku-roadmap-card">
+                <strong>Roblox Studio</strong>
+                <p>Скрипты, события и полноценные игровые миры в любимой среде ребёнка.</p>
+                <div class="ku-age-tags"><span>7-16 лет</span><span>GameDev</span></div>
+              </article>
+              <article class="ku-roadmap-card">
+                <strong>Веб-разработка</strong>
+                <p>Настоящие сайты, интерактив и публикация результата в реальной среде.</p>
+                <div class="ku-age-tags"><span>7-16 лет</span><span>Frontend</span></div>
+              </article>
+            </div>
+
+            <div class="ku-roadmap-step" style="--road-accent:#8b5cf6;">
+              <div class="ku-roadmap-step__head">
+                <div class="ku-roadmap-step__dot"></div>
+                <div>
+                  <div class="ku-roadmap-step__index">Этап 04</div>
+                  <strong>Собрать портфолио</strong>
+                  <span>Финальный уровень, где работы уже хочется сохранять и показывать.</span>
+                </div>
+              </div>
+              <article class="ku-roadmap-card">
+                <strong>Blender</strong>
+                <p>3D-сцены, материалы и более взрослые визуальные проекты для портфолио.</p>
+                <div class="ku-age-tags"><span>7-16 лет</span><span>3D</span></div>
+              </article>
+              <article class="ku-roadmap-card">
+                <strong>Unity</strong>
+                <p>2D и 3D-игры, физика, сцены и сборка уже серьёзного игрового прототипа.</p>
+                <div class="ku-age-tags"><span>7-16 лет</span><span>Pro</span></div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="ku-courses" data-profile-set>
+        <div class="ku-courses__topline"></div>
+        <div class="ku-courses__gridbg"></div>
+        <div class="ku-courses__orb"></div>
+        <div class="ku-courses__container">
+          <div class="ku-courses__head">
+            <div class="ku-courses__badge">По характеру ребёнка</div>
+            <h2 class="ku-courses__title">Выберите формат <span>по его типу интереса</span></h2>
+            <p class="ku-courses__lead">Секция для родителей, которые лучше понимают не “какой предмет”, а “как именно ребёнку нравится учиться и что ему интересно”.</p>
+          </div>
+
+          <div class="ku-profile-layout">
+            <div class="ku-profile-tabs">
+              <button class="ku-profile-tab is-active" type="button" data-target="profile-gamer" style="--profile-accent:#ef4444;">
+                <span class="ku-profile-tab__kicker">Тип ребёнка</span>
+                <strong>Любит игры и динамику</strong>
+                <p>Ему важно быстро включаться, пробовать механику руками и видеть результат сразу.</p>
+              </button>
+              <button class="ku-profile-tab" type="button" data-target="profile-builder" style="--profile-accent:#2563eb;">
+                <span class="ku-profile-tab__kicker">Тип ребёнка</span>
+                <strong>Любит разбираться и собирать</strong>
+                <p>Ему интереснее понять систему, логику и построить что-то по шагам.</p>
+              </button>
+              <button class="ku-profile-tab" type="button" data-target="profile-artist" style="--profile-accent:#ec4899;">
+                <span class="ku-profile-tab__kicker">Тип ребёнка</span>
+                <strong>Тянется к визуалу и стилю</strong>
+                <p>Он замечает форму, цвет, композицию и хочет делать красивый заметный результат.</p>
+              </button>
+              <button class="ku-profile-tab" type="button" data-target="profile-maker" style="--profile-accent:#8b5cf6;">
+                <span class="ku-profile-tab__kicker">Тип ребёнка</span>
+                <strong>Любит делать объекты и миры</strong>
+                <p>Ему нравится моделировать, конструировать и видеть объёмный итог своей работы.</p>
+              </button>
+            </div>
+
+            <div class="ku-profile-panels">
+              <div class="ku-profile-panel" id="profile-gamer" style="--profile-panel-accent:#ef4444;">
+                <div class="ku-profile-stage">
+                  <div class="ku-profile-hero">
+                    <div class="ku-profile-hero__visual">
+                      <img src="media/courses/Roblox.png" alt="Программирование в Roblox">
+                      <div class="ku-profile-hero__overlay"></div>
+                      <div class="ku-profile-hero__badge">Лучший старт</div>
+                      <div class="ku-profile-hero__caption">
+                        <h3>Программирование в Roblox</h3>
+                        <p>Идеально заходит детям, которым важно не просто учиться, а сразу влиять на события, правила и механику игры.</p>
+                      </div>
+                    </div>
+                    <div class="ku-profile-hero__info">
+                      <div class="ku-profile-note">
+                        <strong>Почему это сработает</strong>
+                        <p>Игровая среда снимает страх перед кодом: ребёнок быстрее включается, видит цель и понимает, зачем вообще нужны скрипты.</p>
+                      </div>
+                      <div class="ku-profile-note">
+                        <strong>Что получает в итоге</strong>
+                        <p>Собственные игровые механики, интерактивные сцены и понятный переход к более серьёзному GameDev.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ku-profile-mini-grid">
+                    <article class="ku-profile-mini">
+                      <strong>Scratch</strong>
+                      <p>Хороший вариант помягче, если хочется сохранить игровой формат, но сделать вход проще.</p>
+                      <div class="ku-age-tags"><span>7-13 лет</span><span>Старт</span></div>
+                    </article>
+                    <article class="ku-profile-mini">
+                      <strong>Python Pygame</strong>
+                      <p>Следующий шаг, если ребёнку уже нужен более настоящий игровой проект на Python.</p>
+                      <div class="ku-age-tags"><span>7-16 лет</span><span>GameDev</span></div>
+                    </article>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ku-profile-panel" id="profile-builder" style="--profile-panel-accent:#2563eb;" hidden>
+                <div class="ku-profile-stage">
+                  <div class="ku-profile-hero">
+                    <div class="ku-profile-hero__visual">
+                      <img src="media/courses/python_start.png" alt="Python Start">
+                      <div class="ku-profile-hero__overlay"></div>
+                      <div class="ku-profile-hero__badge">Лучший старт</div>
+                      <div class="ku-profile-hero__caption">
+                        <h3>Python Start</h3>
+                        <p>Подходит детям, которым нравится логика, структура и ощущение, что они собирают систему шаг за шагом.</p>
+                      </div>
+                    </div>
+                    <div class="ku-profile-hero__info">
+                      <div class="ku-profile-note">
+                        <strong>Почему это сработает</strong>
+                        <p>Python даёт очень ясную причинно-следственную связь: написал, запустил, увидел, как работает логика.</p>
+                      </div>
+                      <div class="ku-profile-note">
+                        <strong>Что получает в итоге</strong>
+                        <p>Фундамент, на который потом легко наслаиваются игры, веб, боты и более сложные проекты.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ku-profile-mini-grid">
+                    <article class="ku-profile-mini">
+                      <strong>Flask / Django</strong>
+                      <p>Продолжение для тех, кому интересно строить уже полноценные веб-приложения.</p>
+                      <div class="ku-age-tags"><span>7-16 лет</span><span>Backend</span></div>
+                    </article>
+                    <article class="ku-profile-mini">
+                      <strong>Chatbot</strong>
+                      <p>Хороший прикладной формат, где логика сразу превращается в полезный цифровой продукт.</p>
+                      <div class="ku-age-tags"><span>7-16 лет</span><span>Практика</span></div>
+                    </article>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ku-profile-panel" id="profile-artist" style="--profile-panel-accent:#ec4899;" hidden>
+                <div class="ku-profile-stage">
+                  <div class="ku-profile-hero">
+                    <div class="ku-profile-hero__visual">
+                      <img src="media/courses/Grah_design.png" alt="Графический дизайн">
+                      <div class="ku-profile-hero__overlay"></div>
+                      <div class="ku-profile-hero__badge">Лучший старт</div>
+                      <div class="ku-profile-hero__caption">
+                        <h3>Графический дизайн</h3>
+                        <p>Сильная точка входа для ребёнка, который мыслит визуально и любит создавать заметный красивый результат.</p>
+                      </div>
+                    </div>
+                    <div class="ku-profile-hero__info">
+                      <div class="ku-profile-note">
+                        <strong>Почему это сработает</strong>
+                        <p>Ребёнок быстро получает результат, который можно показать: постер, композицию, набор визуальных решений.</p>
+                      </div>
+                      <div class="ku-profile-note">
+                        <strong>Что получает в итоге</strong>
+                        <p>Насмотренность, вкус и базу для перехода в веб-дизайн, интерфейсы и цифровые продукты.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ku-profile-mini-grid">
+                    <article class="ku-profile-mini">
+                      <strong>Веб-дизайн</strong>
+                      <p>Следующий шаг, если интерес смещается от плакатов и графики к экранам и сайтам.</p>
+                      <div class="ku-age-tags"><span>7-16 лет</span><span>UI</span></div>
+                    </article>
+                    <article class="ku-profile-mini">
+                      <strong>Blender</strong>
+                      <p>Для детей, которым хочется, чтобы визуал стал ещё и объёмным, со сценами и объектами.</p>
+                      <div class="ku-age-tags"><span>7-16 лет</span><span>3D</span></div>
+                    </article>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ku-profile-panel" id="profile-maker" style="--profile-panel-accent:#8b5cf6;" hidden>
+                <div class="ku-profile-stage">
+                  <div class="ku-profile-hero">
+                    <div class="ku-profile-hero__visual">
+                      <img src="media/courses/blender.png" alt="Blender">
+                      <div class="ku-profile-hero__overlay"></div>
+                      <div class="ku-profile-hero__badge">Лучший старт</div>
+                      <div class="ku-profile-hero__caption">
+                        <h3>Blender</h3>
+                        <p>Подходит детям, которые любят конструировать, придумывать объекты и видеть объёмный результат своей работы.</p>
+                      </div>
+                    </div>
+                    <div class="ku-profile-hero__info">
+                      <div class="ku-profile-note">
+                        <strong>Почему это сработает</strong>
+                        <p>Blender сразу даёт ощущение серьёзного инструмента и собирает воедино форму, материал, сцену и идею.</p>
+                      </div>
+                      <div class="ku-profile-note">
+                        <strong>Что получает в итоге</strong>
+                        <p>3D-проекты для портфолио и сильную базу для игр, визуализации и цифрового творчества.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ku-profile-mini-grid">
+                    <article class="ku-profile-mini">
+                      <strong>Blockbench</strong>
+                      <p>Более лёгкий и дружелюбный вход в моделирование для младших детей и фанатов игровых форм.</p>
+                      <div class="ku-age-tags"><span>7-16 лет</span><span>3D-старт</span></div>
+                    </article>
+                    <article class="ku-profile-mini">
+                      <strong>Unity</strong>
+                      <p>Следующий шаг, если хочется, чтобы модель и сцена стали частью уже полноценной игры.</p>
+                      <div class="ku-age-tags"><span>7-16 лет</span><span>GameDev</span></div>
+                    </article>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="ku-courses" data-track-set>
+        <div class="ku-courses__topline"></div>
+        <div class="ku-courses__gridbg"></div>
+        <div class="ku-courses__orb"></div>
+        <div class="ku-courses__container">
+          <div class="ku-courses__head">
+            <div class="ku-courses__badge">Готовые треки</div>
+            <h2 class="ku-courses__title">Собранные направления <span>как готовые маршруты</span></h2>
+            <p class="ku-courses__lead">Не отдельные курсы, а уже цельные траектории: от первого интереса до более сильного результата внутри одной темы.</p>
+          </div>
+
+          <div class="ku-track-shell">
+            <div class="ku-track-nav">
+              <button class="ku-track-chip is-active" type="button" data-target="track-games" style="--track-accent:#ef4444;">
+                <span class="ku-track-chip__name">Игровой трек</span>
+                <span class="ku-track-chip__desc">От визуального старта до собственных игровых механик и прототипов.</span>
+              </button>
+              <button class="ku-track-chip" type="button" data-target="track-python" style="--track-accent:#2563eb;">
+                <span class="ku-track-chip__name">Python трек</span>
+                <span class="ku-track-chip__desc">Логика, код, прикладные проекты и более серьёзные направления разработки.</span>
+              </button>
+              <button class="ku-track-chip" type="button" data-target="track-design" style="--track-accent:#ec4899;">
+                <span class="ku-track-chip__name">Визуальный трек</span>
+                <span class="ku-track-chip__desc">Графика, экраны, композиция и проекты, которые хочется показывать.</span>
+              </button>
+              <button class="ku-track-chip" type="button" data-target="track-3d" style="--track-accent:#8b5cf6;">
+                <span class="ku-track-chip__name">3D трек</span>
+                <span class="ku-track-chip__desc">От первых моделей до сцен, игровых ассетов и портфолио-проектов.</span>
+              </button>
+            </div>
+
+            <div class="ku-track-panels">
+              <div class="ku-track-panel" id="track-games" style="--track-panel-accent:#ef4444;">
+                <div class="ku-track-stage">
+                  <div class="ku-track-hero">
+                    <img src="media/courses/Roblox.png" alt="Игровой трек">
+                    <div class="ku-track-hero__overlay"></div>
+                    <div class="ku-track-hero__content">
+                      <div class="ku-track-hero__eyebrow">Основной трек</div>
+                      <h3>От первой игры до своего игрового мира</h3>
+                      <p>Траектория для детей, которым важна динамика, сценарии, игровые механики и ощущение настоящего GameDev.</p>
+                    </div>
+                  </div>
+                  <div class="ku-track-side">
+                    <div class="ku-track-stat-grid">
+                      <div class="ku-track-stat">
+                        <strong>Старт</strong>
+                        <span>Scratch</span>
+                      </div>
+                      <div class="ku-track-stat">
+                        <strong>Рост</strong>
+                        <span>Roblox Studio</span>
+                      </div>
+                      <div class="ku-track-stat">
+                        <strong>Дальше</strong>
+                        <span>Unity</span>
+                      </div>
+                    </div>
+                    <article class="ku-track-card">
+                      <strong>Что внутри</strong>
+                      <p>Игровая логика, объекты, события, уровни, правила и привычка собирать проект по частям, а не просто нажимать кнопки.</p>
+                    </article>
+                    <article class="ku-track-card">
+                      <strong>Кому особенно подойдёт</strong>
+                      <p>Детям, которые хотят “делать свою игру”, а не слушать абстрактные объяснения про код без результата.</p>
+                    </article>
+                    <article class="ku-track-card">
+                      <strong>Связанные курсы</strong>
+                      <p>Scratch Jr, Scratch, Roblox Studio, Python Pygame, Unity.</p>
+                    </article>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ku-track-panel" id="track-python" style="--track-panel-accent:#2563eb;" hidden>
+                <div class="ku-track-stage">
+                  <div class="ku-track-hero">
+                    <img src="media/courses/python_start.png" alt="Python трек">
+                    <div class="ku-track-hero__overlay"></div>
+                    <div class="ku-track-hero__content">
+                      <div class="ku-track-hero__eyebrow">Основной трек</div>
+                      <h3>От логики и базы до реальных Python-проектов</h3>
+                      <p>Для детей, которым важен системный рост: понять основу, а потом применять её в играх, ботах и веб-разработке.</p>
+                    </div>
+                  </div>
+                  <div class="ku-track-side">
+                    <div class="ku-track-stat-grid">
+                      <div class="ku-track-stat">
+                        <strong>Старт</strong>
+                        <span>Python Start</span>
+                      </div>
+                      <div class="ku-track-stat">
+                        <strong>Практика</strong>
+                        <span>Chatbot / Tkinter</span>
+                      </div>
+                      <div class="ku-track-stat">
+                        <strong>Дальше</strong>
+                        <span>Flask / Django</span>
+                      </div>
+                    </div>
+                    <article class="ku-track-card">
+                      <strong>Что внутри</strong>
+                      <p>Условия, циклы, функции, структуры данных, прикладные задачи и плавный переход к полноценной разработке.</p>
+                    </article>
+                    <article class="ku-track-card">
+                      <strong>Кому особенно подойдёт</strong>
+                      <p>Тем, кто любит логику, последовательность и хочет не просто “поиграть”, а научиться строить работающую систему.</p>
+                    </article>
+                    <article class="ku-track-card">
+                      <strong>Связанные курсы</strong>
+                      <p>Python Start, Tkinter, Chatbot, Python Pygame, Flask / Django.</p>
+                    </article>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ku-track-panel" id="track-design" style="--track-panel-accent:#ec4899;" hidden>
+                <div class="ku-track-stage">
+                  <div class="ku-track-hero">
+                    <img src="media/courses/Grah_design.png" alt="Визуальный трек">
+                    <div class="ku-track-hero__overlay"></div>
+                    <div class="ku-track-hero__content">
+                      <div class="ku-track-hero__eyebrow">Основной трек</div>
+                      <h3>От чувства стиля до цифровых визуальных проектов</h3>
+                      <p>Для детей, которые любят красоту, форму, композицию и хотят видеть сильный визуальный результат своей работы.</p>
+                    </div>
+                  </div>
+                  <div class="ku-track-side">
+                    <div class="ku-track-stat-grid">
+                      <div class="ku-track-stat">
+                        <strong>Старт</strong>
+                        <span>Графический дизайн</span>
+                      </div>
+                      <div class="ku-track-stat">
+                        <strong>Рост</strong>
+                        <span>Веб-дизайн</span>
+                      </div>
+                      <div class="ku-track-stat">
+                        <strong>Дальше</strong>
+                        <span>3D / UI</span>
+                      </div>
+                    </div>
+                    <article class="ku-track-card">
+                      <strong>Что внутри</strong>
+                      <p>Композиция, цвет, типографика, визуальная иерархия, интерфейсы и первые цифровые продуктовые решения.</p>
+                    </article>
+                    <article class="ku-track-card">
+                      <strong>Кому особенно подойдёт</strong>
+                      <p>Тем, кому важно не только как что-то работает, но и как это выглядит, ощущается и воспринимается человеком.</p>
+                    </article>
+                    <article class="ku-track-card">
+                      <strong>Связанные курсы</strong>
+                      <p>Графический дизайн, Веб-дизайн, Blender.</p>
+                    </article>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ku-track-panel" id="track-3d" style="--track-panel-accent:#8b5cf6;" hidden>
+                <div class="ku-track-stage">
+                  <div class="ku-track-hero">
+                    <img src="media/courses/blender.png" alt="3D трек">
+                    <div class="ku-track-hero__overlay"></div>
+                    <div class="ku-track-hero__content">
+                      <div class="ku-track-hero__eyebrow">Основной трек</div>
+                      <h3>От первой модели до сцены и портфолио</h3>
+                      <p>Для детей, которым нравится собирать объекты, формы и миры, а не просто наблюдать за готовым результатом.</p>
+                    </div>
+                  </div>
+                  <div class="ku-track-side">
+                    <div class="ku-track-stat-grid">
+                      <div class="ku-track-stat">
+                        <strong>Старт</strong>
+                        <span>Blockbench</span>
+                      </div>
+                      <div class="ku-track-stat">
+                        <strong>Рост</strong>
+                        <span>Blender</span>
+                      </div>
+                      <div class="ku-track-stat">
+                        <strong>Дальше</strong>
+                        <span>Unity</span>
+                      </div>
+                    </div>
+                    <article class="ku-track-card">
+                      <strong>Что внутри</strong>
+                      <p>Модели, персонажи, ассеты, сцены, материалы и связка 3D с игровой или визуальной задачей.</p>
+                    </article>
+                    <article class="ku-track-card">
+                      <strong>Кому особенно подойдёт</strong>
+                      <p>Тем, кто любит объём, форму, пространственное мышление и хочет собирать не плоский, а настоящий мир.</p>
+                    </article>
+                    <article class="ku-track-card">
+                      <strong>Связанные курсы</strong>
+                      <p>Blockbench, Blender, Minecraft-моды, Unity.</p>
+                    </article>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    document.querySelectorAll("[data-filter-set]").forEach(function(section){
+      var buttons = Array.from(section.querySelectorAll("[data-filter]"));
+      var items = Array.from(section.querySelectorAll("[data-tags]"));
+      var focusRows = Array.from(section.querySelectorAll(".ku-course-row"));
+      var focusImage = section.querySelector(".ku-focus-card__image");
+      var focusBadge = section.querySelector(".ku-focus-card__badge");
+      var focusTitle = section.querySelector(".ku-focus-card__title");
+      var focusDesc = section.querySelector(".ku-focus-card__desc");
+      var focusFit = section.querySelector(".ku-focus-fit");
+      var focusFormat = section.querySelector(".ku-focus-format");
+      var focusNext = section.querySelector(".ku-focus-next");
+      if (!buttons.length || !items.length) return;
+
+      function selectCourse(row){
+        if (!row || row.hidden || !focusRows.length) return;
+
+        focusRows.forEach(function(item){
+          var isActive = item === row;
+          item.classList.toggle("is-active", isActive);
+          item.setAttribute("aria-pressed", isActive ? "true" : "false");
+        });
+
+        if (focusImage) {
+          focusImage.src = row.getAttribute("data-focus-image") || focusImage.src;
+          focusImage.alt = row.getAttribute("data-focus-alt") || "";
+        }
+        if (focusBadge) focusBadge.textContent = row.getAttribute("data-focus-badge") || "";
+        if (focusTitle) focusTitle.textContent = row.getAttribute("data-focus-title") || "";
+        if (focusDesc) focusDesc.textContent = row.getAttribute("data-focus-desc") || "";
+        if (focusFit) focusFit.textContent = row.getAttribute("data-focus-fit") || "";
+        if (focusFormat) focusFormat.textContent = row.getAttribute("data-focus-format") || "";
+        if (focusNext) focusNext.textContent = row.getAttribute("data-focus-next") || "";
+      }
+
+      function applyFilter(filter){
+        buttons.forEach(function(button){
+          button.classList.toggle("is-active", button.getAttribute("data-filter") === filter);
+        });
+
+        items.forEach(function(item){
+          if (filter === "all"){
+            item.hidden = false;
+            return;
+          }
+
+          var tags = (item.getAttribute("data-tags") || "").split(/\s+/).filter(Boolean);
+          item.hidden = !tags.includes(filter);
+        });
+
+        if (focusRows.length){
+          var current = focusRows.find(function(row){
+            return row.classList.contains("is-active") && !row.hidden;
+          });
+          var fallback = focusRows.find(function(row){
+            return !row.hidden;
+          });
+          selectCourse(current || fallback || null);
+        }
+      }
+
+      buttons.forEach(function(button){
+        button.addEventListener("click", function(){
+          applyFilter(button.getAttribute("data-filter") || "all");
+        });
+      });
+
+      focusRows.forEach(function(row){
+        row.addEventListener("click", function(){
+          selectCourse(row);
+        });
+      });
+
+      applyFilter("all");
+    });
+
+    document.querySelectorAll("[data-goal-set]").forEach(function(section){
+      var buttons = Array.from(section.querySelectorAll(".ku-goal-tile"));
+      var items = Array.from(section.querySelectorAll(".ku-goal-card"));
+      if (!buttons.length || !items.length) return;
+
+      function applyGoal(filter){
+        buttons.forEach(function(button){
+          button.classList.toggle("is-active", button.getAttribute("data-filter") === filter);
+        });
+
+        items.forEach(function(item){
+          var tags = (item.getAttribute("data-tags") || "").split(/\s+/).filter(Boolean);
+          item.hidden = !tags.includes(filter);
+        });
+      }
+
+      buttons.forEach(function(button){
+        button.addEventListener("click", function(){
+          applyGoal(button.getAttribute("data-filter") || "games");
+        });
+      });
+
+      applyGoal("games");
+    });
+
+    document.querySelectorAll("[data-profile-set]").forEach(function(section){
+      var buttons = Array.from(section.querySelectorAll(".ku-profile-tab"));
+      var panels = Array.from(section.querySelectorAll(".ku-profile-panel"));
+      if (!buttons.length || !panels.length) return;
+
+      function applyProfile(targetId){
+        buttons.forEach(function(button){
+          var isActive = button.getAttribute("data-target") === targetId;
+          button.classList.toggle("is-active", isActive);
+        });
+
+        panels.forEach(function(panel){
+          panel.hidden = panel.id !== targetId;
+        });
+      }
+
+      buttons.forEach(function(button){
+        button.addEventListener("click", function(){
+          applyProfile(button.getAttribute("data-target") || "");
+        });
+      });
+
+      applyProfile(buttons[0].getAttribute("data-target") || "");
+    });
+
+    document.querySelectorAll("[data-track-set]").forEach(function(section){
+      var buttons = Array.from(section.querySelectorAll(".ku-track-chip"));
+      var panels = Array.from(section.querySelectorAll(".ku-track-panel"));
+      if (!buttons.length || !panels.length) return;
+
+      function applyTrack(targetId){
+        buttons.forEach(function(button){
+          var isActive = button.getAttribute("data-target") === targetId;
+          button.classList.toggle("is-active", isActive);
+        });
+
+        panels.forEach(function(panel){
+          panel.hidden = panel.id !== targetId;
+        });
+      }
+
+      buttons.forEach(function(button){
+        button.addEventListener("click", function(){
+          applyTrack(button.getAttribute("data-target") || "");
+        });
+      });
+
+      applyTrack(buttons[0].getAttribute("data-target") || "");
+    });
+  </script>
+</body>
+</html>

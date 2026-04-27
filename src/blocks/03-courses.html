@@ -13,8 +13,49 @@
       </div>
     </div>
 
+    <div class="ku-courses__filters ku-courses__reveal" aria-label="Фильтр курсов">
+      <div class="ku-courses__filters-shell">
+        <button class="ku-courses__filter is-active" type="button" data-filter="all">
+          <span class="ku-courses__filter-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M5 5h5v5H5V5Zm9 0h5v5h-5V5ZM5 14h5v5H5v-5Zm9 0h5v5h-5v-5Z"/></svg>
+          </span>
+          <span>Все курсы</span>
+        </button>
+        <button class="ku-courses__filter" type="button" data-filter="games">
+          <span class="ku-courses__filter-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M8 11h3m-1.5-1.5v3M15.5 10h.01M18 12h.01M7.2 18h9.6c1.76 0 3.2-1.44 3.2-3.2 0-1.05-.52-2.03-1.38-2.62l-.94-5.18A2.2 2.2 0 0 0 15.53 5h-7.06a2.2 2.2 0 0 0-2.17 1.99l-.94 5.18A3.18 3.18 0 0 0 4 14.8C4 16.56 5.44 18 7.2 18Z"/></svg>
+          </span>
+          <span>Создание игр</span>
+        </button>
+        <button class="ku-courses__filter" type="button" data-filter="programming">
+          <span class="ku-courses__filter-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M8 9 5 12l3 3m8-6 3 3-3 3M13 7l-2 10"/></svg>
+          </span>
+          <span>Программирование</span>
+        </button>
+        <button class="ku-courses__filter" type="button" data-filter="modeling">
+          <span class="ku-courses__filter-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="m12 3 7 4-7 4-7-4 7-4Zm7 4v10l-7 4-7-4V7m7 4v10"/></svg>
+          </span>
+          <span>3D моделирование</span>
+        </button>
+        <button class="ku-courses__filter" type="button" data-filter="design">
+          <span class="ku-courses__filter-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="m14.7 4.3 5 5M5 19l3.8-.9L19 7.9a2.1 2.1 0 0 0-3-3L5.9 15.1 5 19Z"/></svg>
+          </span>
+          <span>Дизайн</span>
+        </button>
+        <button class="ku-courses__filter" type="button" data-filter="development">
+          <span class="ku-courses__filter-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 4c2.6 0 4.9 1 6.5 2.7M12 4C9.4 4 7.1 5 5.5 6.7M12 4v16M6 11c0 3.3 2.7 6 6 6s6-2.7 6-6"/></svg>
+          </span>
+          <span>Развитие</span>
+        </button>
+      </div>
+    </div>
+
     <div class="ku-courses__grid">
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#15803d;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="development" style="--accent:#15803d;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/comp_gram.png" alt="Компьютерная грамотность" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -30,7 +71,7 @@
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#22c55e;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="development games" style="--accent:#22c55e;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/ScratchJR.png" alt="Scratch Jr" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -46,7 +87,7 @@
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#16a34a;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="games programming development" style="--accent:#16a34a;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/Scratch.png" alt="Scratch" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -62,7 +103,7 @@
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#4d7c0f;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="modeling games" style="--accent:#4d7c0f;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/Blockbench.png" alt="Blockbench" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -78,7 +119,7 @@
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#f97316;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="modeling design" style="--accent:#f97316;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/blender.png" alt="Blender" width="512" height="512" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -94,7 +135,7 @@
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#d97706;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="games design" style="--accent:#d97706;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/Roblox_design.png" alt="Гейм-дизайн в Roblox" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -110,7 +151,7 @@
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#ea580c;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="games programming" style="--accent:#ea580c;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/Roblox.png" alt="Программирование в Roblox Lua" width="512" height="512" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -126,7 +167,7 @@
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#65a30d;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="games programming modeling" style="--accent:#65a30d;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/mod_minecraft.png" alt="Создание модов в Minecraft" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -142,7 +183,7 @@
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#2563eb;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="programming" style="--accent:#2563eb;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/python_start.png" alt="Python Start" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -158,7 +199,7 @@
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#1d4ed8;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="programming games" style="--accent:#1d4ed8;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/pygame.png" alt="Python Pygame" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -174,7 +215,7 @@
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#0f766e;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="programming" style="--accent:#0f766e;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/tkinter.png" alt="Tkinter" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -190,7 +231,7 @@
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#0891b2;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="programming development" style="--accent:#0891b2;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/chat_bot.png" alt="Chatbot" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -206,7 +247,7 @@
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#0369a1;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="programming" style="--accent:#0369a1;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/django_flusk.png" alt="Flask Django" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -222,7 +263,7 @@
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#0e7490;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="programming design" style="--accent:#0e7490;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/web_program.png" alt="Веб-разработка" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -238,7 +279,7 @@
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#7c3aed;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="games programming modeling" style="--accent:#7c3aed;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/unity.png" alt="Unity" width="512" height="512" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -253,7 +294,7 @@
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#be185d;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="design" style="--accent:#be185d;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/web_design.png" alt="Веб-дизайн" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>
@@ -268,7 +309,7 @@
         <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
-      <article class="ku-catalog-card ku-courses__reveal" style="--accent:#a21caf;">
+      <article class="ku-catalog-card ku-courses__reveal" data-categories="design" style="--accent:#a21caf;">
         <div class="ku-catalog-card__media">
           <img class="ku-catalog-card__image" src="media/courses/Grah_design.png" alt="Графический дизайн" width="627" height="627" loading="lazy" decoding="async">
           <div class="ku-catalog-card__shade"></div>

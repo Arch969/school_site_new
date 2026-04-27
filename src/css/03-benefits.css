@@ -76,6 +76,9 @@
   display:block;
   line-height:1;
 }
+.ku-benefits__mobile-break{
+  display:none;
+}
 .ku-benefits__circle{
   position:absolute;
   z-index:0;
@@ -249,18 +252,26 @@
     text-align:left;
   }
   .ku-benefits__title{
-    font-size:34px;
+    font-size:clamp(23px,7.2vw,29px);
     line-height:1.08;
   }
   .ku-benefits__circle-wrap{
-    padding:.1em .22em .14em;
-    font-size:clamp(25px,8vw,34px);
+    padding:.14em .3em .2em;
+    font-size:clamp(16px,5.5vw,22px);
     max-width:100%;
     transform:none;
+    white-space:normal;
+  }
+  .ku-benefits__circle-text{
+    line-height:1.04;
+  }
+  .ku-benefits__mobile-break{
+    display:inline;
   }
   .ku-benefits__circle{
-    width:calc(100% + .48em);
-    height:1.55em;
+    width:calc(100% + .52em);
+    height:2.18em;
+    top:50%;
   }
   .ku-benefits__lead{
     font-size:16px;

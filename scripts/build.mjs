@@ -14,6 +14,7 @@ const htmlOrder = [
   '08-trust.html',
   '03-courses.html',
   '09-start.html',
+  '04-teachers.html',
   '04-reviews.html',
   '05-membership.html',
   '06-projects.html',
@@ -33,6 +34,7 @@ const assetOrder = [
   '07-stats',
   '06-projects',
   '09-start',
+  '04-teachers',
   '04-reviews',
   '05-membership',
   '03-courses',
@@ -63,9 +65,14 @@ const js = assetOrder
   .join('\n\n');
 
 const heroPreload = '  <link rel="preload" as="image" href="media/hero3.png" fetchpriority="high">\n';
+const fontHeadLinks =
+  '  <link rel="preconnect" href="https://fonts.googleapis.com">\n' +
+  '  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n' +
+  '  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">\n';
+const fontCssImport = '@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap");\n\n';
 
-const tilda = blocks + '\n\n<style>\n' + css + '\n</style>\n\n<script>\n' + js + '\n</script>\n';
-const preview = '<!DOCTYPE html>\n<html lang="ru">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>\u041a\u0438\u0431\u0435\u0440\u0423\u043c</title>\n' + heroPreload + '  <style>\n    body { margin: 0; }\n' + css + '\n  </style>\n</head>\n<body>\n' + blocks + '\n\n<script>\n' + js + '\n</script>\n</body>\n</html>\n';
+const tilda = blocks + '\n\n<style>\n' + fontCssImport + css + '\n</style>\n\n<script>\n' + js + '\n</script>\n';
+const preview = '<!DOCTYPE html>\n<html lang="ru">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>\u041a\u0438\u0431\u0435\u0440\u0423\u043c</title>\n' + heroPreload + fontHeadLinks + '  <style>\n    body { margin: 0; }\n' + css + '\n  </style>\n</head>\n<body>\n' + blocks + '\n\n<script>\n' + js + '\n</script>\n</body>\n</html>\n';
 
 fs.mkdirSync(distDir, { recursive: true });
 fs.writeFileSync(path.join(distDir, 'tilda.html'), tilda, 'utf8');
