@@ -450,19 +450,8 @@
 
 @media (max-width: 760px){
   .ku-hero{
-    min-height:auto;
-    padding:90px 14px 34px;
+    padding:78px 14px 70px;
     border-radius:0;
-  }
-  .ku-hero__layout{
-    gap:6px;
-    align-items:start;
-  }
-  .ku-hero__badge{
-    gap:8px;
-    padding:8px 12px;
-    margin-bottom:16px;
-    font-size:12px;
   }
   .ku-hero::before{
     left:-160px;
@@ -478,75 +467,45 @@
     height:340px;
     filter:blur(26px);
   }
-  .ku-hero__title{
-    margin-bottom:14px;
-    font-size:32px;
-    line-height:1.02;
-  }
-  .ku-hero__underline{
-    bottom:-2px;
-    height:6px;
-  }
-  .ku-hero__text{
-    margin-bottom:18px;
-    font-size:14px;
-    line-height:1.5;
-  }
-  .ku-hero__actions{
-    flex-direction:column;
-    align-items:stretch;
-    gap:10px;
-    margin-bottom:16px;
-  }
-  .ku-btn{
-    width:100%;
-    min-height:50px;
-    padding:0 18px;
-    border-radius:14px;
-    font-size:14px;
-  }
+  .ku-hero__title{ font-size:38px; line-height:1.08; }
+  .ku-hero__text{ font-size:16px; }
+  .ku-hero__actions{ flex-direction:column; align-items:stretch; }
+  .ku-btn{ width:100%; }
   .ku-hero__meta{
     width:100%;
-    max-width:340px;
-    display:flex;
-    flex-wrap:wrap;
-    align-items:center;
-    justify-content:center;
-    gap:8px 14px;
+    max-width:520px;
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px 10px;
     margin:0 auto;
     padding-bottom:0;
+    justify-items:center;
   }
   .ku-hero__meta-item{
-    width:auto;
     min-width:0;
     justify-content:center;
     text-align:center;
-    font-size:10.5px;
-    line-height:1.25;
-    white-space:nowrap;
-  }
-  .ku-hero__right{
-    width:min(100%, 360px);
-    margin:0 auto;
+    font-size:12px;
+    line-height:1.3;
+    white-space:normal;
   }
 
   .ku-visual{
-    min-height:280px;
-    max-width:360px;
+    min-height:470px;
+    max-width:560px;
     width:100%;
-    margin-top:-8px;
   }
   .ku-visual__rings{
     display:none;
   }
   .ku-hero-main{
-    width:102%;
-    height:106%;
+    width:108%;
+    height:112%;
   }
   .ku-hero-main::before,
   .ku-hero-main::after{
-    opacity:.9;
-    filter:blur(9px);
+    opacity:.96;
+    filter:blur(11px);
   }
   .ku-hero-main::before{
     left:17%;
@@ -562,8 +521,8 @@
   }
   .ku-visual::before,
   .ku-visual::after{
-    filter:blur(26px);
-    opacity:.38;
+    filter:blur(34px);
+    opacity:.45;
   }
   .ku-visual::before{
     left:-6%;
@@ -578,36 +537,33 @@
     height:42%;
   }
   .ku-hero-icon{
-    width:76px;
-    height:76px;
+    width:108px;
+    height:108px;
     padding:0;
   }
   .ku-hero-icon--python{
-    left:2%;
-    top:7%;
+    left:-1%;
+    top:6%;
   }
   .ku-hero-icon--scratch{
-    right:3%;
-    top:7%;
+    right:1%;
+    top:5%;
   }
   .ku-hero-icon--three-d{
-    right:0;
-    top:43%;
+    right:-4%;
+    top:41%;
   }
   .ku-hero-icon--ai{
-    right:17%;
-    bottom:8%;
+    right:16%;
+    bottom:6%;
   }
   .ku-hero-icon--roblox{
-    left:0;
-    top:40%;
+    left:-6%;
+    top:36%;
   }
   .ku-hero-icon--design{
-    left:7%;
-    bottom:10%;
-  }
-  .ku-hero__wave svg{
-    height:24px;
+    left:4%;
+    bottom:11%;
   }
 }
 

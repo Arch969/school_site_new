@@ -1618,31 +1618,127 @@ body.ku-trial-modal-open{
 }
 @media (max-width:760px){
   .ku-stats{
-    padding:64px 14px;
+    padding:52px 14px 56px;
     border-radius:24px;
   }
   .ku-stats__head{
-    text-align:left;
-    margin-bottom:28px;
+    max-width:420px;
+    text-align:center;
+    margin-bottom:22px;
+  }
+  .ku-stats__badge{
+    min-height:30px;
+    padding:7px 12px;
+    font-size:12px;
+    margin-bottom:12px;
   }
   .ku-stats__title{
-    font-size:34px;
-    line-height:1.08;
+    font-size:30px;
+    line-height:1.06;
   }
   .ku-stats__featured,
   .ku-stats__mini{
+    width:min(100%, 360px);
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .ku-stats__featured{
     grid-template-columns:1fr;
-    gap:12px;
+    gap:9px;
+  }
+  .ku-stats__mini{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    margin-top:13px;
+    padding:11px;
+    border-radius:18px;
+    background:rgba(255,255,255,.72);
+    border:1px solid rgba(148,163,184,.18);
+    box-shadow:0 16px 36px -32px rgba(15,23,42,.34);
+    backdrop-filter:blur(10px);
   }
   .ku-stat-feature{
-    min-height:154px;
-    padding:22px;
+    min-height:96px;
+    padding:13px 14px;
+    border-radius:12px;
   }
-  .ku-stat-feature__icon{ margin-bottom:18px; }
+  .ku-stat-feature::before{
+    width:84px;
+    height:84px;
+    right:-34px;
+    top:-34px;
+  }
+  .ku-stat-feature::after{
+    width:76px;
+    height:76px;
+    left:-32px;
+    bottom:-42px;
+  }
+  .ku-stat-feature__icon{
+    position:absolute;
+    top:12px;
+    right:12px;
+    width:30px;
+    height:30px;
+    margin:0;
+    border-radius:9px;
+    opacity:.9;
+  }
+  .ku-stat-feature__icon svg{
+    width:17px;
+    height:17px;
+  }
+  .ku-stat-feature__number{
+    padding-right:38px;
+    font-size:28px;
+    line-height:1;
+    letter-spacing:0;
+  }
+  .ku-stat-feature__label{
+    margin-top:5px;
+    font-size:14px;
+    line-height:1.12;
+  }
+  .ku-stat-feature__hint{
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+    margin-top:5px;
+    font-size:10px;
+    line-height:1.25;
+  }
   .ku-stat-mini{
-    min-height:58px;
-    align-items:flex-start;
+    min-height:0;
+    flex:0 1 auto;
+    display:inline-flex;
+    flex-direction:row;
+    align-items:baseline;
+    justify-content:center;
+    gap:5px;
+    padding:7px 10px;
+    border-radius:999px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.98), rgba(248,250,252,.94));
+    border:1px solid rgba(148,163,184,.2);
+    box-shadow:none;
+    text-align:center;
+  }
+  .ku-stat-mini strong{
+    font-size:15px;
+    line-height:1;
+    letter-spacing:0;
+    flex:0 0 auto;
+  }
+  .ku-stat-mini span{
+    margin-top:0;
+    font-size:9px;
+    line-height:1;
     text-align:left;
+    white-space:nowrap;
   }
 }
 @media (prefers-reduced-motion: reduce){
@@ -2289,7 +2385,7 @@ body.ku-trial-modal-open{
   }
   .ku-start-card{
     min-height:auto;
-    padding:62px 20px 20px;
+    padding:54px 20px 20px;
   }
   .ku-start-card__number{
     left:24px;
@@ -2313,155 +2409,39 @@ body.ku-trial-modal-open{
 .ku-teachers{
   position:relative;
   overflow:hidden;
-  padding:84px 12px 58px;
-  border-radius:40px;
+  padding:80px 18px 56px;
+  border-radius:36px;
   background:
-    radial-gradient(340px 320px at 5% 7%, rgba(74,120,255,.17), transparent 72%),
-    radial-gradient(340px 320px at 95% 10%, rgba(255,95,95,.16), transparent 72%),
+    radial-gradient(320px 240px at 10% 8%, rgba(74,120,255,.12), transparent 72%),
+    radial-gradient(320px 240px at 90% 12%, rgba(255,95,95,.10), transparent 72%),
     linear-gradient(180deg,#ffffff 0%,#fbfdff 100%);
-  box-shadow:0 26px 70px -54px rgba(15,23,42,.28);
+  box-shadow:0 28px 72px -54px rgba(15,23,42,.24);
 }
 
 .ku-teachers::before{
   content:"";
   position:absolute;
-  inset:12px 0 auto;
+  inset:12px 24px auto;
   height:3px;
   border-radius:999px;
-  background:linear-gradient(90deg,#2462ff 0%,#8b39ff 54%,#ff4e5d 100%);
-  pointer-events:none;
-}
-
-.ku-teachers__gridbg{
-  position:absolute;
-  inset:0;
-  opacity:.2;
-  background-image:radial-gradient(rgba(37,99,235,.15) 1px, transparent 1px);
-  background-size:22px 22px;
-  -webkit-mask-image:radial-gradient(circle at center, rgba(0,0,0,.32), rgba(0,0,0,.05) 66%, transparent 100%);
-  mask-image:radial-gradient(circle at center, rgba(0,0,0,.32), rgba(0,0,0,.05) 66%, transparent 100%);
-  pointer-events:none;
-}
-
-.ku-teachers__glow{
-  position:absolute;
-  border-radius:50%;
-  filter:blur(80px);
-  pointer-events:none;
-}
-
-.ku-teachers__glow--blue{
-  left:-80px;
-  top:56px;
-  width:220px;
-  height:220px;
-  background:rgba(74,120,255,.26);
-}
-
-.ku-teachers__glow--red{
-  right:-90px;
-  top:58px;
-  width:240px;
-  height:240px;
-  background:rgba(255,95,95,.20);
-}
-
-.ku-teachers__arc{
-  position:absolute;
-  border-radius:50%;
-  border:1.5px dashed rgba(184,196,226,.76);
-  pointer-events:none;
-}
-
-.ku-teachers__arc--left{
-  left:-118px;
-  bottom:62px;
-  width:230px;
-  height:230px;
-  border-top-color:transparent;
-  border-right-color:transparent;
-}
-
-.ku-teachers__arc--right{
-  right:80px;
-  top:210px;
-  width:170px;
-  height:170px;
-  border-bottom-color:transparent;
-  border-left-color:transparent;
-}
-
-.ku-teachers__bubble{
-  position:absolute;
-  z-index:1;
-  width:78px;
-  height:78px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:rgba(255,255,255,.98);
-  border:1px solid rgba(221,229,244,.96);
-  border-radius:22px;
-  box-shadow:0 18px 40px -30px rgba(15,23,42,.28);
-  pointer-events:none;
-}
-
-.ku-teachers__bubble svg{
-  width:34px;
-  height:34px;
-}
-
-.ku-teachers__bubble--code{
-  left:10px;
-  top:56%;
-  color:#2d69ff;
-}
-
-.ku-teachers__bubble--heart{
-  left:28px;
-  bottom:18px;
-  color:#ff6172;
-}
-
-.ku-teachers__bubble--cap{
-  right:32px;
-  top:180px;
-  color:#ff5e6c;
-  transform:rotate(12deg);
+  background:linear-gradient(90deg,#2462ff 0%,#6d5cff 48%,#ff5768 100%);
 }
 
 .ku-teachers__container{
-  position:relative;
-  z-index:2;
-  width:min(100%, 1480px);
+  width:min(100%, 1320px);
   margin:0 auto;
 }
 
 .ku-teachers__head{
-  max-width:980px;
-  margin:0 auto 34px;
+  max-width:760px;
+  margin:0 auto 32px;
   text-align:center;
-}
-
-.ku-teachers__badge{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:40px;
-  padding:10px 22px;
-  border-radius:999px;
-  background:rgba(255,97,114,.10);
-  color:#ff4e5d;
-  font-size:14px;
-  line-height:1;
-  font-weight:600;
-  margin-bottom:22px;
 }
 
 .ku-teachers__title{
   margin:0;
   font-family:Montserrat,Inter,sans-serif;
-  font-size:clamp(44px,5.4vw,78px);
+  font-size:clamp(42px,5vw,72px);
   line-height:1.02;
   font-weight:900;
   color:#111b35;
@@ -2476,423 +2456,128 @@ body.ku-trial-modal-open{
 
 .ku-teachers__text{
   margin:16px auto 0;
-  max-width:980px;
-  font-size:16px;
+  max-width:680px;
+  color:#526a92;
+  font-size:17px;
   line-height:1.6;
-  color:#4b6698;
   font-weight:500;
 }
 
-.ku-teachers__layout{
-  display:grid;
-  grid-template-columns:minmax(0, 1.08fr) minmax(0, 1.02fr) 272px;
-  grid-template-rows:234px 234px;
-  gap:18px;
-  align-items:start;
+.ku-teachers__carousel{
+  position:relative;
+  padding:0 72px;
 }
 
-.ku-teachers__dots-nav{
+.ku-teachers__viewport{
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  scrollbar-width:none;
+}
+
+.ku-teachers__viewport::-webkit-scrollbar{
   display:none;
 }
 
-.ku-icon{
-  width:16px;
-  height:16px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  flex:0 0 16px;
+.ku-teachers__track{
+  display:flex;
+  gap:22px;
+  align-items:stretch;
 }
 
-.ku-icon svg{
-  width:100%;
-  height:100%;
+.ku-teachers__arrow{
+  position:absolute;
+  top:162px;
+  z-index:2;
+  width:54px;
+  height:54px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0;
+  border:0;
+  border-radius:50%;
+  background:#fff;
+  color:#1f4fe0;
+  box-shadow:0 18px 34px -24px rgba(15,23,42,.28);
+  transition:transform .2s ease, background-color .2s ease, color .2s ease, opacity .2s ease;
+}
+
+.ku-teachers__arrow:hover{
+  transform:translateY(-2px);
+  background:#1f4fe0;
+  color:#fff;
+}
+
+.ku-teachers__arrow:disabled{
+  opacity:.36;
+  pointer-events:none;
+}
+
+.ku-teachers__arrow svg{
+  width:22px;
+  height:22px;
+}
+
+.ku-teachers__arrow--prev{
+  left:0;
+}
+
+.ku-teachers__arrow--next{
+  right:0;
+}
+
+.ku-teachers__dots-nav{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-top:22px;
+}
+
+.ku-teachers__dot{
+  width:12px;
+  height:12px;
+  padding:0;
+  border:0;
+  border-radius:999px;
+  background:rgba(191,203,226,.92);
+  transition:width .2s ease, background-color .2s ease;
+}
+
+.ku-teachers__dot.is-active{
+  width:34px;
+  background:linear-gradient(90deg,#2362ff 0%,#ff5f5f 100%);
 }
 
 .ku-teacher-card{
-  position:relative;
-}
-
-.ku-teacher-card__dots{
-  position:absolute;
-  width:62px;
-  height:62px;
-  background-image:radial-gradient(currentColor 1.5px, transparent 1.5px);
-  background-size:12px 12px;
-  opacity:.28;
-  pointer-events:none;
-}
-
-.ku-teacher-card--lead{
-  display:grid;
-  grid-template-columns:304px minmax(0,1fr);
-  gap:14px;
-  min-height:458px;
-  grid-column:1;
-  grid-row:1 / span 2;
-}
-
-.ku-teacher-card__lead-photo{
-  position:relative;
-  overflow:hidden;
-  min-height:458px;
+  flex:0 0 calc((100% - 44px) / 3);
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  padding:14px;
   border-radius:30px;
-  background:linear-gradient(#fff,#fff) padding-box, linear-gradient(180deg,#8cb7ff 0%,#2f67ff 100%) border-box;
-  border:3.8px solid transparent;
-  clip-path:polygon(0 30px, 30px 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%);
-  box-shadow:0 22px 48px -34px rgba(31,75,193,.34);
+  background:#fff;
+  border:1px solid rgba(220,228,243,.96);
+  box-shadow:0 22px 42px -32px rgba(15,23,42,.18);
+  scroll-snap-align:start;
 }
 
-.ku-teacher-card__lead-photo img{
-  width:100%;
-  height:100%;
-  display:block;
-  object-fit:cover;
-}
-
-.ku-teacher-card__lead-photo::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:0;
-  width:106px;
-  height:106px;
-  background:linear-gradient(135deg,#2d69ff 0%,#124ddb 100%);
-  clip-path:polygon(0 0,100% 100%,0 100%);
-}
-
-.ku-teacher-card__dots--lead{
-  left:18px;
-  bottom:18px;
-  color:#fff;
-  opacity:.84;
-}
-
-.ku-teacher-card__panel{
+.ku-teacher-card__photo-frame{
   position:relative;
-  overflow:hidden;
-  background:rgba(255,255,255,.98);
-  box-shadow:0 22px 44px -34px rgba(15,23,42,.22);
-}
-
-.ku-teacher-card__panel--lead{
-  min-height:458px;
-  padding:22px 24px 18px;
-  background:linear-gradient(#fff,#fff) padding-box, linear-gradient(180deg,#d8e8ff 0%,#86acff 100%) border-box;
-  border:3.8px solid transparent;
-  border-radius:30px;
-  clip-path:polygon(0 30px, 30px 0, calc(100% - 34px) 0, 100% 34px, 100% calc(100% - 26px), calc(100% - 26px) 100%, 0 100%);
-}
-
-.ku-teacher-card__panel--lead::before{
-  content:"";
-  position:absolute;
-  left:-10px;
-  top:38px;
-  width:48px;
-  height:2px;
-  background:#4d7aff;
-}
-
-.ku-teacher-card__panel--lead::after{
-  content:"";
-  position:absolute;
-  right:0;
-  bottom:0;
-  width:30px;
-  height:30px;
-  background:linear-gradient(135deg,transparent 48%, rgba(167,196,255,.85) 49%);
-  pointer-events:none;
-}
-
-.ku-teacher-card__dots--lead-panel{
-  right:30px;
-  top:52px;
-  color:#c4d3ef;
-}
-
-.ku-teacher-card__eyebrow{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  font-size:13px;
-  line-height:1;
-  font-weight:600;
-}
-
-.ku-teacher-card__eyebrow--pill{
-  min-height:36px;
-  padding:0 14px;
-  border-radius:999px;
-  background:#f2f6ff;
-  color:#2e67ff;
-  margin-bottom:20px;
-}
-
-.ku-teacher-card__eyebrow--plain{
-  margin-bottom:14px;
-}
-
-.ku-teacher-card__eyebrow--violet{
-  color:#8d31ff;
-}
-
-.ku-teacher-card__eyebrow--orange{
-  color:#ff623b;
-}
-
-.ku-teacher-card__eyebrow--blue{
-  color:#2e67ff;
-}
-
-.ku-teacher-card__name{
-  margin:0 0 10px;
-  font-family:Montserrat,Inter,sans-serif;
-  font-size:clamp(25px,1.75vw,34px);
-  line-height:1.05;
-  font-weight:900;
-  color:#111b35;
-}
-
-.ku-teacher-card__name--lead{
-  margin-bottom:10px;
-  font-size:clamp(36px,2.55vw,50px);
-  line-height:1.02;
-}
-
-.ku-teacher-card__name--slim{
-  font-size:clamp(24px,2vw,34px);
-}
-
-.ku-teacher-card__tags{
-  display:flex;
-  flex-wrap:wrap;
-  gap:16px;
-  margin-bottom:12px;
-  color:#4f6792;
-  font-size:14px;
-  line-height:1.4;
-  font-weight:500;
-}
-
-.ku-teacher-card__tags--blue{
-  margin-bottom:16px;
-  color:#2e67ff;
-  font-size:15px;
-}
-
-.ku-teacher-card__tags span{
-  position:relative;
-}
-
-.ku-teacher-card__tags span:not(:last-child)::after{
-  content:"•";
-  position:absolute;
-  right:-10px;
-  top:50%;
-  transform:translateY(-50%);
-  color:#9fb2d8;
-}
-
-.ku-teacher-card__stats{
-  margin-bottom:12px;
-}
-
-.ku-teacher-card__stats--stack{
-  display:grid;
-  gap:8px;
-  max-width:188px;
-}
-
-.ku-teacher-card__stats--inline{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-}
-
-.ku-teacher-card__stat{
-  min-height:40px;
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:0 12px;
-  border-radius:12px;
-  background:#fff;
-  border:1px solid #d9e4f7;
-  color:#50678f;
-  font-size:13px;
-  line-height:1;
-  font-weight:500;
-  box-shadow:0 12px 20px -24px rgba(15,23,42,.26);
-}
-
-.ku-teacher-card__quote-mark{
-  margin:12px 0 0;
-  font-family:Georgia,serif;
-  font-size:54px;
-  line-height:.7;
-  color:#4a72ff;
-}
-
-.ku-teacher-card__quote{
-  margin:0;
-  max-width:260px;
-  font-size:14px;
-  line-height:1.48;
-  color:#546983;
-  font-weight:500;
-}
-
-.ku-teacher-card__skills{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:16px;
-}
-
-.ku-skill-chip{
-  min-height:40px;
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:0 12px;
-  border-radius:14px;
-  background:#fff;
-  border:1px solid #d9e4f7;
-  box-shadow:0 12px 20px -24px rgba(15,23,42,.26);
-  color:#2c4166;
-  font-size:13px;
-  line-height:1;
-  font-weight:500;
-}
-
-.ku-skill-chip img{
-  width:20px;
-  height:20px;
-  object-fit:contain;
-  display:block;
-}
-
-.ku-skill-chip__badge{
-  width:18px;
-  height:18px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  flex:0 0 18px;
-  border-radius:5px;
-  font-size:9px;
-  line-height:1;
-  font-weight:700;
-}
-
-.ku-skill-chip--figma .ku-skill-chip__badge{
-  border-radius:6px;
-  background:
-    radial-gradient(circle at 50% 18%, #f24e1e 0 31%, transparent 33%),
-    radial-gradient(circle at 50% 50%, #a259ff 0 31%, transparent 33%),
-    radial-gradient(circle at 50% 82%, #1abcfe 0 31%, transparent 33%),
-    radial-gradient(circle at 18% 34%, #ff7262 0 30%, transparent 32%),
-    radial-gradient(circle at 82% 34%, #0acf83 0 30%, transparent 32%);
-}
-
-.ku-skill-chip--ps .ku-skill-chip__badge{
-  background:#03213f;
-  color:#65c3ff;
-}
-
-.ku-skill-chip--blender .ku-skill-chip__badge,
-.ku-skill-chip--blockbench .ku-skill-chip__badge{
-  position:relative;
-  border-radius:50%;
-}
-
-.ku-skill-chip--blender .ku-skill-chip__badge{
-  background:linear-gradient(135deg,#ff9d2f,#ff6a00);
-}
-
-.ku-skill-chip--blender .ku-skill-chip__badge::before{
-  content:"";
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:#fff;
-}
-
-.ku-skill-chip--blockbench .ku-skill-chip__badge{
-  background:linear-gradient(135deg,#66c0ff,#2f7bff);
-}
-
-.ku-skill-chip--blockbench .ku-skill-chip__badge::before{
-  content:"";
-  width:8px;
-  height:8px;
-  border-radius:2px;
-  background:#fff;
-  transform:rotate(45deg);
-}
-
-.ku-teacher-card--wide{
-  display:grid;
-  min-height:0;
-  height:100%;
-  overflow:hidden;
+  padding:4px;
+  margin-bottom:18px;
   border-radius:26px;
-  background:linear-gradient(#fff,#fff) padding-box, linear-gradient(90deg,var(--teacher-border-start),var(--teacher-border-end)) border-box;
-  border:3.8px solid transparent;
-  box-shadow:0 22px 42px -30px rgba(15,23,42,.22);
+  background:linear-gradient(135deg,#2f67ff 0%,#6a53ff 42%,#ff5f5f 100%);
 }
 
-.ku-teacher-card--violet{
-  --teacher-border-start:#d9bcff;
-  --teacher-border-end:#8e36ff;
-  grid-template-columns:minmax(0,1fr) 270px;
-  clip-path:polygon(0 24px, 24px 0, calc(100% - 24px) 0, 100% 24px, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%);
-  grid-column:2;
-  grid-row:1;
-}
-
-.ku-teacher-card--orange{
-  --teacher-border-start:#ff8b68;
-  --teacher-border-end:#ff6a43;
-  grid-template-columns:230px minmax(0,1fr);
-  clip-path:polygon(0 24px, 24px 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%);
-  grid-column:2;
-  grid-row:2;
-}
-
-.ku-teacher-card__panel--wide{
-  padding:14px 20px 14px;
-  box-shadow:none;
-}
-
-.ku-teacher-card--violet .ku-teacher-card__panel--wide::after,
-.ku-teacher-card--orange .ku-teacher-card__panel--wide::after{
-  content:"";
-  position:absolute;
-  top:0;
-  bottom:0;
-  width:20px;
-  background:#fff;
-  pointer-events:none;
-}
-
-.ku-teacher-card--violet .ku-teacher-card__panel--wide::after{
-  right:-1px;
-  clip-path:polygon(100% 0,0 48%,100% 100%);
-}
-
-.ku-teacher-card--orange .ku-teacher-card__panel--wide::after{
-  left:-1px;
-  clip-path:polygon(0 0,100% 52%,0 100%);
-}
-
-.ku-teacher-card__media{
-  position:relative;
+.ku-teacher-card__photo{
   overflow:hidden;
+  border-radius:22px;
+  background:#edf3ff;
+  aspect-ratio:1 / 1.05;
 }
 
-.ku-teacher-card__media img{
+.ku-teacher-card__photo img{
   width:100%;
   height:100%;
   display:block;
@@ -2900,174 +2585,26 @@ body.ku-trial-modal-open{
   object-position:center top;
 }
 
-.ku-teacher-card__media--violet{
-  background:linear-gradient(135deg,#cfb2ff,#9552ff);
-}
-
-.ku-teacher-card__media--violet::before{
-  display:none;
-}
-
-.ku-teacher-card__media--violet::after{
-  content:"";
-  position:absolute;
-  left:0;
-  top:0;
-  width:108px;
-  height:14px;
-  background:linear-gradient(90deg,#a458ff,#cfb3ff);
-  clip-path:polygon(14px 0,100% 0,86% 100%,0 100%);
-  z-index:2;
-}
-
-.ku-teacher-card__media--orange{
-  background:linear-gradient(135deg,#ff7246,#ff5b36);
-}
-
-.ku-teacher-card__media--orange::before{
-  display:none;
-}
-
-.ku-teacher-card__media--orange::after{
-  content:"";
-  position:absolute;
-  left:0;
-  top:0;
-  width:78px;
-  height:18px;
-  background:linear-gradient(90deg,#ff7b55,#ff5d39);
-  clip-path:polygon(0 0,100% 0,78% 100%,0 100%);
-  z-index:2;
-}
-
-.ku-teacher-card__dots--violet{
-  display:none;
-}
-
-.ku-teacher-card__dots--orange-left{
-  display:none;
-}
-
-.ku-teacher-card__dots--orange-right{
-  right:18px;
-  top:22px;
-  color:#c8d5ef;
-}
-
-.ku-teacher-card--slim{
-  position:relative;
-  min-height:458px;
-  overflow:hidden;
-  border-radius:26px;
-  background:linear-gradient(#fff,#fff) padding-box, linear-gradient(180deg,#dce9ff 0%,#8ab7ff 100%) border-box;
-  border:3.8px solid transparent;
-  box-shadow:0 20px 38px -30px rgba(15,23,42,.2);
-  clip-path:polygon(0 24px, 24px 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
-  grid-column:3;
-  grid-row:1 / span 2;
-}
-
-.ku-teacher-card--slim::before{
-  content:"";
-  position:absolute;
-  top:0;
-  right:0;
-  width:36px;
-  height:36px;
-  background:linear-gradient(135deg,#d6e6ff,#93bdff);
-  clip-path:polygon(100% 0,0 0,100% 100%);
-  z-index:3;
-}
-
-.ku-teacher-card__media--slim{
-  margin:12px 12px 0;
-  height:154px;
-  background:#eef4ff;
-  clip-path:polygon(10% 0,100% 0,100% 82%,90% 100%,0 100%,0 12%);
-  border-radius:22px;
-}
-
-.ku-teacher-card__panel--slim{
-  padding:14px 14px 16px;
-  box-shadow:none;
-  background:transparent;
-}
-
-.ku-teacher-card__dots--slim{
-  right:16px;
-  bottom:14px;
-  color:#d2ddf4;
-}
-
-.ku-teachers__stats{
-  width:max-content;
-  max-width:100%;
+.ku-teacher-card__body{
   display:flex;
-  align-items:center;
-  margin:24px auto 0;
-  border-radius:28px;
-  background:rgba(255,255,255,.97);
-  border:1px solid rgba(222,230,244,.96);
-  box-shadow:0 22px 44px -34px rgba(15,23,42,.22);
-  overflow:hidden;
+  flex:1 1 auto;
+  flex-direction:column;
 }
 
-.ku-teachers__stat{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  min-width:220px;
-  padding:18px 24px;
-}
-
-.ku-teachers__stat + .ku-teachers__stat{
-  border-left:1px solid rgba(222,230,244,.96);
-}
-
-.ku-teachers__stat-icon{
-  width:44px;
-  height:44px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:14px;
-}
-
-.ku-teachers__stat-icon svg{
-  width:24px;
-  height:24px;
-}
-
-.ku-teachers__stat-icon--blue{
-  background:#eef4ff;
-  color:#2f67ff;
-}
-
-.ku-teachers__stat-icon--violet{
-  background:#f4ebff;
-  color:#914dff;
-}
-
-.ku-teachers__stat-icon--rose{
-  background:#fff0f3;
-  color:#ff6674;
-}
-
-.ku-teachers__stat strong{
-  display:block;
+.ku-teacher-card__name{
+  margin:0 0 12px;
   font-family:Montserrat,Inter,sans-serif;
-  font-size:20px;
-  line-height:1;
+  font-size:clamp(24px,1.8vw,31px);
+  line-height:1.08;
   font-weight:900;
   color:#111b35;
 }
 
-.ku-teachers__stat span{
-  display:block;
-  margin-top:6px;
-  font-size:13px;
-  line-height:1.35;
-  color:#5a6f93;
+.ku-teacher-card__description{
+  margin:0;
+  color:#566d8c;
+  font-size:15px;
+  line-height:1.6;
   font-weight:500;
 }
 
@@ -3082,233 +2619,76 @@ body.ku-trial-modal-open{
   transform:none;
 }
 
-@media (max-width:1320px){
-  .ku-teachers__layout{
-    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-    grid-template-rows:auto auto auto;
-  }
-
-  .ku-teacher-card--lead{
-    grid-column:1 / -1;
-    grid-row:auto;
-  }
-
-  .ku-teacher-card--violet{
-    grid-column:1;
-    grid-row:auto;
-  }
-
-  .ku-teacher-card--orange{
-    grid-column:2;
-    grid-row:auto;
-  }
-
-  .ku-teacher-card--slim{
-    display:grid;
-    grid-template-columns:240px minmax(0,1fr);
-    grid-column:1 / -1;
-    grid-row:auto;
-  }
-
-  .ku-teacher-card__media--slim{
-    margin:12px 0 12px 12px;
-    height:100%;
-    min-height:196px;
+@media (max-width:1080px){
+  .ku-teacher-card{
+    flex-basis:calc((100% - 22px) / 2);
   }
 }
 
 @media (max-width:860px){
   .ku-teachers{
-    padding:72px 14px 52px;
-    border-radius:26px;
+    padding:68px 14px 48px;
+    border-radius:28px;
   }
 
   .ku-teachers::before{
-    inset:8px 0 auto;
-  }
-
-  .ku-teachers__bubble,
-  .ku-teachers__arc{
-    display:none;
-  }
-
-  .ku-teachers__head{
-    margin-bottom:28px;
+    inset:8px 14px auto;
   }
 
   .ku-teachers__title{
-    font-size:clamp(34px,11vw,50px);
+    font-size:clamp(34px,10vw,50px);
   }
 
   .ku-teachers__text{
     font-size:15px;
   }
 
-  .ku-teachers__layout{
-    display:flex;
-    grid-template-columns:none;
-    grid-template-rows:none;
-    gap:16px;
-    overflow-x:auto;
-    scroll-snap-type:x mandatory;
-    scroll-behavior:smooth;
-    padding:0 2px 6px;
-    scrollbar-width:none;
+  .ku-teachers__carousel{
+    padding:0 50px;
   }
 
-  .ku-teachers__layout::-webkit-scrollbar{
-    display:none;
+  .ku-teachers__arrow{
+    top:138px;
+    width:44px;
+    height:44px;
   }
 
-  .ku-teachers__layout > .ku-teacher-card{
-    flex:0 0 100%;
-    min-width:0;
-    scroll-snap-align:start;
-    grid-column:auto;
-    grid-row:auto;
+  .ku-teacher-card{
+    flex-basis:78%;
   }
+}
 
-  .ku-teachers__dots-nav{
-    display:flex;
-    justify-content:center;
-    gap:16px;
-    margin-top:14px;
-  }
-
-  .ku-teachers__dots-nav[hidden]{
-    display:none;
-  }
-
-  .ku-teachers__dot{
-    width:10px;
-    height:10px;
-    border:0;
-    border-radius:50%;
+@media (max-width:560px){
+  .ku-teachers__carousel{
     padding:0;
-    background:rgba(191,203,226,.92);
-    box-shadow:none;
   }
 
-  .ku-teachers__dot.is-active{
-    background:#2f67ff;
+  .ku-teachers__arrow{
+    display:none;
   }
 
-  .ku-teacher-card--lead,
-  .ku-teacher-card--violet,
-  .ku-teacher-card--orange,
-  .ku-teacher-card--slim{
-    display:flex;
-    flex-direction:column;
-    min-height:auto;
-    clip-path:none;
+  .ku-teacher-card{
+    flex-basis:84%;
+    padding:12px;
     border-radius:24px;
-    background:linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg,#2f67ff 0%,#8d38ff 56%,#ff7648 100%) border-box;
-    border:2.4px solid transparent;
-    box-shadow:0 20px 38px -28px rgba(15,23,42,.18);
   }
 
-  .ku-teachers__layout > .ku-teacher-card > .ku-teacher-card__lead-photo,
-  .ku-teachers__layout > .ku-teacher-card > .ku-teacher-card__media{
-    order:1;
-    min-height:224px;
-    height:224px;
-    margin:10px 10px 0;
-    clip-path:none;
-    border-radius:18px;
-    background:#eff5ff;
-    overflow:hidden;
+  .ku-teacher-card__photo-frame{
+    border-radius:22px;
   }
 
-  .ku-teachers__layout > .ku-teacher-card > .ku-teacher-card__panel{
-    order:2;
-    min-height:auto;
-    padding:16px 16px 18px;
-    clip-path:none;
-    border-radius:0;
-    border:0;
-    background:transparent;
-    box-shadow:none;
-  }
-
-  .ku-teacher-card__name--lead,
-  .ku-teacher-card__name,
-  .ku-teacher-card__name--slim{
-    font-size:30px;
-    line-height:1.06;
-    margin-bottom:10px;
-  }
-
-  .ku-teacher-card__tags,
-  .ku-teacher-card__tags--blue{
-    gap:14px;
-    margin-bottom:12px;
-    font-size:14px;
-    color:#4f6792;
-  }
-
-  .ku-teacher-card__stats--stack,
-  .ku-teacher-card__stats--inline{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:8px;
-    max-width:none;
-    margin-bottom:12px;
-  }
-
-  .ku-teacher-card__quote-mark{
-    display:none;
-  }
-
-  .ku-teacher-card__quote{
-    max-width:none;
-    font-size:14px;
-    line-height:1.5;
-    margin-bottom:0;
-  }
-
-  .ku-teacher-card__stat{
-    min-height:42px;
-    font-size:13px;
-    padding:0 12px;
-  }
-
-  .ku-skill-chip{
-    min-height:40px;
-    font-size:13px;
-    padding:0 12px;
-  }
-
-  .ku-teacher-card__lead-photo::after,
-  .ku-teacher-card__panel--lead::before,
-  .ku-teacher-card__panel--lead::after,
-  .ku-teacher-card__media::before,
-  .ku-teacher-card__media::after,
-  .ku-teacher-card--slim::before,
-  .ku-teachers__layout .ku-teacher-card__dots{
-    display:none;
-  }
-
-  .ku-teachers__layout > .ku-teacher-card > .ku-teacher-card__media img,
-  .ku-teachers__layout > .ku-teacher-card > .ku-teacher-card__lead-photo img{
+  .ku-teacher-card__photo{
     border-radius:18px;
   }
 
-  .ku-teachers__stats{
-    width:100%;
-    flex-direction:column;
-    align-items:stretch;
-    margin-top:18px;
+  .ku-teacher-card__name{
+    white-space:nowrap;
+    font-size:clamp(21px,6.1vw,25px);
+    line-height:1.04;
   }
 
-  .ku-teachers__stat{
-    min-width:0;
-    width:100%;
-    padding:16px 18px;
-  }
-
-  .ku-teachers__stat + .ku-teachers__stat{
-    border-left:0;
-    border-top:1px solid rgba(222,230,244,.96);
+  .ku-teacher-card__description{
+    font-size:14px;
   }
 }
 
@@ -4341,10 +3721,10 @@ body.ku-trial-modal-open{
   }
   .ku-courses__filters-shell{
     display:grid;
-    grid-template-columns:repeat(3,minmax(0,1fr));
+    grid-template-columns:repeat(2,minmax(0,1fr));
     width:100%;
-    gap:8px;
-    padding:10px;
+    gap:10px;
+    padding:12px;
     border-radius:24px;
   }
   .ku-courses__filters-shell::before,
@@ -4354,8 +3734,8 @@ body.ku-trial-modal-open{
   }
   .ku-courses__filter{
     min-width:0;
-    min-height:78px;
-    padding:10px 8px 11px;
+    min-height:86px;
+    padding:12px 10px 13px;
     border-radius:18px;
     flex-direction:column;
     gap:7px;
@@ -4372,15 +3752,63 @@ body.ku-trial-modal-open{
   .ku-courses__filter span:last-child{
     white-space:normal;
     text-align:center;
-    font-size:11px;
+    font-size:12px;
+    line-height:1.18;
+    text-wrap:balance;
+  }
+  .ku-courses__grid{ grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+  .ku-courses__title{ font-size:34px; line-height:1.08; white-space:normal; }
+  .ku-catalog-card{ border-radius:20px; }
+  .ku-catalog-card__shade{
+    background:linear-gradient(180deg, rgba(15,23,42,.34) 0%, rgba(15,23,42,.06) 34%, rgba(15,23,42,.2) 58%, rgba(15,23,42,.9) 100%);
+  }
+  .ku-catalog-card__logo{
+    top:10px;
+    left:10px;
+    width:42px;
+    border-radius:0;
+  }
+  .ku-catalog-card__badges{
+    top:10px;
+    right:10px;
+    gap:5px;
+    max-width:calc(100% - 64px);
+  }
+  .ku-catalog-card__badges span{
+    min-height:22px;
+    padding:0 8px;
+    font-size:9px;
+  }
+  .ku-catalog-card__badges span:not(:first-child){
+    display:none;
+  }
+  .ku-catalog-card__info{ padding:14px 12px 12px; }
+  .ku-catalog-card__info h3{
+    max-width:100%;
+    font-size:15px;
     line-height:1.12;
   }
-  .ku-courses__grid{ grid-template-columns:1fr; gap:16px; }
-  .ku-courses__title{ font-size:34px; line-height:1.08; white-space:normal; }
-  .ku-catalog-card__logo{ width:62px; border-radius:0; }
-  .ku-catalog-card__badges span{ min-height:26px; font-size:10px; }
-  .ku-catalog-card__info{ padding:22px 16px 16px; }
-  .ku-catalog-card__info h3{ font-size:24px; }
+  .ku-catalog-card__details{
+    margin-top:8px;
+  }
+  .ku-catalog-card__details p{
+    display:-webkit-box;
+    -webkit-line-clamp:3;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+    font-size:11px;
+    line-height:1.35;
+  }
+  .ku-catalog-card__actions{
+    gap:8px;
+    padding:10px;
+  }
+  .ku-catalog-card__primary,
+  .ku-catalog-card__secondary{
+    min-height:38px;
+    border-radius:12px;
+    font-size:12px;
+  }
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -4466,7 +3894,13 @@ body.ku-trial-modal-open{
   display:block;
   line-height:1;
 }
+.ku-benefits__circle-line-text{
+  display:inline;
+}
 .ku-benefits__mobile-break{
+  display:none;
+}
+.ku-benefits__mobile-arrow{
   display:none;
 }
 .ku-benefits__circle{
@@ -4642,30 +4076,42 @@ body.ku-trial-modal-open{
     text-align:left;
   }
   .ku-benefits__title{
-    font-size:clamp(23px,7.2vw,29px);
-    line-height:1.08;
+    font-size:clamp(32px,8.8vw,40px);
+    line-height:1.02;
+  }
+  .ku-benefits__title-prefix{
+    display:inline;
   }
   .ku-benefits__circle-wrap{
-    padding:.14em .3em .2em;
-    font-size:clamp(16px,5.5vw,22px);
+    padding:.08em .22em .18em;
+    margin-top:.08em;
+    font-size:clamp(28px,7.6vw,34px);
     max-width:100%;
     transform:none;
     white-space:normal;
   }
   .ku-benefits__circle-text{
-    line-height:1.04;
+    line-height:.96;
+  }
+  .ku-benefits__circle-line-text{
+    display:inline-block;
   }
   .ku-benefits__mobile-break{
     display:inline;
   }
+  .ku-benefits__desktop-dash,
+  .ku-benefits__mobile-arrow{
+    display:none;
+  }
   .ku-benefits__circle{
-    width:calc(100% + .52em);
-    height:2.18em;
-    top:50%;
+    left:50%;
+    width:calc(100% + .36em);
+    height:2.42em;
+    top:52%;
   }
   .ku-benefits__lead{
     font-size:16px;
-    margin-top:14px;
+    margin-top:18px;
   }
   .ku-benefits__cards{
     grid-template-columns:1fr;
@@ -5290,8 +4736,19 @@ body.ku-trial-modal-open{
 
 @media (max-width: 760px){
   .ku-hero{
-    padding:78px 14px 70px;
+    min-height:auto;
+    padding:90px 14px 34px;
     border-radius:0;
+  }
+  .ku-hero__layout{
+    gap:6px;
+    align-items:start;
+  }
+  .ku-hero__badge{
+    gap:8px;
+    padding:8px 12px;
+    margin-bottom:16px;
+    font-size:12px;
   }
   .ku-hero::before{
     left:-160px;
@@ -5307,45 +4764,75 @@ body.ku-trial-modal-open{
     height:340px;
     filter:blur(26px);
   }
-  .ku-hero__title{ font-size:38px; line-height:1.08; }
-  .ku-hero__text{ font-size:16px; }
-  .ku-hero__actions{ flex-direction:column; align-items:stretch; }
-  .ku-btn{ width:100%; }
+  .ku-hero__title{
+    margin-bottom:14px;
+    font-size:32px;
+    line-height:1.02;
+  }
+  .ku-hero__underline{
+    bottom:-2px;
+    height:6px;
+  }
+  .ku-hero__text{
+    margin-bottom:18px;
+    font-size:14px;
+    line-height:1.5;
+  }
+  .ku-hero__actions{
+    flex-direction:column;
+    align-items:stretch;
+    gap:10px;
+    margin-bottom:16px;
+  }
+  .ku-btn{
+    width:100%;
+    min-height:50px;
+    padding:0 18px;
+    border-radius:14px;
+    font-size:14px;
+  }
   .ku-hero__meta{
     width:100%;
-    max-width:520px;
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:8px 10px;
+    max-width:340px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:8px 14px;
     margin:0 auto;
     padding-bottom:0;
-    justify-items:center;
   }
   .ku-hero__meta-item{
+    width:auto;
     min-width:0;
     justify-content:center;
     text-align:center;
-    font-size:12px;
-    line-height:1.3;
-    white-space:normal;
+    font-size:10.5px;
+    line-height:1.25;
+    white-space:nowrap;
+  }
+  .ku-hero__right{
+    width:min(100%, 360px);
+    margin:0 auto;
   }
 
   .ku-visual{
-    min-height:470px;
-    max-width:560px;
+    min-height:280px;
+    max-width:360px;
     width:100%;
+    margin-top:-8px;
   }
   .ku-visual__rings{
     display:none;
   }
   .ku-hero-main{
-    width:108%;
-    height:112%;
+    width:102%;
+    height:106%;
   }
   .ku-hero-main::before,
   .ku-hero-main::after{
-    opacity:.96;
-    filter:blur(11px);
+    opacity:.9;
+    filter:blur(9px);
   }
   .ku-hero-main::before{
     left:17%;
@@ -5361,8 +4848,8 @@ body.ku-trial-modal-open{
   }
   .ku-visual::before,
   .ku-visual::after{
-    filter:blur(34px);
-    opacity:.45;
+    filter:blur(26px);
+    opacity:.38;
   }
   .ku-visual::before{
     left:-6%;
@@ -5377,33 +4864,36 @@ body.ku-trial-modal-open{
     height:42%;
   }
   .ku-hero-icon{
-    width:108px;
-    height:108px;
+    width:76px;
+    height:76px;
     padding:0;
   }
   .ku-hero-icon--python{
-    left:-1%;
-    top:6%;
+    left:2%;
+    top:7%;
   }
   .ku-hero-icon--scratch{
-    right:1%;
-    top:5%;
+    right:3%;
+    top:7%;
   }
   .ku-hero-icon--three-d{
-    right:-4%;
-    top:41%;
+    right:0;
+    top:43%;
   }
   .ku-hero-icon--ai{
-    right:16%;
-    bottom:6%;
+    right:17%;
+    bottom:8%;
   }
   .ku-hero-icon--roblox{
-    left:-6%;
-    top:36%;
+    left:0;
+    top:40%;
   }
   .ku-hero-icon--design{
-    left:4%;
-    bottom:11%;
+    left:7%;
+    bottom:10%;
+  }
+  .ku-hero__wave svg{
+    height:24px;
   }
 }
 
@@ -6293,7 +5783,7 @@ body.ku-trial-modal-open{
             </div>
           </div>
         </div>
-        <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
+        <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="scratch.html" class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
       <article class="ku-catalog-card ku-courses__reveal" data-categories="modeling games" style="--accent:#4d7c0f;">
@@ -6591,276 +6081,85 @@ body.ku-trial-modal-open{
 
 <!-- block: 04-teachers.html -->
 <section class="ku-teachers" id="teachers">
-  <div class="ku-teachers__gridbg"></div>
-  <div class="ku-teachers__glow ku-teachers__glow--blue"></div>
-  <div class="ku-teachers__glow ku-teachers__glow--red"></div>
-  <div class="ku-teachers__arc ku-teachers__arc--left" aria-hidden="true"></div>
-  <div class="ku-teachers__arc ku-teachers__arc--right" aria-hidden="true"></div>
-  <div class="ku-teachers__bubble ku-teachers__bubble--code" aria-hidden="true">
-    <svg viewBox="0 0 24 24" fill="none">
-      <path d="M8.5 7 4 12l4.5 5M15.5 7 20 12l-4.5 5M13 5l-2 14" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </div>
-  <div class="ku-teachers__bubble ku-teachers__bubble--heart" aria-hidden="true">
-    <svg viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 21s-6.7-4.35-9.2-8.09C.47 9.46 1.38 5.35 5.32 4.33 7.64 3.73 9.66 4.75 11 6.35c1.34-1.6 3.36-2.62 5.68-2.02 3.94 1.02 4.85 5.13 2.52 8.58C18.7 16.65 12 21 12 21Z"/>
-    </svg>
-  </div>
-  <div class="ku-teachers__bubble ku-teachers__bubble--cap" aria-hidden="true">
-    <svg viewBox="0 0 24 24" fill="none">
-      <path d="m3 9 9-4 9 4-9 4-9-4ZM7 11.5V15c0 .8 2.2 2.5 5 2.5s5-1.7 5-2.5v-3.5M21 10v4" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </div>
-
   <div class="ku-teachers__container">
     <div class="ku-teachers__head ku-teachers__reveal">
-      <div class="ku-teachers__badge">Команда КиберУм</div>
       <h2 class="ku-teachers__title">Наши <span>преподаватели</span></h2>
       <p class="ku-teachers__text">
-        Наставники, которые вдохновляют детей учиться, создавать проекты и расти в IT-направлениях
+        Наставники, которые умеют объяснять сложные темы просто и помогают детям уверенно расти в IT.
       </p>
     </div>
 
-    <div class="ku-teachers__layout">
-      <article class="ku-teacher-card ku-teacher-card--lead ku-teachers__reveal">
-        <div class="ku-teacher-card__lead-photo">
-          <img src="media/teacher-alexey-photo.png" alt="Алексей Смирнов" loading="lazy" decoding="async">
-          <div class="ku-teacher-card__dots ku-teacher-card__dots--lead" aria-hidden="true"></div>
-        </div>
+    <div class="ku-teachers__carousel ku-teachers__reveal" aria-roledescription="carousel" aria-label="Карусель преподавателей">
+      <button class="ku-teachers__arrow ku-teachers__arrow--prev" type="button" aria-label="Показать предыдущего преподавателя">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="m14.5 5-7 7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
 
-        <div class="ku-teacher-card__panel ku-teacher-card__panel--lead">
-          <div class="ku-teacher-card__dots ku-teacher-card__dots--lead-panel" aria-hidden="true"></div>
-
-          <h3 class="ku-teacher-card__name ku-teacher-card__name--lead">Алексей<br>Смирнов</h3>
-
-          <div class="ku-teacher-card__tags ku-teacher-card__tags--blue">
-            <span>Python</span>
-            <span>Scratch</span>
-            <span>Roblox</span>
-          </div>
-
-          <div class="ku-teacher-card__stats ku-teacher-card__stats--stack">
-            <div class="ku-teacher-card__stat">
-              <span class="ku-icon" aria-hidden="true">
-                <svg viewBox="0 0 20 20" fill="none">
-                  <rect x="3" y="4" width="14" height="13" rx="2.4" stroke="currentColor" stroke-width="1.7"/>
-                  <path d="M6.5 2.8v2.9M13.5 2.8v2.9M3.8 8.2h12.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-                </svg>
-              </span>
-              <span>7 лет опыта</span>
+      <div class="ku-teachers__viewport">
+        <div class="ku-teachers__track">
+          <article class="ku-teacher-card">
+            <div class="ku-teacher-card__photo-frame">
+              <div class="ku-teacher-card__photo">
+                <img src="media/teacher-alexey-photo.png" alt="Алексей Смирнов" loading="lazy" decoding="async">
+              </div>
             </div>
-            <div class="ku-teacher-card__stat">
-              <span class="ku-icon" aria-hidden="true">
-                <svg viewBox="0 0 20 20" fill="none">
-                  <path d="M4.2 4.4h4.1a2.3 2.3 0 0 1 1.7.7l.4.4.4-.4a2.3 2.3 0 0 1 1.7-.7h3.3v11.2h-3.3a2.3 2.3 0 0 0-1.7.7l-.4.4-.4-.4a2.3 2.3 0 0 0-1.7-.7H4.2V4.4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
-                </svg>
-              </span>
-              <span>1200+ уроков</span>
+
+            <div class="ku-teacher-card__body">
+              <h3 class="ku-teacher-card__name">Алексей Смирнов</h3>
+              <p class="ku-teacher-card__description">Помогает детям полюбить код, объясняет сложные темы простым языком и быстро выводит ученика на первый самостоятельный проект.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="ku-teacher-card__quote-mark">“</div>
-          <p class="ku-teacher-card__quote">
-            Помогаю ученикам полюбить код и объясняю сложное простыми словами.
-          </p>
-
-          <div class="ku-teacher-card__skills">
-            <span class="ku-skill-chip">
-              <img src="media/courses_logo_hero/Python.png" alt="" loading="lazy" decoding="async">
-              <span>Python</span>
-            </span>
-            <span class="ku-skill-chip">
-              <img src="media/courses_logo_hero/Scratch.png" alt="" loading="lazy" decoding="async">
-              <span>Scratch</span>
-            </span>
-            <span class="ku-skill-chip">
-              <img src="media/courses_logo_hero/Roblox.png" alt="" loading="lazy" decoding="async">
-              <span>Roblox</span>
-            </span>
-          </div>
-        </div>
-      </article>
-
-      <article class="ku-teacher-card ku-teacher-card--wide ku-teacher-card--violet ku-teachers__reveal">
-        <div class="ku-teacher-card__panel ku-teacher-card__panel--wide">
-          <h3 class="ku-teacher-card__name">Мария Волкова</h3>
-
-          <div class="ku-teacher-card__tags">
-            <span>Графический дизайн</span>
-            <span>UI/UX</span>
-          </div>
-
-          <div class="ku-teacher-card__stats ku-teacher-card__stats--inline">
-            <div class="ku-teacher-card__stat">
-              <span class="ku-icon" aria-hidden="true">
-                <svg viewBox="0 0 20 20" fill="none">
-                  <rect x="3" y="4" width="14" height="13" rx="2.4" stroke="currentColor" stroke-width="1.7"/>
-                  <path d="M6.5 2.8v2.9M13.5 2.8v2.9M3.8 8.2h12.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-                </svg>
-              </span>
-              <span>6 лет опыта</span>
+          <article class="ku-teacher-card">
+            <div class="ku-teacher-card__photo-frame">
+              <div class="ku-teacher-card__photo">
+                <img src="media/teacher-maria-photo.png" alt="Мария Волкова" loading="lazy" decoding="async">
+              </div>
             </div>
-            <div class="ku-teacher-card__stat">
-              <span class="ku-icon" aria-hidden="true">
-                <svg viewBox="0 0 20 20" fill="none">
-                  <path d="M4.2 4.4h4.1a2.3 2.3 0 0 1 1.7.7l.4.4.4-.4a2.3 2.3 0 0 1 1.7-.7h3.3v11.2h-3.3a2.3 2.3 0 0 0-1.7.7l-.4.4-.4-.4a2.3 2.3 0 0 0-1.7-.7H4.2V4.4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
-                </svg>
-              </span>
-              <span>900+ уроков</span>
+
+            <div class="ku-teacher-card__body">
+              <h3 class="ku-teacher-card__name">Мария Волкова</h3>
+              <p class="ku-teacher-card__description">Развивает вкус, аккуратность и уверенность в визуальных решениях, чтобы ребёнок учился делать красиво и осмысленно.</p>
             </div>
-          </div>
+          </article>
 
-          <p class="ku-teacher-card__quote">Развивает вкус, стиль и уверенность в идеях.</p>
-
-          <div class="ku-teacher-card__skills">
-            <span class="ku-skill-chip ku-skill-chip--figma">
-              <span class="ku-skill-chip__badge"></span>
-              <span>Figma</span>
-            </span>
-            <span class="ku-skill-chip ku-skill-chip--ps">
-              <span class="ku-skill-chip__badge">Ps</span>
-              <span>Photoshop</span>
-            </span>
-            <span class="ku-skill-chip"><span>UI/UX</span></span>
-          </div>
-        </div>
-
-        <div class="ku-teacher-card__media ku-teacher-card__media--violet">
-          <img src="media/teacher-maria-photo.png" alt="Мария Волкова" loading="lazy" decoding="async">
-          <div class="ku-teacher-card__dots ku-teacher-card__dots--violet" aria-hidden="true"></div>
-        </div>
-      </article>
-
-      <article class="ku-teacher-card ku-teacher-card--wide ku-teacher-card--orange ku-teachers__reveal">
-        <div class="ku-teacher-card__media ku-teacher-card__media--orange">
-          <img src="media/teacher-dmitry-photo.png" alt="Дмитрий Орлов" loading="lazy" decoding="async">
-          <div class="ku-teacher-card__dots ku-teacher-card__dots--orange-left" aria-hidden="true"></div>
-        </div>
-
-        <div class="ku-teacher-card__panel ku-teacher-card__panel--wide">
-          <div class="ku-teacher-card__dots ku-teacher-card__dots--orange-right" aria-hidden="true"></div>
-
-          <h3 class="ku-teacher-card__name">Дмитрий Орлов</h3>
-
-          <div class="ku-teacher-card__tags">
-            <span>Blender</span>
-            <span>Blockbench</span>
-          </div>
-
-          <div class="ku-teacher-card__stats ku-teacher-card__stats--inline">
-            <div class="ku-teacher-card__stat">
-              <span class="ku-icon" aria-hidden="true">
-                <svg viewBox="0 0 20 20" fill="none">
-                  <rect x="3" y="4" width="14" height="13" rx="2.4" stroke="currentColor" stroke-width="1.7"/>
-                  <path d="M6.5 2.8v2.9M13.5 2.8v2.9M3.8 8.2h12.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-                </svg>
-              </span>
-              <span>8 лет опыта</span>
+          <article class="ku-teacher-card">
+            <div class="ku-teacher-card__photo-frame">
+              <div class="ku-teacher-card__photo">
+                <img src="media/teacher-dmitry-photo.png" alt="Дмитрий Орлов" loading="lazy" decoding="async">
+              </div>
             </div>
-            <div class="ku-teacher-card__stat">
-              <span class="ku-icon" aria-hidden="true">
-                <svg viewBox="0 0 20 20" fill="none">
-                  <path d="M4.2 4.4h4.1a2.3 2.3 0 0 1 1.7.7l.4.4.4-.4a2.3 2.3 0 0 1 1.7-.7h3.3v11.2h-3.3a2.3 2.3 0 0 0-1.7.7l-.4.4-.4-.4a2.3 2.3 0 0 0-1.7-.7H4.2V4.4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
-                </svg>
-              </span>
-              <span>1000+ уроков</span>
+
+            <div class="ku-teacher-card__body">
+              <h3 class="ku-teacher-card__name">Дмитрий Орлов</h3>
+              <p class="ku-teacher-card__description">Показывает, как идеи превращаются в 3D-модели, и помогает ребёнку соединить креативное мышление с точностью.</p>
             </div>
-          </div>
+          </article>
 
-          <p class="ku-teacher-card__quote">Погружает в 3D-мир и объединяет креатив и логику.</p>
-
-          <div class="ku-teacher-card__skills">
-            <span class="ku-skill-chip ku-skill-chip--blender">
-              <span class="ku-skill-chip__badge"></span>
-              <span>Blender</span>
-            </span>
-            <span class="ku-skill-chip ku-skill-chip--blockbench">
-              <span class="ku-skill-chip__badge"></span>
-              <span>Blockbench</span>
-            </span>
-          </div>
-        </div>
-      </article>
-
-      <article class="ku-teacher-card ku-teacher-card--slim ku-teachers__reveal">
-        <div class="ku-teacher-card__media ku-teacher-card__media--slim">
-          <img src="media/teacher-ekaterina-photo.png" alt="Екатерина Лебедева" loading="lazy" decoding="async">
-        </div>
-
-        <div class="ku-teacher-card__panel ku-teacher-card__panel--slim">
-          <h3 class="ku-teacher-card__name ku-teacher-card__name--slim">Екатерина Лебедева</h3>
-
-          <div class="ku-teacher-card__tags">
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>JavaScript</span>
-          </div>
-
-          <div class="ku-teacher-card__stats ku-teacher-card__stats--inline">
-            <div class="ku-teacher-card__stat">
-              <span class="ku-icon" aria-hidden="true">
-                <svg viewBox="0 0 20 20" fill="none">
-                  <rect x="3" y="4" width="14" height="13" rx="2.4" stroke="currentColor" stroke-width="1.7"/>
-                  <path d="M6.5 2.8v2.9M13.5 2.8v2.9M3.8 8.2h12.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-                </svg>
-              </span>
-              <span>5 лет опыта</span>
+          <article class="ku-teacher-card">
+            <div class="ku-teacher-card__photo-frame">
+              <div class="ku-teacher-card__photo">
+                <img src="media/teacher-ekaterina-photo.png" alt="Екатерина Лебедева" loading="lazy" decoding="async">
+              </div>
             </div>
-            <div class="ku-teacher-card__stat">
-              <span class="ku-icon" aria-hidden="true">
-                <svg viewBox="0 0 20 20" fill="none">
-                  <path d="M4.2 4.4h4.1a2.3 2.3 0 0 1 1.7.7l.4.4.4-.4a2.3 2.3 0 0 1 1.7-.7h3.3v11.2h-3.3a2.3 2.3 0 0 0-1.7.7l-.4.4-.4-.4a2.3 2.3 0 0 0-1.7-.7H4.2V4.4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
-                </svg>
-              </span>
-              <span>850+ уроков</span>
+
+            <div class="ku-teacher-card__body">
+              <h3 class="ku-teacher-card__name">Екатерина Лебедева</h3>
+              <p class="ku-teacher-card__description">Учит делать удобные и живые сайты, чтобы ребёнок сразу видел результат своей работы и понимал, как устроен веб.</p>
             </div>
-          </div>
-
-          <p class="ku-teacher-card__quote">Показывает, как сайты становятся живыми и удобными.</p>
-
-          <div class="ku-teacher-card__skills">
-            <span class="ku-skill-chip"><span>HTML</span></span>
-            <span class="ku-skill-chip"><span>CSS</span></span>
-            <span class="ku-skill-chip"><span>JavaScript</span></span>
-          </div>
-
-          <div class="ku-teacher-card__dots ku-teacher-card__dots--slim" aria-hidden="true"></div>
+          </article>
         </div>
-      </article>
+      </div>
+
+      <button class="ku-teachers__arrow ku-teachers__arrow--next" type="button" aria-label="Показать следующего преподавателя">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="m9.5 5 7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
     </div>
 
     <div class="ku-teachers__dots-nav" aria-label="Навигация по преподавателям"></div>
-
-    <div class="ku-teachers__stats ku-teachers__reveal">
-      <div class="ku-teachers__stat">
-        <div class="ku-teachers__stat-icon ku-teachers__stat-icon--blue">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M16.5 19a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM7.5 18a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-width="1.8"/>
-            <path d="M2.5 20.5c.6-2.1 2.5-3.5 4.9-3.5 1.1 0 2.1.3 2.9.8M12.3 20.5c.7-2.6 3-4.3 5.7-4.3 2.3 0 4.3 1.2 5 3.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div><strong>35+</strong><span>преподавателей</span></div>
-      </div>
-
-      <div class="ku-teachers__stat">
-        <div class="ku-teachers__stat-icon ku-teachers__stat-icon--violet">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M6.5 4.5h11v15h-11zM9.5 2.5h5v4h-5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-            <path d="M8.5 10.5h7M8.5 14h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div><strong>5000+</strong><span>уроков в месяц</span></div>
-      </div>
-
-      <div class="ku-teachers__stat">
-        <div class="ku-teachers__stat-icon ku-teachers__stat-icon--rose">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="m12 3.2 2.7 5.45 6.03.88-4.36 4.25 1.03 6.02L12 17.02l-5.4 2.78 1.03-6.02L3.27 9.53l6.03-.88L12 3.2Z"/>
-          </svg>
-        </div>
-        <div><strong>4.9</strong><span>рейтинг родителей</span></div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -7048,8 +6347,8 @@ body.ku-trial-modal-open{
     <div class="ku-projects__head ku-projects__reveal">
       <div class="ku-projects__badge">Работы наших учеников</div>
       <h2 class="ku-projects__title">
-        Реальные проекты
-        <span>настоящих авторов</span>
+        Портфолио
+        <span>учеников</span>
       </h2>
       <p class="ku-projects__text">
         Проекты детей по разным направлениям — от программирования до дизайна и 3D-моделирования.
@@ -7252,9 +6551,9 @@ body.ku-trial-modal-open{
     <div class="ku-benefits__head">
       <div class="ku-benefits__eyebrow">Почему КиберУм?</div>
       <h2 class="ku-benefits__title">
-        Не просто курсы —<br>
+        <span class="ku-benefits__title-prefix">Не просто курсы</span><span class="ku-benefits__desktop-dash"> —</span><span class="ku-benefits__mobile-arrow" aria-hidden="true"></span><br>
         <span class="ku-benefits__circle-wrap">
-          <span class="ku-benefits__circle-text">образовательная<span class="ku-benefits__mobile-break"><br></span> экосистема</span>
+          <span class="ku-benefits__circle-text"><span class="ku-benefits__circle-line-text">образовательная</span><span class="ku-benefits__mobile-break"><br></span> <span class="ku-benefits__circle-line-text ku-benefits__circle-line-text--second">экосистема</span></span>
           <svg class="ku-benefits__circle" viewBox="0 0 100 36" preserveAspectRatio="none" aria-hidden="true">
             <defs>
               <linearGradient id="kuBenefitsCircleGradient" x1="0" y1="0" x2="100" y2="0" gradientUnits="userSpaceOnUse">
@@ -8166,76 +7465,63 @@ body.ku-trial-modal-open{
   if (!section) return;
 
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const items = section.querySelectorAll('.ku-teachers__reveal');
-  const layout = section.querySelector('.ku-teachers__layout');
+  const revealItems = section.querySelectorAll('.ku-teachers__reveal');
+  const viewport = section.querySelector('.ku-teachers__viewport');
   const cards = Array.from(section.querySelectorAll('.ku-teacher-card'));
   const dotsRoot = section.querySelector('.ku-teachers__dots-nav');
+  const prevButton = section.querySelector('.ku-teachers__arrow--prev');
+  const nextButton = section.querySelector('.ku-teachers__arrow--next');
+
+  if (!viewport || !cards.length || !dotsRoot || !prevButton || !nextButton) return;
+
   let activeIndex = 0;
   let scrollTicking = false;
 
-  function isMobileSlider() {
-    return window.innerWidth <= 860;
+  function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
   }
 
-  function getStep() {
-    if (!layout || !cards.length) return 0;
-    const style = window.getComputedStyle(layout);
-    const gap = Number.parseFloat(style.columnGap || style.gap || '0') || 0;
-    return cards[0].offsetWidth + gap;
-  }
-
-  function updateActiveDot() {
-    if (!dotsRoot) return;
+  function updateControls() {
     const dots = dotsRoot.querySelectorAll('.ku-teachers__dot');
     dots.forEach((dot, index) => {
       dot.classList.toggle('is-active', index === activeIndex);
+      dot.setAttribute('aria-current', index === activeIndex ? 'true' : 'false');
     });
+
+    prevButton.disabled = activeIndex <= 0;
+    nextButton.disabled = activeIndex >= cards.length - 1;
   }
 
-  function moveTo(index) {
-    if (!layout || !cards.length) return;
-    const maxIndex = Math.max(0, cards.length - 1);
-    activeIndex = Math.max(0, Math.min(index, maxIndex));
-    const step = getStep();
-    layout.scrollTo({
-      left: activeIndex * step,
+  function scrollToCard(index) {
+    activeIndex = clamp(index, 0, cards.length - 1);
+    viewport.scrollTo({
+      left: cards[activeIndex].offsetLeft,
       behavior: reduce ? 'auto' : 'smooth'
     });
-    updateActiveDot();
+    updateControls();
   }
 
   function syncFromScroll() {
-    if (!layout || !cards.length) return;
-    const step = getStep();
-    if (!step) return;
-    activeIndex = Math.max(0, Math.min(cards.length - 1, Math.round(layout.scrollLeft / step)));
-    updateActiveDot();
-  }
+    const scrollLeft = viewport.scrollLeft;
+    let closestIndex = 0;
+    let closestDistance = Number.POSITIVE_INFINITY;
 
-  function renderDots() {
-    if (!dotsRoot) return;
-
-    if (!isMobileSlider()) {
-      dotsRoot.hidden = true;
-      dotsRoot.innerHTML = '';
-      return;
-    }
-
-    dotsRoot.hidden = cards.length <= 1;
-    dotsRoot.innerHTML = '';
-
-    cards.forEach((_, index) => {
-      const dot = document.createElement('button');
-      dot.type = 'button';
-      dot.className = 'ku-teachers__dot' + (index === activeIndex ? ' is-active' : '');
-      dot.setAttribute('aria-label', 'Перейти к преподавателю ' + (index + 1));
-      dot.addEventListener('click', () => moveTo(index));
-      dotsRoot.appendChild(dot);
+    cards.forEach((card, index) => {
+      const distance = Math.abs(card.offsetLeft - scrollLeft);
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
     });
+
+    if (closestIndex !== activeIndex) {
+      activeIndex = closestIndex;
+      updateControls();
+    }
   }
 
   function handleScroll() {
-    if (!isMobileSlider() || scrollTicking) return;
+    if (scrollTicking) return;
     scrollTicking = true;
     window.requestAnimationFrame(() => {
       syncFromScroll();
@@ -8243,11 +7529,28 @@ body.ku-trial-modal-open{
     });
   }
 
-  function handleResize() {
-    renderDots();
-    if (!isMobileSlider() || !layout) return;
-    moveTo(activeIndex);
+  function renderDots() {
+    dotsRoot.innerHTML = '';
+
+    cards.forEach((card, index) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'ku-teachers__dot' + (index === activeIndex ? ' is-active' : '');
+      dot.setAttribute('aria-label', 'Перейти к преподавателю ' + card.querySelector('.ku-teacher-card__name').textContent);
+      dot.setAttribute('aria-current', index === activeIndex ? 'true' : 'false');
+      dot.addEventListener('click', () => scrollToCard(index));
+      dotsRoot.appendChild(dot);
+    });
   }
+
+  function handleResize() {
+    scrollToCard(activeIndex);
+  }
+
+  prevButton.addEventListener('click', () => scrollToCard(activeIndex - 1));
+  nextButton.addEventListener('click', () => scrollToCard(activeIndex + 1));
+  viewport.addEventListener('scroll', handleScroll, { passive:true });
+  window.addEventListener('resize', handleResize);
 
   if ('IntersectionObserver' in window && !reduce) {
     const io = new IntersectionObserver((entries, observer) => {
@@ -8257,22 +7560,18 @@ body.ku-trial-modal-open{
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold:.14, rootMargin:'0px 0px -8% 0px' });
+    }, { threshold:.16, rootMargin:'0px 0px -8% 0px' });
 
-    items.forEach((el, index) => {
-      el.style.transitionDelay = (index * 70) + 'ms';
-      io.observe(el);
+    revealItems.forEach((item, index) => {
+      item.style.transitionDelay = (index * 80) + 'ms';
+      io.observe(item);
     });
   } else {
-    items.forEach((el) => el.classList.add('is-visible'));
+    revealItems.forEach((item) => item.classList.add('is-visible'));
   }
 
-  if (layout && dotsRoot && cards.length) {
-    layout.addEventListener('scroll', handleScroll, { passive:true });
-    window.addEventListener('resize', handleResize);
-    renderDots();
-    updateActiveDot();
-  }
+  renderDots();
+  updateControls();
 })();
 
 /* js: 04-reviews.js */

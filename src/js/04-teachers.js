@@ -3,76 +3,63 @@
   if (!section) return;
 
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const items = section.querySelectorAll('.ku-teachers__reveal');
-  const layout = section.querySelector('.ku-teachers__layout');
+  const revealItems = section.querySelectorAll('.ku-teachers__reveal');
+  const viewport = section.querySelector('.ku-teachers__viewport');
   const cards = Array.from(section.querySelectorAll('.ku-teacher-card'));
   const dotsRoot = section.querySelector('.ku-teachers__dots-nav');
+  const prevButton = section.querySelector('.ku-teachers__arrow--prev');
+  const nextButton = section.querySelector('.ku-teachers__arrow--next');
+
+  if (!viewport || !cards.length || !dotsRoot || !prevButton || !nextButton) return;
+
   let activeIndex = 0;
   let scrollTicking = false;
 
-  function isMobileSlider() {
-    return window.innerWidth <= 860;
+  function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
   }
 
-  function getStep() {
-    if (!layout || !cards.length) return 0;
-    const style = window.getComputedStyle(layout);
-    const gap = Number.parseFloat(style.columnGap || style.gap || '0') || 0;
-    return cards[0].offsetWidth + gap;
-  }
-
-  function updateActiveDot() {
-    if (!dotsRoot) return;
+  function updateControls() {
     const dots = dotsRoot.querySelectorAll('.ku-teachers__dot');
     dots.forEach((dot, index) => {
       dot.classList.toggle('is-active', index === activeIndex);
+      dot.setAttribute('aria-current', index === activeIndex ? 'true' : 'false');
     });
+
+    prevButton.disabled = activeIndex <= 0;
+    nextButton.disabled = activeIndex >= cards.length - 1;
   }
 
-  function moveTo(index) {
-    if (!layout || !cards.length) return;
-    const maxIndex = Math.max(0, cards.length - 1);
-    activeIndex = Math.max(0, Math.min(index, maxIndex));
-    const step = getStep();
-    layout.scrollTo({
-      left: activeIndex * step,
+  function scrollToCard(index) {
+    activeIndex = clamp(index, 0, cards.length - 1);
+    viewport.scrollTo({
+      left: cards[activeIndex].offsetLeft,
       behavior: reduce ? 'auto' : 'smooth'
     });
-    updateActiveDot();
+    updateControls();
   }
 
   function syncFromScroll() {
-    if (!layout || !cards.length) return;
-    const step = getStep();
-    if (!step) return;
-    activeIndex = Math.max(0, Math.min(cards.length - 1, Math.round(layout.scrollLeft / step)));
-    updateActiveDot();
-  }
+    const scrollLeft = viewport.scrollLeft;
+    let closestIndex = 0;
+    let closestDistance = Number.POSITIVE_INFINITY;
 
-  function renderDots() {
-    if (!dotsRoot) return;
-
-    if (!isMobileSlider()) {
-      dotsRoot.hidden = true;
-      dotsRoot.innerHTML = '';
-      return;
-    }
-
-    dotsRoot.hidden = cards.length <= 1;
-    dotsRoot.innerHTML = '';
-
-    cards.forEach((_, index) => {
-      const dot = document.createElement('button');
-      dot.type = 'button';
-      dot.className = 'ku-teachers__dot' + (index === activeIndex ? ' is-active' : '');
-      dot.setAttribute('aria-label', 'Перейти к преподавателю ' + (index + 1));
-      dot.addEventListener('click', () => moveTo(index));
-      dotsRoot.appendChild(dot);
+    cards.forEach((card, index) => {
+      const distance = Math.abs(card.offsetLeft - scrollLeft);
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
     });
+
+    if (closestIndex !== activeIndex) {
+      activeIndex = closestIndex;
+      updateControls();
+    }
   }
 
   function handleScroll() {
-    if (!isMobileSlider() || scrollTicking) return;
+    if (scrollTicking) return;
     scrollTicking = true;
     window.requestAnimationFrame(() => {
       syncFromScroll();
@@ -80,11 +67,28 @@
     });
   }
 
-  function handleResize() {
-    renderDots();
-    if (!isMobileSlider() || !layout) return;
-    moveTo(activeIndex);
+  function renderDots() {
+    dotsRoot.innerHTML = '';
+
+    cards.forEach((card, index) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'ku-teachers__dot' + (index === activeIndex ? ' is-active' : '');
+      dot.setAttribute('aria-label', 'Перейти к преподавателю ' + card.querySelector('.ku-teacher-card__name').textContent);
+      dot.setAttribute('aria-current', index === activeIndex ? 'true' : 'false');
+      dot.addEventListener('click', () => scrollToCard(index));
+      dotsRoot.appendChild(dot);
+    });
   }
+
+  function handleResize() {
+    scrollToCard(activeIndex);
+  }
+
+  prevButton.addEventListener('click', () => scrollToCard(activeIndex - 1));
+  nextButton.addEventListener('click', () => scrollToCard(activeIndex + 1));
+  viewport.addEventListener('scroll', handleScroll, { passive:true });
+  window.addEventListener('resize', handleResize);
 
   if ('IntersectionObserver' in window && !reduce) {
     const io = new IntersectionObserver((entries, observer) => {
@@ -94,20 +98,16 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold:.14, rootMargin:'0px 0px -8% 0px' });
+    }, { threshold:.16, rootMargin:'0px 0px -8% 0px' });
 
-    items.forEach((el, index) => {
-      el.style.transitionDelay = (index * 70) + 'ms';
-      io.observe(el);
+    revealItems.forEach((item, index) => {
+      item.style.transitionDelay = (index * 80) + 'ms';
+      io.observe(item);
     });
   } else {
-    items.forEach((el) => el.classList.add('is-visible'));
+    revealItems.forEach((item) => item.classList.add('is-visible'));
   }
 
-  if (layout && dotsRoot && cards.length) {
-    layout.addEventListener('scroll', handleScroll, { passive:true });
-    window.addEventListener('resize', handleResize);
-    renderDots();
-    updateActiveDot();
-  }
+  renderDots();
+  updateControls();
 })();

@@ -76,7 +76,13 @@
   display:block;
   line-height:1;
 }
+.ku-benefits__circle-line-text{
+  display:inline;
+}
 .ku-benefits__mobile-break{
+  display:none;
+}
+.ku-benefits__mobile-arrow{
   display:none;
 }
 .ku-benefits__circle{
@@ -252,30 +258,42 @@
     text-align:left;
   }
   .ku-benefits__title{
-    font-size:clamp(23px,7.2vw,29px);
-    line-height:1.08;
+    font-size:clamp(32px,8.8vw,40px);
+    line-height:1.02;
+  }
+  .ku-benefits__title-prefix{
+    display:inline;
   }
   .ku-benefits__circle-wrap{
-    padding:.14em .3em .2em;
-    font-size:clamp(16px,5.5vw,22px);
+    padding:.08em .22em .18em;
+    margin-top:.08em;
+    font-size:clamp(28px,7.6vw,34px);
     max-width:100%;
     transform:none;
     white-space:normal;
   }
   .ku-benefits__circle-text{
-    line-height:1.04;
+    line-height:.96;
+  }
+  .ku-benefits__circle-line-text{
+    display:inline-block;
   }
   .ku-benefits__mobile-break{
     display:inline;
   }
+  .ku-benefits__desktop-dash,
+  .ku-benefits__mobile-arrow{
+    display:none;
+  }
   .ku-benefits__circle{
-    width:calc(100% + .52em);
-    height:2.18em;
-    top:50%;
+    left:50%;
+    width:calc(100% + .36em);
+    height:2.42em;
+    top:52%;
   }
   .ku-benefits__lead{
     font-size:16px;
-    margin-top:14px;
+    margin-top:18px;
   }
   .ku-benefits__cards{
     grid-template-columns:1fr;

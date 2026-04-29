@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>КиберУм</title>
-  <link rel="preload" as="image" href="media/hero3.png" fetchpriority="high">
+  <title>Scratch для детей | КиберУм</title>
+  <link rel="preload" as="image" href="media/course_page/scratch/4.webp" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
@@ -5351,14 +5351,748 @@ body.ku-trial-modal-open{
     height:34px;
   }
 }
+
+/* css: 12-scratch.css */
+.ku-page--scratch{
+  background:#fff;
+}
+
+.ku-page--scratch .ku-header__nav a.is-active::after{
+  bottom:-8px;
+}
+
+.ku-course-hero,
+.ku-course-hero *{
+  box-sizing:border-box;
+}
+
+.ku-course-hero{
+  position:relative;
+  overflow:hidden;
+  padding:132px 24px 84px;
+  background:linear-gradient(180deg,#ffffff 0%,#f4f9ff 100%);
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:#0f172a;
+}
+
+.ku-course-hero__grid{
+  position:absolute;
+  inset:0;
+  opacity:.34;
+  background-image:radial-gradient(rgba(37,99,235,.14) 1px, transparent 1px);
+  background-size:22px 22px;
+  pointer-events:none;
+}
+
+.ku-course-hero__orb{
+  position:absolute;
+  border-radius:999px;
+  filter:blur(80px);
+  pointer-events:none;
+  opacity:.4;
+}
+
+.ku-course-hero__orb--blue{
+  left:-90px;
+  top:20px;
+  width:260px;
+  height:260px;
+  background:rgba(37,99,235,.18);
+}
+
+.ku-course-hero__orb--red{
+  right:-110px;
+  bottom:10px;
+  width:320px;
+  height:320px;
+  background:rgba(239,68,68,.16);
+}
+
+.ku-course-hero__container,
+.ku-course-plan__container,
+.ku-course-why__container,
+.ku-course-soft__container{
+  position:relative;
+  z-index:2;
+  max-width:1320px;
+  margin:0 auto;
+}
+
+.ku-course-hero__layout{
+  display:grid;
+  grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);
+  grid-template-areas:
+    "left right"
+    "meta right";
+  gap:24px;
+  align-items:start;
+}
+
+.ku-course-hero__left{
+  grid-area:left;
+}
+
+.ku-course-hero__right{
+  grid-area:right;
+}
+
+.ku-course-hero__meta{
+  grid-area:meta;
+}
+
+.ku-course-hero__badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  min-height:42px;
+  padding:10px 16px;
+  border-radius:999px;
+  background:rgba(37,99,235,.1);
+  border:1px solid rgba(37,99,235,.18);
+  color:#2563eb;
+  font-size:14px;
+  font-weight:800;
+  margin-bottom:24px;
+}
+
+.ku-course-hero__badge-dot{
+  width:8px;
+  height:8px;
+  border-radius:999px;
+  background:#2563eb;
+  box-shadow:0 0 0 6px rgba(37,99,235,.12);
+}
+
+.ku-course-hero__title{
+  margin:0 0 18px;
+  max-width:760px;
+  font-family:Montserrat,Inter,sans-serif;
+  font-size:clamp(40px,5vw,66px);
+  line-height:.98;
+  font-weight:900;
+  color:hsl(218 55% 11%);
+}
+
+.ku-course-hero__title-main,
+.ku-course-hero__title-accent{
+  display:block;
+}
+
+.ku-course-hero__title-main{
+  color:hsl(218 55% 11%);
+  white-space:nowrap;
+}
+
+.ku-course-hero__title-accent{
+  background:linear-gradient(90deg,#2563eb 0%,#7c3aed 52%,#ef4444 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  white-space:nowrap;
+}
+
+.ku-course-hero__text{
+  max-width:620px;
+  margin:0 0 28px;
+  color:hsl(218 20% 47%);
+  font-size:19px;
+  line-height:1.68;
+  font-weight:600;
+}
+
+.ku-course-hero__actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  margin-bottom:28px;
+}
+
+.ku-course-hero__meta-item{
+  display:flex;
+  align-items:center;
+  min-height:54px;
+  padding:0 16px;
+  border-radius:18px;
+  background:rgba(255,255,255,.78);
+  border:1px solid rgba(214,223,234,.92);
+  color:hsl(218 30% 35%);
+  box-shadow:0 16px 36px -30px rgba(15,23,42,.24);
+  font-size:14px;
+  line-height:1.35;
+  font-weight:700;
+}
+
+.ku-course-hero__visual{
+  position:relative;
+  min-height:680px;
+  width:calc(100% + 28px);
+  max-width:790px;
+  margin:0 0 0 auto;
+}
+
+.ku-course-plan,
+.ku-course-why,
+.ku-course-soft{
+  position:relative;
+  overflow:hidden;
+  padding:88px 24px;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:#0f172a;
+}
+
+.ku-course-plan{
+  background:#fff;
+}
+
+.ku-course-plan__gridbg{
+  position:absolute;
+  inset:0;
+  opacity:.22;
+  background-image:
+    linear-gradient(rgba(37,99,235,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,.08) 1px, transparent 1px);
+  background-size:28px 28px;
+  pointer-events:none;
+}
+
+.ku-course-plan__head,
+.ku-course-why__head{
+  max-width:820px;
+  margin:0 auto 34px;
+  text-align:center;
+}
+
+.ku-course-plan__badge,
+.ku-course-why__badge,
+.ku-course-soft__badge{
+  display:inline-flex;
+  align-items:center;
+  min-height:40px;
+  padding:9px 18px;
+  border-radius:999px;
+  background:rgba(239,68,68,.08);
+  border:1px solid rgba(239,68,68,.16);
+  color:#ef4444;
+  font-size:14px;
+  font-weight:800;
+  margin-bottom:18px;
+}
+
+.ku-course-plan__title,
+.ku-course-why__title,
+.ku-course-soft__head h2{
+  margin:0;
+  font-family:Montserrat,Inter,sans-serif;
+  font-size:clamp(34px,4.7vw,56px);
+  line-height:1.06;
+  font-weight:900;
+  color:hsl(218 55% 11%);
+}
+
+.ku-course-plan__title span{
+  display:block;
+  margin-top:8px;
+  font-size:clamp(22px,2.3vw,30px);
+  line-height:1.26;
+  color:hsl(218 20% 45%);
+}
+
+.ku-course-plan__text,
+.ku-course-soft__head p{
+  max-width:760px;
+  margin:18px auto 0;
+  color:hsl(218 20% 48%);
+  font-size:18px;
+  line-height:1.62;
+  font-weight:600;
+}
+
+.ku-course-plan__grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+
+.ku-course-plan__card{
+  position:relative;
+  min-width:0;
+  padding:28px 24px 24px;
+  border-radius:28px;
+  background:rgba(255,255,255,.94);
+  border:1px solid rgba(214,223,234,.94);
+  box-shadow:0 22px 56px -42px rgba(15,23,42,.26);
+}
+
+.ku-course-plan__index{
+  width:48px;
+  height:48px;
+  margin-bottom:18px;
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#2563eb,#7c3aed);
+  color:#fff;
+  font-size:16px;
+  line-height:1;
+  font-weight:900;
+}
+
+.ku-course-plan__card h3{
+  margin:0 0 10px;
+  font-family:Montserrat,Inter,sans-serif;
+  font-size:23px;
+  line-height:1.16;
+  font-weight:800;
+  color:hsl(218 55% 11%);
+}
+
+.ku-course-plan__project{
+  margin-bottom:14px;
+  color:#2563eb;
+  font-size:14px;
+  line-height:1.4;
+  font-weight:800;
+}
+
+.ku-course-plan__card ul{
+  margin:0;
+  padding-left:18px;
+  color:hsl(218 20% 43%);
+  font-size:15px;
+  line-height:1.6;
+  font-weight:600;
+}
+
+.ku-course-plan__card li + li{
+  margin-top:6px;
+}
+
+.ku-course-why{
+  background:linear-gradient(180deg,#fbfdff 0%,#fff 100%);
+}
+
+.ku-course-why__rows{
+  display:grid;
+  gap:22px;
+}
+
+.ku-course-why__row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(320px,.9fr);
+  gap:18px;
+  align-items:center;
+}
+
+.ku-course-why__row--reverse{
+  grid-template-columns:minmax(320px,.88fr) minmax(0,1.02fr);
+}
+
+.ku-course-why__row--reverse .ku-course-why__media{
+  order:2;
+}
+
+.ku-course-why__row--reverse .ku-course-why__text{
+  order:1;
+}
+
+.ku-course-why__media,
+.ku-course-why__text{
+  border-radius:28px;
+  border:1px solid rgba(214,223,234,.92);
+  box-shadow:0 24px 56px -42px rgba(15,23,42,.22);
+}
+
+.ku-course-why__media{
+  overflow:hidden;
+  background:linear-gradient(145deg,#cfe6ff 0%,#b7d7ff 100%);
+}
+
+.ku-course-why__media--wide{
+  padding:14px;
+}
+
+.ku-course-why__media img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  border-radius:22px;
+}
+
+.ku-course-why__media--wide img{
+  aspect-ratio:1.82 / 1;
+  max-height:320px;
+}
+
+.ku-course-why__text{
+  padding:26px 24px;
+  background:#fff;
+}
+
+.ku-course-why__text h3{
+  margin:0 0 12px;
+  font-family:Montserrat,Inter,sans-serif;
+  font-size:28px;
+  line-height:1.14;
+  font-weight:800;
+  color:hsl(218 55% 11%);
+}
+
+.ku-course-why__text p{
+  margin:0;
+  color:hsl(218 20% 45%);
+  font-size:16px;
+  line-height:1.62;
+  font-weight:600;
+}
+
+.ku-course-why__final-mark{
+  width:max-content;
+  max-width:100%;
+  min-height:34px;
+  margin-bottom:14px;
+  padding:0 14px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  background:rgba(37,99,235,.08);
+  border:1px solid rgba(37,99,235,.16);
+  color:#2563eb;
+  font-size:13px;
+  font-weight:800;
+}
+
+.ku-course-why__final-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:18px;
+}
+
+.ku-course-why__final-tags span,
+.ku-course-soft__chips span{
+  min-height:40px;
+  padding:0 16px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff;
+  border:1px solid rgba(214,223,234,.92);
+  box-shadow:0 14px 28px -24px rgba(15,23,42,.22);
+  color:hsl(218 30% 30%);
+  font-size:14px;
+  line-height:1.2;
+  font-weight:700;
+}
+
+.ku-course-soft{
+  background:#fff;
+}
+
+.ku-course-soft__panel{
+  position:relative;
+  overflow:hidden;
+  padding:42px 34px;
+  border-radius:36px;
+  background:linear-gradient(145deg,#b7d7ff 0%,#cfe6ff 52%,#dbeafe 100%);
+  border:1px solid rgba(191,219,254,.95);
+  box-shadow:0 28px 58px -44px rgba(15,23,42,.28);
+  text-align:center;
+}
+
+.ku-course-soft__orb{
+  position:absolute;
+  border-radius:999px;
+  filter:blur(40px);
+  opacity:.35;
+  pointer-events:none;
+}
+
+.ku-course-soft__orb--blue{
+  left:-40px;
+  top:-20px;
+  width:180px;
+  height:180px;
+  background:rgba(37,99,235,.26);
+}
+
+.ku-course-soft__orb--red{
+  right:-60px;
+  bottom:-30px;
+  width:220px;
+  height:220px;
+  background:rgba(239,68,68,.18);
+}
+
+.ku-course-soft__head{
+  position:relative;
+  z-index:1;
+  max-width:880px;
+  margin:0 auto;
+}
+
+.ku-course-soft__chips{
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px;
+  max-width:940px;
+  margin:28px auto 0;
+}
+
+.ku-page--scratch .ku-projects{
+  padding-top:88px;
+}
+
+.ku-page--scratch .ku-project-card__meta span:not(:last-child)::after{
+  content:"•";
+}
+
+.ku-page--scratch .ku-footer__col--courses a[href="scratch.html#top"]{
+  color:#fff;
+}
+
+@media (max-width:1100px){
+  .ku-course-hero__layout{
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "left"
+      "right"
+      "meta";
+  }
+
+  .ku-course-hero__right{
+    max-width:760px;
+    width:100%;
+    margin:0 auto;
+    overflow:visible;
+  }
+
+  .ku-course-plan__grid,
+  .ku-course-why__row,
+  .ku-course-why__row--reverse{
+    grid-template-columns:1fr;
+  }
+
+  .ku-course-why__row--reverse .ku-course-why__media,
+  .ku-course-why__row--reverse .ku-course-why__text{
+    order:initial;
+  }
+}
+
+@media (max-width:760px){
+  .ku-course-hero{
+    padding:100px 14px 62px;
+  }
+
+  .ku-course-hero__title{
+    margin-bottom:14px;
+    font-size:clamp(26px,8vw,34px);
+    line-height:1.02;
+    letter-spacing:-.02em;
+  }
+
+  .ku-course-hero__title-accent{
+    margin-top:4px;
+    font-size:clamp(23px,7vw,30px);
+  }
+
+  .ku-course-hero__text{
+    margin-bottom:20px;
+    font-size:15px;
+    line-height:1.54;
+  }
+
+  .ku-course-hero__actions{
+    flex-direction:column;
+    align-items:stretch;
+    gap:10px;
+    margin-bottom:18px;
+  }
+
+  .ku-course-hero__actions .ku-btn{
+    width:100%;
+    min-height:50px;
+    padding:0 18px;
+    font-size:14px;
+  }
+
+  .ku-course-hero__meta{
+    grid-template-columns:1fr;
+    gap:8px;
+    margin-bottom:8px;
+  }
+
+  .ku-course-hero__meta-item{
+    min-height:48px;
+    padding:0 14px;
+    font-size:13px;
+  }
+
+  .ku-course-hero__badge{
+    max-width:100%;
+    font-size:12px;
+    line-height:1.25;
+    white-space:normal;
+  }
+
+  .ku-course-hero__right{
+    width:min(100%, 344px);
+    margin:6px auto 0;
+    padding:0;
+    overflow:visible;
+  }
+
+  .ku-course-hero__visual{
+    min-height:236px;
+    width:100%;
+    max-width:296px;
+    margin:0 auto;
+  }
+
+  .ku-course-hero__visual .ku-hero-main{
+    width:98%;
+    height:102%;
+  }
+
+  .ku-course-hero__visual .ku-hero-icon{
+    width:66px;
+    height:66px;
+  }
+
+  .ku-course-hero__visual .ku-hero-icon--python{
+    left:5%;
+    top:7%;
+  }
+
+  .ku-course-hero__visual .ku-hero-icon--scratch{
+    right:5%;
+    top:7%;
+  }
+
+  .ku-course-hero__visual .ku-hero-icon--three-d{
+    right:3%;
+    top:45%;
+  }
+
+  .ku-course-hero__visual .ku-hero-icon--ai{
+    right:18%;
+    bottom:9%;
+  }
+
+  .ku-course-hero__visual .ku-hero-icon--roblox{
+    left:2%;
+    top:41%;
+  }
+
+  .ku-course-hero__visual .ku-hero-icon--design{
+    left:8%;
+    bottom:11%;
+  }
+
+  .ku-course-plan,
+  .ku-course-why,
+  .ku-course-soft{
+    padding:70px 14px;
+  }
+
+  .ku-course-plan__title,
+  .ku-course-why__title,
+  .ku-course-soft__head h2{
+    font-size:clamp(30px,9.4vw,38px);
+    line-height:1.08;
+  }
+
+  .ku-course-plan__title span{
+    font-size:20px;
+  }
+
+  .ku-course-plan__text,
+  .ku-course-soft__head p{
+    font-size:16px;
+    line-height:1.56;
+  }
+
+  .ku-course-plan__grid{
+    gap:14px;
+  }
+
+  .ku-course-plan__card{
+    padding:22px 18px 20px;
+    border-radius:22px;
+  }
+
+  .ku-course-plan__card h3{
+    font-size:20px;
+  }
+
+  .ku-course-plan__card ul{
+    font-size:14px;
+  }
+
+  .ku-course-why__rows{
+    gap:16px;
+  }
+
+  .ku-course-why__media,
+  .ku-course-why__text{
+    border-radius:22px;
+  }
+
+  .ku-course-why__text{
+    padding:20px 18px;
+  }
+
+  .ku-course-why__text h3{
+    font-size:22px;
+  }
+
+  .ku-course-why__text p{
+    font-size:15px;
+    line-height:1.56;
+  }
+
+  .ku-course-why__media--wide{
+    padding:10px;
+  }
+
+  .ku-course-why__media--wide img{
+    aspect-ratio:1.44 / 1;
+    max-height:none;
+  }
+
+  .ku-course-why__final-tags{
+    gap:8px;
+  }
+
+  .ku-course-why__final-tags span,
+  .ku-course-soft__chips span{
+    min-height:36px;
+    padding:0 12px;
+    font-size:12px;
+  }
+
+  .ku-course-soft__panel{
+    padding:28px 18px;
+    border-radius:26px;
+  }
+
+  .ku-course-soft__chips{
+    gap:8px;
+    margin-top:20px;
+  }
+}
   </style>
 </head>
-<body>
-<!-- block: 01-header.html -->
-<header class="ku-header" id="kuHeader">
+<body class="ku-page ku-page--scratch">
+<!-- block: 12-scratch-header.html -->
+<header class="ku-header ku-header--course" id="kuHeader">
   <div class="ku-header__container">
-    <!-- Logo -->
-    <a href="#top" data-scroll class="ku-header__brand">
+    <a href="index.html" class="ku-header__brand" aria-label="КиберУм">
       <div class="ku-header__logo">
         <img src="media/mylogo.svg" alt="КиберУм" width="413" height="93" decoding="async">
       </div>
@@ -5367,15 +6101,13 @@ body.ku-trial-modal-open{
       </div>
     </a>
 
-    <!-- Desktop Nav -->
     <nav class="ku-header__nav">
-      <a href="#top" data-scroll class="is-active">Главная</a>
-      <a href="#courses-real" data-scroll>Курсы</a>
-      <a href="#trust" data-scroll>О школе</a>
+      <a href="#top" data-scroll class="is-active">О курсе</a>
+      <a href="#scratch-plan" data-scroll>Программа</a>
+      <a href="#scratch-projects" data-scroll>Портфолио</a>
       <a href="#trial-form" data-scroll>Контакты</a>
     </nav>
 
-    <!-- Desktop actions -->
     <div class="ku-header__cta-wrap">
       <div class="ku-header__socials" aria-label="Социальные сети">
         <a class="ku-header__social ku-header__social--tg" href="https://t.me/cyberumTG" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
@@ -5401,7 +6133,6 @@ body.ku-trial-modal-open{
       </a>
     </div>
 
-    <!-- Mobile Burger -->
     <button class="ku-header__burger" id="kuHeaderBurger" type="button" aria-label="Открыть меню">
       <span></span>
       <span></span>
@@ -5409,10 +6140,8 @@ body.ku-trial-modal-open{
     </button>
   </div>
 
-  <!-- Mobile Overlay -->
   <div class="ku-header__overlay" id="kuHeaderOverlay"></div>
 
-  <!-- Mobile Panel -->
   <aside class="ku-header__mobile" id="kuHeaderMobile">
     <div class="ku-header__mobile-head">
       <div class="ku-header__mobile-brand">
@@ -5428,10 +6157,11 @@ body.ku-trial-modal-open{
     </div>
 
     <nav class="ku-header__mobile-nav">
-      <a href="#top" data-scroll>Главная</a>
-      <a href="#courses-real" data-scroll>Курсы</a>
-      <a href="#trust" data-scroll>О школе</a>
+      <a href="#top" data-scroll>О курсе</a>
+      <a href="#scratch-plan" data-scroll>Программа</a>
+      <a href="#scratch-projects" data-scroll>Портфолио</a>
       <a href="#trial-form" data-scroll>Контакты</a>
+      <a href="index.html">На главную</a>
     </nav>
 
     <div class="ku-header__mobile-actions">
@@ -5463,59 +6193,44 @@ body.ku-trial-modal-open{
   </aside>
 </header>
 
-<!-- block: 02-hero.html -->
-<section class="ku-hero" id="top">
-  <div class="ku-hero__grad"></div>
-  <div class="ku-hero__grid"></div>
-  <div class="ku-hero__orb ku-hero__orb--blue"></div>
-  <div class="ku-hero__orb ku-hero__orb--red"></div>
+<!-- block: 12-scratch-hero.html -->
+<section class="ku-course-hero" id="top">
+  <div class="ku-course-hero__grid"></div>
+  <div class="ku-course-hero__orb ku-course-hero__orb--blue"></div>
+  <div class="ku-course-hero__orb ku-course-hero__orb--red"></div>
 
-  <div class="ku-hero__container">
-    <div class="ku-hero__layout">
-      <div class="ku-hero__left">
-        <div class="ku-hero__badge">
-          <span class="ku-hero__badge-dot"></span>
-          Набор открыт — осталось 12 мест
+  <div class="ku-course-hero__container">
+    <div class="ku-course-hero__layout">
+      <div class="ku-course-hero__left">
+        <div class="ku-course-hero__badge">
+          <span class="ku-course-hero__badge-dot"></span>
+          Курс Scratch для детей 7–12 лет
         </div>
 
-        <h1 class="ku-hero__title">
-          Ваш ребёнок<br>
-          <span class="ku-hero__underline-wrap">
-            <span class="ku-hero__blue">создаст</span>
-            <svg class="ku-hero__underline" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M2 6C25 2 75 2 98 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"></path>
-            </svg>
-          </span>
-          цифровое<br>
-          <span class="ku-hero__gradient-text">будущее</span>
+        <h1 class="ku-course-hero__title">
+          <span class="ku-course-hero__title-main">Scratch —</span>
+          <span class="ku-course-hero__title-main">понятный старт</span>
+          <span class="ku-course-hero__title-accent">в программировании</span>
         </h1>
 
-        <p class="ku-hero__text">
-          Онлайн-школа программирования для детей.
-          Индивидуальные занятия c преподавателем для детей от 6 до 16 лет.
-          Реальные проекты уже с первого урока.
+        <p class="ku-course-hero__text">
+          Ребёнок создаёт игры, анимации и интерактивные истории в визуальной среде Scratch,
+          осваивает логику, циклы, события и переменные без сложного синтаксиса.
         </p>
 
-        <div class="ku-hero__actions">
+        <div class="ku-course-hero__actions">
           <a href="#trial-form" data-scroll class="ku-btn ku-btn--primary">
             Записаться бесплатно
             <span class="ku-btn__arrow">→</span>
           </a>
-          <a href="#courses-real" data-scroll class="ku-btn ku-btn--secondary">
-            Посмотреть курсы
+          <a href="#scratch-plan" data-scroll class="ku-btn ku-btn--secondary">
+            Смотреть программу
           </a>
-        </div>
-
-        <div class="ku-hero__meta">
-          <div class="ku-hero__meta-item">🎓 Бесплатный пробный урок</div>
-          <div class="ku-hero__meta-item">👨‍🏫 Занятия 1 на 1</div>
-          <div class="ku-hero__meta-item">🏆 1000+ учеников</div>
-          <div class="ku-hero__meta-item">⭐ Рейтинг 4.9/5</div>
         </div>
       </div>
 
-      <div class="ku-hero__right" id="kuHeroVisual">
-        <div class="ku-visual">
+      <div class="ku-course-hero__right">
+        <div class="ku-visual ku-course-hero__visual">
           <svg class="ku-visual__rings" viewBox="0 0 500 500" fill="none" aria-hidden="true">
             <ellipse cx="250" cy="250" rx="210" ry="80" stroke="rgba(59,130,246,0.14)" stroke-width="1" transform="rotate(-15 250 250)" />
             <ellipse cx="250" cy="250" rx="155" ry="60" stroke="rgba(239,68,68,0.12)" stroke-width="1" transform="rotate(25 250 250)" />
@@ -5556,458 +6271,387 @@ body.ku-trial-modal-open{
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <div class="ku-hero__wave">
-    <svg viewBox="0 0 1440 50" fill="none">
-      <path d="M0 50L1440 50L1440 20C1100 50 900 5 600 18C300 31 150 5 0 20Z" fill="hsl(214 60% 97%)"></path>
-    </svg>
-  </div>
-</section>
-
-<!-- block: 02-badges.html -->
-<section class="ku-quick-badges" aria-label="Преимущества обучения">
-  <div class="ku-quick-badges__inner">
-    <div class="ku-quick-badge ku-quick-badge--blue">
-      <span class="ku-quick-badge__icon">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 19 5v5.7c0 4.45-2.8 8.45-7 10.05-4.2-1.6-7-5.6-7-10.05V5l7-2.5Zm0 2.1L7 6.38v4.32c0 3.28 1.9 6.3 5 7.86 3.1-1.56 5-4.58 5-7.86V6.38L12 4.6Zm3.35 4.25 1.3 1.3-5.35 5.35-3.05-3.05 1.3-1.3 1.75 1.75 4.05-4.05Z"/></svg>
-      </span>
-      <span>Лицензия на обучение</span>
-    </div>
-
-    <div class="ku-quick-badge ku-quick-badge--red">
-      <span class="ku-quick-badge__icon">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12.2a4.1 4.1 0 1 0-4.1-4.1 4.1 4.1 0 0 0 4.1 4.1Zm0 1.9c-4.35 0-7.4 2.18-7.4 5.05V20h14.8v-.85c0-2.87-3.05-5.05-7.4-5.05Z"/></svg>
-      </span>
-      <span>Индивидуальные занятия</span>
-    </div>
-
-    <div class="ku-quick-badge ku-quick-badge--green">
-      <span class="ku-quick-badge__icon">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 5v9h14V9H5Zm2 2h4v3H7v-3Zm6 0h4v3h-4v-3Z"/></svg>
-      </span>
-      <span>Удобное расписание</span>
-    </div>
-
-    <div class="ku-quick-badge ku-quick-badge--yellow">
-      <span class="ku-quick-badge__icon">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.7 2.5 5.05 5.58.8-4.04 3.94.95 5.56L12 15.42l-4.99 2.63.95-5.56-4.04-3.94 5.58-.8L12 2.7Z"/></svg>
-      </span>
-      <span>Бесплатный пробный урок</span>
-    </div>
-
-    <div class="ku-quick-badge ku-quick-badge--violet">
-      <span class="ku-quick-badge__icon">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9.3L5 20.2V17H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm2 5h8V6.4H8V8Zm0 3.2h7V9.6H8v1.6Zm0 3.2h5.4v-1.6H8v1.6Z"/></svg>
-      </span>
-      <span>Отчёты для родителей</span>
-    </div>
-
-    <div class="ku-quick-badge ku-quick-badge--cyan">
-      <span class="ku-quick-badge__icon">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4h11A2.5 2.5 0 0 1 20 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-11A2.5 2.5 0 0 1 6.5 4Zm0 2A.5.5 0 0 0 6 6.5v2h12v-2a.5.5 0 0 0-.5-.5h-11ZM6 11v6.5c0 .28.22.5.5.5h11a.5.5 0 0 0 .5-.5V11H6Zm2 2h3v2H8v-2Zm5 0h3v2h-3v-2Z"/></svg>
-      </span>
-      <span>Система абонементов</span>
+      <div class="ku-course-hero__meta">
+        <div class="ku-course-hero__meta-item">🎮 Игры и анимации с первых уроков</div>
+        <div class="ku-course-hero__meta-item">👨‍🏫 Индивидуально 1 на 1 с преподавателем</div>
+        <div class="ku-course-hero__meta-item">🧠 Логика, креативность и уверенность</div>
+        <div class="ku-course-hero__meta-item">🚀 Сильная база для Python и Roblox</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- block: 08-trust.html -->
-<section class="ku-trust" id="trust">
-  <div class="ku-trust__gridbg"></div>
+<!-- block: 12-scratch-plan.html -->
+<section class="ku-course-plan" id="scratch-plan">
+  <div class="ku-course-plan__gridbg"></div>
 
-  <div class="ku-trust__container">
-    <div class="ku-trust__head ku-trust__reveal">
-      <div class="ku-trust__badge">Доверие родителей</div>
-      <h2 class="ku-trust__title">
-        Безопасно.<br>
-        <span>Прозрачно. Надёжно.</span>
+  <div class="ku-course-plan__container">
+    <div class="ku-course-plan__head">
+      <div class="ku-course-plan__badge">Программа обучения</div>
+      <h2 class="ku-course-plan__title">
+        8 модулей,
+        <span>в которых ребёнок растёт от первых блоков до собственной игры</span>
       </h2>
-      <p class="ku-trust__text">
-        Мы понимаем, что вы доверяете нам своего ребёнка. Мы относимся к этому серьёзно.
+      <p class="ku-course-plan__text">
+        Курс выстроен от знакомства с интерфейсом Scratch до финального платформера с
+        функциями, анимацией и игровой логикой.
       </p>
     </div>
 
-    <div class="ku-trust__grid">
-      <article class="ku-trust-card ku-trust-card--blue ku-trust__reveal">
-        <div class="ku-trust-card__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.4-2.8 8.4-7 10-4.2-1.6-7-5.6-7-10V6l7-3Zm0 4.2L8.2 8.8V11c0 2.6 1.5 5 3.8 6.3 2.3-1.3 3.8-3.7 3.8-6.3V8.8L12 7.2Z"/></svg>
-        </div>
-        <h3>Образовательная лицензия</h3>
-        <p>Образовательная деятельность ведется на основании государственной лицензии № Л035-01272-16/01017687</p>
+    <div class="ku-course-plan__grid">
+      <article class="ku-course-plan__card">
+        <div class="ku-course-plan__index">01</div>
+        <h3>Знакомство с платформой</h3>
+        <div class="ku-course-plan__project">Проект: «Подводный мир»</div>
+        <ul>
+          <li>координаты и положение объектов на сцене</li>
+          <li>простая графика и анимация</li>
+          <li>первое управление персонажем</li>
+        </ul>
       </article>
 
-      <article class="ku-trust-card ku-trust-card--red ku-trust__reveal">
-        <div class="ku-trust-card__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10a2 2 0 0 1 2 2v16l-7-3-7 3V5a2 2 0 0 1 2-2Zm2 5h6M9 12h6M9 16h4"/></svg>
-        </div>
-        <h3>Налоговый вычет 13%</h3>
-        <p>Воспользуйтесь правом на налоговый вычет в размере 13 % при оплате обучения в нашей онлайн‑школе.</p>
+      <article class="ku-course-plan__card">
+        <div class="ku-course-plan__index">02</div>
+        <h3>Условия и бесконечные циклы</h3>
+        <div class="ku-course-plan__project">Проект: «Арканоид»</div>
+        <ul>
+          <li>первые переменные и их изменение</li>
+          <li>проверка условий в игре</li>
+          <li>движение и ориентация объектов</li>
+        </ul>
       </article>
 
-      <article class="ku-trust-card ku-trust-card--yellow ku-trust__reveal">
-        <div class="ku-trust-card__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v12H4V7Zm2-3h12v3H6V4Zm2 8h8M8 15h5"/></svg>
-        </div>
-        <h3>Оплата материнским капиталом</h3>
-        <p>Воспользуйтесь материнским капиталом для оплаты обучения в нашей онлайн‑школе.</p>
+      <article class="ku-course-plan__card">
+        <div class="ku-course-plan__index">03</div>
+        <h3>Логические операторы и сенсоры</h3>
+        <div class="ku-course-plan__project">Проект: Minecraft-кликер</div>
+        <ul>
+          <li>подсчёт ресурсов и очков</li>
+          <li>обработка кликов пользователя</li>
+          <li>логика «если / иначе» в действиях</li>
+        </ul>
       </article>
 
-      <article class="ku-trust-card ku-trust-card--violet ku-trust__reveal">
-        <div class="ku-trust-card__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14v14H5V5Zm3 4h8M8 12h8M8 15h5"/></svg>
-        </div>
-        <h3>Система абонементов</h3>
-        <p>Платите помесячно или со скидкой — за год вперёд. Выбирайте удобный формат без обязательств на долгий срок.</p>
+      <article class="ku-course-plan__card">
+        <div class="ku-course-plan__index">04</div>
+        <h3>Циклы с условием и клоны</h3>
+        <div class="ku-course-plan__project">Проект: «Космический полёт»</div>
+        <ul>
+          <li>создание множества объектов-клонов</li>
+          <li>независимые действия для каждого объекта</li>
+          <li>игровые условия и реакции</li>
+        </ul>
       </article>
 
-      <article class="ku-trust-card ku-trust-card--green ku-trust__reveal">
-        <div class="ku-trust-card__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm8 8a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM8 20a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm4-10 2 3M12 14l-2 1"/></svg>
-        </div>
-        <h3>Реферальная система</h3>
-        <p>Получайте бонусы за каждого приглашённого друга и учитесь вместе с выгодой.</p>
+      <article class="ku-course-plan__card">
+        <div class="ku-course-plan__index">05</div>
+        <h3>Сложные условия и массивы</h3>
+        <div class="ku-course-plan__project">Проект: «Викторина»</div>
+        <ul>
+          <li>сложные проверки ответов</li>
+          <li>хранение данных в массивах</li>
+          <li>сборка интерфейса вопросов и результатов</li>
+        </ul>
       </article>
 
-      <article class="ku-trust-card ku-trust-card--orange ku-trust__reveal">
-        <div class="ku-trust-card__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.4 6 .9-4.3 4.2 1 6L12 16.6 6.6 19.5l1-6-4.3-4.2 6-.9L12 3Z"/></svg>
-        </div>
-        <h3>Более 5 лет на рынке</h3>
-        <p>С 2020 года. Тысяча выпускников и проектов. Наработанная методология обучения.</p>
+      <article class="ku-course-plan__card">
+        <div class="ku-course-plan__index">06</div>
+        <h3>Гравитация и игровые события</h3>
+        <div class="ku-course-plan__project">Проекты: Flappy Bird и Bubble Jump</div>
+        <ul>
+          <li>эффект падения и прыжка</li>
+          <li>обработка столкновений и очков</li>
+          <li>сообщения между спрайтами</li>
+        </ul>
+      </article>
+
+      <article class="ku-course-plan__card">
+        <div class="ku-course-plan__index">07</div>
+        <h3>Множественные условия</h3>
+        <div class="ku-course-plan__project">Проекты: «Тир» и «Змейка»</div>
+        <ul>
+          <li>управляемое создание и удаление объектов</li>
+          <li>сложные столкновения и сценарии</li>
+          <li>оператор отрицания и составные проверки</li>
+        </ul>
+      </article>
+
+      <article class="ku-course-plan__card">
+        <div class="ku-course-plan__index">08</div>
+        <h3>Финальный проект и функции</h3>
+        <div class="ku-course-plan__project">Проект: платформер Scratch Run</div>
+        <ul>
+          <li>собственные функции и переиспользуемые блоки</li>
+          <li>сложная анимация персонажа</li>
+          <li>хитбоксы, физика и взаимодействия</li>
+        </ul>
       </article>
     </div>
   </div>
 </section>
 
-<!-- block: 03-courses.html -->
-<section class="ku-courses" id="courses-real">
-  <div class="ku-courses__topline"></div>
-  <div class="ku-courses__gridbg"></div>
-  <div class="ku-courses__orb"></div>
+<!-- block: 12-scratch-why.html -->
+<section class="ku-course-why" id="scratch-why">
+  <div class="ku-course-why__container">
+    <div class="ku-course-why__head">
+      <div class="ku-course-why__badge">Почему Scratch</div>
+      <h2 class="ku-course-why__title">Почему этот курс действительно крутой</h2>
+    </div>
 
-  <div class="ku-courses__container">
-    <div class="ku-courses__head ku-courses__reveal">
-      <div>
-        <div class="ku-courses__badge">17 направлений</div>
-        <h2 class="ku-courses__title">
-          Выберите курс <span>для вашего ребёнка</span>
-        </h2>
+    <div class="ku-course-why__rows">
+      <article class="ku-course-why__row">
+        <div class="ku-course-why__media ku-course-why__media--wide">
+          <img src="media/course_page/scratch/1.webp" alt="Понятный вход в программирование" width="836" height="558" loading="lazy" decoding="async">
+        </div>
+        <div class="ku-course-why__text">
+          <h3>Понятный вход в программирование</h3>
+          <p>
+            Scratch помогает ребёнку быстро увидеть логику кода: команды собираются из
+            цветных блоков, а результат появляется сразу на экране. Это снижает страх
+            перед программированием и даёт ощущение «я могу».
+          </p>
+        </div>
+      </article>
+
+      <article class="ku-course-why__row ku-course-why__row--reverse">
+        <div class="ku-course-why__media ku-course-why__media--wide">
+          <img src="media/course_page/scratch/2.webp" alt="Создание игр и анимаций" width="836" height="558" loading="lazy" decoding="async">
+        </div>
+        <div class="ku-course-why__text">
+          <h3>Создание игр, анимаций и собственных проектов</h3>
+          <p>
+            На курсе дети не просто слушают объяснения, а собирают свои игры, мультфильмы
+            и интерактивные сцены. Через практику ребёнок развивает фантазию, интерес к
+            технологиям и привычку доводить идею до результата.
+          </p>
+        </div>
+      </article>
+
+      <article class="ku-course-why__row">
+        <div class="ku-course-why__media ku-course-why__media--wide">
+          <img src="media/course_page/scratch/3.webp" alt="Развитие логики и креативности" width="836" height="558" loading="lazy" decoding="async">
+        </div>
+        <div class="ku-course-why__text">
+          <h3>Развитие логики, креативности и уверенности</h3>
+          <p>
+            Каждый проект в Scratch тренирует внимание, логику, умение экспериментировать
+            и спокойно искать решения. Ребёнок учится не бросать задачу, а шаг за шагом
+            собирать рабочий результат своими руками.
+          </p>
+        </div>
+      </article>
+    </div>
+
+      <article class="ku-course-why__row ku-course-why__row--reverse">
+        <div class="ku-course-why__media ku-course-why__media--wide">
+          <img src="media/course_page/scratch/4.webp" alt="База для дальнейшего роста в IT" width="836" height="558" loading="lazy" decoding="async">
+        </div>
+        <div class="ku-course-why__text">
+          <div class="ku-course-why__final-mark">Что дальше</div>
+          <h3>Scratch становится сильной базой для более серьёзного программирования</h3>
+          <p>
+            После него ребёнку заметно легче переходить к Python, Roblox, веб-разработке и
+            другим цифровым направлениям: уже понятны алгоритмы, события, циклы и логика действий.
+          </p>
+          <div class="ku-course-why__final-tags">
+            <span>Python</span>
+            <span>Roblox</span>
+            <span>Создание сайтов</span>
+            <span>Игровая логика</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- block: 12-scratch-softskills.html -->
+<section class="ku-course-soft" id="scratch-softskills">
+  <div class="ku-course-soft__container">
+    <div class="ku-course-soft__panel">
+      <div class="ku-course-soft__orb ku-course-soft__orb--blue" aria-hidden="true"></div>
+      <div class="ku-course-soft__orb ku-course-soft__orb--red" aria-hidden="true"></div>
+
+      <div class="ku-course-soft__head">
+        <div class="ku-course-soft__badge">Не только код</div>
+        <h2>Всестороннее развитие ребёнка — уделяем внимание мягким навыкам</h2>
+        <p>
+          На занятиях ребёнок не просто двигает блоки в Scratch, а учится мыслить,
+          презентовать идеи, доводить проект до конца и спокойно разбираться в ошибках.
+        </p>
+      </div>
+
+      <div class="ku-course-soft__chips">
+        <span>Логическое мышление</span>
+        <span>Постановка и решение задач</span>
+        <span>Навык объяснять свои решения</span>
+        <span>Внимание к деталям</span>
+        <span>Творческая смелость</span>
+        <span>Презентация проекта</span>
+        <span>Самостоятельность</span>
+        <span>Работа по шагам</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- block: 12-scratch-projects.html -->
+<section class="ku-projects" id="scratch-projects">
+  <div class="ku-projects__gridbg"></div>
+  <div class="ku-projects__glow ku-projects__glow--blue"></div>
+  <div class="ku-projects__glow ku-projects__glow--red"></div>
+
+  <div class="ku-projects__container">
+    <div class="ku-projects__head ku-projects__reveal">
+      <div class="ku-projects__badge">Портфолио курса Scratch</div>
+      <h2 class="ku-projects__title">
+        Что создают
+        <span>ученики на курсе</span>
+      </h2>
+      <p class="ku-projects__text">
+        Не абстрактные упражнения, а реальные проекты, которыми ребёнок может гордиться уже в процессе обучения.
+      </p>
+    </div>
+
+    <div class="ku-projects__slider ku-projects__reveal">
+      <button class="ku-projects__nav ku-projects__nav--prev" type="button" aria-label="Предыдущий проект">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 5.3a1 1 0 0 1 0 1.4L9.41 12l5.3 5.3a1 1 0 0 1-1.42 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.41 0Z"/></svg>
+      </button>
+
+      <div class="ku-projects__viewport">
+        <div class="ku-projects__track">
+          <article class="ku-project-card ku-project-card--blue ku-projects__reveal" data-category="programming">
+            <div class="ku-project-card__preview">
+              <img src="media/course_page/scratch/4.webp" alt="Проект Подводный мир в Scratch" loading="lazy" decoding="async">
+            </div>
+            <div class="ku-project-card__body">
+              <div class="ku-project-card__chip">Scratch</div>
+              <h3>Подводный мир</h3>
+              <div class="ku-project-card__meta">
+                <span>7–8 лет</span>
+                <span>анимация и координаты</span>
+                <span>первый самостоятельный проект</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="ku-project-card ku-project-card--violet ku-projects__reveal" data-category="programming">
+            <div class="ku-project-card__preview">
+              <img src="media/courses/Scratch.png" alt="Проект Арканоид в Scratch" loading="lazy" decoding="async">
+            </div>
+            <div class="ku-project-card__body">
+              <div class="ku-project-card__chip">Игровая логика</div>
+              <h3>Арканоид</h3>
+              <div class="ku-project-card__meta">
+                <span>8–10 лет</span>
+                <span>циклы и условия</span>
+                <span>счёт и поведение объектов</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="ku-project-card ku-project-card--orange ku-projects__reveal" data-category="programming">
+            <div class="ku-project-card__preview">
+              <img src="media/course_page/scratch/3.webp" alt="Проект Minecraft-кликер в Scratch" loading="lazy" decoding="async">
+            </div>
+            <div class="ku-project-card__body">
+              <div class="ku-project-card__chip">Переменные</div>
+              <h3>Minecraft-кликер</h3>
+              <div class="ku-project-card__meta">
+                <span>9–11 лет</span>
+                <span>сенсоры и ресурсы</span>
+                <span>очки, апгрейды, реакции</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="ku-project-card ku-project-card--blue ku-projects__reveal" data-category="programming">
+            <div class="ku-project-card__preview">
+              <img src="media/course_page/scratch/4.webp" alt="Проект Scratch Run" loading="lazy" decoding="async">
+            </div>
+            <div class="ku-project-card__body">
+              <div class="ku-project-card__chip">Финальный проект</div>
+              <h3>Платформер Scratch Run</h3>
+              <div class="ku-project-card__meta">
+                <span>10–12 лет</span>
+                <span>функции и хитбоксы</span>
+                <span>полноценная игра с физикой</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <button class="ku-projects__nav ku-projects__nav--next" type="button" aria-label="Следующий проект">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.3 18.7a1 1 0 0 1 0-1.4l5.29-5.3L9.3 6.7a1 1 0 1 1 1.42-1.4l6 6a1 1 0 0 1 0 1.4l-6 6a1 1 0 0 1-1.41 0Z"/></svg>
+      </button>
+    </div>
+
+    <div class="ku-projects__dots" aria-label="Навигация по проектам"></div>
+  </div>
+</section>
+
+<!-- block: 05-membership.html -->
+<section class="ku-membership" id="membership">
+  <div class="ku-membership__ambient ku-membership__ambient--blue" aria-hidden="true"></div>
+  <div class="ku-membership__ambient ku-membership__ambient--red" aria-hidden="true"></div>
+
+  <div class="ku-membership__container">
+    <div class="ku-membership__intro">
+      <div class="ku-membership__eyebrow">Гибкая оплата</div>
+      <h2 class="ku-membership__title">
+        Без кредитов на 2 года.<br>
+        <span>Оплата абонементами.</span>
+      </h2>
+      <p class="ku-membership__lead">
+        Надоели дорогостоящие курсы с навязанными кредитами и длинными банковскими рассрочками?
+        У нас система абонементов от 4 до 96 занятий: платите в комфортном темпе, а за большие пакеты
+        делаем скидки.
+      </p>
+
+      <div class="ku-membership__cta">
+        <p>
+          Оставьте заявку — рассчитаем стоимость обучения сразу по телефону, без лишней потери времени.
+        </p>
+        <a href="#trial-form" data-scroll class="ku-btn ku-btn--primary ku-membership__btn">
+          Рассчитать стоимость
+        </a>
       </div>
     </div>
 
-    <div class="ku-courses__filters ku-courses__reveal" aria-label="Фильтр курсов">
-      <div class="ku-courses__filters-shell">
-        <button class="ku-courses__filter is-active" type="button" data-filter="all">
-          <span class="ku-courses__filter-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M5 5h5v5H5V5Zm9 0h5v5h-5V5ZM5 14h5v5H5v-5Zm9 0h5v5h-5v-5Z"/></svg>
-          </span>
-          <span>Все курсы</span>
-        </button>
-        <button class="ku-courses__filter" type="button" data-filter="games">
-          <span class="ku-courses__filter-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M8 11h3m-1.5-1.5v3M15.5 10h.01M18 12h.01M7.2 18h9.6c1.76 0 3.2-1.44 3.2-3.2 0-1.05-.52-2.03-1.38-2.62l-.94-5.18A2.2 2.2 0 0 0 15.53 5h-7.06a2.2 2.2 0 0 0-2.17 1.99l-.94 5.18A3.18 3.18 0 0 0 4 14.8C4 16.56 5.44 18 7.2 18Z"/></svg>
-          </span>
-          <span>Создание игр</span>
-        </button>
-        <button class="ku-courses__filter" type="button" data-filter="programming">
-          <span class="ku-courses__filter-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M8 9 5 12l3 3m8-6 3 3-3 3M13 7l-2 10"/></svg>
-          </span>
-          <span>Программирование</span>
-        </button>
-        <button class="ku-courses__filter" type="button" data-filter="modeling">
-          <span class="ku-courses__filter-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="m12 3 7 4-7 4-7-4 7-4Zm7 4v10l-7 4-7-4V7m7 4v10"/></svg>
-          </span>
-          <span>3D моделирование</span>
-        </button>
-        <button class="ku-courses__filter" type="button" data-filter="design">
-          <span class="ku-courses__filter-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="m14.7 4.3 5 5M5 19l3.8-.9L19 7.9a2.1 2.1 0 0 0-3-3L5.9 15.1 5 19Z"/></svg>
-          </span>
-          <span>Дизайн</span>
-        </button>
-        <button class="ku-courses__filter" type="button" data-filter="development">
-          <span class="ku-courses__filter-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M12 4c2.6 0 4.9 1 6.5 2.7M12 4C9.4 4 7.1 5 5.5 6.7M12 4v16M6 11c0 3.3 2.7 6 6 6s6-2.7 6-6"/></svg>
-          </span>
-          <span>Развитие</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="ku-courses__grid">
-      <article class="ku-catalog-card ku-courses__reveal" data-categories="development" style="--accent:#15803d;">
-        <div class="ku-catalog-card__media">
-          <img class="ku-catalog-card__image" src="media/courses/comp_gram.png" alt="Компьютерная грамотность" width="627" height="627" loading="lazy" decoding="async">
-          <div class="ku-catalog-card__shade"></div>
-          <img class="ku-catalog-card__logo" src="media/courses_logo/Comp_gram.png" alt="">
-          <div class="ku-catalog-card__badges"><span>6-16 лет</span><span>База</span></div>
-          <div class="ku-catalog-card__info">
-            <h3>Компьютерная грамотность</h3>
-            <div class="ku-catalog-card__details">
-              <p>Уверенная работа с компьютером: клавиатура, файлы, интернет, безопасность и базовые цифровые навыки без стресса.</p>
-            </div>
+    <div class="ku-membership__details">
+      <div class="ku-membership__label">Как это работает</div>
+      <ol class="ku-membership__list">
+        <li>
+          <span class="ku-membership__index" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M3.75 7.5A2.25 2.25 0 0 1 6 5.25h12A2.25 2.25 0 0 1 20.25 7.5v1.125H3.75V7.5Zm0 3h16.5v6A2.25 2.25 0 0 1 18 18.75H6A2.25 2.25 0 0 1 3.75 16.5v-6Zm2.625 3a.75.75 0 0 0 0 1.5h3.75a.75.75 0 0 0 0-1.5h-3.75Z"/><path d="M5 19 19 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.9"/></svg></span>
+          <div>
+            <strong>Никаких банковских рассрочек.</strong>
+            <p>Есть внутренняя рассрочка без скрытых условий и без давления на родителя.</p>
           </div>
-        </div>
-        <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
-      </article>
-
-      <article class="ku-catalog-card ku-courses__reveal" data-categories="development games" style="--accent:#22c55e;">
-        <div class="ku-catalog-card__media">
-          <img class="ku-catalog-card__image" src="media/courses/ScratchJR.png" alt="Scratch Jr" width="627" height="627" loading="lazy" decoding="async">
-          <div class="ku-catalog-card__shade"></div>
-          <img class="ku-catalog-card__logo" src="media/courses_logo/scratch_jr.png" alt="">
-          <div class="ku-catalog-card__badges"><span>5-7 лет</span><span>Старт</span></div>
-          <div class="ku-catalog-card__info">
-            <h3>Scratch Jr</h3>
-            <div class="ku-catalog-card__details">
-              <p>Первое знакомство с алгоритмами через истории, персонажей и простые игровые действия для самых младших учеников.</p>
-            </div>
+        </li>
+        <li>
+          <span class="ku-membership__index" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M4.5 5.25A2.25 2.25 0 0 1 6.75 3h2.5A2.25 2.25 0 0 1 11.5 5.25v2.5A2.25 2.25 0 0 1 9.25 10h-2.5A2.25 2.25 0 0 1 4.5 7.75v-2.5Zm8 0A2.25 2.25 0 0 1 14.75 3h2.5a2.25 2.25 0 0 1 2.25 2.25v2.5A2.25 2.25 0 0 1 17.25 10h-2.5a2.25 2.25 0 0 1-2.25-2.25v-2.5Zm-8 8A2.25 2.25 0 0 1 6.75 11h2.5a2.25 2.25 0 0 1 2.25 2.25v2.5A2.25 2.25 0 0 1 9.25 18h-2.5a2.25 2.25 0 0 1-2.25-2.25v-2.5Zm8 0A2.25 2.25 0 0 1 14.75 11h2.5a2.25 2.25 0 0 1 2.25 2.25v2.5A2.25 2.25 0 0 1 17.25 18h-2.5a2.25 2.25 0 0 1-2.25-2.25v-2.5Z"/></svg></span>
+          <div>
+            <strong>Абонемент расходуется на любые курсы.</strong>
+            <p>Это посещения, которые можно использовать там, где ребёнку действительно интересно.</p>
           </div>
-        </div>
-        <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
-      </article>
-
-      <article class="ku-catalog-card ku-courses__reveal" data-categories="games programming development" style="--accent:#16a34a;">
-        <div class="ku-catalog-card__media">
-          <img class="ku-catalog-card__image" src="media/courses/Scratch.png" alt="Scratch" width="627" height="627" loading="lazy" decoding="async">
-          <div class="ku-catalog-card__shade"></div>
-          <img class="ku-catalog-card__logo" src="media/courses_logo/scratch.png" alt="">
-          <div class="ku-catalog-card__badges"><span>7-13 лет</span><span>Начинающий</span></div>
-          <div class="ku-catalog-card__info">
-            <h3>Scratch</h3>
-            <div class="ku-catalog-card__details">
-              <p>Визуальное программирование: ребёнок создаёт игры и анимации, учится логике и видит результат уже на первых занятиях.</p>
-            </div>
+        </li>
+        <li>
+          <span class="ku-membership__index" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M9 11.25a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm6.75 0a2.625 2.625 0 1 0 0-5.25 2.625 2.625 0 0 0 0 5.25ZM3.75 18a4.5 4.5 0 0 1 9 0v.75h-9V18Zm10.5.75V18a5.7 5.7 0 0 0-1.14-3.435A4.125 4.125 0 0 1 20.25 18v.75h-6Z"/></svg></span>
+          <div>
+            <strong>Один абонемент можно использовать для двух и более детей.</strong>
+            <p>Удобно для семьи, если дети занимаются в разных направлениях или с разной нагрузкой.</p>
           </div>
-        </div>
-        <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="scratch.html" class="ku-catalog-card__secondary">Подробнее</a></div>
-      </article>
-
-      <article class="ku-catalog-card ku-courses__reveal" data-categories="modeling games" style="--accent:#4d7c0f;">
-        <div class="ku-catalog-card__media">
-          <img class="ku-catalog-card__image" src="media/courses/Blockbench.png" alt="Blockbench" width="627" height="627" loading="lazy" decoding="async">
-          <div class="ku-catalog-card__shade"></div>
-          <img class="ku-catalog-card__logo" src="media/courses_logo/Blockbench.png" alt="">
-          <div class="ku-catalog-card__badges"><span>7-16 лет</span><span>3D</span></div>
-          <div class="ku-catalog-card__info">
-            <h3>3D-моделирование Blockbench</h3>
-            <div class="ku-catalog-card__details">
-              <p>Кубические персонажи, игровые ассеты и текстуры. Отличный вход в 3D для детей, которым близка пиксельная эстетика.</p>
-            </div>
+        </li>
+        <li>
+          <span class="ku-membership__index" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M8.25 3.75a.75.75 0 0 1 .75.75V6h6V4.5a.75.75 0 0 1 1.5 0V6h.75A2.25 2.25 0 0 1 20.25 8.25V18A2.25 2.25 0 0 1 18 20.25H6A2.25 2.25 0 0 1 3.75 18V8.25A2.25 2.25 0 0 1 6 6h.75V4.5a.75.75 0 0 1 .75-.75ZM5.25 9v9A.75.75 0 0 0 6 18.75h12a.75.75 0 0 0 .75-.75V9H5.25Z"/><path d="M8.25 13.5c1.05-1.8 2.25-1.8 3.75 0 1.5 1.8 2.7 1.8 3.75 0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"/></svg></span>
+          <div>
+            <strong>Абонемент не имеет срока действия.</strong>
+            <p>Ничего не сгорает — занятия проходят в спокойном ритме, без искусственной спешки.</p>
           </div>
-        </div>
-        <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
-      </article>
-
-      <article class="ku-catalog-card ku-courses__reveal" data-categories="modeling design" style="--accent:#f97316;">
-        <div class="ku-catalog-card__media">
-          <img class="ku-catalog-card__image" src="media/courses/blender.png" alt="Blender" width="512" height="512" loading="lazy" decoding="async">
-          <div class="ku-catalog-card__shade"></div>
-          <img class="ku-catalog-card__logo" src="media/courses_logo/Blender.png" alt="">
-          <div class="ku-catalog-card__badges"><span>7-16 лет</span><span>Средний</span></div>
-          <div class="ku-catalog-card__info">
-            <h3>Blender</h3>
-            <div class="ku-catalog-card__details">
-              <p>Профессиональное 3D-моделирование: формы, материалы, свет, персонажи и сцены для портфолио и визуальных проектов.</p>
-            </div>
-          </div>
-        </div>
-        <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
-      </article>
-
-      <article class="ku-catalog-card ku-courses__reveal" data-categories="games design" style="--accent:#d97706;">
-        <div class="ku-catalog-card__media">
-          <img class="ku-catalog-card__image" src="media/courses/Roblox_design.png" alt="Гейм-дизайн в Roblox" width="627" height="627" loading="lazy" decoding="async">
-          <div class="ku-catalog-card__shade"></div>
-          <img class="ku-catalog-card__logo" src="media/courses_logo/roblox_design.png" alt="">
-          <div class="ku-catalog-card__badges"><span>7-16 лет</span><span>Дизайн игр</span></div>
-          <div class="ku-catalog-card__info">
-            <h3>Гейм-дизайн в Roblox</h3>
-            <div class="ku-catalog-card__details">
-              <p>Учимся проектировать уровни, правила, препятствия и игровой опыт, чтобы ребёнок понимал, почему игра становится интересной.</p>
-            </div>
-          </div>
-        </div>
-        <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
-      </article>
-
-      <article class="ku-catalog-card ku-courses__reveal" data-categories="games programming" style="--accent:#ea580c;">
-        <div class="ku-catalog-card__media">
-          <img class="ku-catalog-card__image" src="media/courses/Roblox.png" alt="Программирование в Roblox Lua" width="512" height="512" loading="lazy" decoding="async">
-          <div class="ku-catalog-card__shade"></div>
-          <img class="ku-catalog-card__logo" src="media/courses_logo/Roblox_program.png" alt="">
-          <div class="ku-catalog-card__badges"><span>7-16 лет</span><span>Код</span></div>
-          <div class="ku-catalog-card__info">
-            <h3>Программирование в Roblox (Lua)</h3>
-            <div class="ku-catalog-card__details">
-              <p>Пишем скрипты для игровых событий, кнопок, очков, ловушек и интерактивных объектов в Roblox Studio.</p>
-            </div>
-          </div>
-        </div>
-        <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
-      </article>
-
-      <article class="ku-catalog-card ku-courses__reveal" data-categories="games programming modeling" style="--accent:#65a30d;">
-        <div class="ku-catalog-card__media">
-          <img class="ku-catalog-card__image" src="media/courses/mod_minecraft.png" alt="Создание модов в Minecraft" width="627" height="627" loading="lazy" decoding="async">
-          <div class="ku-catalog-card__shade"></div>
-          <img class="ku-catalog-card__logo" src="media/courses_logo/minecraft_mod.png" alt="">
-          <div class="ku-catalog-card__badges"><span>7-16 лет</span><span>Моды</span></div>
-          <div class="ku-catalog-card__info">
-            <h3>Создание модов в Minecraft</h3>
-            <div class="ku-catalog-card__details">
-              <p>Придумываем собственные предметы, персонажей и игровые элементы, соединяя моделирование, текстуры и логику модов.</p>
-            </div>
-          </div>
-        </div>
-        <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
-      </article>
-
-      <article class="ku-catalog-card ku-courses__reveal" data-categories="programming" style="--accent:#2563eb;">
-        <div class="ku-catalog-card__media">
-          <img class="ku-catalog-card__image" src="media/courses/python_start.png" alt="Python Start" width="627" height="627" loading="lazy" decoding="async">
-          <div class="ku-catalog-card__shade"></div>
-          <img class="ku-catalog-card__logo" src="media/courses_logo/python.png" alt="">
-          <div class="ku-catalog-card__badges"><span>7-16 лет</span><span>Start</span></div>
-          <div class="ku-catalog-card__info">
-            <h3>Python Start</h3>
-            <div class="ku-catalog-card__details">
-              <p>Первый настоящий язык программирования: переменные, условия, циклы, функции и маленькие проекты без перегруза.</p>
-            </div>
-          </div>
-        </div>
-        <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
-      </article>
-
-      <article class="ku-catalog-card ku-courses__reveal" data-categories="programming games" style="--accent:#1d4ed8;">
-        <div class="ku-catalog-card__media">
-          <img class="ku-catalog-card__image" src="media/courses/pygame.png" alt="Python Pygame" width="627" height="627" loading="lazy" decoding="async">
-          <div class="ku-catalog-card__shade"></div>
-          <img class="ku-catalog-card__logo" src="media/courses_logo/pygame.png" alt="">
-          <div class="ku-catalog-card__badges"><span>7-16 лет</span><span>Игры</span></div>
-          <div class="ku-catalog-card__info">
-            <h3>Python Pygame</h3>
-            <div class="ku-catalog-card__details">
-              <p>Создание 2D-игр на Python: персонажи, движение, столкновения, очки и простая игровая архитектура.</p>
-            </div>
-          </div>
-        </div>
-        <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
-      </article>
-
-      <article class="ku-catalog-card ku-courses__reveal" data-categories="programming" style="--accent:#0f766e;">
-        <div class="ku-catalog-card__media">
-          <img class="ku-catalog-card__image" src="media/courses/tkinter.png" alt="Tkinter" width="627" height="627" loading="lazy" decoding="async">
-          <div class="ku-catalog-card__shade"></div>
-          <img class="ku-catalog-card__logo" src="media/courses_logo/Tkinter.png" alt="">
-          <div class="ku-catalog-card__badges"><span>7-16 лет</span><span>GUI</span></div>
-          <div class="ku-catalog-card__info">
-            <h3>Tkinter</h3>
-            <div class="ku-catalog-card__details">
-              <p>Делаем оконные приложения на Python: кнопки, формы, калькуляторы, мини-инструменты и понятную структуру интерфейса.</p>
-            </div>
-          </div>
-        </div>
-        <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
-      </article>
-
-      <article class="ku-catalog-card ku-courses__reveal" data-categories="programming development" style="--accent:#0891b2;">
-        <div class="ku-catalog-card__media">
-          <img class="ku-catalog-card__image" src="media/courses/chat_bot.png" alt="Chatbot" width="627" height="627" loading="lazy" decoding="async">
-          <div class="ku-catalog-card__shade"></div>
-          <img class="ku-catalog-card__logo" src="media/courses_logo/chatbot.png" alt="">
-          <div class="ku-catalog-card__badges"><span>7-16 лет</span><span>Боты</span></div>
-          <div class="ku-catalog-card__info">
-            <h3>Chatbot</h3>
-            <div class="ku-catalog-card__details">
-              <p>Создаём чат-ботов: сценарии общения, команды, ответы, простая автоматизация и первые практические AI-инструменты.</p>
-            </div>
-          </div>
-        </div>
-        <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
-      </article>
-
-      <article class="ku-catalog-card ku-courses__reveal" data-categories="programming" style="--accent:#0369a1;">
-        <div class="ku-catalog-card__media">
-          <img class="ku-catalog-card__image" src="media/courses/django_flusk.png" alt="Flask Django" width="627" height="627" loading="lazy" decoding="async">
-          <div class="ku-catalog-card__shade"></div>
-          <img class="ku-catalog-card__logo" src="media/courses_logo/django_flusk.png" alt="">
-          <div class="ku-catalog-card__badges"><span>7-16 лет</span><span>Backend</span></div>
-          <div class="ku-catalog-card__info">
-            <h3>Flask / Django</h3>
-            <div class="ku-catalog-card__details">
-              <p>Серверная разработка на Python: маршруты, страницы, формы, базы данных и первые веб-приложения.</p>
-            </div>
-          </div>
-        </div>
-        <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
-      </article>
-
-      <article class="ku-catalog-card ku-courses__reveal" data-categories="programming design" style="--accent:#0e7490;">
-        <div class="ku-catalog-card__media">
-          <img class="ku-catalog-card__image" src="media/courses/web_program.png" alt="Веб-разработка" width="627" height="627" loading="lazy" decoding="async">
-          <div class="ku-catalog-card__shade"></div>
-          <img class="ku-catalog-card__logo" src="media/courses_logo/web_program.png" alt="">
-          <div class="ku-catalog-card__badges"><span>7-16 лет</span><span>Frontend</span></div>
-          <div class="ku-catalog-card__info">
-            <h3>Веб-разработка</h3>
-            <div class="ku-catalog-card__details">
-              <p>HTML, CSS и JavaScript: настоящие сайты, адаптивная вёрстка, интерактивные элементы и публикация результата.</p>
-            </div>
-          </div>
-        </div>
-        <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
-      </article>
-
-      <article class="ku-catalog-card ku-courses__reveal" data-categories="games programming modeling" style="--accent:#7c3aed;">
-        <div class="ku-catalog-card__media">
-          <img class="ku-catalog-card__image" src="media/courses/unity.png" alt="Unity" width="512" height="512" loading="lazy" decoding="async">
-          <div class="ku-catalog-card__shade"></div>
-          <div class="ku-catalog-card__badges"><span>7-16 лет</span><span>GameDev</span></div>
-          <div class="ku-catalog-card__info">
-            <h3>Unity</h3>
-            <div class="ku-catalog-card__details">
-              <p>Профессиональный игровой движок: C#, 2D/3D-сцены, физика, анимации и сборка полноценного прототипа игры.</p>
-            </div>
-          </div>
-        </div>
-        <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
-      </article>
-
-      <article class="ku-catalog-card ku-courses__reveal" data-categories="design" style="--accent:#be185d;">
-        <div class="ku-catalog-card__media">
-          <img class="ku-catalog-card__image" src="media/courses/web_design.png" alt="Веб-дизайн" width="627" height="627" loading="lazy" decoding="async">
-          <div class="ku-catalog-card__shade"></div>
-          <div class="ku-catalog-card__badges"><span>7-16 лет</span><span>Web</span></div>
-          <div class="ku-catalog-card__info">
-            <h3>Веб-дизайн</h3>
-            <div class="ku-catalog-card__details">
-              <p>Проектируем современные сайты: структура страницы, визуальная иерархия, цвета, сетки и удобство для пользователя.</p>
-            </div>
-          </div>
-        </div>
-        <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
-      </article>
-
-      <article class="ku-catalog-card ku-courses__reveal" data-categories="design" style="--accent:#a21caf;">
-        <div class="ku-catalog-card__media">
-          <img class="ku-catalog-card__image" src="media/courses/Grah_design.png" alt="Графический дизайн" width="627" height="627" loading="lazy" decoding="async">
-          <div class="ku-catalog-card__shade"></div>
-          <img class="ku-catalog-card__logo" src="media/courses_logo/graf_design.png" alt="">
-          <div class="ku-catalog-card__badges"><span>7-16 лет</span><span>Design</span></div>
-          <div class="ku-catalog-card__info">
-            <h3>Графический дизайн</h3>
-            <div class="ku-catalog-card__details">
-              <p>Цвет, композиция, типографика, постеры и визуальные материалы. Курс помогает развить вкус и собрать первые работы.</p>
-            </div>
-          </div>
-        </div>
-        <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
-      </article>
+        </li>
+      </ol>
     </div>
   </div>
 </section>
@@ -6076,6 +6720,185 @@ body.ku-trial-modal-open{
         <span>&rarr;</span>
       </a>
       <p>Первый пробный урок - бесплатно</p>
+    </div>
+  </div>
+</section>
+
+<!-- block: 03-benefits.html -->
+<section class="ku-benefits" aria-label="Почему КиберУм">
+  <div class="ku-benefits__grid-bg"></div>
+
+  <div class="ku-benefits__container">
+    <div class="ku-benefits__head">
+      <div class="ku-benefits__eyebrow">Почему КиберУм?</div>
+      <h2 class="ku-benefits__title">
+        <span class="ku-benefits__title-prefix">Не просто курсы</span><span class="ku-benefits__desktop-dash"> —</span><span class="ku-benefits__mobile-arrow" aria-hidden="true"></span><br>
+        <span class="ku-benefits__circle-wrap">
+          <span class="ku-benefits__circle-text"><span class="ku-benefits__circle-line-text">образовательная</span><span class="ku-benefits__mobile-break"><br></span> <span class="ku-benefits__circle-line-text ku-benefits__circle-line-text--second">экосистема</span></span>
+          <svg class="ku-benefits__circle" viewBox="0 0 100 36" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="kuBenefitsCircleGradient" x1="0" y1="0" x2="100" y2="0" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#2563eb"></stop>
+                <stop offset=".55" stop-color="#7c3aed"></stop>
+                <stop offset="1" stop-color="#ef4444"></stop>
+              </linearGradient>
+            </defs>
+            <path class="ku-benefits__circle-line ku-benefits__circle-line--main" d="M3.2 18.6C3.8 7.2 24.8 2.4 50.1 2.8c25.8.4 46.5 5.1 46.8 15.1.4 11.4-21.1 15.5-47 15.1C24.1 32.6 2.5 28.9 3.2 18.6Z"></path>
+            <path class="ku-benefits__circle-line ku-benefits__circle-line--ghost" d="M2.8 17.5C5.1 7.8 26.5 3.3 50.9 3.6c25.3.3 45.2 5.3 45.9 14.1.9 10.5-20.4 14.7-46.5 14.5C24.4 31.9 4.2 28.1 2.8 17.5Z"></path>
+          </svg>
+        </span>
+      </h2>
+      <p class="ku-benefits__lead">
+        Мы создали среду, в которой дети не просто учатся — они растут как технические профессионалы.
+      </p>
+    </div>
+
+    <div class="ku-benefits__cards">
+      <article class="ku-benefit-card ku-benefit-card--blue">
+        <div class="ku-benefit-card__top">
+          <span class="ku-benefit-card__icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 13a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0 2c-4.4 0-7.5 2.2-7.5 5v1h15v-1c0-2.8-3.1-5-7.5-5z"/></svg>
+          </span>
+          <span class="ku-benefit-card__tag">главное преимущество</span>
+        </div>
+        <div class="ku-benefit-card__body">
+          <h3>Обучение один на один</h3>
+          <p>Никаких групп по 10 человек. Только преподаватель и ваш ребёнок. Темп и программа — под конкретного ученика.</p>
+        </div>
+      </article>
+
+      <article class="ku-benefit-card ku-benefit-card--red">
+        <div class="ku-benefit-card__top">
+          <span class="ku-benefit-card__icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.4 6 .9-4.3 4.2 1 6L12 16.6 6.6 19.5l1-6-4.3-4.2 6-.9L12 3z"/></svg>
+          </span>
+          <span class="ku-benefit-card__tag">мотивация</span>
+        </div>
+        <div class="ku-benefit-card__body">
+          <h3>Под интересы ребёнка</h3>
+          <p>Любит Minecraft? Учим через Blockbench. Мечтает создать игру? Unity или Roblox. Интерес — лучший учитель.</p>
+        </div>
+      </article>
+
+      <article class="ku-benefit-card ku-benefit-card--violet">
+        <div class="ku-benefit-card__top">
+          <span class="ku-benefit-card__icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-5v2h3v2H7v-2h3v-2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm1 3v8h12V7H6z"/></svg>
+          </span>
+          <span class="ku-benefit-card__tag">актуально</span>
+        </div>
+        <div class="ku-benefit-card__body">
+          <h3>Современные IT-навыки</h3>
+          <p>Python, Unity, веб-разработка, 3D-моделирование. Навыки, которые реально востребованы сегодня и в будущем.</p>
+        </div>
+      </article>
+
+      <article class="ku-benefit-card ku-benefit-card--green">
+        <div class="ku-benefit-card__top">
+          <span class="ku-benefit-card__icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17l5.2-5.2 3.1 3.1L19 8.2V12h2V5h-7v2h3.6l-5.3 5.3-3.1-3.1L2.6 15.8 4 17z"/></svg>
+          </span>
+          <span class="ku-benefit-card__tag">портфолио</span>
+        </div>
+        <div class="ku-benefit-card__body">
+          <h3>Реальные проекты</h3>
+          <p>С первого занятия — реальный результат. Ребёнок создаёт игры, сайты, программы и делится с друзьями.</p>
+        </div>
+      </article>
+
+      <article class="ku-benefit-card ku-benefit-card--yellow">
+        <div class="ku-benefit-card__top">
+          <span class="ku-benefit-card__icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10a2 2 0 0 1 2 2v16l-7-3-7 3V5a2 2 0 0 1 2-2zm2 5v2h6V8H9zm0 4v2h6v-2H9z"/></svg>
+          </span>
+          <span class="ku-benefit-card__tag">для родителей</span>
+        </div>
+        <div class="ku-benefit-card__body">
+          <h3>Прозрачный прогресс</h3>
+          <p>Родители всегда знают, что изучает ребенок. Ежемесячные отчеты и связь с учителем.</p>
+        </div>
+      </article>
+
+      <article class="ku-benefit-card ku-benefit-card--teal">
+        <div class="ku-benefit-card__top">
+          <span class="ku-benefit-card__icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 5 5.5.8-4 3.9.9 5.5L12 14.6 7.1 17.2l.9-5.5-4-3.9 5.5-.8L12 2zm-7 18h14v2H5v-2z"/></svg>
+          </span>
+          <span class="ku-benefit-card__tag">качество</span>
+        </div>
+        <div class="ku-benefit-card__body">
+          <h3>Сильные преподаватели</h3>
+          <p>Проходим строгий отбор: только 5% кандидатов. Практикующие разработчики, дизайнеры, технические специалисты.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- block: 08-trust.html -->
+<section class="ku-trust" id="trust">
+  <div class="ku-trust__gridbg"></div>
+
+  <div class="ku-trust__container">
+    <div class="ku-trust__head ku-trust__reveal">
+      <div class="ku-trust__badge">Доверие родителей</div>
+      <h2 class="ku-trust__title">
+        Безопасно.<br>
+        <span>Прозрачно. Надёжно.</span>
+      </h2>
+      <p class="ku-trust__text">
+        Мы понимаем, что вы доверяете нам своего ребёнка. Мы относимся к этому серьёзно.
+      </p>
+    </div>
+
+    <div class="ku-trust__grid">
+      <article class="ku-trust-card ku-trust-card--blue ku-trust__reveal">
+        <div class="ku-trust-card__icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.4-2.8 8.4-7 10-4.2-1.6-7-5.6-7-10V6l7-3Zm0 4.2L8.2 8.8V11c0 2.6 1.5 5 3.8 6.3 2.3-1.3 3.8-3.7 3.8-6.3V8.8L12 7.2Z"/></svg>
+        </div>
+        <h3>Образовательная лицензия</h3>
+        <p>Образовательная деятельность ведется на основании государственной лицензии № Л035-01272-16/01017687</p>
+      </article>
+
+      <article class="ku-trust-card ku-trust-card--red ku-trust__reveal">
+        <div class="ku-trust-card__icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10a2 2 0 0 1 2 2v16l-7-3-7 3V5a2 2 0 0 1 2-2Zm2 5h6M9 12h6M9 16h4"/></svg>
+        </div>
+        <h3>Налоговый вычет 13%</h3>
+        <p>Воспользуйтесь правом на налоговый вычет в размере 13 % при оплате обучения в нашей онлайн‑школе.</p>
+      </article>
+
+      <article class="ku-trust-card ku-trust-card--yellow ku-trust__reveal">
+        <div class="ku-trust-card__icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v12H4V7Zm2-3h12v3H6V4Zm2 8h8M8 15h5"/></svg>
+        </div>
+        <h3>Оплата материнским капиталом</h3>
+        <p>Воспользуйтесь материнским капиталом для оплаты обучения в нашей онлайн‑школе.</p>
+      </article>
+
+      <article class="ku-trust-card ku-trust-card--violet ku-trust__reveal">
+        <div class="ku-trust-card__icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14v14H5V5Zm3 4h8M8 12h8M8 15h5"/></svg>
+        </div>
+        <h3>Система абонементов</h3>
+        <p>Платите помесячно или со скидкой — за год вперёд. Выбирайте удобный формат без обязательств на долгий срок.</p>
+      </article>
+
+      <article class="ku-trust-card ku-trust-card--green ku-trust__reveal">
+        <div class="ku-trust-card__icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm8 8a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM8 20a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm4-10 2 3M12 14l-2 1"/></svg>
+        </div>
+        <h3>Реферальная система</h3>
+        <p>Получайте бонусы за каждого приглашённого друга и учитесь вместе с выгодой.</p>
+      </article>
+
+      <article class="ku-trust-card ku-trust-card--orange ku-trust__reveal">
+        <div class="ku-trust-card__icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.4 6 .9-4.3 4.2 1 6L12 16.6 6.6 19.5l1-6-4.3-4.2 6-.9L12 3Z"/></svg>
+        </div>
+        <h3>Более 5 лет на рынке</h3>
+        <p>С 2020 года. Тысяча выпускников и проектов. Наработанная методология обучения.</p>
+      </article>
     </div>
   </div>
 </section>
@@ -6270,387 +7093,6 @@ body.ku-trial-modal-open{
       </button>
 
       <div class="ku-video-reviews__dots" data-carousel-dots aria-label="Навигация по видеоотзывам"></div>
-    </div>
-  </div>
-</section>
-
-<!-- block: 05-membership.html -->
-<section class="ku-membership" id="membership">
-  <div class="ku-membership__ambient ku-membership__ambient--blue" aria-hidden="true"></div>
-  <div class="ku-membership__ambient ku-membership__ambient--red" aria-hidden="true"></div>
-
-  <div class="ku-membership__container">
-    <div class="ku-membership__intro">
-      <div class="ku-membership__eyebrow">Гибкая оплата</div>
-      <h2 class="ku-membership__title">
-        Без кредитов на 2 года.<br>
-        <span>Оплата абонементами.</span>
-      </h2>
-      <p class="ku-membership__lead">
-        Надоели дорогостоящие курсы с навязанными кредитами и длинными банковскими рассрочками?
-        У нас система абонементов от 4 до 96 занятий: платите в комфортном темпе, а за большие пакеты
-        делаем скидки.
-      </p>
-
-      <div class="ku-membership__cta">
-        <p>
-          Оставьте заявку — рассчитаем стоимость обучения сразу по телефону, без лишней потери времени.
-        </p>
-        <a href="#trial-form" data-scroll class="ku-btn ku-btn--primary ku-membership__btn">
-          Рассчитать стоимость
-        </a>
-      </div>
-    </div>
-
-    <div class="ku-membership__details">
-      <div class="ku-membership__label">Как это работает</div>
-      <ol class="ku-membership__list">
-        <li>
-          <span class="ku-membership__index" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M3.75 7.5A2.25 2.25 0 0 1 6 5.25h12A2.25 2.25 0 0 1 20.25 7.5v1.125H3.75V7.5Zm0 3h16.5v6A2.25 2.25 0 0 1 18 18.75H6A2.25 2.25 0 0 1 3.75 16.5v-6Zm2.625 3a.75.75 0 0 0 0 1.5h3.75a.75.75 0 0 0 0-1.5h-3.75Z"/><path d="M5 19 19 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.9"/></svg></span>
-          <div>
-            <strong>Никаких банковских рассрочек.</strong>
-            <p>Есть внутренняя рассрочка без скрытых условий и без давления на родителя.</p>
-          </div>
-        </li>
-        <li>
-          <span class="ku-membership__index" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M4.5 5.25A2.25 2.25 0 0 1 6.75 3h2.5A2.25 2.25 0 0 1 11.5 5.25v2.5A2.25 2.25 0 0 1 9.25 10h-2.5A2.25 2.25 0 0 1 4.5 7.75v-2.5Zm8 0A2.25 2.25 0 0 1 14.75 3h2.5a2.25 2.25 0 0 1 2.25 2.25v2.5A2.25 2.25 0 0 1 17.25 10h-2.5a2.25 2.25 0 0 1-2.25-2.25v-2.5Zm-8 8A2.25 2.25 0 0 1 6.75 11h2.5a2.25 2.25 0 0 1 2.25 2.25v2.5A2.25 2.25 0 0 1 9.25 18h-2.5a2.25 2.25 0 0 1-2.25-2.25v-2.5Zm8 0A2.25 2.25 0 0 1 14.75 11h2.5a2.25 2.25 0 0 1 2.25 2.25v2.5A2.25 2.25 0 0 1 17.25 18h-2.5a2.25 2.25 0 0 1-2.25-2.25v-2.5Z"/></svg></span>
-          <div>
-            <strong>Абонемент расходуется на любые курсы.</strong>
-            <p>Это посещения, которые можно использовать там, где ребёнку действительно интересно.</p>
-          </div>
-        </li>
-        <li>
-          <span class="ku-membership__index" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M9 11.25a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm6.75 0a2.625 2.625 0 1 0 0-5.25 2.625 2.625 0 0 0 0 5.25ZM3.75 18a4.5 4.5 0 0 1 9 0v.75h-9V18Zm10.5.75V18a5.7 5.7 0 0 0-1.14-3.435A4.125 4.125 0 0 1 20.25 18v.75h-6Z"/></svg></span>
-          <div>
-            <strong>Один абонемент можно использовать для двух и более детей.</strong>
-            <p>Удобно для семьи, если дети занимаются в разных направлениях или с разной нагрузкой.</p>
-          </div>
-        </li>
-        <li>
-          <span class="ku-membership__index" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M8.25 3.75a.75.75 0 0 1 .75.75V6h6V4.5a.75.75 0 0 1 1.5 0V6h.75A2.25 2.25 0 0 1 20.25 8.25V18A2.25 2.25 0 0 1 18 20.25H6A2.25 2.25 0 0 1 3.75 18V8.25A2.25 2.25 0 0 1 6 6h.75V4.5a.75.75 0 0 1 .75-.75ZM5.25 9v9A.75.75 0 0 0 6 18.75h12a.75.75 0 0 0 .75-.75V9H5.25Z"/><path d="M8.25 13.5c1.05-1.8 2.25-1.8 3.75 0 1.5 1.8 2.7 1.8 3.75 0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"/></svg></span>
-          <div>
-            <strong>Абонемент не имеет срока действия.</strong>
-            <p>Ничего не сгорает — занятия проходят в спокойном ритме, без искусственной спешки.</p>
-          </div>
-        </li>
-      </ol>
-    </div>
-  </div>
-</section>
-
-<!-- block: 06-projects.html -->
-<section class="ku-projects" id="projects">
-  <div class="ku-projects__gridbg"></div>
-  <div class="ku-projects__glow ku-projects__glow--blue"></div>
-  <div class="ku-projects__glow ku-projects__glow--red"></div>
-
-  <div class="ku-projects__container">
-    <div class="ku-projects__head ku-projects__reveal">
-      <div class="ku-projects__badge">Работы наших учеников</div>
-      <h2 class="ku-projects__title">
-        Портфолио
-        <span>учеников</span>
-      </h2>
-      <p class="ku-projects__text">
-        Проекты детей по разным направлениям — от программирования до дизайна и 3D-моделирования.
-      </p>
-    </div>
-
-    <div class="ku-projects__slider ku-projects__reveal">
-      <button class="ku-projects__nav ku-projects__nav--prev" type="button" aria-label="Предыдущий проект">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 5.3a1 1 0 0 1 0 1.4L9.41 12l5.3 5.3a1 1 0 0 1-1.42 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.41 0Z"/></svg>
-      </button>
-
-      <div class="ku-projects__viewport">
-        <div class="ku-projects__track">
-          <article class="ku-project-card ku-project-card--blue ku-projects__reveal" data-category="programming">
-            <div class="ku-project-card__preview">
-              <img src="media/courses/pygame.png" alt="Мини-игра Космический квест" loading="lazy" decoding="async">
-            </div>
-            <div class="ku-project-card__body">
-              <div class="ku-project-card__chip">Программирование</div>
-              <h3>Мини-игра: Космический квест</h3>
-              <div class="ku-project-card__meta">
-                <span>Иван, 11 лет</span>
-                <span>Scratch</span>
-                <span>2 недели работы</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="ku-project-card ku-project-card--violet ku-projects__reveal" data-category="design">
-            <div class="ku-project-card__preview">
-              <img src="media/courses/Grah_design.png" alt="Постер для школьного клуба" loading="lazy" decoding="async">
-            </div>
-            <div class="ku-project-card__body">
-              <div class="ku-project-card__chip">Дизайн</div>
-              <h3>Постер для школьного клуба</h3>
-              <div class="ku-project-card__meta">
-                <span>Алина, 12 лет</span>
-                <span>Графический дизайн</span>
-                <span>3 дня работы</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="ku-project-card ku-project-card--orange ku-projects__reveal" data-category="modeling">
-            <div class="ku-project-card__preview">
-              <img src="media/courses/blender.png" alt="3D-модель робота" loading="lazy" decoding="async">
-            </div>
-            <div class="ku-project-card__body">
-              <div class="ku-project-card__chip">Моделирование</div>
-              <h3>3D-модель робота</h3>
-              <div class="ku-project-card__meta">
-                <span>Максим, 13 лет</span>
-                <span>Blender</span>
-                <span>5 дней работы</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="ku-project-card ku-project-card--blue ku-projects__reveal" data-category="programming">
-            <div class="ku-project-card__preview">
-              <img src="media/courses/chat_bot.png" alt="Чат-бот помощник" loading="lazy" decoding="async">
-            </div>
-            <div class="ku-project-card__body">
-              <div class="ku-project-card__chip">Программирование</div>
-              <h3>Чат-бот помощник</h3>
-              <div class="ku-project-card__meta">
-                <span>Данил, 14 лет</span>
-                <span>Python</span>
-                <span>1 неделя работы</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="ku-project-card ku-project-card--violet ku-projects__reveal" data-category="design">
-            <div class="ku-project-card__preview">
-              <img src="media/courses/web_design.png" alt="Дизайн приложения для ребёнка" loading="lazy" decoding="async">
-            </div>
-            <div class="ku-project-card__body">
-              <div class="ku-project-card__chip">Дизайн</div>
-              <h3>Дизайн приложения для ребёнка</h3>
-              <div class="ku-project-card__meta">
-                <span>София, 11 лет</span>
-                <span>UI-дизайн</span>
-                <span>4 дня работы</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="ku-project-card ku-project-card--orange ku-projects__reveal" data-category="modeling">
-            <div class="ku-project-card__preview">
-              <img src="media/courses/Blockbench.png" alt="Персонаж для игры" loading="lazy" decoding="async">
-            </div>
-            <div class="ku-project-card__body">
-              <div class="ku-project-card__chip">Моделирование</div>
-              <h3>Персонаж для игры</h3>
-              <div class="ku-project-card__meta">
-                <span>Полина, 12 лет</span>
-                <span>Blockbench</span>
-                <span>6 дней работы</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <button class="ku-projects__nav ku-projects__nav--next" type="button" aria-label="Следующий проект">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.3 18.7a1 1 0 0 1 0-1.4l5.29-5.3L9.3 6.7a1 1 0 1 1 1.42-1.4l6 6a1 1 0 0 1 0 1.4l-6 6a1 1 0 0 1-1.41 0Z"/></svg>
-      </button>
-    </div>
-
-    <div class="ku-projects__dots" aria-label="Навигация по проектам"></div>
-  </div>
-</section>
-
-<!-- block: 07-stats.html -->
-<section class="ku-stats" id="stats">
-  <div class="ku-stats__mesh"></div>
-
-  <div class="ku-stats__container">
-    <div class="ku-stats__head ku-stats__reveal">
-      <div class="ku-stats__badge">Наши результаты</div>
-      <h2 class="ku-stats__title">
-        Цифры, которые<br>
-        <span>говорят сами за себя</span>
-      </h2>
-    </div>
-
-    <div class="ku-stats__featured">
-      <article class="ku-stat-feature ku-stat-feature--blue ku-stats__reveal">
-        <div class="ku-stat-feature__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18.5c1.8-2.1 4.4-3.2 8-3.2s6.2 1.1 8 3.2M8.2 8.4a3.8 3.8 0 1 0 7.6 0 3.8 3.8 0 0 0-7.6 0Z"/></svg>
-        </div>
-        <div class="ku-stat-feature__number"><span data-count="10000">0</span>+</div>
-        <div class="ku-stat-feature__label">учеников</div>
-        <div class="ku-stat-feature__hint">выбрали обучение у нас</div>
-      </article>
-
-      <article class="ku-stat-feature ku-stat-feature--yellow ku-stats__reveal">
-        <div class="ku-stat-feature__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8v5h4v11H4V9h4V4Zm3 5h2M8 14h8M8 17h5"/></svg>
-        </div>
-        <div class="ku-stat-feature__number"><span data-count="16">0</span>+</div>
-        <div class="ku-stat-feature__label">курсов</div>
-        <div class="ku-stat-feature__hint">от старта до продвинутых проектов</div>
-      </article>
-
-      <article class="ku-stat-feature ku-stat-feature--red ku-stats__reveal">
-        <div class="ku-stat-feature__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v10H9l-5 4V6Zm4 4h8M8 13h5"/></svg>
-        </div>
-        <div class="ku-stat-feature__number"><span data-count="100">0</span>+</div>
-        <div class="ku-stat-feature__label">педагогов</div>
-        <div class="ku-stat-feature__hint">практикующие специалисты</div>
-      </article>
-
-      <article class="ku-stat-feature ku-stat-feature--violet ku-stats__reveal">
-        <div class="ku-stat-feature__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3.4 1.8 5.1 4.7 5.1 8.6L21 15.5l-4.4 1.2-1.2 4.3-3.4-3.4L8.6 21l-1.2-4.3L3 15.5l3.9-3.9C6.9 7.7 8.6 4.8 12 3Zm0 6.5a2.1 2.1 0 1 0 0 4.2 2.1 2.1 0 0 0 0-4.2Z"/></svg>
-        </div>
-        <div class="ku-stat-feature__number"><span data-count="140000">0</span>+</div>
-        <div class="ku-stat-feature__label">проектов создано</div>
-        <div class="ku-stat-feature__hint">учениками за всё время</div>
-      </article>
-    </div>
-
-    <div class="ku-stats__mini">
-      <div class="ku-stat-mini ku-stats__reveal">
-        <strong>6-16</strong>
-        <span>лет</span>
-      </div>
-      <div class="ku-stat-mini ku-stats__reveal">
-        <strong>55</strong>
-        <span>минут урок</span>
-      </div>
-      <div class="ku-stat-mini ku-stats__reveal">
-        <strong>1:1</strong>
-        <span>формат</span>
-      </div>
-      <div class="ku-stat-mini ku-stats__reveal">
-        <strong>0 ₽</strong>
-        <span>пробный урок</span>
-      </div>
-      <div class="ku-stat-mini ku-stats__reveal">
-        <strong>16+</strong>
-        <span>направлений</span>
-      </div>
-      <div class="ku-stat-mini ku-stats__reveal">
-        <strong>100+</strong>
-        <span>педагогов</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- block: 03-benefits.html -->
-<section class="ku-benefits" aria-label="Почему КиберУм">
-  <div class="ku-benefits__grid-bg"></div>
-
-  <div class="ku-benefits__container">
-    <div class="ku-benefits__head">
-      <div class="ku-benefits__eyebrow">Почему КиберУм?</div>
-      <h2 class="ku-benefits__title">
-        <span class="ku-benefits__title-prefix">Не просто курсы</span><span class="ku-benefits__desktop-dash"> —</span><span class="ku-benefits__mobile-arrow" aria-hidden="true"></span><br>
-        <span class="ku-benefits__circle-wrap">
-          <span class="ku-benefits__circle-text"><span class="ku-benefits__circle-line-text">образовательная</span><span class="ku-benefits__mobile-break"><br></span> <span class="ku-benefits__circle-line-text ku-benefits__circle-line-text--second">экосистема</span></span>
-          <svg class="ku-benefits__circle" viewBox="0 0 100 36" preserveAspectRatio="none" aria-hidden="true">
-            <defs>
-              <linearGradient id="kuBenefitsCircleGradient" x1="0" y1="0" x2="100" y2="0" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="#2563eb"></stop>
-                <stop offset=".55" stop-color="#7c3aed"></stop>
-                <stop offset="1" stop-color="#ef4444"></stop>
-              </linearGradient>
-            </defs>
-            <path class="ku-benefits__circle-line ku-benefits__circle-line--main" d="M3.2 18.6C3.8 7.2 24.8 2.4 50.1 2.8c25.8.4 46.5 5.1 46.8 15.1.4 11.4-21.1 15.5-47 15.1C24.1 32.6 2.5 28.9 3.2 18.6Z"></path>
-            <path class="ku-benefits__circle-line ku-benefits__circle-line--ghost" d="M2.8 17.5C5.1 7.8 26.5 3.3 50.9 3.6c25.3.3 45.2 5.3 45.9 14.1.9 10.5-20.4 14.7-46.5 14.5C24.4 31.9 4.2 28.1 2.8 17.5Z"></path>
-          </svg>
-        </span>
-      </h2>
-      <p class="ku-benefits__lead">
-        Мы создали среду, в которой дети не просто учатся — они растут как технические профессионалы.
-      </p>
-    </div>
-
-    <div class="ku-benefits__cards">
-      <article class="ku-benefit-card ku-benefit-card--blue">
-        <div class="ku-benefit-card__top">
-          <span class="ku-benefit-card__icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 13a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0 2c-4.4 0-7.5 2.2-7.5 5v1h15v-1c0-2.8-3.1-5-7.5-5z"/></svg>
-          </span>
-          <span class="ku-benefit-card__tag">главное преимущество</span>
-        </div>
-        <div class="ku-benefit-card__body">
-          <h3>Обучение один на один</h3>
-          <p>Никаких групп по 10 человек. Только преподаватель и ваш ребёнок. Темп и программа — под конкретного ученика.</p>
-        </div>
-      </article>
-
-      <article class="ku-benefit-card ku-benefit-card--red">
-        <div class="ku-benefit-card__top">
-          <span class="ku-benefit-card__icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.4 6 .9-4.3 4.2 1 6L12 16.6 6.6 19.5l1-6-4.3-4.2 6-.9L12 3z"/></svg>
-          </span>
-          <span class="ku-benefit-card__tag">мотивация</span>
-        </div>
-        <div class="ku-benefit-card__body">
-          <h3>Под интересы ребёнка</h3>
-          <p>Любит Minecraft? Учим через Blockbench. Мечтает создать игру? Unity или Roblox. Интерес — лучший учитель.</p>
-        </div>
-      </article>
-
-      <article class="ku-benefit-card ku-benefit-card--violet">
-        <div class="ku-benefit-card__top">
-          <span class="ku-benefit-card__icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-5v2h3v2H7v-2h3v-2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm1 3v8h12V7H6z"/></svg>
-          </span>
-          <span class="ku-benefit-card__tag">актуально</span>
-        </div>
-        <div class="ku-benefit-card__body">
-          <h3>Современные IT-навыки</h3>
-          <p>Python, Unity, веб-разработка, 3D-моделирование. Навыки, которые реально востребованы сегодня и в будущем.</p>
-        </div>
-      </article>
-
-      <article class="ku-benefit-card ku-benefit-card--green">
-        <div class="ku-benefit-card__top">
-          <span class="ku-benefit-card__icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17l5.2-5.2 3.1 3.1L19 8.2V12h2V5h-7v2h3.6l-5.3 5.3-3.1-3.1L2.6 15.8 4 17z"/></svg>
-          </span>
-          <span class="ku-benefit-card__tag">портфолио</span>
-        </div>
-        <div class="ku-benefit-card__body">
-          <h3>Реальные проекты</h3>
-          <p>С первого занятия — реальный результат. Ребёнок создаёт игры, сайты, программы и делится с друзьями.</p>
-        </div>
-      </article>
-
-      <article class="ku-benefit-card ku-benefit-card--yellow">
-        <div class="ku-benefit-card__top">
-          <span class="ku-benefit-card__icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10a2 2 0 0 1 2 2v16l-7-3-7 3V5a2 2 0 0 1 2-2zm2 5v2h6V8H9zm0 4v2h6v-2H9z"/></svg>
-          </span>
-          <span class="ku-benefit-card__tag">для родителей</span>
-        </div>
-        <div class="ku-benefit-card__body">
-          <h3>Прозрачный прогресс</h3>
-          <p>Родители всегда знают, что изучает ребенок. Ежемесячные отчеты и связь с учителем.</p>
-        </div>
-      </article>
-
-      <article class="ku-benefit-card ku-benefit-card--teal">
-        <div class="ku-benefit-card__top">
-          <span class="ku-benefit-card__icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 5 5.5.8-4 3.9.9 5.5L12 14.6 7.1 17.2l.9-5.5-4-3.9 5.5-.8L12 2zm-7 18h14v2H5v-2z"/></svg>
-          </span>
-          <span class="ku-benefit-card__tag">качество</span>
-        </div>
-        <div class="ku-benefit-card__body">
-          <h3>Сильные преподаватели</h3>
-          <p>Проходим строгий отбор: только 5% кандидатов. Практикующие разработчики, дизайнеры, технические специалисты.</p>
-        </div>
-      </article>
     </div>
   </div>
 </section>
@@ -6999,13 +7441,13 @@ body.ku-trial-modal-open{
   </div>
 </div>
 
-<!-- block: 11-footer.html -->
+<!-- block: 12-scratch-footer.html -->
 <footer class="ku-footer">
   <div class="ku-footer__topline"></div>
   <div class="ku-footer__container">
     <div class="ku-footer__grid">
       <div class="ku-footer__brand">
-        <a class="ku-footer__logo" href="#top" data-scroll aria-label="КиберУм">
+        <a class="ku-footer__logo" href="index.html" aria-label="КиберУм">
           <img src="media/school_logo_footer.svg" alt="КиберУм" width="413" height="93" loading="lazy" decoding="async">
         </a>
         <div class="ku-footer__socials" aria-label="Мессенджеры">
@@ -7043,16 +7485,16 @@ body.ku-trial-modal-open{
 
       <nav class="ku-footer__col ku-footer__col--courses" aria-label="Курсы для детей">
         <h3>Курсы для детей</h3>
-        <a href="#courses-real" data-scroll>Курс компьютерной грамотности для детей</a>
-        <a href="#courses-real" data-scroll>Курс программирования в Scratch для детей</a>
-        <a href="#courses-real" data-scroll>Курс Roblox для детей</a>
-        <a href="#courses-real" data-scroll>Курс Python для детей</a>
-        <a href="#courses-real" data-scroll>Курс создания чат-ботов на Python для детей</a>
-        <a href="#courses-real" data-scroll>Курс создания игр на Python для детей</a>
-        <a href="#courses-real" data-scroll>Курс Unity для детей</a>
-        <a href="#courses-real" data-scroll>Курс 3D-моделирования в Blender для детей</a>
-        <a href="#courses-real" data-scroll>Курс 3D-моделирования в Blockbench для детей</a>
-        <a href="#courses-real" data-scroll>Курс создания сайтов для детей</a>
+        <a href="index.html#courses-real">Курс компьютерной грамотности для детей</a>
+        <a href="scratch.html#top">Курс программирования в Scratch для детей</a>
+        <a href="index.html#courses-real">Курс Roblox для детей</a>
+        <a href="index.html#courses-real">Курс Python для детей</a>
+        <a href="index.html#courses-real">Курс создания чат-ботов на Python для детей</a>
+        <a href="index.html#courses-real">Курс создания игр на Python для детей</a>
+        <a href="index.html#courses-real">Курс Unity для детей</a>
+        <a href="index.html#courses-real">Курс 3D-моделирования в Blender для детей</a>
+        <a href="index.html#courses-real">Курс 3D-моделирования в Blockbench для детей</a>
+        <a href="index.html#courses-real">Курс создания сайтов для детей</a>
       </nav>
 
       <div class="ku-footer__col ku-footer__col--contacts">
@@ -7872,6 +8314,9 @@ body.ku-trial-modal-open{
     });
   });
 })();
+
+/* js: 12-scratch.js */
+(function(){})();
 </script>
 </body>
 </html>
