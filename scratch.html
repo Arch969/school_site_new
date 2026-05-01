@@ -1726,7 +1726,9 @@ body.ku-trial-modal-open{
   }
 
   .ku-trust-card--featured h3 {
-    font-size: 28px;
+    font-size: 24px;
+    line-height: 1.1;
+    overflow-wrap: anywhere;
   }
 
   .ku-trust-card--featured p {
@@ -3903,10 +3905,10 @@ body.ku-trial-modal-open{
 }
 .ku-catalog-card__logo{
   position:absolute;
-  left:16px;
-  top:16px;
+  left:10px;
+  top:10px;
   z-index:2;
-  width:72px;
+  width:86px;
   aspect-ratio:1 / 1;
   object-fit:contain;
   padding:0;
@@ -4082,8 +4084,8 @@ body.ku-trial-modal-open{
     background:linear-gradient(180deg, rgba(15,23,42,.34) 0%, rgba(15,23,42,.06) 34%, rgba(15,23,42,.2) 58%, rgba(15,23,42,.9) 100%);
   }
   .ku-catalog-card__logo{
-    top:10px;
-    left:10px;
+    top:8px;
+    left:8px;
     width:42px;
     border-radius:0;
   }
@@ -4127,6 +4129,91 @@ body.ku-trial-modal-open{
     min-height:38px;
     border-radius:12px;
     font-size:12px;
+  }
+}
+
+@media (max-width:520px){
+  .ku-courses{
+    padding:58px 10px;
+  }
+  .ku-courses__head{
+    margin-bottom:28px;
+  }
+  .ku-courses__badge{
+    min-height:36px;
+    padding:8px 13px;
+    font-size:12px;
+    margin-bottom:12px;
+  }
+  .ku-courses__title{
+    font-size:26px;
+    line-height:1.08;
+  }
+  .ku-courses__title span{
+    display:block;
+  }
+  .ku-courses__filters-shell{
+    gap:8px;
+    padding:10px;
+  }
+  .ku-courses__filter{
+    min-height:76px;
+    padding:10px 7px;
+  }
+  .ku-courses__filter span:last-child{
+    font-size:11px;
+  }
+  .ku-courses__grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px;
+  }
+  .ku-catalog-card{
+    border-radius:16px;
+  }
+  .ku-catalog-card__logo{
+    top:8px;
+    left:8px;
+    width:30px;
+  }
+  .ku-catalog-card__badges{
+    top:8px;
+    right:8px;
+    max-width:calc(100% - 44px);
+  }
+  .ku-catalog-card__badges span{
+    min-height:18px;
+    padding:0 6px;
+    font-size:8px;
+  }
+  .ku-catalog-card__info{
+    padding:10px 8px 8px;
+  }
+  .ku-catalog-card__info h3{
+    font-size:12px;
+    line-height:1.08;
+    overflow-wrap:anywhere;
+    hyphens:auto;
+  }
+  .ku-catalog-card__details{
+    margin-top:5px;
+  }
+  .ku-catalog-card__details p{
+    -webkit-line-clamp:2;
+    font-size:8.5px;
+    line-height:1.2;
+    overflow-wrap:anywhere;
+    hyphens:auto;
+  }
+  .ku-catalog-card__actions{
+    gap:6px;
+    padding:8px;
+  }
+  .ku-catalog-card__primary,
+  .ku-catalog-card__secondary{
+    min-height:32px;
+    border-radius:10px;
+    border-width:1px;
+    font-size:10px;
   }
 }
 
