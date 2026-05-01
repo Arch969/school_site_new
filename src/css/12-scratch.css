@@ -110,9 +110,9 @@
 
 .ku-course-hero__title{
   margin:0 0 18px;
-  max-width:760px;
+  max-width:100%;
   font-family:Montserrat,Inter,sans-serif;
-  font-size:clamp(40px,5vw,66px);
+  font-size:clamp(38px,4.5vw,62px);
   line-height:.98;
   font-weight:900;
   color:hsl(218 55% 11%);
@@ -125,15 +125,14 @@
 
 .ku-course-hero__title-main{
   color:hsl(218 55% 11%);
-  white-space:nowrap;
 }
 
 .ku-course-hero__title-accent{
+  font-size:clamp(34px,4.2vw,54px);
   background:linear-gradient(90deg,#2563eb 0%,#7c3aed 52%,#ef4444 100%);
   -webkit-background-clip:text;
   background-clip:text;
   color:transparent;
-  white-space:nowrap;
 }
 
 .ku-course-hero__text{
@@ -155,13 +154,12 @@
 .ku-course-hero__meta-item{
   display:flex;
   align-items:center;
-  min-height:54px;
-  padding:0 16px;
+  min-height:44px;
+  padding:0 10px;
   border-radius:18px;
-  background:rgba(255,255,255,.78);
-  border:1px solid rgba(214,223,234,.92);
+  background:transparent;
+  border:0;
   color:hsl(218 30% 35%);
-  box-shadow:0 16px 36px -30px rgba(15,23,42,.24);
   font-size:14px;
   line-height:1.35;
   font-weight:700;
@@ -252,26 +250,46 @@
   font-weight:600;
 }
 
-.ku-course-plan__grid{
+.ku-course-plan__accordion{
   display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:18px;
+  gap:14px;
+  max-width:980px;
+  margin:0 auto;
 }
 
-.ku-course-plan__card{
-  position:relative;
-  min-width:0;
-  padding:28px 24px 24px;
+.ku-course-plan__item{
   border-radius:28px;
-  background:rgba(255,255,255,.94);
+  background:rgba(255,255,255,.96);
   border:1px solid rgba(214,223,234,.94);
-  box-shadow:0 22px 56px -42px rgba(15,23,42,.26);
+  box-shadow:0 22px 56px -42px rgba(15,23,42,.24);
+  overflow:hidden;
+}
+
+.ku-course-plan__button{
+  width:100%;
+  padding:22px 24px;
+  border:0;
+  background:transparent;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  text-align:left;
+  cursor:pointer;
+  font:inherit;
+}
+
+.ku-course-plan__button-main{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  min-width:0;
 }
 
 .ku-course-plan__index{
+  flex:0 0 auto;
   width:48px;
   height:48px;
-  margin-bottom:18px;
   border-radius:16px;
   display:flex;
   align-items:center;
@@ -283,8 +301,13 @@
   font-weight:900;
 }
 
-.ku-course-plan__card h3{
-  margin:0 0 10px;
+.ku-course-plan__summary{
+  min-width:0;
+}
+
+.ku-course-plan__name{
+  display:block;
+  margin:0 0 6px;
   font-family:Montserrat,Inter,sans-serif;
   font-size:23px;
   line-height:1.16;
@@ -293,24 +316,66 @@
 }
 
 .ku-course-plan__project{
-  margin-bottom:14px;
+  display:block;
   color:#2563eb;
   font-size:14px;
   line-height:1.4;
   font-weight:800;
 }
 
-.ku-course-plan__card ul{
+.ku-course-plan__toggle{
+  flex:0 0 auto;
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(37,99,235,.08);
+  color:#2563eb;
+  font-size:28px;
+  line-height:1;
+  font-weight:500;
+  transition:transform .2s ease, background .2s ease, color .2s ease;
+}
+
+.ku-course-plan__content{
+  display:grid;
+  grid-template-rows:0fr;
+  transition:grid-template-rows .28s ease;
+}
+
+.ku-course-plan__content > *{
+  min-height:0;
+}
+
+.ku-course-plan__content ul{
+  overflow:hidden;
   margin:0;
-  padding-left:18px;
+  padding:0 24px 0 90px;
+  margin:0;
   color:hsl(218 20% 43%);
   font-size:15px;
   line-height:1.6;
   font-weight:600;
 }
 
-.ku-course-plan__card li + li{
+.ku-course-plan__content li + li{
   margin-top:6px;
+}
+
+.ku-course-plan__item.is-open .ku-course-plan__content{
+  grid-template-rows:1fr;
+}
+
+.ku-course-plan__item.is-open .ku-course-plan__content ul{
+  padding-bottom:24px;
+}
+
+.ku-course-plan__item.is-open .ku-course-plan__toggle{
+  transform:rotate(45deg);
+  background:#2563eb;
+  color:#fff;
 }
 
 .ku-course-why{
@@ -517,7 +582,6 @@
     overflow:visible;
   }
 
-  .ku-course-plan__grid,
   .ku-course-why__row,
   .ku-course-why__row--reverse{
     grid-template-columns:1fr;
@@ -573,8 +637,8 @@
   }
 
   .ku-course-hero__meta-item{
-    min-height:48px;
-    padding:0 14px;
+    min-height:40px;
+    padding:0 8px;
     font-size:13px;
   }
 
@@ -662,21 +726,52 @@
     line-height:1.56;
   }
 
-  .ku-course-plan__grid{
-    gap:14px;
+  .ku-course-plan__accordion{
+    gap:12px;
   }
 
-  .ku-course-plan__card{
-    padding:22px 18px 20px;
+  .ku-course-plan__item{
     border-radius:22px;
   }
 
-  .ku-course-plan__card h3{
-    font-size:20px;
+  .ku-course-plan__button{
+    padding:18px 16px;
+    gap:12px;
   }
 
-  .ku-course-plan__card ul{
+  .ku-course-plan__button-main{
+    gap:14px;
+  }
+
+  .ku-course-plan__index{
+    width:40px;
+    height:40px;
+    border-radius:14px;
     font-size:14px;
+  }
+
+  .ku-course-plan__name{
+    font-size:19px;
+  }
+
+  .ku-course-plan__project{
+    font-size:13px;
+  }
+
+  .ku-course-plan__toggle{
+    width:36px;
+    height:36px;
+    border-radius:12px;
+    font-size:24px;
+  }
+
+  .ku-course-plan__content ul{
+    padding:0 16px 0 70px;
+    font-size:14px;
+  }
+
+  .ku-course-plan__item.is-open .ku-course-plan__content ul{
+    padding-bottom:18px;
   }
 
   .ku-course-why__rows{

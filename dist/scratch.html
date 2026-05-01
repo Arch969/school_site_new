@@ -1240,188 +1240,506 @@ body.ku-trial-modal-open{
   }
 
 /* css: 08-trust.css */
-.ku-trust, .ku-trust * { box-sizing:border-box; }
-.ku-trust{
-  position:relative;
-  overflow:hidden;
-  padding:86px 24px;
-  background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);
-  border-radius:36px;
-  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  color:#0f172a;
+.ku-trust,
+.ku-trust * {
+  box-sizing: border-box;
 }
-.ku-trust__gridbg{
-  position:absolute;
-  inset:0;
-  opacity:.34;
+
+.ku-trust {
+  position: relative;
+  overflow: hidden;
+  padding: 34px 24px 58px;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(37, 99, 235, .10), transparent 34%),
+    linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  border-radius: 36px;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #0f172a;
+}
+
+.ku-trust__gridbg {
+  position: absolute;
+  inset: 0;
+  opacity: .36;
   background-image:
-    linear-gradient(rgba(37,99,235,.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(37,99,235,.08) 1px, transparent 1px);
-  background-size:30px 30px;
-  pointer-events:none;
-}
-.ku-trust__container{
-  position:relative;
-  z-index:1;
-  max-width:1320px;
-  margin:0 auto;
-}
-.ku-trust__head{
-  max-width:790px;
-  margin:0 auto 46px;
-  text-align:center;
-}
-.ku-trust__badge{
-  display:inline-flex;
-  align-items:center;
-  min-height:34px;
-  padding:8px 15px;
-  border-radius:999px;
-  background:rgba(37,99,235,.10);
-  color:#2563eb;
-  border:1px solid rgba(37,99,235,.20);
-  font-size:13px;
-  font-weight:900;
-  margin-bottom:18px;
-}
-.ku-trust__title{
-  margin:0;
-  font-family:Montserrat,Inter,sans-serif;
-  font-size:clamp(34px,4.8vw,56px);
-  line-height:1.06;
-  font-weight:900;
-  color:hsl(218 55% 11%);
-}
-.ku-trust__title span{
-  background:linear-gradient(90deg,#2563eb,#8b5cf6,#ef4444);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-}
-.ku-trust__text{
-  margin:18px auto 0;
-  max-width:690px;
-  font-size:18px;
-  line-height:1.65;
-  color:hsl(218 20% 48%);
-  font-weight:600;
-}
-.ku-trust__grid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:18px;
-}
-.ku-trust-card{
-  --trust-color:#2563eb;
-  position:relative;
-  min-height:172px;
-  padding:24px;
-  border-radius:18px;
-  background:rgba(255,255,255,.92);
-  border:1px solid rgba(148,163,184,.26);
-  box-shadow:0 18px 44px -34px rgba(15,23,42,.45);
-  overflow:hidden;
-  transition:transform .24s ease, box-shadow .24s ease, border-color .24s ease;
-}
-.ku-trust-card::after{
-  content:"";
-  position:absolute;
-  right:16px;
-  bottom:16px;
-  width:58px;
-  height:44px;
-  border-radius:14px;
-  background:color-mix(in srgb, var(--trust-color) 10%, transparent);
-  transform:rotate(12deg);
-  pointer-events:none;
-}
-.ku-trust-card:hover{
-  transform:translateY(-5px);
-  border-color:color-mix(in srgb, var(--trust-color) 34%, rgba(148,163,184,.26));
-  box-shadow:0 28px 66px -42px rgba(15,23,42,.56);
-}
-.ku-trust-card > *{
-  position:relative;
-  z-index:1;
-}
-.ku-trust-card__icon{
-  width:48px;
-  height:48px;
-  border-radius:14px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:var(--trust-color);
-  background:color-mix(in srgb, var(--trust-color) 10%, #fff);
-  border:1px solid color-mix(in srgb, var(--trust-color) 20%, transparent);
-  margin-bottom:18px;
-}
-.ku-trust-card__icon svg{
-  width:23px;
-  height:23px;
-  display:block;
-  fill:none;
-  stroke:currentColor;
-  stroke-width:1.8;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-.ku-trust-card h3{
-  margin:0 0 10px;
-  font-family:Montserrat,Inter,sans-serif;
-  font-size:20px;
-  line-height:1.22;
-  font-weight:900;
-  color:hsl(218 55% 11%);
-}
-.ku-trust-card p{
-  margin:0;
-  font-size:14px;
-  line-height:1.65;
-  color:hsl(218 20% 47%);
-  font-weight:600;
-}
-.ku-trust-card--blue{ --trust-color:#2563eb; }
-.ku-trust-card--red{ --trust-color:#ef4444; }
-.ku-trust-card--yellow{ --trust-color:#f59e0b; }
-.ku-trust-card--violet{ --trust-color:#8b5cf6; }
-.ku-trust-card--green{ --trust-color:#22c55e; }
-.ku-trust-card--orange{ --trust-color:#f97316; }
-
-.ku-trust__reveal,
-.ku-trust__reveal.is-visible{
-  opacity:1!important;
-  transform:none!important;
+    linear-gradient(rgba(37, 99, 235, .08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, .08) 1px, transparent 1px);
+  background-size: 31px 31px;
+  mask-image: linear-gradient(180deg, transparent, #000 9%, #000 88%, transparent);
+  pointer-events: none;
 }
 
-@media (max-width:1100px){
-  .ku-trust__grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+.ku-trust__container {
+  position: relative;
+  z-index: 1;
+  max-width: 1320px;
+  margin: 0 auto;
 }
-@media (max-width:760px){
-  .ku-trust{
-    padding:70px 14px;
-    border-radius:24px;
+
+.ku-trust__head {
+  max-width: 1200px;
+  margin: 0 auto 22px;
+  text-align: center;
+}
+
+.ku-trust__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 9px 22px;
+  border-radius: 19px;
+  background: rgba(37, 99, 235, .10);
+  color: #2563eb;
+  font-size: 17px;
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+.ku-trust__badge svg {
+  width: 23px;
+  height: 23px;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ku-trust__title {
+  margin: 0;
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: clamp(38px, 4.1vw, 68px);
+  line-height: .98;
+  font-weight: 900;
+  color: hsl(218 55% 11%);
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.ku-trust__title span {
+  background: linear-gradient(90deg, #2563eb 0%, #6d5df5 42%, #ef4444 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ku-trust__text {
+  margin: 15px auto 0;
+  max-width: 760px;
+  font-size: 20px;
+  line-height: 1.45;
+  color: hsl(218 20% 48%);
+  font-weight: 700;
+}
+
+.ku-trust__orbit {
+  position: relative;
+  min-height: 650px;
+  max-width: 1260px;
+  margin: 0 auto;
+}
+
+.ku-trust__ring {
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  width: 990px;
+  height: 330px;
+  border: 2px solid rgba(147, 187, 255, .42);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 0 12px rgba(37, 99, 235, .11));
+  pointer-events: none;
+}
+
+.ku-trust__dot {
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  border-radius: 999px;
+  background: #a9c8ff;
+  border: 6px solid #fff;
+  box-shadow: 0 0 0 2px rgba(147, 187, 255, .38), 0 8px 18px rgba(37, 99, 235, .18);
+}
+
+.ku-trust__dot--one { left: 228px; top: 36px; }
+.ku-trust__dot--two { right: 246px; top: 44px; }
+.ku-trust__dot--three { right: 48px; top: 173px; }
+.ku-trust__dot--four { right: 302px; bottom: 29px; }
+.ku-trust__dot--five { left: 318px; bottom: 27px; }
+.ku-trust__dot--six { left: 62px; top: 173px; }
+
+.ku-trust-card {
+  --trust-color: #2563eb;
+  position: absolute;
+  z-index: 2;
+  width: 268px;
+  min-height: 172px;
+  padding: 22px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .94);
+  border: 1px solid rgba(148, 163, 184, .30);
+  box-shadow: 0 22px 54px -42px rgba(15, 23, 42, .56);
+  overflow: hidden;
+  transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease;
+}
+
+.ku-trust-card::after {
+  content: "";
+  position: absolute;
+  right: 15px;
+  bottom: 14px;
+  width: 52px;
+  height: 46px;
+  border-radius: 15px;
+  background: color-mix(in srgb, var(--trust-color) 14%, transparent);
+  transform: rotate(13deg);
+  pointer-events: none;
+}
+
+.ku-trust-card:hover {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--trust-color) 34%, rgba(148, 163, 184, .30));
+  box-shadow: 0 32px 72px -46px rgba(15, 23, 42, .60);
+}
+
+.ku-trust-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.ku-trust-card__icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--trust-color);
+  background: color-mix(in srgb, var(--trust-color) 12%, #fff);
+  border: 1px solid color-mix(in srgb, var(--trust-color) 21%, transparent);
+  margin-bottom: 18px;
+}
+
+.ku-trust-card__icon svg {
+  width: 25px;
+  height: 25px;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ku-trust-card h3 {
+  margin: 0 0 10px;
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: 19px;
+  line-height: 1.15;
+  font-weight: 900;
+  color: hsl(218 55% 11%);
+}
+
+.ku-trust-card p {
+  margin: 0;
+  max-width: 224px;
+  font-size: 13px;
+  line-height: 1.58;
+  color: hsl(218 20% 47%);
+  font-weight: 700;
+}
+
+.ku-trust-card--featured {
+  left: calc(50% - 210px);
+  top: 22px;
+  width: 420px;
+  min-height: 306px;
+  padding: 25px 46px 34px;
+  border-radius: 25px;
+  text-align: center;
+  border-color: rgba(191, 219, 254, .88);
+  box-shadow:
+    0 32px 76px -42px rgba(37, 99, 235, .62),
+    0 0 0 8px rgba(219, 234, 254, .52);
+}
+
+.ku-trust-card--featured:hover {
+  transform: translateY(-5px);
+}
+
+.ku-trust-card--featured::before,
+.ku-trust-card--featured::after {
+  content: "";
+  position: absolute;
+  width: 66px;
+  height: 66px;
+  border-radius: 22px;
+  background: rgba(37, 99, 235, .08);
+  pointer-events: none;
+}
+
+.ku-trust-card--featured::before {
+  left: -24px;
+  bottom: 18px;
+}
+
+.ku-trust-card--featured::after {
+  right: -14px;
+  bottom: 14px;
+}
+
+.ku-trust-card--featured .ku-trust-card__icon {
+  width: 78px;
+  height: 78px;
+  margin: 0 auto 14px;
+  border-radius: 21px;
+  background: rgba(37, 99, 235, .11);
+  box-shadow: inset 0 0 0 1px rgba(37, 99, 235, .10);
+}
+
+.ku-trust-card--featured .ku-trust-card__icon svg {
+  width: 45px;
+  height: 45px;
+  stroke-width: 1.8;
+}
+
+.ku-trust-card__label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 33px;
+  padding: 6px 17px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+  background: rgba(37, 99, 235, .13);
+  color: #2563eb;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 900;
+}
+
+.ku-trust-card--featured h3 {
+  max-width: 290px;
+  margin: 0 auto;
+  font-size: 30px;
+  line-height: 1.08;
+}
+
+.ku-trust-card__line {
+  display: block;
+  width: 37px;
+  height: 4px;
+  margin: 16px auto 14px;
+  border-radius: 999px;
+  background: #2563eb;
+}
+
+.ku-trust-card--featured p {
+  max-width: 292px;
+  margin: 0 auto;
+  font-size: 15px;
+  line-height: 1.45;
+  color: hsl(218 20% 48%);
+}
+
+.ku-trust-card--tax {
+  left: 10px;
+  top: 76px;
+  width: 292px;
+}
+
+.ku-trust-card--capital {
+  right: 10px;
+  top: 68px;
+  width: 280px;
+}
+
+.ku-trust-card--plans {
+  left: 54px;
+  top: 322px;
+  width: 300px;
+}
+
+.ku-trust-card--market {
+  right: 54px;
+  top: 320px;
+  width: 284px;
+}
+
+.ku-trust-card--referral {
+  left: calc(50% - 170px);
+  bottom: 10px;
+  width: 340px;
+  min-height: 165px;
+}
+
+.ku-trust-card--referral:hover {
+  transform: translateY(-5px);
+}
+
+.ku-trust-card--blue { --trust-color: #2563eb; }
+.ku-trust-card--red { --trust-color: #ef4b61; }
+.ku-trust-card--yellow { --trust-color: #f59e0b; }
+.ku-trust-card--violet { --trust-color: #8b5cf6; }
+.ku-trust-card--green { --trust-color: #22c55e; }
+.ku-trust-card--orange { --trust-color: #f97316; }
+
+.ku-trust__reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+
+.ku-trust__reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 1180px) {
+  .ku-trust__head {
+    max-width: 860px;
   }
-  .ku-trust__head{
-    text-align:left;
-    margin-bottom:30px;
+
+  .ku-trust__title {
+    white-space: normal;
   }
-  .ku-trust__title{
-    font-size:34px;
-    line-height:1.08;
+
+  .ku-trust__orbit {
+    max-width: 900px;
+    min-height: 860px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    align-items: stretch;
   }
-  .ku-trust__text{ font-size:16px; }
-  .ku-trust__grid{
-    grid-template-columns:1fr;
-    gap:14px;
+
+  .ku-trust__ring {
+    display: none;
   }
-  .ku-trust-card{
-    min-height:auto;
-    padding:20px;
+
+  .ku-trust-card,
+  .ku-trust-card--tax,
+  .ku-trust-card--capital,
+  .ku-trust-card--plans,
+  .ku-trust-card--market,
+  .ku-trust-card--referral,
+  .ku-trust-card--featured {
+    position: relative;
+    inset: auto;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    width: auto;
+    min-height: 190px;
+    transform: none;
+  }
+
+  .ku-trust-card--featured {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: min(430px, 100%);
+    min-height: 310px;
+  }
+
+  .ku-trust-card--featured:hover,
+  .ku-trust-card--referral:hover {
+    transform: translateY(-5px);
   }
 }
-@media (prefers-reduced-motion: reduce){
-  .ku-trust *, .ku-trust::before, .ku-trust::after{ animation:none!important; transition:none!important; }
+
+@media (max-width: 760px) {
+  .ku-trust {
+    padding: 62px 14px;
+    border-radius: 24px;
+  }
+
+  .ku-trust__head {
+    text-align: left;
+    margin-bottom: 26px;
+  }
+
+  .ku-trust__badge {
+    min-height: 40px;
+    padding: 8px 16px;
+    font-size: 15px;
+  }
+
+  .ku-trust__title {
+    font-size: 28px;
+    line-height: 1.08;
+    white-space: normal;
+  }
+
+  .ku-trust__title span {
+    display: block;
+  }
+
+  .ku-trust__text {
+    width: min(300px, 100%);
+    max-width: 300px;
+    margin: 15px 0 0;
+    font-size: 15px;
+    line-height: 1.55;
+    text-align: left;
+    overflow-wrap: break-word;
+  }
+
+  .ku-trust__orbit {
+    width: 100%;
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .ku-trust-card,
+  .ku-trust-card--featured {
+    width: 100%;
+    max-width: 100%;
+    min-height: auto;
+    padding: 20px;
+    border-radius: 18px;
+    text-align: left;
+    justify-self: stretch;
+  }
+
+  .ku-trust-card--featured {
+    width: auto;
+    padding: 24px 22px;
+    text-align: center;
+    box-shadow:
+      0 24px 58px -40px rgba(37, 99, 235, .62),
+      0 0 0 5px rgba(219, 234, 254, .45);
+  }
+
+  .ku-trust-card--featured .ku-trust-card__icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .ku-trust-card--featured .ku-trust-card__icon svg {
+    width: 38px;
+    height: 38px;
+  }
+
+  .ku-trust-card--featured h3 {
+    font-size: 28px;
+  }
+
+  .ku-trust-card--featured p {
+    font-size: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ku-trust *,
+  .ku-trust::before,
+  .ku-trust::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
 /* css: 07-stats.css */
@@ -5464,9 +5782,9 @@ body.ku-trial-modal-open{
 
 .ku-course-hero__title{
   margin:0 0 18px;
-  max-width:760px;
+  max-width:100%;
   font-family:Montserrat,Inter,sans-serif;
-  font-size:clamp(40px,5vw,66px);
+  font-size:clamp(38px,4.5vw,62px);
   line-height:.98;
   font-weight:900;
   color:hsl(218 55% 11%);
@@ -5479,15 +5797,14 @@ body.ku-trial-modal-open{
 
 .ku-course-hero__title-main{
   color:hsl(218 55% 11%);
-  white-space:nowrap;
 }
 
 .ku-course-hero__title-accent{
+  font-size:clamp(34px,4.2vw,54px);
   background:linear-gradient(90deg,#2563eb 0%,#7c3aed 52%,#ef4444 100%);
   -webkit-background-clip:text;
   background-clip:text;
   color:transparent;
-  white-space:nowrap;
 }
 
 .ku-course-hero__text{
@@ -5509,13 +5826,12 @@ body.ku-trial-modal-open{
 .ku-course-hero__meta-item{
   display:flex;
   align-items:center;
-  min-height:54px;
-  padding:0 16px;
+  min-height:44px;
+  padding:0 10px;
   border-radius:18px;
-  background:rgba(255,255,255,.78);
-  border:1px solid rgba(214,223,234,.92);
+  background:transparent;
+  border:0;
   color:hsl(218 30% 35%);
-  box-shadow:0 16px 36px -30px rgba(15,23,42,.24);
   font-size:14px;
   line-height:1.35;
   font-weight:700;
@@ -5606,26 +5922,46 @@ body.ku-trial-modal-open{
   font-weight:600;
 }
 
-.ku-course-plan__grid{
+.ku-course-plan__accordion{
   display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:18px;
+  gap:14px;
+  max-width:980px;
+  margin:0 auto;
 }
 
-.ku-course-plan__card{
-  position:relative;
-  min-width:0;
-  padding:28px 24px 24px;
+.ku-course-plan__item{
   border-radius:28px;
-  background:rgba(255,255,255,.94);
+  background:rgba(255,255,255,.96);
   border:1px solid rgba(214,223,234,.94);
-  box-shadow:0 22px 56px -42px rgba(15,23,42,.26);
+  box-shadow:0 22px 56px -42px rgba(15,23,42,.24);
+  overflow:hidden;
+}
+
+.ku-course-plan__button{
+  width:100%;
+  padding:22px 24px;
+  border:0;
+  background:transparent;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  text-align:left;
+  cursor:pointer;
+  font:inherit;
+}
+
+.ku-course-plan__button-main{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  min-width:0;
 }
 
 .ku-course-plan__index{
+  flex:0 0 auto;
   width:48px;
   height:48px;
-  margin-bottom:18px;
   border-radius:16px;
   display:flex;
   align-items:center;
@@ -5637,8 +5973,13 @@ body.ku-trial-modal-open{
   font-weight:900;
 }
 
-.ku-course-plan__card h3{
-  margin:0 0 10px;
+.ku-course-plan__summary{
+  min-width:0;
+}
+
+.ku-course-plan__name{
+  display:block;
+  margin:0 0 6px;
   font-family:Montserrat,Inter,sans-serif;
   font-size:23px;
   line-height:1.16;
@@ -5647,24 +5988,66 @@ body.ku-trial-modal-open{
 }
 
 .ku-course-plan__project{
-  margin-bottom:14px;
+  display:block;
   color:#2563eb;
   font-size:14px;
   line-height:1.4;
   font-weight:800;
 }
 
-.ku-course-plan__card ul{
+.ku-course-plan__toggle{
+  flex:0 0 auto;
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(37,99,235,.08);
+  color:#2563eb;
+  font-size:28px;
+  line-height:1;
+  font-weight:500;
+  transition:transform .2s ease, background .2s ease, color .2s ease;
+}
+
+.ku-course-plan__content{
+  display:grid;
+  grid-template-rows:0fr;
+  transition:grid-template-rows .28s ease;
+}
+
+.ku-course-plan__content > *{
+  min-height:0;
+}
+
+.ku-course-plan__content ul{
+  overflow:hidden;
   margin:0;
-  padding-left:18px;
+  padding:0 24px 0 90px;
+  margin:0;
   color:hsl(218 20% 43%);
   font-size:15px;
   line-height:1.6;
   font-weight:600;
 }
 
-.ku-course-plan__card li + li{
+.ku-course-plan__content li + li{
   margin-top:6px;
+}
+
+.ku-course-plan__item.is-open .ku-course-plan__content{
+  grid-template-rows:1fr;
+}
+
+.ku-course-plan__item.is-open .ku-course-plan__content ul{
+  padding-bottom:24px;
+}
+
+.ku-course-plan__item.is-open .ku-course-plan__toggle{
+  transform:rotate(45deg);
+  background:#2563eb;
+  color:#fff;
 }
 
 .ku-course-why{
@@ -5871,7 +6254,6 @@ body.ku-trial-modal-open{
     overflow:visible;
   }
 
-  .ku-course-plan__grid,
   .ku-course-why__row,
   .ku-course-why__row--reverse{
     grid-template-columns:1fr;
@@ -5927,8 +6309,8 @@ body.ku-trial-modal-open{
   }
 
   .ku-course-hero__meta-item{
-    min-height:48px;
-    padding:0 14px;
+    min-height:40px;
+    padding:0 8px;
     font-size:13px;
   }
 
@@ -6016,21 +6398,52 @@ body.ku-trial-modal-open{
     line-height:1.56;
   }
 
-  .ku-course-plan__grid{
-    gap:14px;
+  .ku-course-plan__accordion{
+    gap:12px;
   }
 
-  .ku-course-plan__card{
-    padding:22px 18px 20px;
+  .ku-course-plan__item{
     border-radius:22px;
   }
 
-  .ku-course-plan__card h3{
-    font-size:20px;
+  .ku-course-plan__button{
+    padding:18px 16px;
+    gap:12px;
   }
 
-  .ku-course-plan__card ul{
+  .ku-course-plan__button-main{
+    gap:14px;
+  }
+
+  .ku-course-plan__index{
+    width:40px;
+    height:40px;
+    border-radius:14px;
     font-size:14px;
+  }
+
+  .ku-course-plan__name{
+    font-size:19px;
+  }
+
+  .ku-course-plan__project{
+    font-size:13px;
+  }
+
+  .ku-course-plan__toggle{
+    width:36px;
+    height:36px;
+    border-radius:12px;
+    font-size:24px;
+  }
+
+  .ku-course-plan__content ul{
+    padding:0 16px 0 70px;
+    font-size:14px;
+  }
+
+  .ku-course-plan__item.is-open .ku-course-plan__content ul{
+    padding-bottom:18px;
   }
 
   .ku-course-why__rows{
@@ -6209,7 +6622,7 @@ body.ku-trial-modal-open{
         <h1 class="ku-course-hero__title">
           <span class="ku-course-hero__title-main">Scratch —</span>
           <span class="ku-course-hero__title-main">понятный старт</span>
-          <span class="ku-course-hero__title-accent">в программировании</span>
+          <span class="ku-course-hero__title-accent">в&nbsp;программировании</span>
         </h1>
 
         <p class="ku-course-hero__text">
@@ -6298,93 +6711,165 @@ body.ku-trial-modal-open{
       </p>
     </div>
 
-    <div class="ku-course-plan__grid">
-      <article class="ku-course-plan__card">
-        <div class="ku-course-plan__index">01</div>
-        <h3>Знакомство с платформой</h3>
-        <div class="ku-course-plan__project">Проект: «Подводный мир»</div>
-        <ul>
-          <li>координаты и положение объектов на сцене</li>
-          <li>простая графика и анимация</li>
-          <li>первое управление персонажем</li>
-        </ul>
+    <div class="ku-course-plan__accordion" data-course-plan>
+      <article class="ku-course-plan__item is-open">
+        <button class="ku-course-plan__button" type="button">
+          <span class="ku-course-plan__button-main">
+            <span class="ku-course-plan__index">01</span>
+            <span class="ku-course-plan__summary">
+              <span class="ku-course-plan__name">Знакомство с платформой</span>
+              <span class="ku-course-plan__project">Проект: «Подводный мир»</span>
+            </span>
+          </span>
+          <span class="ku-course-plan__toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="ku-course-plan__content">
+          <ul>
+            <li>координаты и положение объектов на сцене</li>
+            <li>простая графика и анимация</li>
+            <li>первое управление персонажем</li>
+          </ul>
+        </div>
       </article>
 
-      <article class="ku-course-plan__card">
-        <div class="ku-course-plan__index">02</div>
-        <h3>Условия и бесконечные циклы</h3>
-        <div class="ku-course-plan__project">Проект: «Арканоид»</div>
-        <ul>
-          <li>первые переменные и их изменение</li>
-          <li>проверка условий в игре</li>
-          <li>движение и ориентация объектов</li>
-        </ul>
+      <article class="ku-course-plan__item">
+        <button class="ku-course-plan__button" type="button">
+          <span class="ku-course-plan__button-main">
+            <span class="ku-course-plan__index">02</span>
+            <span class="ku-course-plan__summary">
+              <span class="ku-course-plan__name">Условия и бесконечные циклы</span>
+              <span class="ku-course-plan__project">Проект: «Арканоид»</span>
+            </span>
+          </span>
+          <span class="ku-course-plan__toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="ku-course-plan__content">
+          <ul>
+            <li>первые переменные и их изменение</li>
+            <li>проверка условий в игре</li>
+            <li>движение и ориентация объектов</li>
+          </ul>
+        </div>
       </article>
 
-      <article class="ku-course-plan__card">
-        <div class="ku-course-plan__index">03</div>
-        <h3>Логические операторы и сенсоры</h3>
-        <div class="ku-course-plan__project">Проект: Minecraft-кликер</div>
-        <ul>
-          <li>подсчёт ресурсов и очков</li>
-          <li>обработка кликов пользователя</li>
-          <li>логика «если / иначе» в действиях</li>
-        </ul>
+      <article class="ku-course-plan__item">
+        <button class="ku-course-plan__button" type="button">
+          <span class="ku-course-plan__button-main">
+            <span class="ku-course-plan__index">03</span>
+            <span class="ku-course-plan__summary">
+              <span class="ku-course-plan__name">Логические операторы и сенсоры</span>
+              <span class="ku-course-plan__project">Проект: Minecraft-кликер</span>
+            </span>
+          </span>
+          <span class="ku-course-plan__toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="ku-course-plan__content">
+          <ul>
+            <li>подсчёт ресурсов и очков</li>
+            <li>обработка кликов пользователя</li>
+            <li>логика «если / иначе» в действиях</li>
+          </ul>
+        </div>
       </article>
 
-      <article class="ku-course-plan__card">
-        <div class="ku-course-plan__index">04</div>
-        <h3>Циклы с условием и клоны</h3>
-        <div class="ku-course-plan__project">Проект: «Космический полёт»</div>
-        <ul>
-          <li>создание множества объектов-клонов</li>
-          <li>независимые действия для каждого объекта</li>
-          <li>игровые условия и реакции</li>
-        </ul>
+      <article class="ku-course-plan__item">
+        <button class="ku-course-plan__button" type="button">
+          <span class="ku-course-plan__button-main">
+            <span class="ku-course-plan__index">04</span>
+            <span class="ku-course-plan__summary">
+              <span class="ku-course-plan__name">Циклы с условием и клоны</span>
+              <span class="ku-course-plan__project">Проект: «Космический полёт»</span>
+            </span>
+          </span>
+          <span class="ku-course-plan__toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="ku-course-plan__content">
+          <ul>
+            <li>создание множества объектов-клонов</li>
+            <li>независимые действия для каждого объекта</li>
+            <li>игровые условия и реакции</li>
+          </ul>
+        </div>
       </article>
 
-      <article class="ku-course-plan__card">
-        <div class="ku-course-plan__index">05</div>
-        <h3>Сложные условия и массивы</h3>
-        <div class="ku-course-plan__project">Проект: «Викторина»</div>
-        <ul>
-          <li>сложные проверки ответов</li>
-          <li>хранение данных в массивах</li>
-          <li>сборка интерфейса вопросов и результатов</li>
-        </ul>
+      <article class="ku-course-plan__item">
+        <button class="ku-course-plan__button" type="button">
+          <span class="ku-course-plan__button-main">
+            <span class="ku-course-plan__index">05</span>
+            <span class="ku-course-plan__summary">
+              <span class="ku-course-plan__name">Сложные условия и массивы</span>
+              <span class="ku-course-plan__project">Проект: «Викторина»</span>
+            </span>
+          </span>
+          <span class="ku-course-plan__toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="ku-course-plan__content">
+          <ul>
+            <li>сложные проверки ответов</li>
+            <li>хранение данных в массивах</li>
+            <li>сборка интерфейса вопросов и результатов</li>
+          </ul>
+        </div>
       </article>
 
-      <article class="ku-course-plan__card">
-        <div class="ku-course-plan__index">06</div>
-        <h3>Гравитация и игровые события</h3>
-        <div class="ku-course-plan__project">Проекты: Flappy Bird и Bubble Jump</div>
-        <ul>
-          <li>эффект падения и прыжка</li>
-          <li>обработка столкновений и очков</li>
-          <li>сообщения между спрайтами</li>
-        </ul>
+      <article class="ku-course-plan__item">
+        <button class="ku-course-plan__button" type="button">
+          <span class="ku-course-plan__button-main">
+            <span class="ku-course-plan__index">06</span>
+            <span class="ku-course-plan__summary">
+              <span class="ku-course-plan__name">Гравитация и игровые события</span>
+              <span class="ku-course-plan__project">Проекты: Flappy Bird и Bubble Jump</span>
+            </span>
+          </span>
+          <span class="ku-course-plan__toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="ku-course-plan__content">
+          <ul>
+            <li>эффект падения и прыжка</li>
+            <li>обработка столкновений и очков</li>
+            <li>сообщения между спрайтами</li>
+          </ul>
+        </div>
       </article>
 
-      <article class="ku-course-plan__card">
-        <div class="ku-course-plan__index">07</div>
-        <h3>Множественные условия</h3>
-        <div class="ku-course-plan__project">Проекты: «Тир» и «Змейка»</div>
-        <ul>
-          <li>управляемое создание и удаление объектов</li>
-          <li>сложные столкновения и сценарии</li>
-          <li>оператор отрицания и составные проверки</li>
-        </ul>
+      <article class="ku-course-plan__item">
+        <button class="ku-course-plan__button" type="button">
+          <span class="ku-course-plan__button-main">
+            <span class="ku-course-plan__index">07</span>
+            <span class="ku-course-plan__summary">
+              <span class="ku-course-plan__name">Множественные условия</span>
+              <span class="ku-course-plan__project">Проекты: «Тир» и «Змейка»</span>
+            </span>
+          </span>
+          <span class="ku-course-plan__toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="ku-course-plan__content">
+          <ul>
+            <li>управляемое создание и удаление объектов</li>
+            <li>сложные столкновения и сценарии</li>
+            <li>оператор отрицания и составные проверки</li>
+          </ul>
+        </div>
       </article>
 
-      <article class="ku-course-plan__card">
-        <div class="ku-course-plan__index">08</div>
-        <h3>Финальный проект и функции</h3>
-        <div class="ku-course-plan__project">Проект: платформер Scratch Run</div>
-        <ul>
-          <li>собственные функции и переиспользуемые блоки</li>
-          <li>сложная анимация персонажа</li>
-          <li>хитбоксы, физика и взаимодействия</li>
-        </ul>
+      <article class="ku-course-plan__item">
+        <button class="ku-course-plan__button" type="button">
+          <span class="ku-course-plan__button-main">
+            <span class="ku-course-plan__index">08</span>
+            <span class="ku-course-plan__summary">
+              <span class="ku-course-plan__name">Финальный проект и функции</span>
+              <span class="ku-course-plan__project">Проект: платформер Scratch Run</span>
+            </span>
+          </span>
+          <span class="ku-course-plan__toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="ku-course-plan__content">
+          <ul>
+            <li>собственные функции и переиспользуемые блоки</li>
+            <li>сложная анимация персонажа</li>
+            <li>хитбоксы, физика и взаимодействия</li>
+          </ul>
+        </div>
       </article>
     </div>
   </div>
@@ -6840,63 +7325,99 @@ body.ku-trial-modal-open{
 
   <div class="ku-trust__container">
     <div class="ku-trust__head ku-trust__reveal">
-      <div class="ku-trust__badge">Доверие родителей</div>
+      <div class="ku-trust__badge">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3.5 19 6v5.2c0 4.2-2.7 8-7 9.3-4.3-1.3-7-5.1-7-9.3V6l7-2.5Z"></path>
+          <path d="m9 12 2 2 4-4"></path>
+        </svg>
+        Доверие родителей
+      </div>
       <h2 class="ku-trust__title">
-        Безопасно.<br>
-        <span>Прозрачно. Надёжно.</span>
+        Безопасно. <span>Прозрачно. Надёжно.</span>
       </h2>
       <p class="ku-trust__text">
-        Мы понимаем, что вы доверяете нам своего ребёнка. Мы относимся к этому серьёзно.
+        Мы ценим доверие, которое вы нам оказываете.
+        Поэтому делаем всё, чтобы обучение было качественным, честным и доступным.
       </p>
     </div>
 
-    <div class="ku-trust__grid">
-      <article class="ku-trust-card ku-trust-card--blue ku-trust__reveal">
+    <div class="ku-trust__orbit" aria-label="Преимущества онлайн-школы">
+      <div class="ku-trust__ring" aria-hidden="true">
+        <span class="ku-trust__dot ku-trust__dot--one"></span>
+        <span class="ku-trust__dot ku-trust__dot--two"></span>
+        <span class="ku-trust__dot ku-trust__dot--three"></span>
+        <span class="ku-trust__dot ku-trust__dot--four"></span>
+        <span class="ku-trust__dot ku-trust__dot--five"></span>
+        <span class="ku-trust__dot ku-trust__dot--six"></span>
+      </div>
+
+      <article class="ku-trust-card ku-trust-card--featured ku-trust-card--blue ku-trust__reveal">
         <div class="ku-trust-card__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.4-2.8 8.4-7 10-4.2-1.6-7-5.6-7-10V6l7-3Zm0 4.2L8.2 8.8V11c0 2.6 1.5 5 3.8 6.3 2.3-1.3 3.8-3.7 3.8-6.3V8.8L12 7.2Z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3.5 19 6v5.2c0 4.2-2.7 8-7 9.3-4.3-1.3-7-5.1-7-9.3V6l7-2.5Z"></path>
+            <path d="m9 12 2 2 4-4"></path>
+          </svg>
         </div>
+        <div class="ku-trust-card__label">Главное преимущество</div>
         <h3>Образовательная лицензия</h3>
-        <p>Образовательная деятельность ведется на основании государственной лицензии № Л035-01272-16/01017687</p>
+        <span class="ku-trust-card__line" aria-hidden="true"></span>
+        <p>Образовательная деятельность ведётся на основании государственной образовательной лицензии № Л035-01272-16/01017687.</p>
       </article>
 
-      <article class="ku-trust-card ku-trust-card--red ku-trust__reveal">
+      <article class="ku-trust-card ku-trust-card--red ku-trust-card--tax ku-trust__reveal">
         <div class="ku-trust-card__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10a2 2 0 0 1 2 2v16l-7-3-7 3V5a2 2 0 0 1 2-2Zm2 5h6M9 12h6M9 16h4"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 3h10a2 2 0 0 1 2 2v16l-7-3-7 3V5a2 2 0 0 1 2-2Z"></path>
+            <path d="M9 8h6M9 12h6M9 16h4"></path>
+          </svg>
         </div>
         <h3>Налоговый вычет 13%</h3>
-        <p>Воспользуйтесь правом на налоговый вычет в размере 13 % при оплате обучения в нашей онлайн‑школе.</p>
+        <p>Воспользуйтесь правом на налоговый вычет в размере 13 % при оплате обучения в нашей онлайн-школе.</p>
       </article>
 
-      <article class="ku-trust-card ku-trust-card--yellow ku-trust__reveal">
+      <article class="ku-trust-card ku-trust-card--yellow ku-trust-card--capital ku-trust__reveal">
         <div class="ku-trust-card__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v12H4V7Zm2-3h12v3H6V4Zm2 8h8M8 15h5"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 7h16v12H4V7Z"></path>
+            <path d="M7 7V5h10v2M8 12h8M8 15h5"></path>
+          </svg>
         </div>
         <h3>Оплата материнским капиталом</h3>
-        <p>Воспользуйтесь материнским капиталом для оплаты обучения в нашей онлайн‑школе.</p>
+        <p>Воспользуйтесь материнским капиталом для оплаты обучения в нашей онлайн-школе.</p>
       </article>
 
-      <article class="ku-trust-card ku-trust-card--violet ku-trust__reveal">
+      <article class="ku-trust-card ku-trust-card--violet ku-trust-card--plans ku-trust__reveal">
         <div class="ku-trust-card__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14v14H5V5Zm3 4h8M8 12h8M8 15h5"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 5h14v14H5V5Z"></path>
+            <path d="M8 9h8M8 12h8M8 15h5"></path>
+          </svg>
         </div>
         <h3>Система абонементов</h3>
-        <p>Платите помесячно или со скидкой — за год вперёд. Выбирайте удобный формат без обязательств на долгий срок.</p>
+        <p>Платите помесячно или со скидкой за год вперёд. Выбирайте удобный формат без обязательств на долгий срок.</p>
       </article>
 
-      <article class="ku-trust-card ku-trust-card--green ku-trust__reveal">
+      <article class="ku-trust-card ku-trust-card--orange ku-trust-card--market ku-trust__reveal">
         <div class="ku-trust-card__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm8 8a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM8 20a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm4-10 2 3M12 14l-2 1"/></svg>
-        </div>
-        <h3>Реферальная система</h3>
-        <p>Получайте бонусы за каждого приглашённого друга и учитесь вместе с выгодой.</p>
-      </article>
-
-      <article class="ku-trust-card ku-trust-card--orange ku-trust__reveal">
-        <div class="ku-trust-card__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.4 6 .9-4.3 4.2 1 6L12 16.6 6.6 19.5l1-6-4.3-4.2 6-.9L12 3Z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"></path>
+          </svg>
         </div>
         <h3>Более 5 лет на рынке</h3>
         <p>С 2020 года. Тысяча выпускников и проектов. Наработанная методология обучения.</p>
+      </article>
+
+      <article class="ku-trust-card ku-trust-card--green ku-trust-card--referral ku-trust__reveal">
+        <div class="ku-trust-card__icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="8" cy="8" r="3.5"></circle>
+            <circle cx="16" cy="16" r="3.5"></circle>
+            <circle cx="8" cy="16" r="3.5"></circle>
+            <path d="m11 10.2 2.2 2.2M11.5 15.8h1"></path>
+          </svg>
+        </div>
+        <h3>Реферальная система</h3>
+        <p>Получайте бонусы за каждого приглашённого друга и учитесь вместе с выгодой.</p>
       </article>
     </div>
   </div>
@@ -8315,7 +8836,22 @@ body.ku-trial-modal-open{
 })();
 
 /* js: 12-scratch.js */
-(function(){})();
+(function(){
+  const root = document.querySelector('[data-course-plan]');
+  if (!root) return;
+
+  const items = Array.from(root.querySelectorAll('.ku-course-plan__item'));
+  items.forEach((item) => {
+    const button = item.querySelector('.ku-course-plan__button');
+    if (!button) return;
+
+    button.addEventListener('click', () => {
+      const isOpen = item.classList.contains('is-open');
+      items.forEach((entry) => entry.classList.remove('is-open'));
+      if (!isOpen) item.classList.add('is-open');
+    });
+  });
+})();
 </script>
 </body>
 </html>
