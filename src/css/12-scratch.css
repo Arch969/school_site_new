@@ -1,8 +1,12 @@
-.ku-page--scratch{
+.ku-page--scratch,
+.ku-page--comp,
+.ku-page--unity{
   background:#fff;
 }
 
-.ku-page--scratch .ku-header__nav a.is-active::after{
+.ku-page--scratch .ku-header__nav a.is-active::after,
+.ku-page--comp .ku-header__nav a.is-active::after,
+.ku-page--unity .ku-header__nav a.is-active::after{
   bottom:-8px;
 }
 
@@ -75,6 +79,7 @@
 
 .ku-course-hero__left{
   grid-area:left;
+  min-width:0;
 }
 
 .ku-course-hero__right{
@@ -554,15 +559,27 @@
   margin:28px auto 0;
 }
 
-.ku-page--scratch .ku-projects{
+.ku-page--scratch .ku-projects,
+.ku-page--comp .ku-projects,
+.ku-page--unity .ku-projects{
   padding-top:88px;
 }
 
-.ku-page--scratch .ku-project-card__meta span:not(:last-child)::after{
+.ku-page--scratch .ku-project-card__meta span:not(:last-child)::after,
+.ku-page--comp .ku-project-card__meta span:not(:last-child)::after,
+.ku-page--unity .ku-project-card__meta span:not(:last-child)::after{
   content:"•";
 }
 
 .ku-page--scratch .ku-footer__col--courses a[href="scratch.html#top"]{
+  color:#fff;
+}
+
+.ku-page--comp .ku-footer__col--courses a[href="comp_gram.html#top"]{
+  color:#fff;
+}
+
+.ku-page--unity .ku-footer__col--courses a[href="unity.html#top"]{
   color:#fff;
 }
 
@@ -614,6 +631,7 @@
     margin-bottom:20px;
     font-size:15px;
     line-height:1.54;
+    overflow-wrap:anywhere;
   }
 
   .ku-course-hero__actions{
@@ -625,6 +643,7 @@
 
   .ku-course-hero__actions .ku-btn{
     width:100%;
+    max-width:100%;
     min-height:50px;
     padding:0 18px;
     font-size:14px;
@@ -647,6 +666,7 @@
     font-size:12px;
     line-height:1.25;
     white-space:normal;
+    overflow-wrap:anywhere;
   }
 
   .ku-course-hero__right{

@@ -296,17 +296,41 @@
     white-space:normal;
   }
   .ku-reviews__text{ font-size:16px; }
-  .ku-video-reviews{ padding:0 0 24px; }
-  .ku-video-reviews__track{
-    gap:0;
-    padding:0 0 10px;
+  .ku-video-reviews{
+    padding:0 0 24px;
+    overflow:hidden;
   }
-  .ku-video-review{ flex-basis:100%; }
+  .ku-video-reviews__viewport{
+    overflow:visible;
+  }
+  .ku-video-reviews__track{
+    gap:14px;
+    padding:0 34px 10px;
+    scroll-padding-inline:34px;
+  }
+  .ku-video-review{
+    flex-basis:72%;
+    scroll-snap-align:center;
+  }
   .ku-video-review__phone{
-    max-width:242px;
+    width:100%;
+    max-width:270px;
     margin:0 auto;
   }
   .ku-video-reviews__nav{ display:none; }
+}
+
+@media (max-width:420px){
+  .ku-video-reviews__track{
+    padding-inline:24px;
+    scroll-padding-inline:24px;
+  }
+  .ku-video-review{
+    flex-basis:76%;
+  }
+  .ku-video-review__phone{
+    max-width:250px;
+  }
 }
 
 @media (max-height:820px) and (min-width:761px){

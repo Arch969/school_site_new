@@ -3326,17 +3326,41 @@ body.ku-trial-modal-open{
     white-space:normal;
   }
   .ku-reviews__text{ font-size:16px; }
-  .ku-video-reviews{ padding:0 0 24px; }
-  .ku-video-reviews__track{
-    gap:0;
-    padding:0 0 10px;
+  .ku-video-reviews{
+    padding:0 0 24px;
+    overflow:hidden;
   }
-  .ku-video-review{ flex-basis:100%; }
+  .ku-video-reviews__viewport{
+    overflow:visible;
+  }
+  .ku-video-reviews__track{
+    gap:14px;
+    padding:0 34px 10px;
+    scroll-padding-inline:34px;
+  }
+  .ku-video-review{
+    flex-basis:72%;
+    scroll-snap-align:center;
+  }
   .ku-video-review__phone{
-    max-width:242px;
+    width:100%;
+    max-width:270px;
     margin:0 auto;
   }
   .ku-video-reviews__nav{ display:none; }
+}
+
+@media (max-width:420px){
+  .ku-video-reviews__track{
+    padding-inline:24px;
+    scroll-padding-inline:24px;
+  }
+  .ku-video-review{
+    flex-basis:76%;
+  }
+  .ku-video-review__phone{
+    max-width:250px;
+  }
 }
 
 @media (max-height:820px) and (min-width:761px){
@@ -3960,11 +3984,15 @@ body.ku-trial-modal-open{
   margin:0;
   max-width:96%;
   font-family:Montserrat,Inter,sans-serif;
-  font-size:clamp(20px,2.1vw,28px);
+  font-size:clamp(22px,2.1vw,30px);
   line-height:1.08;
   font-weight:900;
   color:#fff;
-  text-shadow:0 2px 16px rgba(15,23,42,.55);
+  -webkit-text-stroke:.45px rgba(15,23,42,.42);
+  paint-order:stroke fill;
+  text-shadow:
+    0 1px 0 rgba(15,23,42,.55),
+    0 3px 16px rgba(15,23,42,.72);
 }
 .ku-catalog-card__details{
   max-height:none;
@@ -4106,7 +4134,7 @@ body.ku-trial-modal-open{
   .ku-catalog-card__info{ padding:14px 12px 12px; }
   .ku-catalog-card__info h3{
     max-width:100%;
-    font-size:15px;
+    font-size:17px;
     line-height:1.12;
   }
   .ku-catalog-card__details{
@@ -4186,10 +4214,11 @@ body.ku-trial-modal-open{
     font-size:8px;
   }
   .ku-catalog-card__info{
+    bottom:7px;
     padding:10px 8px 8px;
   }
   .ku-catalog-card__info h3{
-    font-size:12px;
+    font-size:14px;
     line-height:1.08;
     overflow-wrap:anywhere;
     hyphens:auto;
@@ -4198,7 +4227,7 @@ body.ku-trial-modal-open{
     margin-top:5px;
   }
   .ku-catalog-card__details p{
-    -webkit-line-clamp:2;
+    -webkit-line-clamp:3;
     font-size:8.5px;
     line-height:1.2;
     overflow-wrap:anywhere;
@@ -6193,7 +6222,7 @@ body.ku-trial-modal-open{
             </div>
           </div>
         </div>
-        <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
+        <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="comp_gram.html" class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
       <article class="ku-catalog-card ku-courses__reveal" data-categories="development games" style="--accent:#22c55e;">
@@ -6417,7 +6446,7 @@ body.ku-trial-modal-open{
             </div>
           </div>
         </div>
-        <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="#trial-form" data-scroll class="ku-catalog-card__secondary">Подробнее</a></div>
+        <div class="ku-catalog-card__actions"><a href="#trial-form" data-scroll class="ku-catalog-card__primary">Записаться</a><a href="unity.html" class="ku-catalog-card__secondary">Подробнее</a></div>
       </article>
 
       <article class="ku-catalog-card ku-courses__reveal" data-categories="design" style="--accent:#be185d;">
@@ -7486,13 +7515,13 @@ body.ku-trial-modal-open{
 
       <nav class="ku-footer__col ku-footer__col--courses" aria-label="Курсы для детей">
         <h3>Курсы для детей</h3>
-        <a href="#courses-real" data-scroll>Курс компьютерной грамотности для детей</a>
-        <a href="#courses-real" data-scroll>Курс программирования в Scratch для детей</a>
+        <a href="comp_gram.html#top">Курс компьютерной грамотности для детей</a>
+        <a href="scratch.html#top">Курс программирования в Scratch для детей</a>
         <a href="#courses-real" data-scroll>Курс Roblox для детей</a>
         <a href="#courses-real" data-scroll>Курс Python для детей</a>
         <a href="#courses-real" data-scroll>Курс создания чат-ботов на Python для детей</a>
         <a href="#courses-real" data-scroll>Курс создания игр на Python для детей</a>
-        <a href="#courses-real" data-scroll>Курс Unity для детей</a>
+        <a href="unity.html#top">Курс Unity для детей</a>
         <a href="#courses-real" data-scroll>Курс 3D-моделирования в Blender для детей</a>
         <a href="#courses-real" data-scroll>Курс 3D-моделирования в Blockbench для детей</a>
         <a href="#courses-real" data-scroll>Курс создания сайтов для детей</a>
@@ -8104,7 +8133,10 @@ body.ku-trial-modal-open{
       currentIndex = Math.max(0, Math.min(slides.length - 1, index));
       const slide = slides[currentIndex];
       if (!slide) return;
-      track.scrollTo({ left:slide.offsetLeft, behavior:'smooth' });
+      const left = window.innerWidth <= 760
+        ? slide.offsetLeft - ((track.clientWidth - slide.clientWidth) / 2)
+        : slide.offsetLeft;
+      track.scrollTo({ left, behavior:'smooth' });
       setActiveDot(currentIndex);
     }
 

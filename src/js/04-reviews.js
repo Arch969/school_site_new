@@ -83,7 +83,10 @@
       currentIndex = Math.max(0, Math.min(slides.length - 1, index));
       const slide = slides[currentIndex];
       if (!slide) return;
-      track.scrollTo({ left:slide.offsetLeft, behavior:'smooth' });
+      const left = window.innerWidth <= 760
+        ? slide.offsetLeft - ((track.clientWidth - slide.clientWidth) / 2)
+        : slide.offsetLeft;
+      track.scrollTo({ left, behavior:'smooth' });
       setActiveDot(currentIndex);
     }
 
