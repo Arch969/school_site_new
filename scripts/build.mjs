@@ -133,15 +133,22 @@ const heroPreload = '  <link rel="preload" as="image" href="media/hero3.png" fet
 const scratchPreload = '  <link rel="preload" as="image" href="media/course_page/scratch/4.webp" fetchpriority="high">\n';
 const compPreload = '  <link rel="preload" as="image" href="media/course_page/comp_gram/4.jpg" fetchpriority="high">\n';
 const unityPreload = '  <link rel="preload" as="image" href="media/hero3.png" fetchpriority="high">\n';
+const fontPreloads =
+  '  <link rel="preload" as="font" type="font/woff2" href="media/fonts/inter-cyrillic.woff2" crossorigin>\n' +
+  '  <link rel="preload" as="font" type="font/woff2" href="media/fonts/inter-latin.woff2" crossorigin>\n' +
+  '  <link rel="preload" as="font" type="font/woff2" href="media/fonts/montserrat-cyrillic.woff2" crossorigin>\n' +
+  '  <link rel="preload" as="font" type="font/woff2" href="media/fonts/montserrat-latin.woff2" crossorigin>\n';
 const fontHeadLinks =
-  '  <link rel="preconnect" href="https://fonts.googleapis.com">\n' +
-  '  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n' +
-  '  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">\n';
-const fontCssImport = '@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap");\n\n';
+  fontPreloads;
+const fontFaceCss =
+  '@font-face{font-family:"Inter";font-style:normal;font-weight:400 900;font-display:optional;src:url("media/fonts/inter-cyrillic.woff2") format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}\n' +
+  '@font-face{font-family:"Inter";font-style:normal;font-weight:400 900;font-display:optional;src:url("media/fonts/inter-latin.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}\n' +
+  '@font-face{font-family:"Montserrat";font-style:normal;font-weight:700 900;font-display:optional;src:url("media/fonts/montserrat-cyrillic.woff2") format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}\n' +
+  '@font-face{font-family:"Montserrat";font-style:normal;font-weight:700 900;font-display:optional;src:url("media/fonts/montserrat-latin.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}\n\n';
 
 function buildPreview({ title, preload, bodyClass, blocks, css, js }) {
   const bodyAttr = bodyClass ? ' class="' + bodyClass + '"' : '';
-  return '<!DOCTYPE html>\n<html lang="ru">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>' + title + '</title>\n' + preload + fontHeadLinks + '  <style>\n    body { margin: 0; }\n' + css + '\n  </style>\n</head>\n<body' + bodyAttr + '>\n' + blocks + '\n\n<script>\n' + js + '\n</script>\n</body>\n</html>\n';
+  return '<!DOCTYPE html>\n<html lang="ru">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>' + title + '</title>\n' + preload + fontHeadLinks + '  <style>\n    body { margin: 0; }\n' + fontFaceCss + css + '\n  </style>\n</head>\n<body' + bodyAttr + '>\n' + blocks + '\n\n<script>\n' + js + '\n</script>\n</body>\n</html>\n';
 }
 
 const blocks = buildBlocks(htmlOrder);
@@ -157,7 +164,7 @@ const unityBlocks = buildBlocks(unityHtmlOrder);
 const unityCss = buildCss(scratchAssetOrder);
 const unityJs = buildJs(scratchAssetOrder);
 
-const tilda = blocks + '\n\n<style>\n' + fontCssImport + css + '\n</style>\n\n<script>\n' + js + '\n</script>\n';
+const tilda = '<style>\n' + fontFaceCss + css + '\n</style>\n\n' + blocks + '\n\n<script>\n' + js + '\n</script>\n';
 const preview = buildPreview({
   title: '\u041a\u0438\u0431\u0435\u0440\u0423\u043c',
   preload: heroPreload,

@@ -5,11 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scratch для детей | КиберУм</title>
   <link rel="preload" as="image" href="media/course_page/scratch/4.webp" fetchpriority="high">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" href="media/fonts/inter-cyrillic.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="media/fonts/inter-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="media/fonts/montserrat-cyrillic.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="media/fonts/montserrat-latin.woff2" crossorigin>
   <style>
     body { margin: 0; }
+@font-face{font-family:"Inter";font-style:normal;font-weight:400 900;font-display:optional;src:url("media/fonts/inter-cyrillic.woff2") format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:"Inter";font-style:normal;font-weight:400 900;font-display:optional;src:url("media/fonts/inter-latin.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:"Montserrat";font-style:normal;font-weight:700 900;font-display:optional;src:url("media/fonts/montserrat-cyrillic.woff2") format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:"Montserrat";font-style:normal;font-weight:700 900;font-display:optional;src:url("media/fonts/montserrat-latin.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+
 /* css: 10-contact.css */
 .ku-contact,
 .ku-contact *,
@@ -2928,6 +2934,112 @@ body.ku-trial-modal-open{
   font-weight:500;
 }
 
+.ku-teachers__team{
+  margin:42px auto 0;
+  padding:34px 36px 32px;
+  border-radius:32px;
+  background:#fff;
+  border:1px solid rgba(220,228,243,.96);
+  box-shadow:0 26px 58px -42px rgba(15,23,42,.24);
+}
+
+.ku-teachers__team-title{
+  position:relative;
+  margin:0;
+  padding-left:42px;
+  max-width:1160px;
+  font-family:Montserrat,Inter,sans-serif;
+  font-size:42px;
+  line-height:1.12;
+  font-weight:900;
+  color:#111b35;
+}
+
+.ku-teachers__team-title::before{
+  content:">";
+  position:absolute;
+  left:0;
+  top:-2px;
+  color:#2362ff;
+}
+
+.ku-teachers__team-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+  margin-top:30px;
+}
+
+.ku-teachers__avatars{
+  display:flex;
+  align-items:center;
+  min-width:0;
+  max-width:100%;
+}
+
+.ku-teachers__avatars img,
+.ku-teachers__avatars span{
+  width:92px;
+  height:92px;
+  flex:0 0 auto;
+  border-radius:50%;
+  border:5px solid #fff;
+  box-shadow:0 18px 32px -24px rgba(15,23,42,.38);
+}
+
+.ku-teachers__avatars img{
+  display:block;
+  object-fit:cover;
+  object-position:center top;
+  background:#edf3ff;
+}
+
+.ku-teachers__avatars img + img,
+.ku-teachers__avatars span{
+  margin-left:-18px;
+}
+
+.ku-teachers__avatars span{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#2362ff 0%,#ff5f5f 100%);
+  color:#fff;
+  font-family:Montserrat,Inter,sans-serif;
+  font-size:17px;
+  line-height:1;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+.ku-teachers__team-note{
+  position:relative;
+  max-width:330px;
+  margin:0 28px 0 0;
+  color:#1f2937;
+  font-family:"Segoe Print","Comic Sans MS",cursive;
+  font-size:23px;
+  line-height:1.32;
+  font-weight:700;
+  text-align:center;
+  transform:rotate(-3deg);
+}
+
+.ku-teachers__team-note::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:-22px;
+  width:32px;
+  height:22px;
+  border-top:4px solid #ff6b83;
+  border-left:4px solid #ff6b83;
+  border-radius:50% 0 0 0;
+  transform:translateX(-50%) rotate(18deg);
+  opacity:.85;
+}
+
 .ku-teachers__reveal{
   opacity:0;
   transform:translate3d(0,24px,0);
@@ -2961,6 +3073,34 @@ body.ku-trial-modal-open{
 
   .ku-teachers__text{
     font-size:15px;
+  }
+
+  .ku-teachers__team{
+    padding:28px 22px 30px;
+    border-radius:26px;
+  }
+
+  .ku-teachers__team-title{
+    padding-left:30px;
+    font-size:30px;
+    line-height:1.16;
+  }
+
+  .ku-teachers__team-row{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .ku-teachers__avatars{
+    flex-wrap:wrap;
+    row-gap:10px;
+    padding-left:18px;
+  }
+
+  .ku-teachers__team-note{
+    align-self:center;
+    margin:0;
+    font-size:20px;
   }
 
   .ku-teachers__carousel{
@@ -3009,6 +3149,47 @@ body.ku-trial-modal-open{
 
   .ku-teacher-card__description{
     font-size:14px;
+  }
+
+  .ku-teachers__team{
+    margin-top:32px;
+    padding:24px 14px 26px;
+    border-radius:24px;
+  }
+
+  .ku-teachers__team-title{
+    padding-left:24px;
+    font-size:24px;
+  }
+
+  .ku-teachers__team-title::before{
+    top:-1px;
+  }
+
+  .ku-teachers__team-row{
+    gap:22px;
+    margin-top:24px;
+  }
+
+  .ku-teachers__avatars img,
+  .ku-teachers__avatars span{
+    width:58px;
+    height:58px;
+    border-width:4px;
+  }
+
+  .ku-teachers__avatars img + img,
+  .ku-teachers__avatars span{
+    margin-left:-10px;
+  }
+
+  .ku-teachers__avatars span{
+    font-size:13px;
+  }
+
+  .ku-teachers__team-note{
+    max-width:270px;
+    font-size:18px;
   }
 }
 
@@ -3145,111 +3326,59 @@ body.ku-trial-modal-open{
   flex:0 0 calc((100% - 56px) / 5);
   scroll-snap-align:start;
 }
-.ku-video-review__phone{
-  position:relative;
-  padding:6px;
-  border-radius:22px;
-  background:linear-gradient(180deg,#111827,#020617);
-  box-shadow:0 20px 52px -34px rgba(15,23,42,.72);
-  border:1px solid rgba(255,255,255,.12);
-  transition:transform .25s ease, box-shadow .25s ease;
-}
-.ku-video-review__phone:hover{
-  transform:translateY(-4px);
-  box-shadow:0 26px 66px -38px rgba(15,23,42,.8);
-}
 .ku-video-review__slot{
   position:relative;
   aspect-ratio:9 / 16;
   overflow:hidden;
-  border-radius:17px;
-  background:
-    linear-gradient(180deg, rgba(37,99,235,.22), rgba(239,68,68,.18)),
-    radial-gradient(circle at 30% 20%, rgba(255,255,255,.22), transparent 28%),
-    #101827;
+  border-radius:14px;
+  background:#fff;
+  border:1px solid rgba(148,163,184,.22);
+  box-shadow:0 18px 46px -34px rgba(15,23,42,.46);
 }
-.ku-video-review__slot::before{
-  content:"";
-  position:absolute;
-  top:8px;
-  left:50%;
-  width:56px;
-  height:16px;
-  border-radius:999px;
-  transform:translateX(-50%);
-  background:rgba(2,6,23,.58);
-  z-index:2;
-}
-.ku-video-review__placeholder{
+.ku-video-review__video{
   position:absolute;
   inset:0;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:6px;
-  padding:18px 14px;
-  text-align:center;
-  color:#fff;
-  background:
-    linear-gradient(180deg, rgba(15,23,42,.08), rgba(15,23,42,.72)),
-    repeating-linear-gradient(135deg, rgba(255,255,255,.08) 0 1px, transparent 1px 14px);
-}
-.ku-video-review__placeholder div{
-  font-family:Montserrat,Inter,sans-serif;
-  font-size:16px;
-  line-height:1.15;
-  font-weight:900;
-}
-.ku-video-review__placeholder small{
-  color:rgba(255,255,255,.72);
-  font-size:11px;
-  line-height:1.35;
-  font-weight:700;
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  background:#fff;
 }
 .ku-video-review__play{
-  width:46px;
+  position:absolute;
+  left:50%;
+  top:50%;
+  z-index:2;
+  width:58px;
   aspect-ratio:1 / 1;
+  border:0;
   border-radius:999px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   background:rgba(255,255,255,.92);
   box-shadow:0 18px 48px -22px rgba(15,23,42,.85);
+  cursor:pointer;
+  transform:translate(-50%, -50%);
+  transition:transform .2s ease, opacity .2s ease, background .2s ease;
+}
+.ku-video-review__play:hover{
+  background:#fff;
+  transform:translate(-50%, -50%) scale(1.05);
 }
 .ku-video-review__play::before{
   content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
   width:0;
   height:0;
-  margin-left:4px;
-  border-top:8px solid transparent;
-  border-bottom:8px solid transparent;
-  border-left:13px solid #2563eb;
+  margin-left:3px;
+  transform:translate(-50%, -50%);
+  border-top:11px solid transparent;
+  border-bottom:11px solid transparent;
+  border-left:17px solid #2563eb;
 }
-.ku-video-review__caption{
-  position:absolute;
-  left:12px;
-  right:12px;
-  bottom:12px;
-  z-index:3;
-  padding:9px 10px;
-  border-radius:12px;
-  background:rgba(255,255,255,.90);
-  border:1px solid rgba(255,255,255,.68);
-  box-shadow:0 18px 42px -28px rgba(15,23,42,.75);
-  backdrop-filter:blur(10px);
-}
-.ku-video-review__name{
-  font-size:12px;
-  font-weight:900;
-  color:hsl(218 55% 11%);
-}
-.ku-video-review__meta{
-  margin-top:2px;
-  font-size:11px;
-  line-height:1.35;
-  color:hsl(218 20% 44%);
-  font-weight:700;
+.ku-video-review__slot.is-playing .ku-video-review__play{
+  opacity:0;
+  pointer-events:none;
 }
 
 .ku-video-reviews__nav{
@@ -3341,7 +3470,7 @@ body.ku-trial-modal-open{
     flex-basis:72%;
     scroll-snap-align:center;
   }
-  .ku-video-review__phone{
+  .ku-video-review__slot{
     width:100%;
     max-width:270px;
     margin:0 auto;
@@ -3357,7 +3486,7 @@ body.ku-trial-modal-open{
   .ku-video-review{
     flex-basis:76%;
   }
-  .ku-video-review__phone{
+  .ku-video-review__slot{
     max-width:250px;
   }
 }
@@ -7581,52 +7710,52 @@ body.ku-trial-modal-open{
           <article class="ku-teacher-card">
             <div class="ku-teacher-card__photo-frame">
               <div class="ku-teacher-card__photo">
-                <img src="media/teacher-alexey-photo.png" alt="Алексей Смирнов" loading="lazy" decoding="async">
+                <img src="media/teachers/Горявин Александр.jpg" alt="Горявин Александр" loading="lazy" decoding="async">
               </div>
             </div>
 
             <div class="ku-teacher-card__body">
-              <h3 class="ku-teacher-card__name">Алексей Смирнов</h3>
-              <p class="ku-teacher-card__description">Помогает детям полюбить код, объясняет сложные темы простым языком и быстро выводит ученика на первый самостоятельный проект.</p>
+              <h3 class="ku-teacher-card__name">Горявин Александр</h3>
+              <p class="ku-teacher-card__description">Я помогу ребёнку пройти путь от первой идеи до готового проекта: объясню код простыми словами, поддержу на сложных шагах и покажу, что ошибки - это часть роста.</p>
             </div>
           </article>
 
           <article class="ku-teacher-card">
             <div class="ku-teacher-card__photo-frame">
               <div class="ku-teacher-card__photo">
-                <img src="media/teacher-maria-photo.png" alt="Мария Волкова" loading="lazy" decoding="async">
+                <img src="media/teachers/Исаева Владислава.jpg" alt="Исаева Владислава" loading="lazy" decoding="async">
               </div>
             </div>
 
             <div class="ku-teacher-card__body">
-              <h3 class="ku-teacher-card__name">Мария Волкова</h3>
-              <p class="ku-teacher-card__description">Развивает вкус, аккуратность и уверенность в визуальных решениях, чтобы ребёнок учился делать красиво и осмысленно.</p>
+              <h3 class="ku-teacher-card__name">Исаева Владислава</h3>
+              <p class="ku-teacher-card__description">На моих уроках ребёнку спокойно пробовать новое: я замечаю сильные стороны, мягко направляю и помогаю увидеть реальный прогресс уже с первых занятий.</p>
             </div>
           </article>
 
           <article class="ku-teacher-card">
             <div class="ku-teacher-card__photo-frame">
               <div class="ku-teacher-card__photo">
-                <img src="media/teacher-dmitry-photo.png" alt="Дмитрий Орлов" loading="lazy" decoding="async">
+                <img src="media/teachers/Тë Константин.jpg" alt="Тë Константин" loading="lazy" decoding="async">
               </div>
             </div>
 
             <div class="ku-teacher-card__body">
-              <h3 class="ku-teacher-card__name">Дмитрий Орлов</h3>
-              <p class="ku-teacher-card__description">Показывает, как идеи превращаются в 3D-модели, и помогает ребёнку соединить креативное мышление с точностью.</p>
+              <h3 class="ku-teacher-card__name">Тë Константин</h3>
+              <p class="ku-teacher-card__description">Я превращаю сложные темы в понятные задачи и игровые примеры, чтобы ребёнок быстро включался в урок, видел смысл каждого шага и уверенно шёл дальше.</p>
             </div>
           </article>
 
           <article class="ku-teacher-card">
             <div class="ku-teacher-card__photo-frame">
               <div class="ku-teacher-card__photo">
-                <img src="media/teacher-ekaterina-photo.png" alt="Екатерина Лебедева" loading="lazy" decoding="async">
+                <img src="media/teachers/Шанина Виктория.jpg" alt="Шанина Виктория" loading="lazy" decoding="async">
               </div>
             </div>
 
             <div class="ku-teacher-card__body">
-              <h3 class="ku-teacher-card__name">Екатерина Лебедева</h3>
-              <p class="ku-teacher-card__description">Учит делать удобные и живые сайты, чтобы ребёнок сразу видел результат своей работы и понимал, как устроен веб.</p>
+              <h3 class="ku-teacher-card__name">Шанина Виктория</h3>
+              <p class="ku-teacher-card__description">Я подберу задания под интересы ребёнка, дам понятный план и бережную обратную связь, чтобы IT стало не скучной теорией, а личными победами на каждом уроке.</p>
             </div>
           </article>
         </div>
@@ -7640,6 +7769,27 @@ body.ku-trial-modal-open{
     </div>
 
     <div class="ku-teachers__dots-nav" aria-label="Навигация по преподавателям"></div>
+
+    <div class="ku-teachers__team ku-teachers__reveal" aria-label="Большая команда наставников">
+      <p class="ku-teachers__team-title">
+        Большая команда наставников КиберУм помогает детям полюбить IT и сделать первый уверенный шаг в востребованной профессии
+      </p>
+      <div class="ku-teachers__team-row">
+        <div class="ku-teachers__avatars" aria-hidden="true">
+          <img src="media/teachers/section/1241241.jpg" alt="">
+          <img src="media/teachers/section/drgrsgvsv.jpg" alt="">
+          <img src="media/teachers/section/photo_2026-05-02_18-21-26 (2).jpg" alt="">
+          <img src="media/teachers/section/photo_2026-05-02_18-21-26 (3).jpg" alt="">
+          <img src="media/teachers/section/photo_2026-05-02_18-21-26 (4).jpg" alt="">
+          <img src="media/teachers/section/photo_2026-05-02_18-21-26.jpg" alt="">
+          <img src="media/teachers/section/photo_2026-05-02_18-21-27.jpg" alt="">
+          <img src="media/teachers/section/qwefefwqf.jpg" alt="">
+          <img src="media/teachers/section/ымывмыв.jpg" alt="">
+          <span>+ ещё</span>
+        </div>
+        <p class="ku-teachers__team-note">Подбираем наставника под характер, темп и интересы ребёнка</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -7655,97 +7805,40 @@ body.ku-trial-modal-open{
       </h2>
     </div>
 
-    <div class="ku-video-reviews ku-reviews__reveal" data-carousel data-per-page-desktop="5" data-per-page-tablet="3" data-per-page-mobile="1">
+    <div class="ku-video-reviews ku-reviews__reveal" data-carousel data-per-page-desktop="5" data-per-page-tablet="3" data-per-page-mobile="1" aria-roledescription="carousel" aria-label="Видеоотзывы">
       <button class="ku-video-reviews__nav ku-video-reviews__nav--prev" type="button" aria-label="Предыдущий видеоотзыв" data-carousel-prev>
-        <span aria-hidden="true">‹</span>
+        <span aria-hidden="true">&lsaquo;</span>
       </button>
 
       <div class="ku-video-reviews__viewport">
         <div class="ku-video-reviews__track" data-carousel-track>
-          <article class="ku-video-review">
-            <div class="ku-video-review__phone">
-              <div class="ku-video-review__slot">
-                <div class="ku-video-review__placeholder">
-                  <div>Видеоотзыв</div>
-                  <small>Мама ученика курса Scratch</small>
-                  <span class="ku-video-review__play"></span>
-                </div>
-                <div class="ku-video-review__caption">
-                  <div class="ku-video-review__name">Екатерина</div>
-                  <div class="ku-video-review__meta">сын, 9 лет • Scratch</div>
-                </div>
-              </div>
+          <article class="ku-video-review" aria-label="Видеоотзыв 1">
+            <div class="ku-video-review__slot">
+              <video class="ku-video-review__video" data-src="media/video/video1.mp4" poster="media/video/video1-poster.jpg" preload="none" playsinline></video>
+              <button class="ku-video-review__play" type="button" aria-label="Запустить видео" data-video-play></button>
             </div>
           </article>
 
-          <article class="ku-video-review">
-            <div class="ku-video-review__phone">
-              <div class="ku-video-review__slot">
-                <div class="ku-video-review__placeholder">
-                  <div>Видеоотзыв</div>
-                  <small>Папа ученика курса Python</small>
-                  <span class="ku-video-review__play"></span>
-                </div>
-                <div class="ku-video-review__caption">
-                  <div class="ku-video-review__name">Алексей</div>
-                  <div class="ku-video-review__meta">дочь, 12 лет • Python</div>
-                </div>
-              </div>
-            </div>
+          <article class="ku-video-review" aria-label="Видеоотзыв 2">
+            <div class="ku-video-review__slot" aria-hidden="true"></div>
           </article>
 
-          <article class="ku-video-review">
-            <div class="ku-video-review__phone">
-              <div class="ku-video-review__slot">
-                <div class="ku-video-review__placeholder">
-                  <div>Видеоотзыв</div>
-                  <small>Мама ученика курса Roblox</small>
-                  <span class="ku-video-review__play"></span>
-                </div>
-                <div class="ku-video-review__caption">
-                  <div class="ku-video-review__name">Марина</div>
-                  <div class="ku-video-review__meta">сын, 11 лет • Roblox</div>
-                </div>
-              </div>
-            </div>
+          <article class="ku-video-review" aria-label="Видеоотзыв 3">
+            <div class="ku-video-review__slot" aria-hidden="true"></div>
           </article>
 
-          <article class="ku-video-review">
-            <div class="ku-video-review__phone">
-              <div class="ku-video-review__slot">
-                <div class="ku-video-review__placeholder">
-                  <div>Видеоотзыв</div>
-                  <small>Родители ученицы курса Дизайн</small>
-                  <span class="ku-video-review__play"></span>
-                </div>
-                <div class="ku-video-review__caption">
-                  <div class="ku-video-review__name">Ольга</div>
-                  <div class="ku-video-review__meta">дочь, 13 лет • Дизайн</div>
-                </div>
-              </div>
-            </div>
+          <article class="ku-video-review" aria-label="Видеоотзыв 4">
+            <div class="ku-video-review__slot" aria-hidden="true"></div>
           </article>
 
-          <article class="ku-video-review">
-            <div class="ku-video-review__phone">
-              <div class="ku-video-review__slot">
-                <div class="ku-video-review__placeholder">
-                  <div>Видеоотзыв</div>
-                  <small>Мама ученика курса Blender</small>
-                  <span class="ku-video-review__play"></span>
-                </div>
-                <div class="ku-video-review__caption">
-                  <div class="ku-video-review__name">Наталья</div>
-                  <div class="ku-video-review__meta">сын, 12 лет • Blender</div>
-                </div>
-              </div>
-            </div>
+          <article class="ku-video-review" aria-label="Видеоотзыв 5">
+            <div class="ku-video-review__slot" aria-hidden="true"></div>
           </article>
         </div>
       </div>
 
       <button class="ku-video-reviews__nav ku-video-reviews__nav--next" type="button" aria-label="Следующий видеоотзыв" data-carousel-next>
-        <span aria-hidden="true">›</span>
+        <span aria-hidden="true">&rsaquo;</span>
       </button>
 
       <div class="ku-video-reviews__dots" data-carousel-dots aria-label="Навигация по видеоотзывам"></div>
@@ -8678,6 +8771,47 @@ body.ku-trial-modal-open{
   const section = document.querySelector('.ku-reviews');
   if (!section) return;
 
+  function setupLazyVideos(root) {
+    const videos = Array.from(root.querySelectorAll('.ku-video-review__video[data-src]'));
+    if (!videos.length) return;
+
+    function attachSource(video) {
+      if (!video || video.src || !video.dataset.src) return;
+      video.src = video.dataset.src;
+      video.load();
+    }
+
+    videos.forEach((video) => {
+      const slot = video.closest('.ku-video-review__slot');
+      const playButton = slot ? slot.querySelector('[data-video-play]') : null;
+
+      function setPlaying(isPlaying) {
+        if (!slot) return;
+        slot.classList.toggle('is-playing', isPlaying);
+      }
+
+      function playVideo() {
+        attachSource(video);
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+          playPromise.catch(() => setPlaying(false));
+        }
+      }
+
+      playButton && playButton.addEventListener('click', playVideo);
+      video.addEventListener('click', () => {
+        if (video.paused) {
+          playVideo();
+        } else {
+          video.pause();
+        }
+      });
+      video.addEventListener('play', () => setPlaying(true));
+      video.addEventListener('pause', () => setPlaying(false));
+      video.addEventListener('ended', () => setPlaying(false));
+    });
+  }
+
   function setupCarousel(root) {
     const track = root.querySelector('[data-carousel-track]');
     const prev = root.querySelector('[data-carousel-prev]');
@@ -8739,6 +8873,17 @@ body.ku-trial-modal-open{
       });
     }
 
+    function scrollToSlide(index) {
+      currentIndex = Math.max(0, Math.min(slides.length - 1, index));
+      const slide = slides[currentIndex];
+      if (!slide) return;
+      const left = window.innerWidth <= 760
+        ? slide.offsetLeft - ((track.clientWidth - slide.clientWidth) / 2)
+        : slide.offsetLeft;
+      track.scrollTo({ left, behavior:'smooth' });
+      setActiveDot(currentIndex);
+    }
+
     function renderDots() {
       if (!dotsRoot) return;
       dotsRoot.innerHTML = '';
@@ -8752,17 +8897,6 @@ body.ku-trial-modal-open{
         dotsRoot.appendChild(dot);
       });
 
-      setActiveDot(currentIndex);
-    }
-
-    function scrollToSlide(index) {
-      currentIndex = Math.max(0, Math.min(slides.length - 1, index));
-      const slide = slides[currentIndex];
-      if (!slide) return;
-      const left = window.innerWidth <= 760
-        ? slide.offsetLeft - ((track.clientWidth - slide.clientWidth) / 2)
-        : slide.offsetLeft;
-      track.scrollTo({ left, behavior:'smooth' });
       setActiveDot(currentIndex);
     }
 
@@ -8810,6 +8944,7 @@ body.ku-trial-modal-open{
     renderDots();
   }
 
+  setupLazyVideos(section);
   section.querySelectorAll('[data-carousel]').forEach(setupCarousel);
 })();
 
