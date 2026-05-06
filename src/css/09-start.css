@@ -51,10 +51,7 @@
   color:hsl(218 55% 11%);
 }
 .ku-start__title span{
-  background:linear-gradient(90deg,#ef4444 0%,#2563eb 100%);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
+  color:#2563eb;
 }
 .ku-start__lead{
   margin:16px auto 0;

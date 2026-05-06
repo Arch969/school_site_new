@@ -45,10 +45,7 @@
 }
 
 .ku-teachers__title span{
-  background:linear-gradient(90deg,#2362ff 0%,#8a35ff 52%,#ff4e5d 100%);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
+  color:#2563eb;
 }
 
 .ku-teachers__text{
@@ -152,25 +149,25 @@
   display:flex;
   flex-direction:column;
   padding:14px;
-  border-radius:30px;
+  border-radius:18px;
   background:#fff;
-  border:1px solid rgba(220,228,243,.96);
-  box-shadow:0 22px 42px -32px rgba(15,23,42,.18);
+  border:0;
+  box-shadow:0 18px 46px -34px rgba(15,23,42,.46);
   scroll-snap-align:start;
 }
 
 .ku-teacher-card__photo-frame{
   position:relative;
-  padding:4px;
-  margin-bottom:18px;
-  border-radius:26px;
-  background:linear-gradient(135deg,#2f67ff 0%,#6a53ff 42%,#ff5f5f 100%);
+  padding:0;
+  margin-bottom:16px;
+  border-radius:14px;
+  background:transparent;
 }
 
 .ku-teacher-card__photo{
   overflow:hidden;
-  border-radius:22px;
-  background:#edf3ff;
+  border-radius:14px;
+  background:#fff;
   aspect-ratio:1 / 1.05;
 }
 
@@ -401,15 +398,15 @@
   .ku-teacher-card{
     flex-basis:84%;
     padding:12px;
-    border-radius:24px;
+    border-radius:16px;
   }
 
   .ku-teacher-card__photo-frame{
-    border-radius:22px;
+    border-radius:12px;
   }
 
   .ku-teacher-card__photo{
-    border-radius:18px;
+    border-radius:12px;
   }
 
   .ku-teacher-card__name{

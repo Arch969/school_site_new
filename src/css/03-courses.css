@@ -69,10 +69,7 @@
   white-space:nowrap;
 }
 .ku-courses__title span{
-  background:linear-gradient(90deg,#2563eb,#ef4444);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
+  color:#2563eb;
 }
 .ku-courses__filters{
   display:flex;

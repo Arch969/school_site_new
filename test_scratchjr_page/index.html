@@ -1,0 +1,604 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тест hero ScratchJr</title>
+  <link rel="preload" as="image" href="scratchjr1.png" fetchpriority="high">
+  <link rel="preload" as="font" type="font/woff2" href="../media/fonts/inter-cyrillic.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../media/fonts/montserrat-cyrillic.woff2" crossorigin>
+  <style>
+    @font-face{font-family:"Inter";font-style:normal;font-weight:400 900;font-display:optional;src:url("../media/fonts/inter-cyrillic.woff2") format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+    @font-face{font-family:"Montserrat";font-style:normal;font-weight:700 900;font-display:optional;src:url("../media/fonts/montserrat-cyrillic.woff2") format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      background:#f8fbff;
+      color:#0f172a;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+
+    .test-nav{
+      position:fixed;
+      left:50%;
+      top:14px;
+      z-index:20;
+      display:flex;
+      gap:8px;
+      padding:8px;
+      border:1px solid rgba(148,163,184,.24);
+      border-radius:999px;
+      background:rgba(255,255,255,.82);
+      box-shadow:0 16px 36px -28px rgba(15,23,42,.45);
+      backdrop-filter:blur(14px);
+      transform:translateX(-50%);
+    }
+    .test-nav a{
+      min-width:38px;
+      padding:8px 12px;
+      border-radius:999px;
+      color:#2563eb;
+      text-align:center;
+      text-decoration:none;
+      font-size:13px;
+      font-weight:800;
+    }
+    .test-nav a:hover{background:rgba(37,99,235,.08);}
+
+    .ku-hero{
+      --ku-page-glow-blue:rgba(37,99,235,.30);
+      --ku-page-glow-red:rgba(239,68,68,.28);
+      position:relative;
+      overflow:hidden;
+      isolation:isolate;
+      min-height:min(100vh, 860px);
+      padding:92px 24px 64px;
+      background:#fff;
+      border-bottom:1px solid rgba(203,213,225,.55);
+    }
+    .ku-hero:nth-of-type(even){
+      background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);
+    }
+    .ku-hero::before,
+    .ku-hero::after{
+      content:"";
+      position:absolute;
+      z-index:1;
+      pointer-events:none;
+      border-radius:999px;
+      mix-blend-mode:multiply;
+    }
+    .ku-hero::before{
+      left:-190px;
+      top:-190px;
+      width:420px;
+      height:420px;
+      background:radial-gradient(circle, var(--ku-page-glow-blue) 0 24%, rgba(37,99,235,.16) 46%, transparent 70%);
+      filter:blur(24px);
+    }
+    .ku-hero::after{
+      right:-190px;
+      bottom:-190px;
+      width:420px;
+      height:420px;
+      background:radial-gradient(circle, var(--ku-page-glow-red) 0 24%, rgba(239,68,68,.15) 46%, transparent 70%);
+      filter:blur(26px);
+    }
+    .ku-hero__grid{
+      position:absolute;
+      inset:0;
+      z-index:0;
+      opacity:.5;
+      background-image:radial-gradient(rgba(37,99,235,.15) 1px, transparent 1px);
+      background-size:20px 20px;
+    }
+    .ku-hero__grid::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      height:56%;
+      background:linear-gradient(180deg, transparent 0%, rgba(37,99,235,.075) 46%, rgba(37,99,235,.18) 100%);
+      pointer-events:none;
+    }
+    .ku-hero__container{
+      position:relative;
+      z-index:3;
+      max-width:1320px;
+      margin:0 auto;
+    }
+    .ku-hero__layout{
+      display:grid;
+      grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr);
+      gap:18px;
+      align-items:center;
+    }
+    .ku-hero__left,
+    .ku-hero__right{min-width:0;}
+
+    .ku-hero__badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 15px;
+      margin-bottom:28px;
+      border:1px solid rgba(37,99,235,.25);
+      border-radius:999px;
+      background:rgba(37,99,235,.10);
+      color:#2563eb;
+      font-size:14px;
+      font-weight:700;
+    }
+    .ku-hero__badge-dot{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:#2563eb;
+      box-shadow:0 0 0 6px rgba(37,99,235,.12);
+    }
+    .ku-hero__title{
+      margin:0 0 22px;
+      color:hsl(218 55% 11%);
+      font-family:Montserrat,Inter,sans-serif;
+      font-size:clamp(42px,6vw,78px);
+      line-height:1.04;
+      font-weight:900;
+      letter-spacing:0;
+    }
+    .ku-hero__underline-wrap{
+      position:relative;
+      display:inline-block;
+    }
+    .ku-hero__blue{
+      position:relative;
+      z-index:1;
+      color:#2563eb;
+    }
+    .ku-hero__underline{
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:-4px;
+      width:100%;
+      height:8px;
+      color:#ef4444;
+    }
+    .ku-hero__gradient-text{
+      background:linear-gradient(90deg,#2563eb,#ef4444);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .ku-hero__text{
+      max-width:560px;
+      margin:0 0 34px;
+      color:hsl(218 20% 48%);
+      font-size:20px;
+      line-height:1.7;
+    }
+    .ku-hero__actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-bottom:34px;
+    }
+    .ku-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height:58px;
+      padding:0 28px;
+      border-radius:16px;
+      text-decoration:none;
+      font-size:16px;
+      font-weight:800;
+    }
+    .ku-btn--primary{
+      color:#fff;
+      background:#ef4444;
+      box-shadow:0 8px 30px -6px rgba(239,68,68,.55);
+    }
+    .ku-btn--secondary{
+      border:1px solid hsl(214 30% 88%);
+      color:hsl(218 55% 11%);
+      background:#fff;
+      box-shadow:0 4px 14px rgba(15,23,42,.05);
+    }
+    .ku-hero__meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px 18px;
+      max-width:640px;
+    }
+    .ku-hero__meta-item{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      color:hsl(218 20% 48%);
+      font-size:14px;
+      font-weight:600;
+      white-space:nowrap;
+    }
+
+    .ku-hero__right{margin-left:-22px;}
+    .ku-visual{
+      position:relative;
+      width:calc(100% + 34px);
+      max-width:790px;
+      min-height:680px;
+      margin:0 0 0 auto;
+      overflow:visible;
+    }
+    .ku-visual::before,
+    .ku-visual::after{
+      content:"";
+      position:absolute;
+      z-index:1;
+      border-radius:999px;
+      pointer-events:none;
+      filter:blur(46px);
+      opacity:.5;
+    }
+    .ku-visual::before{
+      left:2%;
+      top:23%;
+      width:42%;
+      height:48%;
+      background:radial-gradient(circle, rgba(37,99,235,.34) 0 22%, rgba(37,99,235,.15) 48%, transparent 74%);
+    }
+    .ku-visual::after{
+      right:0;
+      top:28%;
+      width:42%;
+      height:46%;
+      background:radial-gradient(circle, rgba(239,68,68,.32) 0 22%, rgba(239,68,68,.14) 50%, transparent 76%);
+    }
+    .ku-visual__rings{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      opacity:.95;
+    }
+    .ku-hero-main{
+      position:absolute;
+      left:50%;
+      top:50%;
+      z-index:4;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:106%;
+      height:112%;
+      overflow:hidden;
+      transform:translate(-50%,-50%);
+    }
+    .ku-hero-main::before,
+    .ku-hero-main::after{
+      content:"";
+      position:absolute;
+      z-index:2;
+      border-radius:999px;
+      pointer-events:none;
+      opacity:1;
+      filter:blur(12px);
+      mix-blend-mode:screen;
+    }
+    .ku-hero-main::before{
+      left:19%;
+      top:24%;
+      width:42%;
+      height:58%;
+      background:radial-gradient(ellipse at 46% 48%, rgba(37,99,235,.62) 0 18%, rgba(37,99,235,.40) 36%, rgba(37,99,235,.17) 58%, transparent 76%);
+    }
+    .ku-hero-main::after{
+      right:14%;
+      top:27%;
+      width:38%;
+      height:54%;
+      background:radial-gradient(ellipse at 54% 48%, rgba(239,68,68,.58) 0 18%, rgba(239,68,68,.36) 38%, rgba(239,68,68,.16) 60%, transparent 77%);
+    }
+    .ku-hero-main img{
+      position:relative;
+      z-index:1;
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      -webkit-mask-image:
+        linear-gradient(90deg, transparent 0%, rgba(0,0,0,.08) 6%, rgba(0,0,0,.72) 18%, #000 28%, #000 72%, rgba(0,0,0,.70) 84%, rgba(0,0,0,.08) 95%, transparent 100%),
+        linear-gradient(180deg, transparent 0%, rgba(0,0,0,.08) 6%, rgba(0,0,0,.76) 17%, #000 27%, #000 74%, rgba(0,0,0,.58) 87%, rgba(0,0,0,.08) 96%, transparent 100%);
+      -webkit-mask-composite:source-in;
+      mask-image:
+        linear-gradient(90deg, transparent 0%, rgba(0,0,0,.08) 6%, rgba(0,0,0,.72) 18%, #000 28%, #000 72%, rgba(0,0,0,.70) 84%, rgba(0,0,0,.08) 95%, transparent 100%),
+        linear-gradient(180deg, transparent 0%, rgba(0,0,0,.08) 6%, rgba(0,0,0,.76) 17%, #000 27%, #000 74%, rgba(0,0,0,.58) 87%, rgba(0,0,0,.08) 96%, transparent 100%);
+      mask-composite:intersect;
+    }
+
+    @media (max-width:1100px){
+      .ku-hero{min-height:auto;}
+      .ku-hero__layout{grid-template-columns:1fr;}
+      .ku-hero__right{
+        width:100%;
+        max-width:760px;
+        margin:0 auto;
+      }
+      .ku-visual{
+        width:100%;
+        margin:0 auto;
+      }
+    }
+    @media (max-width:760px){
+      .test-nav{
+        top:auto;
+        bottom:12px;
+      }
+      .ku-hero{
+        padding:48px 14px 34px;
+      }
+      .ku-hero__layout{
+        gap:6px;
+        align-items:start;
+      }
+      .ku-hero__badge{
+        gap:8px;
+        padding:8px 12px;
+        margin-bottom:16px;
+        font-size:12px;
+      }
+      .ku-hero__title{
+        margin-bottom:14px;
+        font-size:32px;
+        line-height:1.02;
+      }
+      .ku-hero__underline{
+        bottom:-2px;
+        height:6px;
+      }
+      .ku-hero__text{
+        margin-bottom:18px;
+        font-size:14px;
+        line-height:1.5;
+      }
+      .ku-hero__actions{
+        flex-direction:column;
+        align-items:stretch;
+        gap:10px;
+        margin-bottom:16px;
+      }
+      .ku-btn{
+        width:100%;
+        min-height:50px;
+        padding:0 18px;
+        border-radius:14px;
+        font-size:14px;
+      }
+      .ku-hero__meta{
+        justify-content:center;
+        max-width:340px;
+        margin:0 auto;
+        gap:8px 14px;
+      }
+      .ku-hero__meta-item{
+        justify-content:center;
+        font-size:10.5px;
+        line-height:1.25;
+      }
+      .ku-hero__right{
+        width:min(100%,360px);
+      }
+      .ku-visual{
+        width:100%;
+        max-width:360px;
+        min-height:280px;
+        margin-top:-8px;
+      }
+      .ku-visual__rings{
+        display:none;
+      }
+      .ku-hero-main{
+        width:102%;
+        height:106%;
+      }
+      .ku-hero-main::before,
+      .ku-hero-main::after{
+        opacity:.9;
+        filter:blur(9px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="test-nav" aria-label="Навигация по hero-вариантам">
+    <a href="#hero-1">1</a>
+    <a href="#hero-2">2</a>
+    <a href="#hero-3">3</a>
+    <a href="#hero-4">4</a>
+  </nav>
+
+  <section class="ku-hero" id="hero-1">
+    <div class="ku-hero__grid"></div>
+    <div class="ku-hero__container">
+      <div class="ku-hero__layout">
+        <div class="ku-hero__left">
+          <div class="ku-hero__badge"><span class="ku-hero__badge-dot"></span>Вариант 1 — ScratchJr</div>
+          <h1 class="ku-hero__title">
+            Ваш ребёнок<br>
+            <span class="ku-hero__underline-wrap">
+              <span class="ku-hero__blue">создаст</span>
+              <svg class="ku-hero__underline" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M2 6C25 2 75 2 98 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"></path>
+              </svg>
+            </span>
+            цифровое<br>
+            <span class="ku-hero__gradient-text">будущее</span>
+          </h1>
+          <p class="ku-hero__text">Онлайн-школа программирования для детей. Индивидуальные занятия c преподавателем для детей от 6 до 16 лет. Реальные проекты уже с первого урока.</p>
+          <div class="ku-hero__actions">
+            <a href="#" class="ku-btn ku-btn--primary">Записаться бесплатно <span>→</span></a>
+            <a href="#" class="ku-btn ku-btn--secondary">Посмотреть курсы</a>
+          </div>
+          <div class="ku-hero__meta">
+            <div class="ku-hero__meta-item">🎓 Бесплатный пробный урок</div>
+            <div class="ku-hero__meta-item">👨‍🏫 Занятия 1 на 1</div>
+            <div class="ku-hero__meta-item">🏆 1000+ учеников</div>
+            <div class="ku-hero__meta-item">⭐ Рейтинг 4.9/5</div>
+          </div>
+        </div>
+        <div class="ku-hero__right">
+          <div class="ku-visual">
+            <svg class="ku-visual__rings" viewBox="0 0 500 500" fill="none" aria-hidden="true">
+              <ellipse cx="250" cy="250" rx="210" ry="80" stroke="rgba(59,130,246,0.14)" stroke-width="1" transform="rotate(-15 250 250)"></ellipse>
+              <ellipse cx="250" cy="250" rx="155" ry="60" stroke="rgba(239,68,68,0.12)" stroke-width="1" transform="rotate(25 250 250)"></ellipse>
+              <ellipse cx="250" cy="250" rx="100" ry="40" stroke="rgba(6,182,212,0.16)" stroke-width="1" transform="rotate(-40 250 250)"></ellipse>
+            </svg>
+            <div class="ku-hero-main">
+              <img src="scratchjr1.png" alt="Вариант hero ScratchJr 1" width="1254" height="1254" loading="eager" fetchpriority="high">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ku-hero" id="hero-2">
+    <div class="ku-hero__grid"></div>
+    <div class="ku-hero__container">
+      <div class="ku-hero__layout">
+        <div class="ku-hero__left">
+          <div class="ku-hero__badge"><span class="ku-hero__badge-dot"></span>Вариант 2 — ScratchJr</div>
+          <h1 class="ku-hero__title">
+            Ваш ребёнок<br>
+            <span class="ku-hero__underline-wrap">
+              <span class="ku-hero__blue">создаст</span>
+              <svg class="ku-hero__underline" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M2 6C25 2 75 2 98 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"></path>
+              </svg>
+            </span>
+            цифровое<br>
+            <span class="ku-hero__gradient-text">будущее</span>
+          </h1>
+          <p class="ku-hero__text">Онлайн-школа программирования для детей. Индивидуальные занятия c преподавателем для детей от 6 до 16 лет. Реальные проекты уже с первого урока.</p>
+          <div class="ku-hero__actions">
+            <a href="#" class="ku-btn ku-btn--primary">Записаться бесплатно <span>→</span></a>
+            <a href="#" class="ku-btn ku-btn--secondary">Посмотреть курсы</a>
+          </div>
+          <div class="ku-hero__meta">
+            <div class="ku-hero__meta-item">🎓 Бесплатный пробный урок</div>
+            <div class="ku-hero__meta-item">👨‍🏫 Занятия 1 на 1</div>
+            <div class="ku-hero__meta-item">🏆 1000+ учеников</div>
+            <div class="ku-hero__meta-item">⭐ Рейтинг 4.9/5</div>
+          </div>
+        </div>
+        <div class="ku-hero__right">
+          <div class="ku-visual">
+            <svg class="ku-visual__rings" viewBox="0 0 500 500" fill="none" aria-hidden="true">
+              <ellipse cx="250" cy="250" rx="210" ry="80" stroke="rgba(59,130,246,0.14)" stroke-width="1" transform="rotate(-15 250 250)"></ellipse>
+              <ellipse cx="250" cy="250" rx="155" ry="60" stroke="rgba(239,68,68,0.12)" stroke-width="1" transform="rotate(25 250 250)"></ellipse>
+              <ellipse cx="250" cy="250" rx="100" ry="40" stroke="rgba(6,182,212,0.16)" stroke-width="1" transform="rotate(-40 250 250)"></ellipse>
+            </svg>
+            <div class="ku-hero-main">
+              <img src="scratchjr2.png" alt="Вариант hero ScratchJr 2" width="1254" height="1254" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ku-hero" id="hero-3">
+    <div class="ku-hero__grid"></div>
+    <div class="ku-hero__container">
+      <div class="ku-hero__layout">
+        <div class="ku-hero__left">
+          <div class="ku-hero__badge"><span class="ku-hero__badge-dot"></span>Вариант 3 — ScratchJr</div>
+          <h1 class="ku-hero__title">
+            Ваш ребёнок<br>
+            <span class="ku-hero__underline-wrap">
+              <span class="ku-hero__blue">создаст</span>
+              <svg class="ku-hero__underline" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M2 6C25 2 75 2 98 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"></path>
+              </svg>
+            </span>
+            цифровое<br>
+            <span class="ku-hero__gradient-text">будущее</span>
+          </h1>
+          <p class="ku-hero__text">Онлайн-школа программирования для детей. Индивидуальные занятия c преподавателем для детей от 6 до 16 лет. Реальные проекты уже с первого урока.</p>
+          <div class="ku-hero__actions">
+            <a href="#" class="ku-btn ku-btn--primary">Записаться бесплатно <span>→</span></a>
+            <a href="#" class="ku-btn ku-btn--secondary">Посмотреть курсы</a>
+          </div>
+          <div class="ku-hero__meta">
+            <div class="ku-hero__meta-item">🎓 Бесплатный пробный урок</div>
+            <div class="ku-hero__meta-item">👨‍🏫 Занятия 1 на 1</div>
+            <div class="ku-hero__meta-item">🏆 1000+ учеников</div>
+            <div class="ku-hero__meta-item">⭐ Рейтинг 4.9/5</div>
+          </div>
+        </div>
+        <div class="ku-hero__right">
+          <div class="ku-visual">
+            <svg class="ku-visual__rings" viewBox="0 0 500 500" fill="none" aria-hidden="true">
+              <ellipse cx="250" cy="250" rx="210" ry="80" stroke="rgba(59,130,246,0.14)" stroke-width="1" transform="rotate(-15 250 250)"></ellipse>
+              <ellipse cx="250" cy="250" rx="155" ry="60" stroke="rgba(239,68,68,0.12)" stroke-width="1" transform="rotate(25 250 250)"></ellipse>
+              <ellipse cx="250" cy="250" rx="100" ry="40" stroke="rgba(6,182,212,0.16)" stroke-width="1" transform="rotate(-40 250 250)"></ellipse>
+            </svg>
+            <div class="ku-hero-main">
+              <img src="scratchjr3.png" alt="Вариант hero ScratchJr 3" width="1254" height="1254" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ku-hero" id="hero-4">
+    <div class="ku-hero__grid"></div>
+    <div class="ku-hero__container">
+      <div class="ku-hero__layout">
+        <div class="ku-hero__left">
+          <div class="ku-hero__badge"><span class="ku-hero__badge-dot"></span>Вариант 4 — ScratchJr</div>
+          <h1 class="ku-hero__title">
+            Ваш ребёнок<br>
+            <span class="ku-hero__underline-wrap">
+              <span class="ku-hero__blue">создаст</span>
+              <svg class="ku-hero__underline" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M2 6C25 2 75 2 98 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"></path>
+              </svg>
+            </span>
+            цифровое<br>
+            <span class="ku-hero__gradient-text">будущее</span>
+          </h1>
+          <p class="ku-hero__text">Онлайн-школа программирования для детей. Индивидуальные занятия c преподавателем для детей от 6 до 16 лет. Реальные проекты уже с первого урока.</p>
+          <div class="ku-hero__actions">
+            <a href="#" class="ku-btn ku-btn--primary">Записаться бесплатно <span>→</span></a>
+            <a href="#" class="ku-btn ku-btn--secondary">Посмотреть курсы</a>
+          </div>
+          <div class="ku-hero__meta">
+            <div class="ku-hero__meta-item">🎓 Бесплатный пробный урок</div>
+            <div class="ku-hero__meta-item">👨‍🏫 Занятия 1 на 1</div>
+            <div class="ku-hero__meta-item">🏆 1000+ учеников</div>
+            <div class="ku-hero__meta-item">⭐ Рейтинг 4.9/5</div>
+          </div>
+        </div>
+        <div class="ku-hero__right">
+          <div class="ku-visual">
+            <svg class="ku-visual__rings" viewBox="0 0 500 500" fill="none" aria-hidden="true">
+              <ellipse cx="250" cy="250" rx="210" ry="80" stroke="rgba(59,130,246,0.14)" stroke-width="1" transform="rotate(-15 250 250)"></ellipse>
+              <ellipse cx="250" cy="250" rx="155" ry="60" stroke="rgba(239,68,68,0.12)" stroke-width="1" transform="rotate(25 250 250)"></ellipse>
+              <ellipse cx="250" cy="250" rx="100" ry="40" stroke="rgba(6,182,212,0.16)" stroke-width="1" transform="rotate(-40 250 250)"></ellipse>
+            </svg>
+            <div class="ku-hero-main">
+              <img src="scratchjr4.png" alt="Вариант hero ScratchJr 4" width="1254" height="1254" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
+

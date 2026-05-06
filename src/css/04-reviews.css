@@ -78,10 +78,7 @@
   white-space:nowrap;
 }
 .ku-reviews__title span{
-  background:linear-gradient(90deg,#2563eb,#ef4444);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
+  color:#2563eb;
 }
 .ku-reviews__text{
   margin:18px auto 0;

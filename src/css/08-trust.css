@@ -77,10 +77,7 @@
 }
 
 .ku-trust__title span {
-  background: linear-gradient(90deg, #2563eb 0%, #6d5df5 42%, #ef4444 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #2563eb;
 }
 
 .ku-trust__text {

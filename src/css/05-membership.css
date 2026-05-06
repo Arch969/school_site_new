@@ -79,10 +79,7 @@
 }
 
 .ku-membership__title span{
-  background:linear-gradient(90deg,#2563eb 0%, #7c3aed 44%, #ef4444 100%);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
+  color:#2563eb;
 }
 
 .ku-membership__lead{
