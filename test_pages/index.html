@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Выбор hero-блоков курсов</title>
+  <style>
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      background:#eef4ff;
+      color:#0f172a;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+    .chooser-shell{
+      max-width:1480px;
+      margin:0 auto;
+      padding:24px;
+    }
+    .chooser-head{
+      position:sticky;
+      top:0;
+      z-index:50;
+      display:grid;
+      grid-template-columns:minmax(0,1fr) auto;
+      gap:18px;
+      align-items:center;
+      margin:-24px -24px 24px;
+      padding:18px 24px;
+      border-bottom:1px solid rgba(148,163,184,.32);
+      background:rgba(255,255,255,.92);
+      box-shadow:0 18px 44px -34px rgba(15,23,42,.45);
+      backdrop-filter:blur(16px);
+    }
+    .chooser-head h1{
+      margin:0 0 4px;
+      font-size:24px;
+      line-height:1.15;
+      font-weight:900;
+    }
+    .chooser-head p{
+      margin:0;
+      color:#64748b;
+      font-size:14px;
+      line-height:1.45;
+    }
+    .chooser-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      justify-content:flex-end;
+    }
+    .chooser-count{
+      min-width:130px;
+      padding:10px 14px;
+      border:1px solid rgba(37,99,235,.16);
+      border-radius:999px;
+      background:#eff6ff;
+      color:#2563eb;
+      text-align:center;
+      font-size:13px;
+      font-weight:800;
+    }
+    .chooser-save{
+      min-height:42px;
+      padding:0 18px;
+      border:0;
+      border-radius:14px;
+      background:#ef4444;
+      color:#fff;
+      box-shadow:0 10px 28px -12px rgba(239,68,68,.65);
+      cursor:pointer;
+      font:inherit;
+      font-size:14px;
+      font-weight:900;
+    }
+    .chooser-save:hover{background:#e53935;}
+    .chooser-save:disabled{
+      opacity:.68;
+      cursor:wait;
+    }
+    .chooser-bottom{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      justify-content:space-between;
+      margin:34px 0 10px;
+      padding:22px;
+      border:1px solid rgba(148,163,184,.28);
+      border-radius:22px;
+      background:#fff;
+      box-shadow:0 18px 50px -36px rgba(15,23,42,.52);
+    }
+    .chooser-bottom strong{
+      display:block;
+      margin-bottom:4px;
+      font-size:18px;
+      line-height:1.2;
+    }
+    .chooser-bottom span{
+      color:#64748b;
+      font-size:14px;
+      line-height:1.45;
+    }
+    .chooser-status{
+      grid-column:1 / -1;
+      min-height:20px;
+      color:#475569;
+      font-size:13px;
+      line-height:1.35;
+    }
+    .course-block{
+      margin:0 0 42px;
+    }
+    .course-title{
+      display:flex;
+      gap:12px;
+      align-items:baseline;
+      margin:0 0 14px;
+      padding:0 4px;
+    }
+    .course-title h2{
+      margin:0;
+      font-size:28px;
+      line-height:1.1;
+      font-weight:950;
+      letter-spacing:0;
+    }
+    .course-title span{
+      color:#64748b;
+      font-size:14px;
+      font-weight:800;
+    }
+    .hero-choice{
+      margin:0 0 28px;
+      border-radius:22px;
+      background:#fff;
+      box-shadow:0 18px 50px -34px rgba(15,23,42,.52);
+      overflow:hidden;
+    }
+    .hero-choice__bar{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
+      min-height:58px;
+      padding:12px 16px;
+      border-bottom:1px solid rgba(148,163,184,.24);
+      background:#fff;
+    }
+    .hero-choice__name{
+      min-width:0;
+      font-size:15px;
+      line-height:1.35;
+      font-weight:900;
+    }
+    .hero-choice__name small{
+      display:block;
+      margin-top:2px;
+      color:#64748b;
+      font-size:12px;
+      font-weight:700;
+    }
+    .hero-choice__toggle{
+      position:relative;
+      display:inline-flex;
+      flex:0 0 auto;
+      align-items:center;
+      gap:10px;
+      padding:9px 13px;
+      border:1px solid rgba(37,99,235,.18);
+      border-radius:999px;
+      background:#f8fbff;
+      color:#2563eb;
+      cursor:pointer;
+      font-size:13px;
+      font-weight:900;
+      user-select:none;
+    }
+    .hero-choice__toggle input{
+      width:18px;
+      height:18px;
+      margin:0;
+      accent-color:#2563eb;
+    }
+    .hero-choice__frame{
+      display:block;
+      width:100%;
+      height:860px;
+      border:0;
+      background:#fff;
+    }
+    .empty-note{
+      padding:28px;
+      border:1px dashed rgba(148,163,184,.55);
+      border-radius:18px;
+      background:#fff;
+      color:#64748b;
+      font-weight:700;
+    }
+    @media (max-width:760px){
+      .chooser-shell{padding:12px;}
+      .chooser-head{
+        grid-template-columns:1fr;
+        margin:-12px -12px 18px;
+        padding:14px 12px;
+      }
+      .chooser-actions{justify-content:stretch;}
+      .chooser-count,
+      .chooser-save{flex:1 1 150px;}
+      .chooser-bottom{
+        align-items:stretch;
+        flex-direction:column;
+        padding:18px;
+      }
+      .course-title{
+        display:block;
+        margin-bottom:10px;
+      }
+      .course-title h2{font-size:24px;}
+      .course-title span{display:block;margin-top:4px;}
+      .hero-choice{border-radius:16px;}
+      .hero-choice__bar{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+      .hero-choice__toggle{width:100%;justify-content:center;}
+      .hero-choice__frame{height:760px;}
+    }
+  </style>
+</head>
+<body>
+  <main class="chooser-shell">
+    <header class="chooser-head">
+      <div>
+        <h1>Выбор hero-блоков для курсов</h1>
+        <p>Отмечайте любые варианты. Панель выбора находится вне hero, поэтому не меняет геометрию и не перекрывает сам блок.</p>
+      </div>
+      <div class="chooser-actions">
+        <div class="chooser-count" id="selectedCount">Выбрано: 0</div>
+        <button class="chooser-save" id="saveButton" type="button">Сохранить выбор</button>
+      </div>
+      <div class="chooser-status" id="status">Файл будет сохранён как «выбор.txt» в папке test_pages.</div>
+    </header>
+
+    <div id="heroList"></div>
+
+    <footer class="chooser-bottom">
+      <div>
+        <strong>Готово к сохранению</strong>
+        <span>После нажатия файл «выбор.txt» будет создан или перезаписан в этой папке.</span>
+      </div>
+      <button class="chooser-save" id="saveButtonBottom" type="button">Сохранить выбор</button>
+    </footer>
+  </main>
+
+  <script>
+    const courses = [
+      { folder:"test_scratch_page", title:"Scratch", count:4 },
+      { folder:"test_scratchjr_page", title:"Scratch Junior", count:4 },
+      { folder:"test_roblox_page", title:"Roblox программирование", count:4 },
+      { folder:"test_roblox_design", title:"Roblox дизайн", count:5 },
+      { folder:"test_minecraftmods_page", title:"Minecraft моды", count:6 },
+      { folder:"test_blockbecnh_page", title:"Blockbench 3D", count:5 },
+      { folder:"test_python_page", title:"Python программирование", count:4 },
+      { folder:"test_pygame_page", title:"Pygame", count:6 },
+      { folder:"test_bot_page", title:"Telegram-боты", count:5 },
+      { folder:"test_djangoFlask_page", title:"Django и Flask", count:5 },
+      { folder:"test_tkinter_page", title:"Tkinter", count:6 },
+      { folder:"test_web_page", title:"Создание сайтов", count:6 },
+      { folder:"test_webdesign_page", title:"Веб-дизайн", count:5 },
+      { folder:"test_design_page", title:"Дизайн", count:4 },
+      { folder:"test_blender_page", title:"Blender 3D", count:5 },
+      { folder:"test_unity_page", title:"Unity", count:5 }
+    ];
+
+    const heroList = document.getElementById("heroList");
+    const selectedCount = document.getElementById("selectedCount");
+    const saveButton = document.getElementById("saveButton");
+    const saveButtonBottom = document.getElementById("saveButtonBottom");
+    const statusNode = document.getElementById("status");
+    const controls = [];
+
+    function createHeroFrame(course, variant){
+      const article = document.createElement("article");
+      article.className = "hero-choice";
+
+      const bar = document.createElement("div");
+      bar.className = "hero-choice__bar";
+
+      const name = document.createElement("div");
+      name.className = "hero-choice__name";
+      name.innerHTML = `${course.title}: hero ${variant}<small>${course.folder}/index.html#hero-${variant}</small>`;
+
+      const label = document.createElement("label");
+      label.className = "hero-choice__toggle";
+
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.dataset.course = course.title;
+      checkbox.dataset.folder = course.folder;
+      checkbox.dataset.variant = String(variant);
+      checkbox.dataset.href = `${course.folder}/index.html#hero-${variant}`;
+      checkbox.addEventListener("change", updateCount);
+      controls.push(checkbox);
+
+      label.append(checkbox, "Выбрать");
+      bar.append(name, label);
+
+      const iframe = document.createElement("iframe");
+      iframe.className = "hero-choice__frame";
+      iframe.loading = "lazy";
+      iframe.title = `${course.title}: hero ${variant}`;
+      iframe.src = `${course.folder}/index.html`;
+      iframe.addEventListener("load", () => prepareFrame(iframe, `hero-${variant}`));
+
+      article.append(bar, iframe);
+      return article;
+    }
+
+    function prepareFrame(iframe, heroId){
+      try{
+        const doc = iframe.contentDocument;
+        if(!doc) return;
+        const nav = doc.querySelector(".test-nav");
+        if(nav) nav.style.setProperty("display", "none", "important");
+
+        const hero = doc.getElementById(heroId);
+        if(!hero) return;
+
+        doc.querySelectorAll(".ku-hero").forEach((item) => {
+          if(item !== hero) item.remove();
+        });
+        doc.documentElement.style.scrollBehavior = "auto";
+        doc.documentElement.style.overflow = "hidden";
+        doc.body.style.overflow = "hidden";
+        doc.body.style.margin = "0";
+        doc.body.style.background = "#fff";
+
+        if(doc.scrollingElement) doc.scrollingElement.scrollTop = 0;
+        doc.documentElement.scrollTop = 0;
+        doc.body.scrollTop = 0;
+
+        const resize = () => {
+          const height = Math.ceil(hero.getBoundingClientRect().height);
+          iframe.style.height = `${Math.max(620, height)}px`;
+        };
+        requestAnimationFrame(resize);
+        setTimeout(resize, 500);
+        setTimeout(resize, 1200);
+      }catch(error){
+        console.warn("Не удалось подготовить iframe", error);
+      }
+    }
+
+    function render(){
+      const fragment = document.createDocumentFragment();
+      courses.forEach((course) => {
+        const section = document.createElement("section");
+        section.className = "course-block";
+
+        const title = document.createElement("div");
+        title.className = "course-title";
+        title.innerHTML = `<h2>${course.title}</h2><span>${course.count} hero-вариантов</span>`;
+        section.append(title);
+
+        if(course.count < 1){
+          const note = document.createElement("div");
+          note.className = "empty-note";
+          note.textContent = "В этой папке пока нет готовых hero-блоков.";
+          section.append(note);
+        }else{
+          for(let variant = 1; variant <= course.count; variant += 1){
+            section.append(createHeroFrame(course, variant));
+          }
+        }
+        fragment.append(section);
+      });
+      heroList.append(fragment);
+      updateCount();
+    }
+
+    function getSelected(){
+      return controls
+        .filter((control) => control.checked)
+        .map((control) => ({
+          course: control.dataset.course,
+          folder: control.dataset.folder,
+          variant: Number(control.dataset.variant),
+          href: control.dataset.href
+        }));
+    }
+
+    function updateCount(){
+      const count = getSelected().length;
+      selectedCount.textContent = `Выбрано: ${count}`;
+    }
+
+    function buildSelectionText(selected){
+      const lines = [];
+      lines.push("Выбор hero-блоков для размещения на сайте");
+      lines.push(`Дата сохранения: ${new Date().toLocaleString("ru-RU")}`);
+      lines.push("");
+
+      if(selected.length === 0){
+        lines.push("Ничего не выбрано.");
+        return lines.join("\n");
+      }
+
+      const grouped = new Map();
+      selected.forEach((item) => {
+        if(!grouped.has(item.course)) grouped.set(item.course, []);
+        grouped.get(item.course).push(item);
+      });
+
+      grouped.forEach((items, course) => {
+        lines.push(course);
+        items
+          .sort((a, b) => a.variant - b.variant)
+          .forEach((item) => {
+            lines.push(`- hero ${item.variant}: ${item.href}`);
+          });
+        lines.push("");
+      });
+      return lines.join("\n").trimEnd() + "\n";
+    }
+
+    async function saveSelection(){
+      const selected = getSelected();
+      const text = buildSelectionText(selected);
+
+      saveButton.disabled = true;
+      saveButtonBottom.disabled = true;
+      statusNode.textContent = "Сохраняю выбор...";
+      try{
+        const response = await fetch("/save-selection", {
+          method:"POST",
+          headers:{ "Content-Type":"application/json" },
+          body:JSON.stringify({ selected, text })
+        });
+        if(!response.ok) throw new Error(await response.text());
+        const result = await response.json();
+        statusNode.textContent = `Сохранено: ${result.file}. Выбрано блоков: ${selected.length}.`;
+      }catch(error){
+        statusNode.textContent = "Не удалось записать файл автоматически. Запустите страницу через selection-server.mjs, а не напрямую как file://.";
+        console.error(error);
+      }finally{
+        saveButton.disabled = false;
+        saveButtonBottom.disabled = false;
+      }
+    }
+
+    saveButton.addEventListener("click", saveSelection);
+    saveButtonBottom.addEventListener("click", saveSelection);
+    render();
+  </script>
+</body>
+</html>
