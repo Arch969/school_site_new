@@ -5896,6 +5896,8 @@ body.ku-trial-modal-open{
 .ku-page--blender,
 .ku-page--tkinter,
 .ku-page--bot,
+.ku-page--pygame,
+.ku-page--design,
 .ku-page--django-flask{
   background:#fff;
 }
@@ -5914,6 +5916,8 @@ body.ku-trial-modal-open{
 .ku-page--blender .ku-header__nav a.is-active::after,
 .ku-page--tkinter .ku-header__nav a.is-active::after,
 .ku-page--bot .ku-header__nav a.is-active::after,
+.ku-page--pygame .ku-header__nav a.is-active::after,
+.ku-page--design .ku-header__nav a.is-active::after,
 .ku-page--django-flask .ku-header__nav a.is-active::after{
   bottom:-8px;
 }
@@ -6088,6 +6092,15 @@ body.ku-trial-modal-open{
   width:calc(100% + 28px);
   max-width:790px;
   margin:0 0 0 auto;
+}
+
+.ku-course-hero__visual .ku-hero-main img{
+  -webkit-mask-image:
+    linear-gradient(90deg, rgba(0,0,0,.38) 0%, rgba(0,0,0,.78) 8%, #000 18%, #000 82%, rgba(0,0,0,.78) 92%, rgba(0,0,0,.38) 100%),
+    linear-gradient(180deg, transparent 0%, rgba(0,0,0,.08) 6%, rgba(0,0,0,.76) 17%, #000 27%, #000 74%, rgba(0,0,0,.58) 87%, rgba(0,0,0,.08) 96%, transparent 100%);
+  mask-image:
+    linear-gradient(90deg, rgba(0,0,0,.38) 0%, rgba(0,0,0,.78) 8%, #000 18%, #000 82%, rgba(0,0,0,.78) 92%, rgba(0,0,0,.38) 100%),
+    linear-gradient(180deg, transparent 0%, rgba(0,0,0,.08) 6%, rgba(0,0,0,.76) 17%, #000 27%, #000 74%, rgba(0,0,0,.58) 87%, rgba(0,0,0,.08) 96%, transparent 100%);
 }
 
 .ku-course-plan,
@@ -6485,6 +6498,8 @@ body.ku-trial-modal-open{
 .ku-page--blender .ku-projects,
 .ku-page--tkinter .ku-projects,
 .ku-page--bot .ku-projects,
+.ku-page--pygame .ku-projects,
+.ku-page--design .ku-projects,
 .ku-page--django-flask .ku-projects{
   padding-top:88px;
 }
@@ -6503,6 +6518,8 @@ body.ku-trial-modal-open{
 .ku-page--blender .ku-project-card__meta span:not(:last-child)::after,
 .ku-page--tkinter .ku-project-card__meta span:not(:last-child)::after,
 .ku-page--bot .ku-project-card__meta span:not(:last-child)::after,
+.ku-page--pygame .ku-project-card__meta span:not(:last-child)::after,
+.ku-page--design .ku-project-card__meta span:not(:last-child)::after,
 .ku-page--django-flask .ku-project-card__meta span:not(:last-child)::after{
   content:"•";
 }
@@ -6564,6 +6581,14 @@ body.ku-trial-modal-open{
 }
 
 .ku-page--bot .ku-footer__col--courses a[href="bot.html#top"]{
+  color:#fff;
+}
+
+.ku-page--pygame .ku-footer__col--courses a[href="pygame.html#top"]{
+  color:#fff;
+}
+
+.ku-page--design .ku-footer__col--courses a[href="design.html#top"]{
   color:#fff;
 }
 
@@ -8396,6 +8421,7 @@ body.ku-trial-modal-open{
         <a href="roblox_design.html#top">Курс Roblox гейм-дизайна для детей</a>
         <a href="minecraft_mod.html#top">Курс создания модов Minecraft для детей</a>
         <a href="python.html#top">Курс Python для детей</a>
+        <a href="pygame.html#top">Курс Python Pygame для детей</a>
         <a href="tkinter.html#top">Курс Tkinter для детей</a>
         <a href="bot.html#top">Курс создания Telegram-ботов на Python для детей</a>
         <a href="index.html#courses-real">Курс создания игр на Python для детей</a>
@@ -8405,6 +8431,7 @@ body.ku-trial-modal-open{
         <a href="blockbench.html#top">Курс 3D-моделирования в Blockbench для детей</a>
         <a href="web.html#top">Курс веб-разработки для детей</a>
         <a href="web_design.html#top">Курс веб-дизайна для детей</a>
+        <a href="design.html#top">Курс графического дизайна для детей</a>
       </nav>
 
       <div class="ku-footer__col ku-footer__col--contacts">
