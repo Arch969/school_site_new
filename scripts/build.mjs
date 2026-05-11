@@ -383,7 +383,7 @@ function buildJs(order) {
 
 const heroPreload = '  <link rel="preload" as="image" href="media/hero3.png" fetchpriority="high">\n';
 const scratchPreload = '  <link rel="preload" as="image" href="media/course_page/scratch/hero-scratch3.png" fetchpriority="high">\n';
-const compPreload = '  <link rel="preload" as="image" href="media/course_page/comp_gram/4.jpg" fetchpriority="high">\n';
+const compPreload = '  <link rel="preload" as="image" href="media/course_page/comp_gram/hero.webp" fetchpriority="high">\n';
 const unityPreload = '  <link rel="preload" as="image" href="media/course_page/unity/hero.webp" fetchpriority="high">\n';
 const robloxPreload = '  <link rel="preload" as="image" href="media/course_page/roblox_program/roblox_hero (1).webp" fetchpriority="high">\n';
 const scratchJrPreload = '  <link rel="preload" as="image" href="media/course_page/scratch_junior/hero.webp" fetchpriority="high">\n';

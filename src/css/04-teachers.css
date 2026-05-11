@@ -140,7 +140,7 @@
 
 .ku-teachers__dot.is-active{
   width:34px;
-  background:linear-gradient(90deg,#2362ff 0%,#ff5f5f 100%);
+  background:#2362ff;
 }
 
 .ku-teacher-card{
@@ -272,7 +272,7 @@
   display:flex;
   align-items:center;
   justify-content:center;
-  background:linear-gradient(135deg,#2362ff 0%,#ff5f5f 100%);
+  background:#2362ff;
   color:#fff;
   font-family:Montserrat,Inter,sans-serif;
   font-size:17px;
