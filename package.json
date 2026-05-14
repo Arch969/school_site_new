@@ -1,6 +1,8 @@
 {
   "scripts": {
+    "prebuild": "node scripts/generate-course-portfolio.mjs",
     "build": "node scripts/build.mjs",
+    "portfolio": "node scripts/generate-course-portfolio.mjs",
     "preview": "node scripts/build.mjs --preview"
   },
   "private": true,

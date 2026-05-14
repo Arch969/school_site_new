@@ -2238,6 +2238,19 @@ body.ku-trial-modal-open{
   box-shadow:0 18px 40px -30px rgba(15,23,42,.42);
 }
 
+.ku-projects--student-portfolio .ku-project-card__preview{
+  aspect-ratio:1.58 / 1;
+}
+
+.ku-projects--student-portfolio .ku-project-card__preview--ratio-4-3{
+  aspect-ratio:4 / 3;
+}
+
+.ku-projects--student-portfolio .ku-project-card__preview img{
+  object-fit:contain;
+  background:#fff;
+}
+
 .ku-project-card__body{
   padding:16px 18px 18px;
 }
@@ -6525,6 +6538,128 @@ body.ku-trial-modal-open{
   content:"•";
 }
 
+.ku-course-more,
+.ku-course-more *{
+  box-sizing:border-box;
+}
+
+.ku-course-more{
+  position:relative;
+  overflow:hidden;
+  padding:32px 24px 44px;
+  background:linear-gradient(180deg,#fbfdff 0%,#f2f7ff 100%);
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:#0f172a;
+}
+
+.ku-course-more__container{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 430px;
+  align-items:center;
+  gap:34px;
+  max-width:1180px;
+  min-height:238px;
+  margin:0 auto;
+  padding:28px 38px 0;
+  border:1px solid rgba(37,99,235,.14);
+  border-radius:28px;
+  background:rgba(255,255,255,.84);
+  box-shadow:0 18px 48px rgba(15,23,42,.08);
+}
+
+.ku-course-more__content{
+  position:relative;
+  z-index:2;
+  max-width:720px;
+}
+
+.ku-course-more__badge{
+  display:inline-flex;
+  align-items:center;
+  min-height:32px;
+  margin-bottom:10px;
+  padding:7px 14px;
+  border-radius:999px;
+  background:rgba(37,99,235,.1);
+  border:1px solid rgba(37,99,235,.16);
+  color:#2563eb;
+  font-size:13px;
+  font-weight:800;
+}
+
+.ku-course-more__title{
+  margin:0;
+  font-family:Montserrat,Inter,sans-serif;
+  font-size:clamp(28px,2.7vw,38px);
+  line-height:1.06;
+  font-weight:900;
+  letter-spacing:0;
+}
+
+.ku-course-more__text{
+  max-width:660px;
+  margin:10px 0 0;
+  color:#475569;
+  font-size:16px;
+  line-height:1.5;
+}
+
+.ku-course-more__button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-height:48px;
+  margin-top:18px;
+  padding:13px 24px;
+  border-radius:999px;
+  background:#2362ff;
+  color:#fff;
+  font-size:16px;
+  font-weight:900;
+  line-height:1;
+  text-decoration:none;
+  white-space:nowrap;
+  box-shadow:0 16px 34px rgba(35,98,255,.3);
+  transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.ku-course-more__button span{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:24px;
+  height:24px;
+  border-radius:999px;
+  background:rgba(255,255,255,.18);
+  font-size:18px;
+  line-height:1;
+}
+
+.ku-course-more__button:hover{
+  transform:translateY(-2px);
+  background:#174ee8;
+  box-shadow:0 20px 38px rgba(35,98,255,.36);
+}
+
+.ku-course-more__media{
+  position:relative;
+  align-self:end;
+  height:270px;
+  pointer-events:none;
+}
+
+.ku-course-more__media img{
+  position:absolute;
+  right:-16px;
+  bottom:-2px;
+  width:min(430px,100%);
+  max-height:300px;
+  object-fit:contain;
+  filter:drop-shadow(0 18px 24px rgba(15,23,42,.18));
+}
+
 .ku-page--scratch .ku-footer__col--courses a[href="scratch.html#top"]{
   color:#fff;
 }
@@ -6594,6 +6729,15 @@ body.ku-trial-modal-open{
 }
 
 @media (max-width:1100px){
+  .ku-course-more__container{
+    grid-template-columns:minmax(0,1fr) 340px;
+    padding-right:24px;
+  }
+
+  .ku-course-more__media{
+    height:250px;
+  }
+
   .ku-course-hero__layout{
     grid-template-columns:1fr;
     grid-template-areas:
@@ -6621,6 +6765,46 @@ body.ku-trial-modal-open{
 }
 
 @media (max-width:760px){
+  .ku-course-more{
+    padding:22px 14px 34px;
+  }
+
+  .ku-course-more__container{
+    grid-template-columns:1fr;
+    gap:6px;
+    min-height:0;
+    padding:24px 18px 0;
+    border-radius:22px;
+  }
+
+  .ku-course-more__title{
+    font-size:28px;
+  }
+
+  .ku-course-more__text{
+    font-size:15px;
+  }
+
+  .ku-course-more__button{
+    width:100%;
+    min-height:46px;
+    font-size:15px;
+  }
+
+  .ku-course-more__media{
+    height:215px;
+    margin-top:0;
+  }
+
+  .ku-course-more__media img{
+    left:50%;
+    right:auto;
+    bottom:-12px;
+    width:min(330px,90vw);
+    max-height:244px;
+    transform:translateX(-50%);
+  }
+
   .ku-course-hero{
     padding:100px 14px 62px;
     overflow:hidden;
@@ -7318,99 +7502,84 @@ body.ku-trial-modal-open{
 </section>
 
 <!-- block: 22-web-projects.html -->
-<section class="ku-projects" id="web-projects">
+<section class="ku-projects ku-projects--student-portfolio" id="web-projects">
   <div class="ku-projects__gridbg"></div>
   <div class="ku-projects__glow ku-projects__glow--blue"></div>
   <div class="ku-projects__glow ku-projects__glow--red"></div>
 
   <div class="ku-projects__container">
     <div class="ku-projects__head ku-projects__reveal">
-      <div class="ku-projects__badge">Проекты курса веб-разработки</div>
-      <h2 class="ku-projects__title">
-        Что создают
-        <span>дети на курсе</span>
-      </h2>
-      <p class="ku-projects__text">
-        Проекты идут от простой страницы к полноценному сайту:
-        структура, оформление, интерактив и финальная презентация результата.
-      </p>
+      <div class="ku-projects__badge">Портфолио курса создания сайтов</div>
+      <h2 class="ku-projects__title">Сайты, которые <span>создают дети</span></h2>
+      <p class="ku-projects__text">Примеры ученических страниц: от простых лендингов до творческих сайтов с собственным стилем.</p>
     </div>
 
     <div class="ku-projects__slider ku-projects__reveal">
-      <button class="ku-projects__nav ku-projects__nav--prev" type="button" aria-label="Предыдущий проект">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 5.3a1 1 0 0 1 0 1.4L9.41 12l5.3 5.3a1 1 0 0 1-1.42 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.41 0Z"/></svg>
-      </button>
-
+      <button class="ku-projects__nav ku-projects__nav--prev" type="button" aria-label="Предыдущая работа"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 5.3a1 1 0 0 1 0 1.4L9.41 12l5.3 5.3a1 1 0 0 1-1.42 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.41 0Z"/></svg></button>
       <div class="ku-projects__viewport">
         <div class="ku-projects__track">
           <article class="ku-project-card ku-project-card--blue ku-projects__reveal">
             <div class="ku-project-card__preview">
-              <img src="media/course_page/web/1.webp" alt="Первая HTML-страница" loading="lazy" decoding="async">
+              <img src="media/portfolio/web_program/1-poster.webp" data-gif-src="media/portfolio/web_program/1.gif" alt="Сайт про кота — Артемий, 10 лет" loading="lazy" decoding="async">
             </div>
             <div class="ku-project-card__body">
-              <div class="ku-project-card__chip">HTML</div>
-              <h3>Первая веб-страница</h3>
-              <div class="ku-project-card__meta">
-                <span>теги</span>
-                <span>структура</span>
-                <span>контент</span>
-              </div>
+              <h3>Сайт про кота</h3>
+              <div class="ku-project-card__meta"><span>Артемий</span><span>10 лет</span></div>
             </div>
           </article>
-
           <article class="ku-project-card ku-project-card--violet ku-projects__reveal">
             <div class="ku-project-card__preview">
-              <img src="media/course_page/web/2.webp" alt="Оформленный сайт на CSS" loading="lazy" decoding="async">
+              <img src="media/portfolio/web_program/2-poster.webp" data-gif-src="media/portfolio/web_program/2.gif" alt="Город будущего — Валерий, 12 лет" loading="lazy" decoding="async">
             </div>
             <div class="ku-project-card__body">
-              <div class="ku-project-card__chip">CSS</div>
-              <h3>Оформленный сайт</h3>
-              <div class="ku-project-card__meta">
-                <span>стили</span>
-                <span>адаптив</span>
-                <span>анимации</span>
-              </div>
+              <h3>Город будущего</h3>
+              <div class="ku-project-card__meta"><span>Валерий</span><span>12 лет</span></div>
             </div>
           </article>
-
           <article class="ku-project-card ku-project-card--orange ku-projects__reveal">
             <div class="ku-project-card__preview">
-              <img src="media/course_page/web/3.webp" alt="Интерактивный сайт на JavaScript" loading="lazy" decoding="async">
+              <img src="media/portfolio/web_program/3-poster.webp" data-gif-src="media/portfolio/web_program/3.gif" alt="Истории игрушек — Мария, 13 лет" loading="lazy" decoding="async">
             </div>
             <div class="ku-project-card__body">
-              <div class="ku-project-card__chip">JavaScript</div>
-              <h3>Интерактивный блок</h3>
-              <div class="ku-project-card__meta">
-                <span>клики</span>
-                <span>формы</span>
-                <span>логика</span>
-              </div>
+              <h3>Истории игрушек</h3>
+              <div class="ku-project-card__meta"><span>Мария</span><span>13 лет</span></div>
             </div>
           </article>
-
           <article class="ku-project-card ku-project-card--blue ku-projects__reveal">
             <div class="ku-project-card__preview">
-              <img src="media/course_page/web/4.webp" alt="Финальный мини-сайт" loading="lazy" decoding="async">
+              <img src="media/portfolio/web_program/4-poster.webp" data-gif-src="media/portfolio/web_program/4.gif" alt="Сайт про печенье — Кирилл, 12 лет" loading="lazy" decoding="async">
             </div>
             <div class="ku-project-card__body">
-              <div class="ku-project-card__chip">Финальный проект</div>
-              <h3>Готовый мини-сайт</h3>
-              <div class="ku-project-card__meta">
-                <span>страницы</span>
-                <span>форма</span>
-                <span>портфолио</span>
-              </div>
+              <h3>Сайт про печенье</h3>
+              <div class="ku-project-card__meta"><span>Кирилл</span><span>12 лет</span></div>
             </div>
           </article>
         </div>
       </div>
-
-      <button class="ku-projects__nav ku-projects__nav--next" type="button" aria-label="Следующий проект">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.3 18.7a1 1 0 0 1 0-1.4l5.29-5.3L9.3 6.7a1 1 0 1 1 1.42-1.4l6 6a1 1 0 0 1 0 1.4l-6 6a1 1 0 0 1-1.41 0Z"/></svg>
-      </button>
+      <button class="ku-projects__nav ku-projects__nav--next" type="button" aria-label="Следующая работа"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.3 18.7a1 1 0 0 1 0-1.4l5.29-5.3L9.3 6.7a1 1 0 1 1 1.42-1.4l6 6a1 1 0 0 1 0 1.4l-6 6a1 1 0 0 1-1.41 0Z"/></svg></button>
     </div>
+    <div class="ku-projects__dots" aria-label="Навигация по работам"></div>
+  </div>
+</section>
 
-    <div class="ku-projects__dots" aria-label="Навигация по проектам"></div>
+<!-- block: 29-course-more.html -->
+<section class="ku-course-more" id="more-courses" aria-labelledby="course-more-title">
+  <div class="ku-course-more__container">
+    <div class="ku-course-more__content">
+      <div class="ku-course-more__badge">Больше направлений</div>
+      <h2 class="ku-course-more__title" id="course-more-title">
+        Найдите курс по интересам ребёнка
+      </h2>
+      <p class="ku-course-more__text">
+        Игры, Python, дизайн, 3D и первые цифровые навыки — все направления собраны на главной.
+      </p>
+      <a class="ku-course-more__button" href="index.html#courses-real">
+        Смотреть все курсы <span aria-hidden="true">→</span>
+      </a>
+    </div>
+    <div class="ku-course-more__media" aria-hidden="true">
+      <img src="media/boy_girl.webp" alt="" loading="lazy" decoding="async">
+    </div>
   </div>
 </section>
 
@@ -8637,6 +8806,45 @@ body.ku-trial-modal-open{
   let pointerDeltaX = 0;
   let isPointerActive = false;
 
+  function setupGifLazyLoad() {
+    const gifImages = Array.from(section.querySelectorAll('img[data-gif-src]'));
+    if (!gifImages.length || reduce) return;
+
+    const loadGif = (img) => {
+      const gifSrc = img.getAttribute('data-gif-src');
+      if (!gifSrc || img.dataset.gifLoaded === 'true') return;
+
+      img.dataset.gifLoaded = 'loading';
+      const preloader = new Image();
+      preloader.decoding = 'async';
+      preloader.onload = () => {
+        img.src = gifSrc;
+        img.dataset.gifLoaded = 'true';
+      };
+      preloader.onerror = () => {
+        img.dataset.gifLoaded = 'error';
+      };
+      preloader.src = gifSrc;
+    };
+
+    if ('IntersectionObserver' in window) {
+      const gifObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          loadGif(entry.target);
+          observer.unobserve(entry.target);
+        });
+      }, { rootMargin:'520px 0px', threshold:0.01 });
+
+      gifImages.forEach((img) => gifObserver.observe(img));
+      return;
+    }
+
+    window.addEventListener('load', () => {
+      gifImages.forEach(loadGif);
+    }, { once:true });
+  }
+
   function revealOnView() {
     if ('IntersectionObserver' in window && !reduce) {
       const io = new IntersectionObserver((entries, observer) => {
@@ -8762,6 +8970,7 @@ body.ku-trial-modal-open{
 
   window.addEventListener('resize', updateLayout);
 
+  setupGifLazyLoad();
   revealOnView();
   bindSwipe();
   updateLayout();
