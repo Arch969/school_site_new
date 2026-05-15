@@ -2179,6 +2179,8 @@ body.ku-trial-modal-open{
 
 .ku-projects__viewport{
   overflow:hidden;
+  padding-bottom:12px;
+  margin-bottom:-12px;
 }
 
 .ku-projects__track{
@@ -2213,10 +2215,11 @@ body.ku-trial-modal-open{
 .ku-project-card__preview{
   position:relative;
   aspect-ratio:1.58 / 1;
-  padding:10px;
+  padding:0;
   background:
     linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.42)),
     color-mix(in srgb, var(--project-accent) 12%, #fff);
+  overflow:hidden;
 }
 
 .ku-project-card__preview::before{
@@ -2233,7 +2236,7 @@ body.ku-trial-modal-open{
   height:100%;
   object-fit:cover;
   display:block;
-  border-radius:20px;
+  border-radius:0;
   box-shadow:0 18px 40px -30px rgba(15,23,42,.42);
 }
 
@@ -2246,8 +2249,8 @@ body.ku-trial-modal-open{
 }
 
 .ku-projects--student-portfolio .ku-project-card__preview img{
-  object-fit:contain;
-  background:#fff;
+  object-fit:cover;
+  background:transparent;
 }
 
 .ku-project-card__body{
@@ -2432,16 +2435,12 @@ body.ku-trial-modal-open{
     border-radius:24px;
   }
 
-  .ku-project-card__preview{
-    padding:9px;
-  }
-
   .ku-project-card__preview::before{
     border-radius:24px 24px 0 0;
   }
 
   .ku-project-card__preview img{
-    border-radius:16px;
+    border-radius:0;
   }
 
   .ku-project-card__body{
@@ -6751,90 +6750,126 @@ body.ku-trial-modal-open{
         <div class="ku-projects__track">
           <article class="ku-project-card ku-project-card--blue ku-projects__reveal" data-category="programming">
             <div class="ku-project-card__preview">
-              <img src="media/courses/pygame.jpg" alt="Мини-игра Космический квест" loading="lazy" decoding="async">
+              <img src="media/portfolio/pygame/2-poster.webp" data-gif-src="media/portfolio/pygame/2.gif" alt="Gravity Rush — Глеб, 13 лет" loading="lazy" decoding="async">
             </div>
             <div class="ku-project-card__body">
-              <div class="ku-project-card__chip">Программирование</div>
-              <h3>Мини-игра: Космический квест</h3>
+              <div class="ku-project-card__chip">Pygame</div>
+              <h3>Gravity Rush</h3>
               <div class="ku-project-card__meta">
-                <span>Иван, 11 лет</span>
-                <span>Scratch</span>
-                <span>2 недели работы</span>
+                <span>Глеб, 13 лет</span>
+                <span>2D-игра</span>
               </div>
             </div>
           </article>
 
           <article class="ku-project-card ku-project-card--violet ku-projects__reveal" data-category="design">
             <div class="ku-project-card__preview">
-              <img src="media/courses/Grah_design.jpg" alt="Постер для школьного клуба" loading="lazy" decoding="async">
+              <img src="media/portfolio/roblox_design/4-poster.webp" data-gif-src="media/portfolio/roblox_design/4.gif" alt="Остров сокровищ — Анастасия, 10 лет" loading="lazy" decoding="async">
             </div>
             <div class="ku-project-card__body">
-              <div class="ku-project-card__chip">Дизайн</div>
-              <h3>Постер для школьного клуба</h3>
+              <div class="ku-project-card__chip">Roblox дизайн</div>
+              <h3>Остров сокровищ</h3>
               <div class="ku-project-card__meta">
-                <span>Алина, 12 лет</span>
-                <span>Графический дизайн</span>
-                <span>3 дня работы</span>
+                <span>Анастасия, 10 лет</span>
+                <span>Игровая локация</span>
               </div>
             </div>
           </article>
 
-          <article class="ku-project-card ku-project-card--orange ku-projects__reveal" data-category="modeling">
+          <article class="ku-project-card ku-project-card--orange ku-projects__reveal" data-category="programming">
             <div class="ku-project-card__preview">
-              <img src="media/courses/blender.jpg" alt="3D-модель робота" loading="lazy" decoding="async">
+              <img src="media/portfolio/Scratch/2-poster.webp" data-gif-src="media/portfolio/Scratch/2.gif" alt="Minecraft — Артем, 9 лет" loading="lazy" decoding="async">
             </div>
             <div class="ku-project-card__body">
-              <div class="ku-project-card__chip">Моделирование</div>
-              <h3>3D-модель робота</h3>
+              <div class="ku-project-card__chip">Scratch</div>
+              <h3>Scratch Minecraft</h3>
               <div class="ku-project-card__meta">
-                <span>Максим, 13 лет</span>
-                <span>Blender</span>
-                <span>5 дней работы</span>
+                <span>Артем, 9 лет</span>
+                <span>Игра по мотивам Minecraft</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="ku-project-card ku-project-card--blue ku-projects__reveal" data-category="design">
+            <div class="ku-project-card__preview">
+              <img src="media/portfolio/design/1.webp" alt="Японский пейзаж — Вероника, 9 лет" loading="lazy" decoding="async">
+            </div>
+            <div class="ku-project-card__body">
+              <div class="ku-project-card__chip">Дизайн</div>
+              <h3>Японский пейзаж</h3>
+              <div class="ku-project-card__meta">
+                <span>Вероника, 9 лет</span>
+                <span>Иллюстрация</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="ku-project-card ku-project-card--violet ku-projects__reveal" data-category="programming">
+            <div class="ku-project-card__preview">
+              <img src="media/portfolio/django/1-poster.webp" data-gif-src="media/portfolio/django/1.gif" alt="Сайт про киберспорт — Артур, 14 лет" loading="lazy" decoding="async">
+            </div>
+            <div class="ku-project-card__body">
+              <div class="ku-project-card__chip">Django</div>
+              <h3>Сайт про киберспорт</h3>
+              <div class="ku-project-card__meta">
+                <span>Артур, 14 лет</span>
+                <span>Веб-проект</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="ku-project-card ku-project-card--orange ku-projects__reveal" data-category="programming">
+            <div class="ku-project-card__preview">
+              <img src="media/portfolio/tkinter/3.png" alt="Планировщик — Дмитрий, 14 лет" loading="lazy" decoding="async">
+            </div>
+            <div class="ku-project-card__body">
+              <div class="ku-project-card__chip">Tkinter</div>
+              <h3>Планировщик</h3>
+              <div class="ku-project-card__meta">
+                <span>Дмитрий, 14 лет</span>
+                <span>Оконное приложение</span>
               </div>
             </div>
           </article>
 
           <article class="ku-project-card ku-project-card--blue ku-projects__reveal" data-category="programming">
             <div class="ku-project-card__preview">
-              <img src="media/courses/chat_bot.jpg" alt="Чат-бот помощник" loading="lazy" decoding="async">
+              <img src="media/portfolio/tkinter/4.png" alt="Данные продаж — Федор, 16 лет" loading="lazy" decoding="async">
             </div>
             <div class="ku-project-card__body">
-              <div class="ku-project-card__chip">Программирование</div>
-              <h3>Чат-бот помощник</h3>
+              <div class="ku-project-card__chip">Tkinter</div>
+              <h3>Данные продаж</h3>
               <div class="ku-project-card__meta">
-                <span>Данил, 14 лет</span>
-                <span>Python</span>
-                <span>1 неделя работы</span>
+                <span>Федор, 16 лет</span>
+                <span>Работа с данными</span>
               </div>
             </div>
           </article>
 
-          <article class="ku-project-card ku-project-card--violet ku-projects__reveal" data-category="design">
+          <article class="ku-project-card ku-project-card--violet ku-projects__reveal" data-category="programming">
             <div class="ku-project-card__preview">
-              <img src="media/courses/web_design.jpg" alt="Дизайн приложения для ребёнка" loading="lazy" decoding="async">
+              <img src="media/portfolio/unity/1-poster.webp" data-gif-src="media/portfolio/unity/1.gif" alt="Платформер — Екатерина, 14 лет" loading="lazy" decoding="async">
             </div>
             <div class="ku-project-card__body">
-              <div class="ku-project-card__chip">Дизайн</div>
-              <h3>Дизайн приложения для ребёнка</h3>
+              <div class="ku-project-card__chip">Unity</div>
+              <h3>Платформер</h3>
               <div class="ku-project-card__meta">
-                <span>София, 11 лет</span>
-                <span>UI-дизайн</span>
-                <span>4 дня работы</span>
+                <span>Екатерина, 14 лет</span>
+                <span>Игровой проект</span>
               </div>
             </div>
           </article>
 
-          <article class="ku-project-card ku-project-card--orange ku-projects__reveal" data-category="modeling">
+          <article class="ku-project-card ku-project-card--orange ku-projects__reveal" data-category="programming">
             <div class="ku-project-card__preview">
-              <img src="media/courses/Blockbench.jpg" alt="Персонаж для игры" loading="lazy" decoding="async">
+              <img src="media/portfolio/comp_gram/3-poster.webp" data-gif-src="media/portfolio/comp_gram/3.gif" alt="Презентация &quot;Компьютер&quot; — Денис, 9 лет" loading="lazy" decoding="async">
             </div>
             <div class="ku-project-card__body">
-              <div class="ku-project-card__chip">Моделирование</div>
-              <h3>Персонаж для игры</h3>
+              <div class="ku-project-card__chip">Компьютерная грамотность</div>
+              <h3>Презентация &quot;Компьютер&quot;</h3>
               <div class="ku-project-card__meta">
-                <span>Полина, 12 лет</span>
-                <span>Blockbench</span>
-                <span>6 дней работы</span>
+                <span>Денис, 9 лет</span>
+                <span>Презентация</span>
               </div>
             </div>
           </article>

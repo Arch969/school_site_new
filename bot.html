@@ -2180,6 +2180,8 @@ body.ku-trial-modal-open{
 
 .ku-projects__viewport{
   overflow:hidden;
+  padding-bottom:12px;
+  margin-bottom:-12px;
 }
 
 .ku-projects__track{
@@ -2214,10 +2216,11 @@ body.ku-trial-modal-open{
 .ku-project-card__preview{
   position:relative;
   aspect-ratio:1.58 / 1;
-  padding:10px;
+  padding:0;
   background:
     linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.42)),
     color-mix(in srgb, var(--project-accent) 12%, #fff);
+  overflow:hidden;
 }
 
 .ku-project-card__preview::before{
@@ -2234,7 +2237,7 @@ body.ku-trial-modal-open{
   height:100%;
   object-fit:cover;
   display:block;
-  border-radius:20px;
+  border-radius:0;
   box-shadow:0 18px 40px -30px rgba(15,23,42,.42);
 }
 
@@ -2247,8 +2250,8 @@ body.ku-trial-modal-open{
 }
 
 .ku-projects--student-portfolio .ku-project-card__preview img{
-  object-fit:contain;
-  background:#fff;
+  object-fit:cover;
+  background:transparent;
 }
 
 .ku-project-card__body{
@@ -2433,16 +2436,12 @@ body.ku-trial-modal-open{
     border-radius:24px;
   }
 
-  .ku-project-card__preview{
-    padding:9px;
-  }
-
   .ku-project-card__preview::before{
     border-radius:24px 24px 0 0;
   }
 
   .ku-project-card__preview img{
-    border-radius:16px;
+    border-radius:0;
   }
 
   .ku-project-card__body{
@@ -5944,7 +5943,7 @@ body.ku-trial-modal-open{
 .ku-course-hero{
   position:relative;
   overflow:hidden;
-  padding:132px 24px 84px;
+  padding:132px 24px 0;
   background:linear-gradient(180deg,#ffffff 0%,#f4f9ff 100%);
   font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   color:#0f172a;
@@ -6016,6 +6015,48 @@ body.ku-trial-modal-open{
   grid-area:meta;
 }
 
+.ku-page--roblox .ku-course-hero__layout{
+  row-gap:0;
+}
+
+.ku-page--roblox .ku-course-hero__actions{
+  margin-bottom:0;
+}
+
+.ku-page--unity .ku-course-hero__layout{
+  row-gap:12px;
+}
+
+.ku-page--unity .ku-course-hero__actions{
+  margin-bottom:14px;
+}
+
+.ku-page--tkinter .ku-course-hero__layout,
+.ku-page--bot .ku-course-hero__layout{
+  row-gap:10px;
+}
+
+.ku-page--tkinter .ku-course-hero__actions,
+.ku-page--bot .ku-course-hero__actions{
+  margin-bottom:8px;
+}
+
+.ku-page--tkinter .ku-course-hero__meta,
+.ku-page--bot .ku-course-hero__meta{
+  margin-top:0;
+}
+
+.ku-page--tkinter .ku-course-hero__meta-item,
+.ku-page--bot .ku-course-hero__meta-item{
+  min-height:35px;
+  line-height:1.12;
+}
+
+.ku-page--roblox .ku-course-hero__visual .ku-hero-main::before,
+.ku-page--roblox .ku-course-hero__visual .ku-hero-main::after{
+  display:none;
+}
+
 .ku-course-hero__badge{
   display:inline-flex;
   align-items:center;
@@ -6028,7 +6069,7 @@ body.ku-trial-modal-open{
   color:#2563eb;
   font-size:14px;
   font-weight:800;
-  margin-bottom:24px;
+  margin:0 0 24px;
 }
 
 .ku-course-hero__badge-dot{
@@ -6111,10 +6152,73 @@ body.ku-trial-modal-open{
 .ku-course-hero__visual .ku-hero-main img{
   -webkit-mask-image:
     linear-gradient(90deg, rgba(0,0,0,.38) 0%, rgba(0,0,0,.78) 8%, #000 18%, #000 82%, rgba(0,0,0,.78) 92%, rgba(0,0,0,.38) 100%),
-    linear-gradient(180deg, transparent 0%, rgba(0,0,0,.08) 6%, rgba(0,0,0,.76) 17%, #000 27%, #000 74%, rgba(0,0,0,.58) 87%, rgba(0,0,0,.08) 96%, transparent 100%);
+    linear-gradient(180deg, transparent 0%, rgba(0,0,0,.08) 6%, rgba(0,0,0,.76) 17%, #000 27%, #000 66%, rgba(0,0,0,.74) 78%, rgba(0,0,0,.22) 90%, transparent 99%);
   mask-image:
     linear-gradient(90deg, rgba(0,0,0,.38) 0%, rgba(0,0,0,.78) 8%, #000 18%, #000 82%, rgba(0,0,0,.78) 92%, rgba(0,0,0,.38) 100%),
-    linear-gradient(180deg, transparent 0%, rgba(0,0,0,.08) 6%, rgba(0,0,0,.76) 17%, #000 27%, #000 74%, rgba(0,0,0,.58) 87%, rgba(0,0,0,.08) 96%, transparent 100%);
+    linear-gradient(180deg, transparent 0%, rgba(0,0,0,.08) 6%, rgba(0,0,0,.76) 17%, #000 27%, #000 66%, rgba(0,0,0,.74) 78%, rgba(0,0,0,.22) 90%, transparent 99%);
+}
+
+.ku-page--roblox .ku-course-hero__visual .ku-hero-main img{
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0%, rgba(0,0,0,.28) 4%, rgba(0,0,0,.76) 9%, #000 15%, #000 85%, rgba(0,0,0,.76) 91%, rgba(0,0,0,.28) 96%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, rgba(0,0,0,.08) 6%, rgba(0,0,0,.76) 17%, #000 27%, #000 66%, rgba(0,0,0,.74) 78%, rgba(0,0,0,.22) 90%, transparent 99%);
+  mask-image:
+    linear-gradient(90deg, transparent 0%, rgba(0,0,0,.28) 4%, rgba(0,0,0,.76) 9%, #000 15%, #000 85%, rgba(0,0,0,.76) 91%, rgba(0,0,0,.28) 96%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, rgba(0,0,0,.08) 6%, rgba(0,0,0,.76) 17%, #000 27%, #000 66%, rgba(0,0,0,.74) 78%, rgba(0,0,0,.22) 90%, transparent 99%);
+}
+
+.ku-page--scratchjr .ku-course-hero__visual .ku-hero-main img{
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0%, rgba(0,0,0,.28) 4%, rgba(0,0,0,.76) 9%, #000 15%, #000 82%, rgba(0,0,0,.78) 92%, rgba(0,0,0,.38) 100%),
+    linear-gradient(180deg, transparent 0%, rgba(0,0,0,.08) 6%, rgba(0,0,0,.76) 17%, #000 27%, #000 66%, rgba(0,0,0,.74) 78%, rgba(0,0,0,.22) 90%, transparent 99%);
+  mask-image:
+    linear-gradient(90deg, transparent 0%, rgba(0,0,0,.28) 4%, rgba(0,0,0,.76) 9%, #000 15%, #000 82%, rgba(0,0,0,.78) 92%, rgba(0,0,0,.38) 100%),
+    linear-gradient(180deg, transparent 0%, rgba(0,0,0,.08) 6%, rgba(0,0,0,.76) 17%, #000 27%, #000 66%, rgba(0,0,0,.74) 78%, rgba(0,0,0,.22) 90%, transparent 99%);
+}
+
+.ku-page--minecraft .ku-course-hero__visual .ku-hero-main img{
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0%, rgba(0,0,0,.28) 4%, rgba(0,0,0,.76) 9%, #000 15%, #000 85%, rgba(0,0,0,.76) 91%, rgba(0,0,0,.28) 96%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, rgba(0,0,0,.08) 6%, rgba(0,0,0,.76) 17%, #000 27%, #000 66%, rgba(0,0,0,.74) 78%, rgba(0,0,0,.22) 90%, transparent 99%);
+  mask-image:
+    linear-gradient(90deg, transparent 0%, rgba(0,0,0,.28) 4%, rgba(0,0,0,.76) 9%, #000 15%, #000 85%, rgba(0,0,0,.76) 91%, rgba(0,0,0,.28) 96%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, rgba(0,0,0,.08) 6%, rgba(0,0,0,.76) 17%, #000 27%, #000 66%, rgba(0,0,0,.74) 78%, rgba(0,0,0,.22) 90%, transparent 99%);
+}
+
+.ku-page--pygame .ku-course-hero__visual .ku-hero-main img{
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0%, rgba(0,0,0,.28) 4%, rgba(0,0,0,.76) 9%, #000 15%, #000 82%, rgba(0,0,0,.78) 92%, rgba(0,0,0,.38) 100%),
+    linear-gradient(180deg, transparent 0%, rgba(0,0,0,.08) 6%, rgba(0,0,0,.76) 17%, #000 27%, #000 66%, rgba(0,0,0,.74) 78%, rgba(0,0,0,.22) 90%, transparent 99%);
+  mask-image:
+    linear-gradient(90deg, transparent 0%, rgba(0,0,0,.28) 4%, rgba(0,0,0,.76) 9%, #000 15%, #000 82%, rgba(0,0,0,.78) 92%, rgba(0,0,0,.38) 100%),
+    linear-gradient(180deg, transparent 0%, rgba(0,0,0,.08) 6%, rgba(0,0,0,.76) 17%, #000 27%, #000 66%, rgba(0,0,0,.74) 78%, rgba(0,0,0,.22) 90%, transparent 99%);
+}
+
+.ku-page--tkinter .ku-course-hero__visual .ku-hero-main img{
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0%, rgba(0,0,0,.28) 4%, rgba(0,0,0,.76) 9%, #000 15%, #000 82%, rgba(0,0,0,.78) 92%, rgba(0,0,0,.38) 100%),
+    linear-gradient(180deg, transparent 0%, rgba(0,0,0,.08) 6%, rgba(0,0,0,.76) 17%, #000 27%, #000 66%, rgba(0,0,0,.74) 78%, rgba(0,0,0,.22) 90%, transparent 99%);
+  mask-image:
+    linear-gradient(90deg, transparent 0%, rgba(0,0,0,.28) 4%, rgba(0,0,0,.76) 9%, #000 15%, #000 82%, rgba(0,0,0,.78) 92%, rgba(0,0,0,.38) 100%),
+    linear-gradient(180deg, transparent 0%, rgba(0,0,0,.08) 6%, rgba(0,0,0,.76) 17%, #000 27%, #000 66%, rgba(0,0,0,.74) 78%, rgba(0,0,0,.22) 90%, transparent 99%);
+}
+
+.ku-page--django-flask .ku-course-hero__visual .ku-hero-main img{
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0%, rgba(0,0,0,.28) 4%, rgba(0,0,0,.76) 9%, #000 15%, #000 82%, rgba(0,0,0,.78) 92%, rgba(0,0,0,.38) 100%),
+    linear-gradient(180deg, transparent 0%, rgba(0,0,0,.08) 6%, rgba(0,0,0,.76) 17%, #000 27%, #000 66%, rgba(0,0,0,.74) 78%, rgba(0,0,0,.22) 90%, transparent 99%);
+  mask-image:
+    linear-gradient(90deg, transparent 0%, rgba(0,0,0,.28) 4%, rgba(0,0,0,.76) 9%, #000 15%, #000 82%, rgba(0,0,0,.78) 92%, rgba(0,0,0,.38) 100%),
+    linear-gradient(180deg, transparent 0%, rgba(0,0,0,.08) 6%, rgba(0,0,0,.76) 17%, #000 27%, #000 66%, rgba(0,0,0,.74) 78%, rgba(0,0,0,.22) 90%, transparent 99%);
+}
+
+.ku-page--web .ku-course-hero__visual .ku-hero-main img{
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0%, rgba(0,0,0,.28) 4%, rgba(0,0,0,.76) 9%, #000 15%, #000 82%, rgba(0,0,0,.78) 92%, rgba(0,0,0,.38) 100%),
+    linear-gradient(180deg, transparent 0%, rgba(0,0,0,.08) 6%, rgba(0,0,0,.76) 17%, #000 27%, #000 66%, rgba(0,0,0,.74) 78%, rgba(0,0,0,.22) 90%, transparent 99%);
+  mask-image:
+    linear-gradient(90deg, transparent 0%, rgba(0,0,0,.28) 4%, rgba(0,0,0,.76) 9%, #000 15%, #000 82%, rgba(0,0,0,.78) 92%, rgba(0,0,0,.38) 100%),
+    linear-gradient(180deg, transparent 0%, rgba(0,0,0,.08) 6%, rgba(0,0,0,.76) 17%, #000 27%, #000 66%, rgba(0,0,0,.74) 78%, rgba(0,0,0,.22) 90%, transparent 99%);
 }
 
 .ku-course-plan,
@@ -6546,7 +6650,7 @@ body.ku-trial-modal-open{
 .ku-course-more{
   position:relative;
   overflow:hidden;
-  padding:32px 24px 44px;
+  padding:26px 24px 34px;
   background:linear-gradient(180deg,#fbfdff 0%,#f2f7ff 100%);
   font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   color:#0f172a;
@@ -6556,12 +6660,12 @@ body.ku-trial-modal-open{
   position:relative;
   display:grid;
   grid-template-columns:minmax(0,1fr) 430px;
-  align-items:center;
+  align-items:start;
   gap:34px;
-  max-width:1180px;
-  min-height:238px;
+  max-width:1320px;
+  min-height:224px;
   margin:0 auto;
-  padding:28px 38px 0;
+  padding:28px 48px 26px;
   border:1px solid rgba(37,99,235,.14);
   border-radius:28px;
   background:rgba(255,255,255,.84);
@@ -6571,7 +6675,8 @@ body.ku-trial-modal-open{
 .ku-course-more__content{
   position:relative;
   z-index:2;
-  max-width:720px;
+  max-width:820px;
+  transform:translateY(-2px);
 }
 
 .ku-course-more__badge{
@@ -6591,18 +6696,19 @@ body.ku-trial-modal-open{
 .ku-course-more__title{
   margin:0;
   font-family:Montserrat,Inter,sans-serif;
-  font-size:clamp(28px,2.7vw,38px);
-  line-height:1.06;
+  font-size:clamp(34px,3.25vw,54px);
+  line-height:1.05;
   font-weight:900;
   letter-spacing:0;
 }
 
 .ku-course-more__text{
-  max-width:660px;
-  margin:10px 0 0;
+  max-width:760px;
+  margin:12px 0 0;
   color:#475569;
-  font-size:16px;
-  line-height:1.5;
+  font-size:clamp(17px,1.35vw,22px);
+  line-height:1.42;
+  font-weight:700;
 }
 
 .ku-course-more__button{
@@ -6611,17 +6717,17 @@ body.ku-trial-modal-open{
   justify-content:center;
   gap:10px;
   min-height:48px;
-  margin-top:18px;
-  padding:13px 24px;
+  margin-top:22px;
+  padding:14px 26px;
   border-radius:999px;
-  background:#2362ff;
+  background:#ef4444;
   color:#fff;
   font-size:16px;
   font-weight:900;
   line-height:1;
   text-decoration:none;
   white-space:nowrap;
-  box-shadow:0 16px 34px rgba(35,98,255,.3);
+  box-shadow:0 16px 34px rgba(239,68,68,.28);
   transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
 }
 
@@ -6639,23 +6745,23 @@ body.ku-trial-modal-open{
 
 .ku-course-more__button:hover{
   transform:translateY(-2px);
-  background:#174ee8;
-  box-shadow:0 20px 38px rgba(35,98,255,.36);
+  background:#dc2626;
+  box-shadow:0 20px 38px rgba(239,68,68,.34);
 }
 
 .ku-course-more__media{
   position:relative;
   align-self:end;
-  height:270px;
+  height:242px;
   pointer-events:none;
 }
 
 .ku-course-more__media img{
   position:absolute;
   right:-16px;
-  bottom:-2px;
-  width:min(430px,100%);
-  max-height:300px;
+  bottom:-26px;
+  width:min(510px,126%);
+  max-height:360px;
   object-fit:contain;
   filter:drop-shadow(0 18px 24px rgba(15,23,42,.18));
 }
@@ -6730,12 +6836,12 @@ body.ku-trial-modal-open{
 
 @media (max-width:1100px){
   .ku-course-more__container{
-    grid-template-columns:minmax(0,1fr) 340px;
-    padding-right:24px;
+    grid-template-columns:minmax(0,1fr) 320px;
+    padding-right:28px;
   }
 
   .ku-course-more__media{
-    height:250px;
+    height:232px;
   }
 
   .ku-course-hero__layout{
@@ -6771,42 +6877,66 @@ body.ku-trial-modal-open{
 
   .ku-course-more__container{
     grid-template-columns:1fr;
+    grid-template-areas:
+      "badge"
+      "title"
+      "text"
+      "media"
+      "button";
     gap:6px;
     min-height:0;
-    padding:24px 18px 0;
+    padding:24px 18px 20px;
     border-radius:22px;
   }
 
+  .ku-course-more__content{
+    display:contents;
+  }
+
+  .ku-course-more__badge{
+    grid-area:badge;
+    justify-self:start;
+  }
+
   .ku-course-more__title{
-    font-size:28px;
+    grid-area:title;
+    font-size:30px;
   }
 
   .ku-course-more__text{
-    font-size:15px;
+    grid-area:text;
+    font-size:16px;
+    font-weight:700;
   }
 
   .ku-course-more__button{
+    grid-area:button;
     width:100%;
     min-height:46px;
     font-size:15px;
-  }
-
-  .ku-course-more__media{
-    height:215px;
+    white-space:normal;
     margin-top:0;
   }
 
+  .ku-course-more__media{
+    grid-area:media;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    height:258px;
+    margin-top:4px;
+    overflow:hidden;
+  }
+
   .ku-course-more__media img{
-    left:50%;
-    right:auto;
-    bottom:-12px;
-    width:min(330px,90vw);
-    max-height:244px;
-    transform:translateX(-50%);
+    position:static;
+    width:min(350px,92vw);
+    max-height:258px;
+    transform:none;
   }
 
   .ku-course-hero{
-    padding:100px 14px 62px;
+    padding:100px 14px 0;
     overflow:hidden;
   }
 
@@ -7174,13 +7304,16 @@ body.ku-trial-modal-open{
   <div class="ku-course-hero__container">
     <div class="ku-course-hero__layout">
       <div class="ku-course-hero__left">
-        <div class="ku-course-hero__badge"><span class="ku-course-hero__badge-dot"></span>Курс Telegram-ботов для детей 10-16 лет</div>
-        <h1 class="ku-course-hero__title">
+        <h1 class="ku-course-hero__badge">
+          <span class="ku-course-hero__badge-dot"></span>
+          Курс создания ботов на Python для детей
+        </h1>
+        <h2 class="ku-course-hero__title">
           <span class="ku-course-hero__title-main">Telegram-боты —</span>
           <span class="ku-course-hero__title-main">цифровые</span>
           <span class="ku-course-hero__title-main">помощники</span>
           <span class="ku-course-hero__title-accent">на Python</span>
-        </h1>
+        </h2>
         <p class="ku-course-hero__text">
           Ребёнок создаёт своего первого работающего бота: команды, ответы, меню, кнопки и полезные сценарии.
           Программирование становится понятным через реальный диалог с пользователем.
@@ -7208,10 +7341,10 @@ body.ku-trial-modal-open{
       </div>
 
       <div class="ku-course-hero__meta">
-        <div class="ku-course-hero__meta-item">Python, Telegram-боты и автоматизация</div>
-        <div class="ku-course-hero__meta-item">Индивидуально 1 на 1 с преподавателем</div>
-        <div class="ku-course-hero__meta-item">Команды, ответы, меню, кнопки и сценарии</div>
-        <div class="ku-course-hero__meta-item">Готовый бот для портфолио</div>
+        <div class="ku-course-hero__meta-item">🤖 Python, Telegram-боты и автоматизация</div>
+        <div class="ku-course-hero__meta-item">👨‍🏫 Индивидуально 1 на 1 с преподавателем</div>
+        <div class="ku-course-hero__meta-item">💬 Команды, ответы, меню, кнопки и сценарии</div>
+        <div class="ku-course-hero__meta-item">🚀 Готовый бот для портфолио</div>
       </div>
     </div>
   </div>
@@ -7368,13 +7501,13 @@ body.ku-trial-modal-open{
     <div class="ku-course-more__content">
       <div class="ku-course-more__badge">Больше направлений</div>
       <h2 class="ku-course-more__title" id="course-more-title">
-        Найдите курс по интересам ребёнка
+        В нашей школе более 17 направлений
       </h2>
       <p class="ku-course-more__text">
-        Игры, Python, дизайн, 3D и первые цифровые навыки — все направления собраны на главной.
+        Направим интересы ребёнка в полезные навыки: он будет заниматься интересным делом с лучшими преподавателями, а вы — гордиться его достижениями.
       </p>
       <a class="ku-course-more__button" href="index.html#courses-real">
-        Смотреть все курсы <span aria-hidden="true">→</span>
+        Перейти на главную страницу <span aria-hidden="true">→</span>
       </a>
     </div>
     <div class="ku-course-more__media" aria-hidden="true">
